@@ -59,7 +59,25 @@ export const getReadableAddress = () => async (dispatch) => {
 }
 
 export const addAddressToDatabase = (id, address) => async (dispatch) => {
-    const response = await axios.put(ADDRESS_URL + id, { address })
+    const { addressLine1, addressLine2, city, states, country, postal_code, address_type } = address
+    const getAddress = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${addressLine1}&key=AIzaSyCGANEgs9_ADpjRcHkHerl4C6dBUnp2zKs`)
+    const { results } = getAddress.data
+    const { location } = results[0].geometry
+    const geo = {
+        latitude: location.lat,
+        longitude: location.lng
+    }
+    let formatted_address = {
+        addressLine1: addressLine1,
+        addressLine2: addressLine2,
+        city: city,
+        states: states,
+        country: country,
+        postal_code: postal_code,
+        geo: geo,
+        address_type: address_type
+    }
+    const response = await axios.put(ADDRESS_URL + id, { address: formatted_address })
     const { data } = response.data
     const { status } = response
     const { addresses } = data

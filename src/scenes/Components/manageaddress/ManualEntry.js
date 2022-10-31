@@ -10,7 +10,14 @@ import { height } from "../../styles/AuthStyle";
 export default function ManualEntry({ address, navigation, geometry }) {
   const { user } = useSelector(state => state.reducer)
   const [id, setId] = useState("")
-  const [state, setState] = useState(address)
+  const [state, setState] = useState({
+    addressLine1: "",
+    addressLine2: "",
+    city: "",
+    states: "",
+    postal_code: "",
+    country: ""
+  })
   const [address_type, setAddressType] = useState("home")
   const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
@@ -30,16 +37,13 @@ export default function ManualEntry({ address, navigation, geometry }) {
 
 
   const _confirmLocation = async () => {
-    let { location } = geometry
     let address = {
       ...state,
       address_type: address_type,
-      geo: {
-        latitude: location.lat,
-        longitude: location.lng
-      }
-
     }
+    console.log('====================================');
+    console.log(address);
+    console.log('====================================');
     const response = await dispatch(addAddressToDatabase(id, address))
     response === 200 ? navigation.navigate('pin_login') : null
   }
@@ -57,7 +61,7 @@ export default function ManualEntry({ address, navigation, geometry }) {
             </Text>
             <TextInput
               defaultValue={state.addressLine1}
-              onChangeText={(text) => setState({ ...state, flat_num: text })}
+              onChangeText={(text) => setState({ ...state, addressLine1: text })}
               style={styles.inputContainer}
               mode="flat"
               placeholder=" 23475 Glacier View Dr"
@@ -81,7 +85,7 @@ export default function ManualEntry({ address, navigation, geometry }) {
           <View style={{ marginTop: 8 }}>
             <Text style={styles.headerText}>Address line 2</Text>
             <TextInput
-              onChangeText={(text) => setState({ ...state, locality: text })}
+              onChangeText={(text) => setState({ ...state, addressLine2: text })}
               style={[styles.inputContainer, { marginBottom: 8 }]}
               mode="flat"
               placeholder="Eagle River, Alaska"
@@ -138,7 +142,7 @@ export default function ManualEntry({ address, navigation, geometry }) {
               }
             />
             <TextInput
-              onChangeText={(text) => setState({ ...state, postal_code: text })}
+              onChangeText={(text) => setState({ ...state, states: text })}
               style={[styles.inputContainer, { width: "46%" }]}
               mode="flat"
               defaultValue={state.states}
@@ -174,7 +178,7 @@ export default function ManualEntry({ address, navigation, geometry }) {
 
           <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
             <TextInput
-              onChangeText={(text) => setState({ ...state, city: text })}
+              onChangeText={(text) => setState({ ...state, country: text })}
               style={[styles.inputContainer, { width: "46%" }]}
               mode="flat"
               defaultValue={state.country}
