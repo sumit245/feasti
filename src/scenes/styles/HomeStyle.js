@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions, StatusBar } from "react-native";
+import { StyleSheet, Dimensions, StatusBar, Platform } from "react-native";
 export const { width, height } = Dimensions.get('window')
 export const styles = StyleSheet.create({
     container: {
@@ -122,5 +122,8 @@ export const styles = StyleSheet.create({
         fontWeight: "bold",
         padding: 6,
         color: "#444",
+    },
+    selectorSwitch: {
+        transform: Platform.OS === "ios" ? [{ scaleX: .7 }, { scaleY: .7 }] : [{ scaleX: 1 }, { scaleY: 1 }]
     }
 })
