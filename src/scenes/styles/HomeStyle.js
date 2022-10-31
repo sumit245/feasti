@@ -119,7 +119,7 @@ export const styles = StyleSheet.create({
         marginVertical: 4,
     },
     headerText: {
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: "bold",
         padding: 6,
         color: "#444",
@@ -195,8 +195,7 @@ export const styles = StyleSheet.create({
         textAlign: "left",
     },
     planCard: {
-        paddingVertical: 15,
-        height: 70,
+        paddingVertical: 8,
         borderRadius: 5,
         elevation: 2,
         margin: 4,

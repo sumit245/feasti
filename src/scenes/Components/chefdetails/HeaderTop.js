@@ -17,7 +17,7 @@ export default function HeaderTop({ navigation, title, id, distance }) {
             <BackButton navigation={navigation} />
             <View style={{ alignItems: 'center' }}>
                 <Text style={[styles.headerText, { padding: 0 }]}>{title}</Text>
-                <Text style={{ fontSize: 10 }}>({distance} km away)</Text>
+                <Text style={{ fontSize: 12 }}> <Icon name="location-outline" />{parseFloat(distance).toFixed(1)} km away</Text>
             </View>
             <TouchableOpacity onPress={() => { navigation.navigate("documents", { id }) }}>
                 <Icon

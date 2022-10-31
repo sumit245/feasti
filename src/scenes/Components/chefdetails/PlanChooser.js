@@ -62,13 +62,14 @@ export default function PlanChooser({ base_2price,
                         <Text style={{ fontWeight: "bold", fontSize: 12 }}>1 MEAL</Text>
                         <Text
                             style={{
+                                fontSize: 18,
                                 fontWeight: "bold",
-                                fontSize: 14,
+                                paddingVertical: 2,
                             }}
                         >
                             $ 10
                         </Text>
-                        <Text style={{ fontWeight: "bold", fontSize: 12 }}>Delivery Charge: $ 5.0</Text>
+                        <Text style={{ fontSize: 12 }}>Delivery Charge: $ 5.0</Text>
                     </View>
 
                     <TouchableOpacity
@@ -97,13 +98,14 @@ export default function PlanChooser({ base_2price,
                         <Text style={{ fontWeight: "bold", fontSize: 12 }}>2 MEALS</Text>
                         <Text
                             style={{
+                                fontSize: 18,
                                 fontWeight: "bold",
-                                fontSize: 14,
+                                paddingVertical: 2,
                             }}
                         >
                             $ 20
                         </Text>
-                        <Text style={{ fontWeight: "bold", fontSize: 12 }}>Delivery Charge: $ 7.0</Text>
+                        <Text style={{ fontSize: 12 }}>Delivery Charge: $ 7.0</Text>
                     </View>
 
                     <TouchableOpacity
@@ -132,13 +134,14 @@ export default function PlanChooser({ base_2price,
                         <Text style={{ fontWeight: "bold", fontSize: 12 }}>7 MEALS</Text>
                         <Text
                             style={{
+                                fontSize: 18,
                                 fontWeight: "bold",
-                                fontSize: 14,
+                                paddingVertical: 2,
                             }}
                         >
-                            $ 65
+                            $65
                         </Text>
-                        <Text style={{ fontWeight: "bold", fontSize: 12 }}>Delivery Charges: $ 32.0</Text>
+                        <Text style={{ fontSize: 12 }}>Delivery Charges: $32.0</Text>
                     </View>
 
                     <TouchableOpacity
@@ -167,13 +170,14 @@ export default function PlanChooser({ base_2price,
                         <Text style={{ fontWeight: "bold", fontSize: 12 }}>15 MEALS</Text>
                         <Text
                             style={{
-                                fontSize: 16,
+                                fontSize: 18,
                                 fontWeight: "bold",
+                                paddingVertical: 2,
                             }}
                         >
-                            $ 120
+                            $120
                         </Text>
-                        <Text style={{ fontWeight: "bold", fontSize: 12 }}>Delivery Charge: $ 60.0</Text>
+                        <Text style={{ fontSize: 12 }}>Delivery Charge: $60.0</Text>
                     </View>
                     <LinearGradient colors={["#ff9900", "#ff6600"]} style={styles.selectoffer}>
                         <TouchableOpacity
@@ -201,13 +205,14 @@ export default function PlanChooser({ base_2price,
                         <Text style={{ fontWeight: "bold", fontSize: 12 }}>30 MEALS</Text>
                         <Text
                             style={{
-                                fontSize: 16,
+                                fontSize: 18,
                                 fontWeight: "bold",
+                                paddingVertical: 2,
                             }}
                         >
-                            $ 300
+                            $300
                         </Text>
-                        <Text style={{ fontWeight: "bold", fontSize: 12 }}>Delivery Charge: $ 100.0</Text>
+                        <Text style={{ fontSize: 12 }}>Delivery Charge: $100.0</Text>
                     </View>
                     <LinearGradient colors={["#ff9900", "#ff6600"]} style={styles.selectoffer}>
                         <TouchableOpacity
