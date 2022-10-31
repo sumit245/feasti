@@ -11,12 +11,12 @@ export default function MealSelector() {
     return (
         <View style={styles.header}>
             <View style={{ flexDirection: 'row', alignItems: "center" }}>
-                <Text>{isLunch ? "Dinner" : "Lunch"}</Text>
-                <Switch value={isLunch} onValueChange={onToggleMeal} />
+                <Text style={styles.title}>{isLunch ? "Dinner" : "Lunch"}</Text>
+                <Switch value={isLunch} onValueChange={onToggleMeal} style={{ height: 18 }} color="#ff6600" />
             </View>
             <View style={{ flexDirection: 'row', alignItems: "center" }}>
-                <Text>{isDelivery ? "Doorstep Delivery" : "Chef Pickup"}</Text>
-                <Switch value={isDelivery} onValueChange={onTogglePickup} />
+                <Text style={styles.title}>{isDelivery ? " Delivery" : "Chef Pickup"}</Text>
+                <Switch value={isDelivery} onValueChange={onTogglePickup} style={{ height: 18 }} color="#ff6600" />
             </View>
 
         </View>
