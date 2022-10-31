@@ -1,5 +1,8 @@
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import React, { useState, useEffect } from 'react'
+import { styles } from "../../styles/HomeStyle"
+import BackButton from '../utility/BackButton'
+import Icon from "react-native-vector-icons/Ionicons"
 
 export default function HeaderTop({ navigation, title, id }) {
     useEffect(() => {
@@ -10,8 +13,16 @@ export default function HeaderTop({ navigation, title, id }) {
     }, [])
 
     return (
-        <View>
-            <Text>HeaderTop</Text>
+        <View style={styles.header} >
+            <BackButton navigation={navigation} />
+            <Text style={styles.headerText}>{title}</Text>
+            <TouchableOpacity onPress={() => { navigation.navigate("documents", { id }) }}>
+                <Icon
+                    name="images-outline"
+                    size={24}
+                    style={{ margin: 2, marginRight: 5 }}
+                />
+            </TouchableOpacity>
         </View>
     )
 }

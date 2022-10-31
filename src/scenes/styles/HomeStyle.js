@@ -33,6 +33,7 @@ export const styles = StyleSheet.create({
     header: {
         flexDirection: "row",
         justifyContent: "space-between",
+        alignItems: "center",
         height: 48,
         marginHorizontal: 6,
         marginBottom: 6,
@@ -116,4 +117,10 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 6,
         marginVertical: 4,
     },
+    headerText: {
+        fontSize: 18,
+        fontWeight: "bold",
+        padding: 6,
+        color: "#444",
+    }
 })

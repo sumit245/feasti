@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView } from 'react-native'
+import { View, Text, SafeAreaView, ScrollView, Image } from 'react-native'
 import React, { useEffect } from 'react'
 import { styles } from './styles/HomeStyle'
 import HeaderTop from './Components/chefdetails/HeaderTop'
@@ -13,7 +13,10 @@ export default function ChefDetails({ route, navigation }) {
 
     return (
         <SafeAreaView style={styles.container}>
-            <HeaderTop navigation={navigation} title={title} id={restaurant_id} />
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <HeaderTop navigation={navigation} title={title} id={restaurant_id} />
+
+            </ScrollView>
         </SafeAreaView>
     )
 }

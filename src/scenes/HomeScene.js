@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux'
 import HeaderComponent from './Components/home/headerTop/HeaderComponent'
 import Cuisines from './Components/home/headerCuisine/Cuisines'
 import Meals from './Components/home/mealArea/Meals'
+import BannerCarousel from './Components/home/banner/BannerCarousel'
+import MealSelector from './Components/home/mealselector/MealSelector'
 
 
 
@@ -15,6 +17,8 @@ export default function HomeScene({ navigation }) {
         <SafeAreaView style={{ flex: 1, marginTop: StatusBar.currentHeight }} >
             <HeaderComponent />
             <Cuisines />
+            <BannerCarousel />
+            <MealSelector/>
             <Meals restaurant={nearByRestaurant} navigation={navigation} />
         </SafeAreaView>
     )
