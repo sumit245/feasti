@@ -96,6 +96,7 @@ export default function ItemCard({ item, isFavorite, isHome, navigation }) {
                             navigation.navigate("chef_details", {
                                 title: item.restaurant_name,
                                 restaurant_id: item._id,
+                                distance: item.distance,
                                 item,
                                 promo: state,
                             })
