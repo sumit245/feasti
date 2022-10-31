@@ -67,9 +67,9 @@ export default function PlanChooser({ base_2price,
                                 paddingVertical: 2,
                             }}
                         >
-                            $ 10
+                            $10
                         </Text>
-                        <Text style={{ fontSize: 12 }}>Delivery Charge: $ 5.0</Text>
+                        <Text style={{ fontSize: 12 }}>Delivery Charge: $5.0</Text>
                     </View>
 
                     <TouchableOpacity
@@ -103,9 +103,9 @@ export default function PlanChooser({ base_2price,
                                 paddingVertical: 2,
                             }}
                         >
-                            $ 20
+                            $20
                         </Text>
-                        <Text style={{ fontSize: 12 }}>Delivery Charge: $ 7.0</Text>
+                        <Text style={{ fontSize: 12 }}>Delivery Charge: $7.0</Text>
                     </View>
 
                     <TouchableOpacity
