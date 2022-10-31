@@ -9,7 +9,7 @@ export default function MealSelector() {
     const onToggleMeal = () => setIsLunch(!isLunch);
     const onTogglePickup = () => setIsDelivery(!isDelivery);
     return (
-        <View style={styles.header}>
+        <View style={[styles.header, { height: 36 }]}>
             <View style={{ flexDirection: 'row', alignItems: "center" }}>
                 <Text style={styles.title}>{isLunch ? "Dinner" : "Lunch"}</Text>
                 <Switch value={isLunch} onValueChange={onToggleMeal} style={styles.selectorSwitch} color="#ff6600" />
