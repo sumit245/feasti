@@ -16,9 +16,11 @@ export default function HomeScene({ navigation }) {
     return (
         <SafeAreaView style={{ flex: 1, marginTop: StatusBar.currentHeight }} >
             <HeaderComponent />
-            <Cuisines />
+            <View>
+                <Cuisines />
+            </View>
             <BannerCarousel />
-            <MealSelector/>
+            <MealSelector />
             <Meals restaurant={nearByRestaurant} navigation={navigation} />
         </SafeAreaView>
     )
