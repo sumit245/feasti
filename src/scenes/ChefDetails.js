@@ -161,7 +161,7 @@ export default function ChefDetails({ route, navigation }) {
                     promo={promo}
                     navigation={navigation}
                 />
-                <Text style={styles.header}>About us </Text>
+                <Text style={styles.headerText}>About us </Text>
                 <View style={styles.about}>
                     <Text style={{ fontSize: 16, textAlign: "justify" }}>{about}</Text>
                 </View>
