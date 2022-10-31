@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react'
 import {
-    ImageBackground, View, SafeAreaView, Text,
+    ImageBackground, View, SafeAreaView, Text, Alert
 } from 'react-native'
 import ReactNativePinView from 'react-native-pin-view';
 import Icon from 'react-native-vector-icons/Ionicons';
 import BackButton from '../utility/BackButton';
 import styles, { height } from '../../styles/AuthStyle'
 import { useDispatch, useSelector } from 'react-redux';
-import { getLocalUser } from '../../../services/actions/actions';
+import { getLocalUser, loginWithPin } from '../../../services/actions/actions';
 
 export default function PinLogin({ navigation }) {
     const pinView = useRef(null)
@@ -16,14 +16,8 @@ export default function PinLogin({ navigation }) {
     const [showCompletedButton, setShowCompletedButton] = useState(false);
     const [confirmation, setConfirmation] = useState(false);
     const [pin, setPin] = useState('');
-    const { isLoggedIn } = useSelector(state => state.reducer)
-
-    useEffect(() => {
-        console.log('=========Pin View===========');
-        console.log(isLoggedIn);
-        console.log('====================================');
-    }, [])
-
+    const isLoggedIn = useSelector(state => state.reducer)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         enteredPin.length > 0
@@ -38,13 +32,22 @@ export default function PinLogin({ navigation }) {
     const resetPin = () => {
         navigation.pop();
     };
+    
+    const login = async () => {
+        const loggedin = await dispatch(loginWithPin())
+        if (!loggedin) {
+            Alert.alert("Please Signup", "You need to signup first!", [{ text: "OK", onPress: () => navigation.navigate('auth') }])
+        } else {
+            navigation.navigate('home')
+        }
+    }
 
     const unlock = () => {
         setConfirmation(true);
         if (confirmation) {
             if (pin === enteredPin) {
                 pinView.current.clearAll()
-                alert('Log In from pin')
+                login()
                 setConfirmation(false)
             } else {
                 alert('Confirmation and Entered PIN code does not match');

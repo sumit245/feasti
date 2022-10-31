@@ -4,10 +4,13 @@ import AuthScene from "../scenes/AuthScene";
 import OTPLogin from "../scenes/Components/mobilelogin/OTPLogin";
 import UserDetail from "../scenes/Components/UserDetail"
 import AddAddress from "../scenes/Components/manageaddress/AddAddress";
+import HomeScene from "../scenes/HomeScene"
 import { useDispatch, useSelector } from "react-redux";
 import { getExpoNotificationToken, removeNotificationSubscription } from "../services/actions/notificationActions";
 import PinLogin from "../scenes/Components/pinlogin/PinLogin";
-import { getLocalUser } from "../services/actions/actions";
+import { getNearByRestaurant, getActiveRestaurants, getCuisines } from "../services/actions/retaurantsAction";
+import ChefDetails from "../scenes/ChefDetails";
+import MaterialBottomNavigator from "./tabnavigator";
 const Stack = createStackNavigator()
 export default function StackNavigator() {
     const expoPushToken = useSelector(state => state.expoPushToken)
@@ -17,17 +20,12 @@ export default function StackNavigator() {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getExpoNotificationToken())
-        return () => {
-            dispatch(removeNotificationSubscription(notificationListener.current))
-            dispatch(removeNotificationSubscription(responseListener.current))
-        }
     }, [])
 
     const getUser = async () => {
-        const user = await dispatch(getLocalUser())
-        console.log('====================================');
-        console.log(user);
-        console.log('====================================');
+        await dispatch(getActiveRestaurants())
+        await dispatch(getNearByRestaurant())
+        await dispatch(getCuisines())
     }
 
     useEffect(() => {
@@ -43,6 +41,8 @@ export default function StackNavigator() {
             <Stack.Screen name="userdetails" component={UserDetail} />
             <Stack.Screen name="add_address" component={AddAddress} />
             <Stack.Screen name="pin_login" component={PinLogin} />
+            <Stack.Screen name="home" component={MaterialBottomNavigator} />
+            <Stack.Screen name="chef_details" component={ChefDetails} />
         </Stack.Navigator>
     )
 }

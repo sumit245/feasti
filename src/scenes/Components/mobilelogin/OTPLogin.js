@@ -28,15 +28,11 @@ export default function OTPLogin({ navigation }) {
         const statusCode = await dispatch(signIn(verificationId, verificationCode))
         if (statusCode === 200) {
             navigation.navigate('userdetails')
+        } else {
+            navigation.navigate('home')
         }
         setLoading(false)
     }
-    useEffect(() => {
-        console.log('====================================');
-        console.log(verificationId);
-        console.log('====================================');
-    }, [])
-
     return (
         <Provider>
             <ImageBackground source={require('../../../../assets/imagebackground.jpg')} style={{ width: '100%', height: '100%' }}>

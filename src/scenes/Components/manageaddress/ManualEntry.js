@@ -7,17 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { addAddressToDatabase } from "../../../services/actions/addressactions";
 import { height } from "../../styles/AuthStyle";
 
-export default function ManualEntry({ address }) {
+export default function ManualEntry({ address, navigation, geometry }) {
   const { user } = useSelector(state => state.reducer)
   const [id, setId] = useState("")
-  const [state, setState] = useState({
-    addressLine1: "delhi",
-    addressLine2: "",
-    city: "",
-    states: "",
-    country: "",
-    postal_code: ""
-  })
+  const [state, setState] = useState(address)
   const [address_type, setAddressType] = useState("home")
   const [loading, setLoading] = useState(false)
   const dispatch = useDispatch()
@@ -30,19 +23,27 @@ export default function ManualEntry({ address }) {
     setState(address)
     setLoading(true)
   }, [address])
+
   useEffect(() => {
     setId(user._id)
   }, [])
 
 
   const _confirmLocation = async () => {
+    let { location } = geometry
     let address = {
       ...state,
-      address_type: address_type
+      address_type: address_type,
+      geo: {
+        latitude: location.lat,
+        longitude: location.lng
+      }
+
     }
     const response = await dispatch(addAddressToDatabase(id, address))
-    console.log(response);
+    response === 200 ? navigation.navigate('pin_login') : null
   }
+
   return (
     loading ?
       <View style={styles.container}>

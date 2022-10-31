@@ -67,9 +67,6 @@ export default function UserDetail({ navigation }) {
 
   useEffect(() => {
     setId(_id)
-    console.log('====================================');
-    console.log(_id);
-    console.log('====================================');
   }, [])
 
   return (

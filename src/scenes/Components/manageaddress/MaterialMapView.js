@@ -3,15 +3,23 @@ import { View, } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import BackButton from "../utility/BackButton";
 import { useDispatch } from "react-redux";
-import { checkLocationPermission } from "../../../services/actions/addressactions";
+import { checkLocationPermission, setAdrressFromMap } from "../../../services/actions/addressactions";
 import styles from "../../styles/AuthStyle"
 
-export default function MaterialMapView(props) {
+
+export default function MaterialMapView({ changeMarkerAddress }) {
   const [location, setLocation] = useState(null)
   const dispatch = useDispatch()
   const getAddress = async () => {
     const location = await dispatch(checkLocationPermission())
     setLocation(location)
+  }
+  const setAddressMap = async (currentLocation) => {
+    if (location !== currentLocation) {
+      await dispatch(setAdrressFromMap(currentLocation))
+      changeMarkerAddress(currentLocation)
+    }
+    setLocation(currentLocation)
   }
   useEffect(() => {
     getAddress()
@@ -23,7 +31,7 @@ export default function MaterialMapView(props) {
       <View style={styles.materialMapView}>
         <MapView
           style={{ flex: 1 }}
-          onRegionChange={(region) => setLocation(region)}
+          onRegionChange={(region) => setAddressMap(region)}
           initialRegion={{
             latitude: location.latitude,
             longitude: location.longitude,
