@@ -11,6 +11,7 @@ import PinLogin from "../scenes/Components/pinlogin/PinLogin";
 import { getNearByRestaurant, getActiveRestaurants, getCuisines } from "../services/actions/retaurantsAction";
 import ChefDetails from "../scenes/ChefDetails";
 import MaterialBottomNavigator from "./tabnavigator";
+import Checkout from "../scenes/Checkout";
 const Stack = createStackNavigator()
 export default function StackNavigator() {
     const expoPushToken = useSelector(state => state.expoPushToken)
@@ -43,6 +44,7 @@ export default function StackNavigator() {
             <Stack.Screen name="pin_login" component={PinLogin} />
             <Stack.Screen name="home" component={MaterialBottomNavigator} />
             <Stack.Screen name="chef_details" component={ChefDetails} />
+            <Stack.Screen name="checkout" component={Checkout} />
         </Stack.Navigator>
     )
 }

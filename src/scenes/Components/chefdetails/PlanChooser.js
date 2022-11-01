@@ -25,7 +25,7 @@ export default function PlanChooser({ base_2price,
                     ? promo
                     : null;
 
-        Actions.push("checkout", {
+        navigation.navigate("checkout", {
             restaurant: restaurant,
             restaurant_id: restaurant_id,
             base_price: baseprice,
