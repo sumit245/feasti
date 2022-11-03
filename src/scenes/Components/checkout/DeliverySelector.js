@@ -9,31 +9,40 @@ export default function DeliverySelector() {
         <View style={styles.optionCard}>
             <View style={[styles.optionrow, { justifyContent: 'center' }]}>
                 <TouchableOpacity style={{ width: '50%' }} onPress={() => setDelivery(false)} >
-                    {!delivery ?
-                        <LinearGradient colors={["#ff9900", "#ff6600"]} style={styles.selectoffer}>
-                            <Text style={{ color: "#fff", fontSize: 18, fontWeight: 'bold' }}>Chef Pickup</Text>
+                    
+                        <LinearGradient colors={!delivery? ["#ff9900", "#ff6600"] : ["#fff", "transparent"]} style={styles.tipBox}>
+                            <Text style={{
+                            color: !delivery ? "#FFF" : "#777",
+                            padding: 1,
+                            fontWeight: "bold",
+                            textAlign:"center"
+                        }}>Pickup</Text>
                         </LinearGradient>
-                        : <Text style={{ color: "#000", fontSize: 18, fontWeight: 'bold', textAlign: 'center' }}>Chef Pickup</Text>
-                    }
+
+                        
                 </TouchableOpacity>
                 <TouchableOpacity style={{ width: '50%' }} onPress={() => setDelivery(true)}>
-                    {delivery ?
-                        <LinearGradient colors={["#ff9900", "#ff6600"]} style={styles.selectoffer}>
-                            <Text style={{ color: "#fff", fontSize: 18, fontWeight: 'bold' }}>Delivery</Text>
+                    
+                        <LinearGradient colors={delivery? ["#ff9900", "#ff6600"] : ["#fff", "transparent"]} style={styles.tipBox}>
+                            <Text style={{
+                            color: delivery? "#FFF" : "#777",
+                            padding: 1,
+                            fontWeight: "bold",
+                            textAlign:"center"
+                        }}>Delivery</Text>
                         </LinearGradient>
-                        : <Text style={{ color: "#000", fontSize: 18, fontWeight: 'bold', 'textAlign': 'center' }}>Delivery</Text>
-                    }
+                        
                 </TouchableOpacity>
             </View>
-            <Text style={styles.tipText}>
+            <Text style={[styles.tipText,{marginVertical:8}]}>
                 {
                     !delivery
-                        ? <Text>Pickup is from cook's home and is free!{"\n"}
+                        ? <Text style={[styles.tipText,{paddingBottom:4}]}>Pickup is from cook's home, and is free!{"\n"} 
                             <Text style={{fontWeight:'bold',color:"#000"}}>Approx 1.1 km from you</Text>
                         </Text>
                         :
-                        <Text>Worry free delivery direct to your door!!!{"\n"}
-                            <Text style={{ fontWeight: 'bold', color: "#000" }}>Charges Applied.*</Text>
+                        <Text style={styles.tipText}>Delivery powered by our chef{"\n"}
+                            
                         </Text>
                 }
             </Text>
