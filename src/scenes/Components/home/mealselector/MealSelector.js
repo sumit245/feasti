@@ -2,12 +2,23 @@ import { View, Text, Platform } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { styles } from '../../../styles/HomeStyle'
 import { Switch } from 'react-native-paper'
+import { useDispatch } from 'react-redux';
+import { filterRestaurant } from '../../../../services/actions/retaurantsAction';
 
-export default function MealSelector() {
+export default function MealSelector({ nearByRestaurant }) {
     const [isLunch, setIsLunch] = useState(false);
     const [isDelivery, setIsDelivery] = useState(false);
-    const onToggleMeal = () => setIsLunch(!isLunch);
-    const onTogglePickup = () => setIsDelivery(!isDelivery);
+    const dispatch = useDispatch()
+    const onToggleMeal = async () => {
+        const value = isLunch ? "Lunch" : "Dinner"
+        await dispatch(filterRestaurant(nearByRestaurant, "meal_type", value))
+        setIsLunch(!isLunch)
+    };
+    const onTogglePickup = async () => {
+        const value = isDelivery ? false : true
+        await dispatch(filterRestaurant(nearByRestaurant, "isDelivery", value))
+        setIsDelivery(!isDelivery)
+    };
     return (
         <View style={[styles.header, { height: 32 }]}>
             <View style={{ flexDirection: 'row', alignItems: "center" }}>

@@ -5,13 +5,6 @@ import BackButton from '../utility/BackButton'
 import Icon from "react-native-vector-icons/Ionicons"
 
 export default function HeaderTop({ navigation, title, id, distance }) {
-    useEffect(() => {
-        console.log(title)
-        console.log('====================================');
-        console.log(id);
-        console.log('====================================');
-    }, [])
-
     return (
         <View style={styles.header} >
             <BackButton navigation={navigation} />

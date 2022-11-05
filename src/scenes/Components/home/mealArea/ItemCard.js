@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Avatar, Card } from "react-native-paper";
 import Icon from "react-native-vector-icons/Ionicons";
 // import { Favourite } from "../favourite/favourite";
 import { styles, width } from "../../../styles/HomeStyle"
-import axios from "axios";
-import { PROFIT_URL } from "../../../../services/EndPoints";
 export default function ItemCard({ item, isFavorite, isHome, navigation }) {
     const [state, setState] = useState({
         discount: "",
@@ -18,44 +16,14 @@ export default function ItemCard({ item, isFavorite, isHome, navigation }) {
         _id,
         documents,
         restaurant_name,
-        base_2price,
-        base_15price,
-        base_30price,
         meal_type,
         rating,
         promo,
         about,
+        isDelivery,
+        price_plans
     } = item;
-
-    const [plan, setPlan] = useState({});
     const { discount, discount_type, plan_name, promo_code } = state;
-    useEffect(() => {
-        let componentMounted = true;
-        const fetchProfits = async () => {
-            const response = await axios.get(PROFIT_URL);
-            const { data } = response;
-            if (componentMounted) {
-                setPlan(data);
-                if (
-                    Array.isArray(promo) &&
-                    promo.length !== 0 &&
-                    promo[0].status === "Active"
-                ) {
-                    setState({
-                        discount: promo[0].discount,
-                        discount_type: promo[0].discount_type,
-                        plan_name: promo[0].plan_name,
-                        promo_code: promo[0].promo_code,
-                        hasPromo: true,
-                    });
-                }
-            }
-        };
-        fetchProfits();
-        return () => {
-            componentMounted = false;
-        };
-    }, [item]);
 
     return (
         <Card style={styles.item} key={_id}>
@@ -73,22 +41,11 @@ export default function ItemCard({ item, isFavorite, isHome, navigation }) {
                         : isFavorite
                 }
             /> */}
-            <View
-                style={{
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    padding: 2,
-                    margin: 2,
-                    marginVertical: 4,
-                    marginBottom: 8,
-                }}
-            >
+            <View style={styles.chefNameAndReview} >
                 <View style={{ flexDirection: "row" }}>
                     <Avatar.Image
                         size={40}
-                        source={{
-                            uri: Array.isArray(documents) ? documents[0].restaurant_image : "",
-                        }}
+                        source={{ uri: documents[0].restaurant_image }}
                         style={{ marginRight: 4 }}
                     />
                     <TouchableOpacity
@@ -141,32 +98,17 @@ export default function ItemCard({ item, isFavorite, isHome, navigation }) {
                 </View>
             </View>
 
-            <View style={{ flexDirection: "row", marginBottom: 4 }}>
-
-                <View style={styles.price}>
-                    <Text>1 MEAL</Text>
-                    <Text style={{ fontWeight: "bold" }}>
-                        {"$" + (parseFloat(base_2price) + parseFloat(plan.twoPlan))}
-                    </Text>
-                </View>
-                <View style={styles.price}>
-                    <Text>2 MEALS</Text>
-                    <Text style={{ fontWeight: "bold" }}>
-                        {"$" + (parseFloat(base_2price) + parseFloat(plan.twoPlan))}
-                    </Text>
-                </View>
-                <View style={styles.price}>
-                    <Text>7 MEALS</Text>
-                    <Text style={{ fontWeight: "bold" }}>
-                        {"$" + (parseFloat(base_15price) + parseFloat(plan.fifteenPlan))}
-                    </Text>
-                </View>
-                <View style={[styles.price, { borderRightWidth: 0 }]}>
-                    <Text>15 MEALS</Text>
-                    <Text style={{ fontWeight: "bold" }}>
-                        {"$" + (parseFloat(base_30price) + parseFloat(plan.thirtyPlan))}
-                    </Text>
-                </View>
+            <View style={styles.pricing}>
+                {
+                    Array.isArray(price_plans) && price_plans.map((item) => (
+                        <View style={styles.price}>
+                            <Text>{item.plan_name}</Text>
+                            <Text style={{ fontWeight: "bold" }}>
+                                ${item.customer_price}
+                            </Text>
+                        </View>
+                    ))
+                }
             </View>
 
             {state.hasPromo && (

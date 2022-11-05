@@ -101,6 +101,14 @@ export const styles = StyleSheet.create({
         margin: 2,
         marginVertical: 8
     },
+    chefNameAndReview: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        padding: 2,
+        margin: 2,
+        marginVertical: 4,
+        marginBottom: 8,
+    },
     image: {
         width: "99%",
         height: 150,
@@ -113,11 +121,11 @@ export const styles = StyleSheet.create({
     },
     price: {
         borderRightWidth: 0.6,
-        width: "25%",
         borderRightColor: "#ddd",
         paddingHorizontal: 6,
         marginVertical: 4,
     },
+    pricing: { flexDirection: "row", marginBottom: 4, width: "100%", justifyContent: 'space-between' },
     headerText: {
         fontSize: 16,
         fontWeight: "bold",

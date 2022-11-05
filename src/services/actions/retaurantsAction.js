@@ -1,17 +1,23 @@
 import AsyncStorageLib from "@react-native-async-storage/async-storage"
 import axios from "axios"
-import { CUISINE_URL, RESTAURANT_URL } from "../EndPoints"
+import { CUISINE_URL, GET_PRICE_URL, RESTAURANT_URL } from "../EndPoints"
 import { getDistance } from "geolib"
 
 export const GET_ALL_RESTAURANT = "GET_ALL_RESTAURANT"
+export const SET_TEMP_RESTAURANT = "SET_TEMP_RESTAURANT"
 export const GET_CUISINES = "GET_CUISINES"
+
 
 export const getNearByRestaurant = () => async (dispatch) => {
     const user = await AsyncStorageLib.getItem('user')
     const { addresses } = JSON.parse(user)
     const response = await axios.get(RESTAURANT_URL)
     const restaurants = response.data
+    const resp = await axios.get(GET_PRICE_URL)
+    const pricing = resp.data
+
     let nearByRestaurant = []
+
     const addNearByRestaurant = (inputRestaurant) => {
         nearByRestaurant.push(inputRestaurant)
     }
@@ -41,9 +47,16 @@ export const getNearByRestaurant = () => async (dispatch) => {
         calculateDistance(city, restaurant)
     })
     setTimeout(() => {
+        nearByRestaurant.forEach((restaurant) => {
+            let prices = pricing.find((price, index) => {
+                return price.restaurant_id === restaurant.restaurant_id
+            })
+            const { isDelivery, price_plans } = prices
+            restaurant.isDelivery = isDelivery
+            restaurant.price_plans = price_plans
+        })
         dispatch({ type: GET_ALL_RESTAURANT, payload: nearByRestaurant })
     }, 1000)
-
 }
 
 export const getActiveRestaurants = () => async (dispatch) => {
@@ -56,4 +69,18 @@ export const getCuisines = () => async (dispatch) => {
     const cuisineResponse = await axios.get(CUISINE_URL);
     const cuisine = await cuisineResponse.data;
     dispatch({ type: GET_CUISINES, payload: cuisine })
+}
+
+export const setTempRestaurant = (restaurant) => async (dispatch) => {
+    dispatch({ type: SET_TEMP_RESTAURANT, payload: restaurant })
+}
+
+export const filterRestaurant = (restaurant, type, value) => async (dispatch) => {
+    let filteredRestaurant = restaurant.filter((item) => item[type] === value)
+    dispatch({ type: GET_ALL_RESTAURANT, payload: filteredRestaurant })
+}
+
+export const getRestaurantByID = (id, restaurant) => {
+    let selectedRestaurant = restaurant.find((rest) => rest._id === id)
+    return selectedRestaurant
 }

@@ -12,6 +12,7 @@ import MealSelector from './Components/home/mealselector/MealSelector'
 export default function HomeScene({ navigation }) {
     const { user } = useSelector(state => state.reducer)
     const { nearByRestaurant } = useSelector((state) => state.restaurantReducer)
+    const { tempRestaurant } = useSelector((state) => state.restaurantReducer)
 
     return (
         <SafeAreaView style={{ flex: 1, marginTop: StatusBar.currentHeight }} >
@@ -20,7 +21,7 @@ export default function HomeScene({ navigation }) {
                 <Cuisines />
             </View>
             <BannerCarousel />
-            <MealSelector />
+            <MealSelector nearByRestaurant={tempRestaurant} />
             <Meals restaurant={nearByRestaurant} navigation={navigation} />
         </SafeAreaView>
     )

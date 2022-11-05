@@ -5,14 +5,23 @@ import { Button } from "react-native-paper";
 import moment from 'moment'
 import { width, styles } from '../../styles/HomeStyle';
 import Icon from "react-native-vector-icons/Ionicons";
+import { useDispatch, useSelector } from 'react-redux';
+import { setDuration } from '../../../services/actions/checkoutAction';
 
-
-export default function PlanDuration({ plan, dateHandler }) {
+export default function PlanDuration() {
     const [modalVisible, setModalVisible] = useState(false)
     const [selectedStartDate, setSelectedStartDate] = useState(null)
     const [selectedEndDate, setSelectedEndDate] = useState(null)
+    const { selectedPlan } = useSelector(state => state.checkoutReducer)
+    const dispatch = useDispatch()
     const minDate = moment(new Date()).add(1, "day")
-    const onDateChange = () => { }
+    const onDateChange = async (date) => {
+        const { duration } = selectedPlan
+        setSelectedStartDate(moment(date).format('DD-MMM'))
+        setSelectedEndDate(moment(date).add(duration - 1, 'days').format('DD-MMM'))
+        await dispatch(setDuration(moment(date), moment(date).add(duration - 1, "days")))
+        setModalVisible(false)
+    }
     return (
         <View style={styles.optionCard}>
             <Text style={styles.optionsLabels}>Select plan duration</Text>

@@ -1,18 +1,16 @@
-export const USER_URL = 'http://54.146.133.108:5000/api/users/';
-export const CUISINE_URL = 'http://54.146.133.108:5000/api/cuisine';
-export const ADDRESS_URL = 'http://54.146.133.108:5000/api/users/addaddress/';
-export const RESTAURANT_URL = 'http://54.146.133.108:5000/api/newrest/active/';
-export const CHECKOUT_URL =
-  'http://54.146.133.108:5000/api/checkout/6088240787ea8208fcb85863';
-export const COUPON_URL = 'http://54.146.133.108:5000/api/coupon';
-export const ORDER_URL = 'http://54.146.133.108:5000/api/orders';
-export const MY_ORDER_URL =
-  'http://54.146.133.108:5000/api/orders/getorderbyuser/';
-export const CUISINE_TYPE_URL =
-  'http://54.146.133.108:5000/api/newrest/cuisine_type';
-export const MEALS = 'http://54.146.133.108:5000/api/newrest/category/';
-export const VEG_NON_VEG = 'http://54.146.133.108:5000/api/newrest/meal_type/';
-export const PROFIT_URL =
-  'http://54.146.133.108:5000/api/plans/6066360c920a2e311c95ee92';
-export const CHANGE_ADDRESS_URL =
-  'http://54.146.133.108:5000/api/users/changeaddress/';
+const BASE_URL = "http://192.168.1.4:5000"
+export const USER_URL = BASE_URL + '/api/users/';
+export const CUISINE_URL = BASE_URL + '/api/cuisine';
+export const ADDRESS_URL = BASE_URL + '/api/users/addaddress/';
+export const CHECKOUT_URL = BASE_URL + '/api/checkout/6088240787ea8208fcb85863';
+export const COUPON_URL = BASE_URL + '/api/coupon';
+export const ORDER_URL = BASE_URL + '/api/orders';
+export const MY_ORDER_URL = BASE_URL + '/api/orders/getorderbyuser/';
+export const RESTAURANT_URL = BASE_URL + '/api/newrest/active/';
+export const CUISINE_TYPE_URL = BASE_URL + '/api/newrest/cuisine_type';
+export const MEALS = BASE_URL + '/api/newrest/category/';
+export const VEG_NON_VEG = BASE_URL + '/api/newrest/meal_type/';
+export const PROFIT_URL = BASE_URL + '/api/plans';
+export const CHANGE_ADDRESS_URL = BASE_URL + '/api/users/changeaddress/';
+export const GET_PRICE_URL = BASE_URL + '/api/pricing'
+export const SLOT_URL = BASE_URL + '/api/slots'

@@ -3,23 +3,27 @@ import { View, Text, SafeAreaView, ScrollView, Image, TouchableOpacity } from 'r
 import { avatarSize, styles, width } from './styles/HomeStyle'
 import HeaderTop from './Components/chefdetails/HeaderTop'
 import Icon from "react-native-vector-icons/Ionicons"
-import { TabView, TabBar, SceneMap } from "react-native-tab-view";
+import { TabView, TabBar } from "react-native-tab-view";
 import MenuItem from "./Components/chefdetails/MenuItem";
 import PlanChooser from './Components/chefdetails/PlanChooser'
 import axios from "axios";
+import { useDispatch, useSelector } from 'react-redux'
+import { getRestaurantByID } from '../services/actions/retaurantsAction'
 
 export default function ChefDetails({ route, navigation }) {
     const { title, restaurant_id, item, promo, distance } = route.params
     const [review, setReview] = useState([]);
     const [index, setIndex] = useState(0)
-    const [routes] = useState([
-        { key: "first", title: "Monday" },
-        { key: "second", title: "Tuesday" },
-        { key: "third", title: "Wednesday" },
-        { key: "fourth", title: "Thursday" },
-        { key: "fifth", title: "Friday" },
-        { key: "sixth", title: "Saturday" },
-        { key: "seventh", title: "Sunday" },
+    const [restaurant, setRestaurant] = useState({})
+    const dispatch = useDispatch()
+    const { tempRestaurant, nearByRestaurant } = useSelector((state) => state.restaurantReducer)
+    const [routes] = useState([{ key: "first", title: "Monday" },
+    { key: "second", title: "Tuesday" },
+    { key: "third", title: "Wednesday" },
+    { key: "fourth", title: "Thursday" },
+    { key: "fifth", title: "Friday" },
+    { key: "sixth", title: "Saturday" },
+    { key: "seventh", title: "Sunday" },
     ]);
     const renderTabBar = (props) => (
         <TabBar
@@ -66,11 +70,6 @@ export default function ChefDetails({ route, navigation }) {
     useEffect(() => {
         fetchReview();
     }, []);
-    useEffect(() => {
-        console.log('====================================');
-        console.log(title, restaurant_id);
-        console.log('====================================');
-    }, [])
 
     const getchefbynameandupdatemenucount = async (restaurant_id) => {
         let MENU_COUNT_URL =
@@ -79,17 +78,25 @@ export default function ChefDetails({ route, navigation }) {
         const response = await axios.get(MENU_COUNT_URL);
     };
 
+    const getChefByID = async () => {
+        const restaurant = await getRestaurantByID(restaurant_id, nearByRestaurant)
+        setRestaurant(restaurant)
+    }
+
+    useEffect(() => {
+        getChefByID()
+    }, [])
+
+
     useEffect(() => {
         getchefbynameandupdatemenucount(restaurant_id);
+
     }, [restaurant_id]);
 
     const {
+        restaurant_name,
         meals,
         documents,
-        base_2price,
-        base_15price,
-        base_30price,
-        restaurant_name,
         rating,
         meal_type,
         category,
@@ -143,24 +150,7 @@ export default function ChefDetails({ route, navigation }) {
                     />
                 </View>
 
-
-
-
-
-
-
-                <PlanChooser
-                    base_2price={base_2price}
-                    base_15price={base_15price}
-                    base_30price={base_30price}
-                    restaurant={restaurant_name}
-                    restaurant_id={restaurant_id}
-                    documents={documents}
-                    meal_type={meal_type}
-                    category={category}
-                    promo={promo}
-                    navigation={navigation}
-                />
+                <PlanChooser navigation={navigation} restaurant_id={restaurant_id} />
                 <Text style={styles.headerText}>About us </Text>
                 <View style={styles.about}>
                     <Text style={{ fontSize: 16, textAlign: "justify" }}>{about}</Text>

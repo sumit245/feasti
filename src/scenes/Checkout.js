@@ -7,14 +7,12 @@ import {
   Image,
   SafeAreaView,
   Keyboard,
-  LogBox,
   ActivityIndicator,
 } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { StripeProvider } from '@stripe/stripe-react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { width, styles } from "./styles/HomeStyle"
-import moment from 'moment';
 import BackButton from "./Components/utility/BackButton"
 import PlanDuration from './Components/checkout/PlanDuration';
 import DeliverySlots from './Components/checkout/DeliverySlots';
@@ -25,250 +23,57 @@ import TipOption from "./Components/checkout/TipOption"
 import PromoOptions from './Components/checkout/PromoOptions';
 import DeliverySelector from './Components/checkout/DeliverySelector';
 import BillingTable from "./Components/checkout/BillingTable"
+import { getRestaurantByID } from '../services/actions/retaurantsAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser, setServiceCharges } from '../services/actions/checkoutAction';
 export default function Checkout({ route, navigation }) {
-  const { restaurant,
-    restaurant_id,
-    base_price,
-    price,
-    plan,
-    documents,
-    meal_type,
-    category,
-    promo } = route.params
+  const { nearByRestaurant } = useSelector(state => state.restaurantReducer)
+  const { selectedPlan } = useSelector(state => state.checkoutReducer)
+  const order = useSelector(state => state.checkoutReducer)
+  const dispatch = useDispatch()
+  const [restaurant, setRestaurant] = useState({})
+  const [loaded, setLoaded] = useState(false)
+  const { restaurant_id } = route.params
+
+  const getChefByID = async () => {
+    const rest = await getRestaurantByID(restaurant_id, nearByRestaurant)
+    await dispatch(getUser())
+    await dispatch(setServiceCharges())
+    setRestaurant(rest)
+    setLoaded(true)
+  }
+
+  useEffect(() => {
+    getChefByID()
+  }, [])
+
   const [state, setState] = useState({
     loading: true,
-    restaurant: restaurant,
-    meal_type: meal_type,
-    category: category,
+    restaurant: {},
     user: {},
     address: {},
-    plan: plan,
-    base_price: base_price,
-    price: price,
+    plan: "",
+    base_price: "",
+    price: "",
     tip: 0,
     discount: 0,
     card: {},
     taxes: 0,
     delivery_fee: 0,
     service_fee: 0,
-    total: 0,
+    total: selectedPlan.customer_price,
     promo_code: '',
   });
-  const STRIPE_PUBLISHABLE_KEY = 'pk_test_51KammvB9SdGdzaTpAZcPCcQVMesbuC5qY3Sng1rdnEfnfo2geOUP8CQ27sw0WBjpiMpdYBRoAQ1eX8czY8BEEWdO00teqn55mD';
-  const uri = documents[1].banner_image;
+
   const [addressLoading, setAddressLoading] = useState(true);
   const [isKeyboardOn, setKeyboardOn] = useState(false);
   const [isOrdering, setOrdering] = useState(false);
   const [token, setToken] = useState('');
+  const STRIPE_PUBLISHABLE_KEY = ""
 
-  const orderNow = async () => {
-    setOrdering(true);
-    const {
-      user,
-      restaurant,
-      address,
-      card,
-      total,
-      plan,
-      tip,
-      discount,
-      delivery_fee,
-      service_fee,
-      taxes,
-      base_price,
-      price,
-      start_date,
-      end_date,
-      notes,
-      time,
-      category,
-      meal_type,
-      promo_id,
-      promo_code,
-    } = state;
-
-    const result = await getCreditCardToken(card);
-    if (result.error) {
-      setOrdering(false);
-      alert(result.error.message);
-    } else {
-      stripeTokenHandler(
-        result.id,
-        parseFloat(total),
-        user.user_id,
-        restaurant_id,
-        plan
-      )
-        .then((resp) => {
-          const { paid } = resp;
-          if (paid) {
-            const { user_id, email_id, first_name, last_name, phone } = user;
-            const newOrder = {
-              time: time,
-              user_id: user_id,
-              restaurant_id: restaurant_id,
-              email_id: email_id,
-              promo_id: promo_id,
-              promo_code: promo_code,
-              user_name: first_name + ' ' + last_name,
-              address,
-              card: card,
-              category: category,
-              meal_type: meal_type,
-              phone: phone,
-              restaurant,
-              plan,
-              base_price,
-              price,
-              discount,
-              delivery_fee,
-              service_fee,
-              taxes,
-              total,
-              tip,
-              start_date,
-              end_date,
-              notes,
-              order_time: new Date().toISOString(),
-              expiry_time: moment().add(15, 'minutes'),
-            };
-            axios
-              .post(ORDER_URL, newOrder)
-              .then((response) => {
-                setOrdering(false);
-                const { data } = response;
-                Actions.push('thankyou', { id: data.data._id, msg: data.msg });
-                sendPushNotification(token, 'Order Placed 🍜', data.msg);
-              })
-              .catch((err) => {
-                setOrdering(false);
-                console.log(err);
-                alert('Error ordering food');
-              });
-          }
-        })
-        .catch((err) => {
-          setOrdering(false);
-          alert('Error in stripe');
-        });
-    }
-  };
-  const getchefbynameandupdatecartcount = async (restaurant_id) => {
-    let MENU_COUNT_URL =
-      'http://54.146.133.108:5000/api/chefdashboard/getchefbynameandupdatecartcount/' +
-      restaurant_id;
-    const response = await axios.get(MENU_COUNT_URL);
-  };
-
-  useEffect(() => {
-    getchefbynameandupdatecartcount(restaurant_id);
-    getNotificationToken();
-  }, []);
-
-  const dateHandler = (startDate, endDate) => {
-    setState({ ...state, start_date: startDate, end_date: endDate });
-  };
-  const couponHandler = (promo, discount, id, isAdmin) => {
-    discount = isAdmin
-      ? parseFloat(
-        parseFloat(state.price) * 0.01 * parseFloat(discount)
-      ).toFixed(2)
-      : parseFloat(discount).toFixed(2);
-
-    setState({
-      ...state,
-      promo_id: id,
-      promo_code: promo,
-      discount: discount,
-    });
-  };
-  const noteHandler = (notes) => {
-    setState({ ...state, notes: notes });
-  };
-  const tipHandler = (tip_amount) => {
-    tip_amount = parseFloat(tip_amount);
-    setState({ ...state, tip: tip_amount });
-  };
-  const slotHandler = (delivery_slot) => {
-    setState({ ...state, time: delivery_slot.slot_time });
-  };
-  const cardHandler = (card) => {
-    let { cards } = state.user;
-    let currentCard = cards.filter((item) => item.number === card);
-    setState({ ...state, card: currentCard[0] });
-  };
-  const addressHandler = (address) => {
-    setAddressLoading(true);
-    let { addresses } = state.user;
-    let currentAddress = addresses.filter((item) => item._id === address);
-    setState({ ...state, address: currentAddress[0] });
-    setAddressLoading(false);
-  };
-  const totalHandler = (total, delivery_fee, service_fee, taxes) => {
-    setState({
-      ...state,
-      total: total,
-      taxes: taxes,
-      delivery_fee: delivery_fee,
-      service_fee: service_fee,
-    });
-  };
-
-  const stripeTokenHandler = async (token, amount, id, restaurant, plan) => {
-    const paymentData = {
-      token: token,
-      amount: amount,
-      user_id: id,
-      restaurant_id: restaurant,
-      plan_name: plan,
-    };
-    const response = await axios.post(
-      'https://feasti.com/api/stripe/pay',
-      paymentData
-    );
-    return response.data;
-  };
-
-  const getCreditCardToken = (creditCardData) => {
-    const card = {
-      'card[number]': creditCardData.number.replace(/ /g, ''),
-      'card[exp_month]': creditCardData.expiry.split('/')[0],
-      'card[exp_year]': creditCardData.expiry.split('/')[1],
-      'card[cvc]': creditCardData.cvc,
-    };
-    return fetch('https://api.stripe.com/v1/tokens', {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/x-www-form-urlencoded',
-        Authorization: `Bearer ${STRIPE_PUBLISHABLE_KEY}`,
-      },
-      method: 'post',
-      body: Object.keys(card)
-        .map((key) => key + '=' + card[key])
-        .join('&'),
-    }).then((response) => response.json());
-  };
-
-
-
-  const fetchUser = async () => {
-    const response = await getUser('user');
-    const user = await response.data;
-    const { addresses, cards } = user;
-    if (user !== null) {
-      setState({
-        ...state,
-        user: user,
-        loading: false,
-        address: addresses[0],
-        card: cards[0],
-      });
-      setAddressLoading(false);
-    } else {
-      alert('Please login or register to proceed');
-      Actions.jump('auth');
-    }
-  };
+  const orderNow = () => {
+    console.log(order);
+  }
 
   const keyboardShown = () => {
     Keyboard.addListener('keyboardDidShow', () => setKeyboardOn(true));
@@ -276,16 +81,10 @@ export default function Checkout({ route, navigation }) {
   const keyboardHidden = () => {
     Keyboard.addListener('keyboardDidHide', () => setKeyboardOn(false));
   };
-  const getNotificationToken = async () => {
-    const token = await AsyncStorage.getItem('notificationToken');
-    console.log(token);
-    setToken(token);
-  };
 
   useEffect(() => {
     let componentMounted = true;
     if (componentMounted) {
-      fetchUser();
       keyboardShown();
       keyboardHidden();
     }
@@ -294,12 +93,9 @@ export default function Checkout({ route, navigation }) {
     };
   }, []);
 
-  useEffect(() => {
-    console.log('====================================');
-    console.log(restaurant_id);
-    console.log('====================================');
-  }, [])
 
+  const { meal_type, documents, category, plan, isDelivery } = restaurant
+  const { plan_name, customer_price } = selectedPlan
   return (
     <SafeAreaView style={styles.container}>
       <StripeProvider publishableKey={STRIPE_PUBLISHABLE_KEY}>
@@ -316,12 +112,13 @@ export default function Checkout({ route, navigation }) {
         >
           <BackButton navigation={navigation} />
         </View>
+
         <ScrollView
           stickyHeaderIndices={[1]}
           showsVerticalScrollIndicator={false}
         >
           <Image
-            source={{ uri: uri }}
+            source={{ uri: loaded ? documents[1].banner_image : null }}
             style={{ width: width, height: 170, resizeMode: 'cover' }}
             height={150}
           />
@@ -337,7 +134,7 @@ export default function Checkout({ route, navigation }) {
                 }
                 size={16}
               />
-              <Text style={styles.welcomeText}>{restaurant}</Text>
+              <Text style={styles.welcomeText}>{restaurant.restaurant_name}</Text>
             </View>
             <View style={{ marginTop: 2 }}>
               <View style={styles.subheader}>
@@ -348,28 +145,24 @@ export default function Checkout({ route, navigation }) {
               </View>
               <View style={styles.subheader}>
                 <Text style={styles.mealText}>
-                  {plan === 'thirtyPlan'
-                    ? ' 30 Meals'
-                    : plan === 'fifteenPlan'
-                      ? ' 15 Meals'
-                      : ' 2 Meals'}
+                  {plan_name}
                 </Text>
                 <Text style={styles.mealText}>
                   {'$'}
-                  {price}
+                  {customer_price}
                 </Text>
               </View>
             </View>
           </View>
 
-          <PlanDuration plan={plan} />
+          <PlanDuration />
           <DeliverySlots category={category} />
           <CheckoutAddress />
           <CheckoutCards />
           <DeliveryNotes />
           <TipOption />
-          <PromoOptions coupons={promo} price={price} />
-          <DeliverySelector/>
+          <PromoOptions />
+          <DeliverySelector isDelivery={isDelivery} />
           <BillingTable />
         </ScrollView>
 

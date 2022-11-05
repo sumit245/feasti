@@ -3,10 +3,6 @@ import { Card, Text } from "react-native-paper";
 import { styles } from "../../styles/HomeStyle";
 import Icon from "react-native-vector-icons/Ionicons";
 export default function MenuItem({ index, meals }) {
-    useEffect(() => {
-        console.log(meals)
-    }, [])
-
     try {
         return (
             <Card style={styles.menuItem} key={index}>

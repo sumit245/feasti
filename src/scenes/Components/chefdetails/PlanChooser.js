@@ -1,239 +1,67 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView, Text, View, TouchableOpacity } from "react-native";
-import { Card, Paragraph } from "react-native-paper";
-import Icon from "react-native-vector-icons/Ionicons";
+import { Text, View, TouchableOpacity } from "react-native";
+import { Card } from "react-native-paper";
 import { styles } from "../../styles/HomeStyle"
-import axios from "axios";
 import { LinearGradient } from "expo-linear-gradient";
-
-export default function PlanChooser({ base_2price,
-    base_15price,
-    base_30price,
-    restaurant,
-    documents,
-    meal_type,
-    category,
-    promo,
-    restaurant_id, navigation }) {
-
-    const getPlan = (planName, price, baseprice) => {
-        let restaurant_plans = planName === "twoPlan" ? "2 Meals" : planName === "fifteenPlan" ? "15 Meals" : "30 Meals";
-        let mypromo =
-            restaurant_plans === promo.plan_name
-                ? promo
-                : restaurant_plans === promo.meal_plan
-                    ? promo
-                    : null;
-
+import { getRestaurantByID } from "../../../services/actions/retaurantsAction"
+import { useDispatch, useSelector } from "react-redux";
+import { getSelectedPlan } from "../../../services/actions/checkoutAction";
+export default function PlanChooser({ restaurant_id, navigation }) {
+    const { nearByRestaurant } = useSelector(state => state.restaurantReducer)
+    const dispatch = useDispatch()
+    const getPlan = async (plan_name, base_price, customer_price, delivery_fee, index) => {
+        await dispatch(getSelectedPlan(plan_name, base_price, customer_price, delivery_fee, index))
         navigation.navigate("checkout", {
-            restaurant: restaurant,
             restaurant_id: restaurant_id,
-            base_price: baseprice,
-            price: price,
-            plan: planName,
-            documents: documents,
-            meal_type: meal_type,
-            category: category,
-            promo: mypromo,
         });
     };
     const [plan, setPlan] = useState({});
+    const [restaurant, setRestaurant] = useState({})
+    const [pricing, setPricing] = useState([])
+    const getChefByID = async () => {
+        const restaurant = await getRestaurantByID(restaurant_id, nearByRestaurant)
+        setRestaurant(restaurant)
+        setPricing(restaurant.price_plans)
+    }
     useEffect(() => {
-        let componentMounted = true;
-        const fetchProfits = async () => {
-            const response = await axios.get(PROFIT_URL);
-            const { data } = await response;
-            if (componentMounted) {
-                setPlan(data);
-            }
-        };
-        fetchProfits();
-        return () => {
-            componentMounted = false;
-        };
-    });
+        getChefByID()
+    }, [])
     return (
         <>
 
             <Text style={styles.headerText}>Choose your plan</Text>
-            <Card style={styles.planCard}>
-                <View style={styles.planBody}>
-                    <View>
-                        <Text style={{ fontWeight: "bold", fontSize: 12 }}>1 MEAL</Text>
-                        <Text
-                            style={{
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                paddingVertical: 2,
-                            }}
-                        >
-                            $10
-                        </Text>
-                        <Text style={{ fontSize: 12 }}>Delivery Charge: $5.0</Text>
-                    </View>
+            {
+                Array.isArray(pricing) && pricing.map((price, index) => (
+                    <Card style={styles.planCard} key={index}>
+                        <View style={styles.planBody}>
+                            <View>
+                                <Text style={{ fontWeight: "bold", fontSize: 12 }}>{price.plan_name}</Text>
+                                <Text
+                                    style={{
+                                        fontSize: 18,
+                                        fontWeight: "bold",
+                                        paddingVertical: 2,
+                                    }}
+                                >
+                                    ${parseFloat(price.customer_price).toFixed(2)}
+                                </Text>
+                                {price.delivery_price && <Text style={{ fontSize: 12 }}>Delivery Charge: ${parseFloat(price.delivery_price).toFixed(2)}</Text>}
+                            </View>
 
-                    <TouchableOpacity
-                        onPress={() =>
-                            getPlan(
-                                "twoPlan",
-                                parseFloat(base_2price) + parseFloat(plan.twoPlan),
-                                base_2price
-                            )
-                        }
-
-                    >
-                        <LinearGradient colors={["#ff9900", "#ff6600"]} style={styles.selectoffer} >
-                            <Text
-                                style={{ fontSize: 16, fontWeight: "bold", color: "#ffffff" }}
-                            >
-                                CHOOSE
-                            </Text>
-                        </LinearGradient>
-                    </TouchableOpacity>
-                </View>
-            </Card>
-            <Card style={styles.planCard}>
-                <View style={styles.planBody}>
-                    <View>
-                        <Text style={{ fontWeight: "bold", fontSize: 12 }}>2 MEALS</Text>
-                        <Text
-                            style={{
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                paddingVertical: 2,
-                            }}
-                        >
-                            $20
-                        </Text>
-                        <Text style={{ fontSize: 12 }}>Delivery Charge: $7.0</Text>
-                    </View>
-
-                    <TouchableOpacity
-                        onPress={() =>
-                            getPlan(
-                                "twoPlan",
-                                parseFloat(base_2price) + parseFloat(plan.twoPlan),
-                                base_2price
-                            )
-                        }
-
-                    >
-                        <LinearGradient colors={["#ff9900", "#ff6600"]} style={styles.selectoffer} >
-                            <Text
-                                style={{ fontSize: 16, fontWeight: "bold", color: "#ffffff" }}
-                            >
-                                CHOOSE
-                            </Text>
-                        </LinearGradient>
-                    </TouchableOpacity>
-                </View>
-            </Card>
-            <Card style={styles.planCard}>
-                <View style={styles.planBody}>
-                    <View>
-                        <Text style={{ fontWeight: "bold", fontSize: 12 }}>7 MEALS</Text>
-                        <Text
-                            style={{
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                paddingVertical: 2,
-                            }}
-                        >
-                            $65
-                        </Text>
-                        <Text style={{ fontSize: 12 }}>Delivery Charges: $32.0</Text>
-                    </View>
-
-                    <TouchableOpacity
-                        onPress={() =>
-                            getPlan(
-                                "twoPlan",
-                                parseFloat(base_2price) + parseFloat(plan.twoPlan),
-                                base_2price
-                            )
-                        }
-
-                    >
-                        <LinearGradient colors={["#ff9900", "#ff6600"]} style={styles.selectoffer} >
-                            <Text
-                                style={{ fontSize: 16, fontWeight: "bold", color: "#ffffff" }}
-                            >
-                                CHOOSE
-                            </Text>
-                        </LinearGradient>
-                    </TouchableOpacity>
-                </View>
-            </Card>
-            <Card style={styles.planCard}>
-                <View style={styles.planBody}>
-                    <View>
-                        <Text style={{ fontWeight: "bold", fontSize: 12 }}>15 MEALS</Text>
-                        <Text
-                            style={{
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                paddingVertical: 2,
-                            }}
-                        >
-                            $120
-                        </Text>
-                        <Text style={{ fontSize: 12 }}>Delivery Charge: $60.0</Text>
-                    </View>
-                    <LinearGradient colors={["#ff9900", "#ff6600"]} style={styles.selectoffer}>
-                        <TouchableOpacity
-                            onPress={() =>
-                                getPlan(
-                                    "fifteenPlan",
-                                    parseFloat(base_15price) + parseFloat(plan.fifteenPlan),
-                                    base_15price
-                                )
-                            }
-
-                        >
-                            <Text
-                                style={{ fontSize: 16, fontWeight: "bold", color: "#ffffff" }}
-                            >
-                                CHOOSE
-                            </Text>
-                        </TouchableOpacity>
-                    </LinearGradient>
-                </View>
-            </Card>
-            <Card style={styles.planCard}>
-                <View style={styles.planBody}>
-                    <View>
-                        <Text style={{ fontWeight: "bold", fontSize: 12 }}>30 MEALS</Text>
-                        <Text
-                            style={{
-                                fontSize: 18,
-                                fontWeight: "bold",
-                                paddingVertical: 2,
-                            }}
-                        >
-                            $300
-                        </Text>
-                        <Text style={{ fontSize: 12 }}>Delivery Charge: $100.0</Text>
-                    </View>
-                    <LinearGradient colors={["#ff9900", "#ff6600"]} style={styles.selectoffer}>
-                        <TouchableOpacity
-                            onPress={() =>
-                                getPlan(
-                                    "thirtyPlan",
-                                    parseFloat(base_30price) + parseFloat(plan.thirtyPlan),
-                                    base_30price
-                                )
-                            }
-
-                        >
-                            <Text
-                                style={{ fontSize: 16, fontWeight: "bold", color: "#ffffff" }}
-                            >
-                                CHOOSE
-                            </Text>
-                        </TouchableOpacity>
-                    </LinearGradient>
-                </View>
-            </Card>
+                            <TouchableOpacity
+                                onPress={() => getPlan(price.plan_name, price.base_price, price.customer_price, price.delivery_price, index)}>
+                                <LinearGradient colors={["#ff9900", "#ff6600"]} style={styles.selectoffer} >
+                                    <Text
+                                        style={{ fontSize: 16, fontWeight: "bold", color: "#ffffff" }}
+                                    >
+                                        CHOOSE
+                                    </Text>
+                                </LinearGradient>
+                            </TouchableOpacity>
+                        </View>
+                    </Card>
+                ))
+            }
         </>
     )
 }
