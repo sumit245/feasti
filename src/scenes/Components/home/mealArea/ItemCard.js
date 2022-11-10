@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Avatar, Card } from "react-native-paper";
 import Icon from "react-native-vector-icons/Ionicons";
-// import { Favourite } from "../favourite/favourite";
 import { styles, width } from "../../../styles/HomeStyle"
-export default function ItemCard({ item, isFavorite, isHome, navigation }) {
+export default function ItemCard({ item, navigation }) {
     const [state, setState] = useState({
         discount: "",
         discount_type: "%",
@@ -12,18 +11,21 @@ export default function ItemCard({ item, isFavorite, isHome, navigation }) {
         promo_code: "",
         hasPromo: false,
     });
+    const [favorite, setFavorite] = useState(isFavorite)
     const {
         _id,
         documents,
         restaurant_name,
         meal_type,
         rating,
-        promo,
         about,
-        isDelivery,
-        price_plans
+        price_plans,
+        isFavorite
     } = item;
-    const { discount, discount_type, plan_name, promo_code } = state;
+    const { discount, discount_type, plan_name, promo_code, hasPromo } = state;
+
+
+    const updateFavorite = () => { setFavorite(!favorite) }
 
     return (
         <Card style={styles.item} key={_id}>
@@ -32,15 +34,13 @@ export default function ItemCard({ item, isFavorite, isHome, navigation }) {
                 style={styles.image}
                 resizeMode="cover"
             />
-            {/* <Favourite
-                isHome={isHome}
-                restaurant={item}
-                isFavorite={
-                    typeof isFavorite !== "boolean"
-                        ? isFavorite.includes(restaurant_name)
-                        : isFavorite
-                }
-            /> */}
+            <TouchableOpacity style={styles.bookmark} onPress={updateFavorite}>
+                <Icon
+                    name={favorite ? "heart" : "heart-outline"}
+                    color={favorite ? "#f00" : "#ff7777"}
+                    size={30}
+                />
+            </TouchableOpacity>
             <View style={styles.chefNameAndReview} >
                 <View style={{ flexDirection: "row" }}>
                     <Avatar.Image
@@ -55,7 +55,6 @@ export default function ItemCard({ item, isFavorite, isHome, navigation }) {
                                 restaurant_id: item._id,
                                 distance: item.distance,
                                 item,
-                                promo: state,
                             })
                         }
                     >
@@ -64,10 +63,8 @@ export default function ItemCard({ item, isFavorite, isHome, navigation }) {
                             <Icon
                                 name="stop-circle"
                                 size={16}
-                                color={
-                                    meal_type === "Veg" || meal_type === "veg" ? "green" : "red"
-                                }
-                            />{" "}
+                                color={ meal_type === "Veg" || meal_type === "veg" ? "green" : "red"}
+                            />
                         </Text>
                         <Text
                             style={{
@@ -100,8 +97,8 @@ export default function ItemCard({ item, isFavorite, isHome, navigation }) {
 
             <View style={styles.pricing}>
                 {
-                    Array.isArray(price_plans) && price_plans.map((item) => (
-                        <View style={styles.price}>
+                    Array.isArray(price_plans) && price_plans.map((item, index) => (
+                        <View style={styles.price} key={index}>
                             <Text>{item.plan_name}</Text>
                             <Text style={{ fontWeight: "bold" }}>
                                 ${item.customer_price}

@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Text, View, TextInput } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useDispatch } from "react-redux";
-import { notesHandler } from "../../../services/actions/checkoutAction";
 import { styles } from "../../styles/HomeStyle"
 
 export default function DeliveryNotes() {

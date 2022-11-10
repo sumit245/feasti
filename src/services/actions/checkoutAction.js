@@ -19,6 +19,7 @@ export const SET_TIP_AMOUNT = "SET_TIP_AMOUNT"
 export const SET_DELIVERY_PICKUP = "SET_DELIVERY_PICKUP"
 export const SET_SERVICE_FEE = "SET_SERVICE_FEE"
 export const SET_TAXES = "SET_TAXES"
+export const SET_TOTAL = "SET_TOTAL"
 
 export const getUser = () => async (dispatch) => {
     const user = await AsyncStorageLib.getItem('user')
@@ -79,10 +80,8 @@ export const setServiceCharges = () => async (dispatch) => {
     dispatch({ type: SET_TAXES, payload: taxes })
 }
 
-export const calculateTotal = async (price, serviceFee, tax, isDelivery, delivery_fee) => {
-    console.log('====================================');
-    console.log(price, serviceFee, tax, isDelivery, delivery_fee);
-    console.log('====================================');
+export const calculateTotal = (price, serviceFee, tax, isDelivery, delivery_fee, total) => async (dispatch) => {
+    dispatch({ type: SET_TOTAL, payload: total })
 }
 
 // const orderNow = async () => {

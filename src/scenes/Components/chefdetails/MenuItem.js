@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Card, Text } from "react-native-paper";
 import { styles } from "../../styles/HomeStyle";
 import Icon from "react-native-vector-icons/Ionicons";

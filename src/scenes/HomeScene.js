@@ -7,8 +7,6 @@ import Meals from './Components/home/mealArea/Meals'
 import BannerCarousel from './Components/home/banner/BannerCarousel'
 import MealSelector from './Components/home/mealselector/MealSelector'
 
-
-
 export default function HomeScene({ navigation }) {
     const { user } = useSelector(state => state.reducer)
     const { nearByRestaurant } = useSelector((state) => state.restaurantReducer)

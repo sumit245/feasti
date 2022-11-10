@@ -1,6 +1,7 @@
 import { StyleSheet, Dimensions, StatusBar, Platform } from "react-native";
 export const { width, height } = Dimensions.get('window')
 export const avatarSize = 0.3 * width;
+export const ITEM_SIZE = width
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -101,6 +102,17 @@ export const styles = StyleSheet.create({
         margin: 2,
         marginVertical: 8
     },
+    bookmark: {
+        right: 10,
+        top: 4,
+        position: "absolute",
+        height: 36,
+        width: 36,
+        borderRadius: 18,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#f0f0f0",
+    },
     chefNameAndReview: {
         flexDirection: "row",
         justifyContent: "space-between",
@@ -170,6 +182,11 @@ export const styles = StyleSheet.create({
         marginVertical: 8,
         justifyContent: "center",
         flexDirection: "row",
+    },
+    ratingText: {
+        marginHorizontal: 2,
+        color: "#ff6600",
+        fontWeight: "bold",
     },
     menuItem: {
         borderRadius: 5,
@@ -379,4 +396,67 @@ export const styles = StyleSheet.create({
         fontSize: 12,
         fontWeight: "bold",
     },
+    actionButton: {
+        padding: 2,
+        justifyContent: "center",
+        alignItems: "center",
+        height: 30,
+        width: 30,
+        borderRadius: 15,
+    },
+    imageFood: {
+        width: width / 3,
+        height: width / 3,
+        resizeMode: "center"
+    },
+    buttonEllipse: {
+        borderRadius: 24,
+        borderWidth: 1,
+        borderColor: '#ff6600',
+        backgroundColor: "#ff5600",
+        padding: 10,
+        height: 48,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    orderStatus: {
+        fontSize: 14,
+        fontWeight: "bold",
+        textTransform: "uppercase",
+        textAlign: "right",
+        color: "#ffc300"
+    },
+    headerTitle: {
+        fontSize: 16,
+        fontWeight: "bold",
+    },
+    headersubtitle: {
+        fontSize: 14,
+        color: "#777",
+        textTransform: "capitalize"
+    },
+    tab: {
+        padding: 4,
+        borderRightWidth: 1,
+        borderRightColor: "#ddd",
+        width: width / 3,
+    },
+    tabContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        padding: 4,
+        backgroundColor: "#FFF",
+        borderTopColor: "#ddd",
+        borderTopWidth: 1,
+        borderBottomWidth: 1,
+        borderBottomColor: "#ddd",
+    },
+    indicator: {
+        marginVertical: 4,
+        width: 15,
+        borderTopColor: "#ff6600",
+        borderTopWidth: 4,
+        height: 12,
+        marginHorizontal: 2,
+    }
 })

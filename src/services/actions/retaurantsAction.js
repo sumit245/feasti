@@ -8,10 +8,10 @@ export const SET_TEMP_RESTAURANT = "SET_TEMP_RESTAURANT"
 export const GET_CUISINES = "GET_CUISINES"
 
 
-export const getNearByRestaurant = () => async (dispatch) => {
+export const getNearByRestaurant = (category) => async (dispatch) => {
     const user = await AsyncStorageLib.getItem('user')
     const { addresses } = JSON.parse(user)
-    const response = await axios.get(RESTAURANT_URL)
+    const response = await axios.get(RESTAURANT_URL.concat(category))
     const restaurants = response.data
     const resp = await axios.get(GET_PRICE_URL)
     const pricing = resp.data
@@ -59,8 +59,8 @@ export const getNearByRestaurant = () => async (dispatch) => {
     }, 1000)
 }
 
-export const getActiveRestaurants = () => async (dispatch) => {
-    const response = await axios.get(RESTAURANT_URL)
+export const getActiveRestaurants = (category) => async (dispatch) => {
+    const response = await axios.get(RESTAURANT_URL.concat(category))
     const restaurant = response.data
     dispatch({ type: GET_ALL_RESTAURANT, payload: restaurant })
 }

@@ -4,7 +4,6 @@ import AuthScene from "../scenes/AuthScene";
 import OTPLogin from "../scenes/Components/mobilelogin/OTPLogin";
 import UserDetail from "../scenes/Components/UserDetail"
 import AddAddress from "../scenes/Components/manageaddress/AddAddress";
-import HomeScene from "../scenes/HomeScene"
 import { useDispatch, useSelector } from "react-redux";
 import { getExpoNotificationToken, removeNotificationSubscription } from "../services/actions/notificationActions";
 import PinLogin from "../scenes/Components/pinlogin/PinLogin";
@@ -12,6 +11,7 @@ import { getNearByRestaurant, getActiveRestaurants, getCuisines, getPricing } fr
 import ChefDetails from "../scenes/ChefDetails";
 import MaterialBottomNavigator from "./tabnavigator";
 import Checkout from "../scenes/Checkout";
+import { getMyOrders, getMySubscription } from "../services/actions/orderActions";
 const Stack = createStackNavigator()
 export default function StackNavigator() {
     const expoPushToken = useSelector(state => state.expoPushToken)
@@ -24,9 +24,11 @@ export default function StackNavigator() {
     }, [])
 
     const getUser = async () => {
-        await dispatch(getActiveRestaurants())
-        await dispatch(getNearByRestaurant())
+        await dispatch(getActiveRestaurants('Dinner'))
+        await dispatch(getNearByRestaurant('Dinner'))
         await dispatch(getCuisines())
+        await dispatch(getMyOrders())
+        await dispatch(getMySubscription())
     }
 
     useEffect(() => {

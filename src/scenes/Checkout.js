@@ -28,7 +28,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUser, setServiceCharges } from '../services/actions/checkoutAction';
 export default function Checkout({ route, navigation }) {
   const { nearByRestaurant } = useSelector(state => state.restaurantReducer)
-  const { selectedPlan } = useSelector(state => state.checkoutReducer)
+  const { selectedPlan, total } = useSelector(state => state.checkoutReducer)
   const order = useSelector(state => state.checkoutReducer)
   const dispatch = useDispatch()
   const [restaurant, setRestaurant] = useState({})
@@ -61,7 +61,6 @@ export default function Checkout({ route, navigation }) {
     taxes: 0,
     delivery_fee: 0,
     service_fee: 0,
-    total: selectedPlan.customer_price,
     promo_code: '',
   });
 
@@ -72,7 +71,8 @@ export default function Checkout({ route, navigation }) {
   const STRIPE_PUBLISHABLE_KEY = ""
 
   const orderNow = () => {
-    console.log(order);
+    setOrdering(true)
+    setOrdering(false)
   }
 
   const keyboardShown = () => {
@@ -180,7 +180,7 @@ export default function Checkout({ route, navigation }) {
                   textAlign: 'center',
                 }}
               >
-                ${state.total}
+                ${total}
               </Text>
             </View>
 
@@ -189,7 +189,7 @@ export default function Checkout({ route, navigation }) {
                 colors={['#ff9900', '#ff6600']}
                 style={[styles.button, { flexDirection: 'row' }]}
               >
-                {isOrdering && <ActivityIndicator size="small" color="#fff" />}
+                {isOrdering && <ActivityIndicator size="small" color="#fff" animating />}
                 <Text
                   style={[
                     styles.btnText,

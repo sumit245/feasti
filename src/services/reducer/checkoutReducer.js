@@ -13,10 +13,20 @@ import {
     SET_TIP_AMOUNT,
     SET_DELIVERY_PICKUP,
     SET_SERVICE_FEE,
-    SET_TAXES
+    SET_TAXES,
+    SET_TOTAL
 } from "../actions/checkoutAction";
 
-const order = {}
+const order = {
+    currentAddress: {
+        address_type: "",
+        addressLine1: "",
+        city: "",
+        postal_code: ""
+    },
+    total: 0,
+    serviceFee: 0
+}
 export default function checkoutReducer(state = order, action) {
     switch (action.type) {
         case SET_SELECTED_MEAL:
@@ -49,6 +59,8 @@ export default function checkoutReducer(state = order, action) {
             return ({ ...state, serviceFee: action.payload })
         case SET_TAXES:
             return ({ ...state, taxes: action.payload })
+        case SET_TOTAL:
+            return ({ ...state, total: action.payload })
         default:
             return state
     }

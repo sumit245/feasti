@@ -41,9 +41,6 @@ export default function ManualEntry({ address, navigation, geometry }) {
       ...state,
       address_type: address_type,
     }
-    console.log('====================================');
-    console.log(address);
-    console.log('====================================');
     const response = await dispatch(addAddressToDatabase(id, address))
     response === 200 ? navigation.navigate('pin_login') : null
   }

@@ -6,13 +6,8 @@ import { useDispatch } from "react-redux";
 import { setTempRestaurant } from "../../../../services/actions/retaurantsAction";
 
 export default function Meals({ restaurant, navigation }) {
-    const [isFavorite, setisFavorite] = useState([]);
-    const [loading, setLoading] = useState(false);
     const dispatch = useDispatch()
-
-    const renderItem = ({ item, index }, isFavorite) => (
-        <ItemCard key={index} item={item} isFavorite={isFavorite} navigation={navigation} />
-    );
+    const renderItem = ({ item }) => <ItemCard item={item} navigation={navigation} />
 
     useEffect(async () => {
         await dispatch(setTempRestaurant(restaurant))
@@ -28,7 +23,7 @@ export default function Meals({ restaurant, navigation }) {
                 <EmptyChef />
             )}
             showsVerticalScrollIndicator={false}
-            renderItem={(item) => renderItem(item, isFavorite)}
+            renderItem={(item) => renderItem(item)}
             keyExtractor={(item, index) => 'key' + item._id + index}
         />
     );

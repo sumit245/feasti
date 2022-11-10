@@ -27,8 +27,7 @@ export default function DeliverySelector({ isDelivery }) {
 
 
                 </TouchableOpacity>
-                <TouchableOpacity style={{ width: '50%' }} onPress={() => deliverySelector(true)}>
-
+                <TouchableOpacity style={{ width: '50%' }} onPress={() => deliverySelector(true)} disabled={!isDelivery} >
                     <LinearGradient colors={delivery ? ["#ff9900", "#ff6600"] : ["#fff", "transparent"]} style={styles.tipBox}>
                         <Text style={{
                             color: delivery ? "#FFF" : "#777",

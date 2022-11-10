@@ -6,17 +6,11 @@ import Icon from "react-native-vector-icons/Ionicons"
 import { TabView, TabBar } from "react-native-tab-view";
 import MenuItem from "./Components/chefdetails/MenuItem";
 import PlanChooser from './Components/chefdetails/PlanChooser'
-import axios from "axios";
-import { useDispatch, useSelector } from 'react-redux'
-import { getRestaurantByID } from '../services/actions/retaurantsAction'
 
 export default function ChefDetails({ route, navigation }) {
-    const { title, restaurant_id, item, promo, distance } = route.params
-    const [review, setReview] = useState([]);
+    const { title, restaurant_id, item, distance } = route.params
+    const [review, setReview] = useState(0);
     const [index, setIndex] = useState(0)
-    const [restaurant, setRestaurant] = useState({})
-    const dispatch = useDispatch()
-    const { tempRestaurant, nearByRestaurant } = useSelector((state) => state.restaurantReducer)
     const [routes] = useState([{ key: "first", title: "Monday" },
     { key: "second", title: "Tuesday" },
     { key: "third", title: "Wednesday" },
@@ -59,50 +53,8 @@ export default function ChefDetails({ route, navigation }) {
                 break;
         }
     };
-    const fetchReview = async () => {
-        const response = await axios.get(
-            "http://54.146.133.108:5000/api/review/"
-        );
-        const { data } = response;
-        let review = data.filter((item) => item.restaurant_id === restaurant_id);
-        setReview(review);
-    };
-    useEffect(() => {
-        fetchReview();
-    }, []);
 
-    const getchefbynameandupdatemenucount = async (restaurant_id) => {
-        let MENU_COUNT_URL =
-            "http://54.146.133.108:5000/api/chefdashboard/getchefbynameandupdatemenucount/" +
-            restaurant_id;
-        const response = await axios.get(MENU_COUNT_URL);
-    };
-
-    const getChefByID = async () => {
-        const restaurant = await getRestaurantByID(restaurant_id, nearByRestaurant)
-        setRestaurant(restaurant)
-    }
-
-    useEffect(() => {
-        getChefByID()
-    }, [])
-
-
-    useEffect(() => {
-        getchefbynameandupdatemenucount(restaurant_id);
-
-    }, [restaurant_id]);
-
-    const {
-        restaurant_name,
-        meals,
-        documents,
-        rating,
-        meal_type,
-        category,
-        about,
-    } = item;
-
+    const { meals, documents, rating, about } = item;
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -118,23 +70,15 @@ export default function ChefDetails({ route, navigation }) {
                     width={avatarSize}
                 />
                 <TouchableOpacity
-                    onPress={() =>
-                        Actions.push("reviews", { restaurant_id: restaurant_id })
-                    }
+                    onPress={() => navigation.navigate("reviews", { restaurant_id: restaurant_id })}
                     style={styles.ratingAndReviews}
                 >
                     <Icon name="star" color="#ff6600" />
-                    <Text
-                        style={{
-                            marginHorizontal: 2,
-                            color: "#ff6600",
-                            fontWeight: "bold",
-                        }}
-                    >
+                    <Text style={styles.ratingText} >
                         {rating || "5" + "/5 | "}
                         <Text style={{ color: "#226ccf", textDecorationLine: "underline" }}>
                             {" "}
-                            Reviews ({review.length || 0})
+                            Reviews ({review})
                         </Text>
                     </Text>
                 </TouchableOpacity>
@@ -149,13 +93,11 @@ export default function ChefDetails({ route, navigation }) {
                         initialLayout={{ width: width }}
                     />
                 </View>
-
                 <PlanChooser navigation={navigation} restaurant_id={restaurant_id} />
                 <Text style={styles.headerText}>About us </Text>
                 <View style={styles.about}>
                     <Text style={{ fontSize: 16, textAlign: "justify" }}>{about}</Text>
                 </View>
-
             </ScrollView>
         </SafeAreaView>
     )

@@ -4,6 +4,8 @@ import { Text, View, FlatList, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-paper";
 import Icon from "react-native-vector-icons/Ionicons";
 import { styles } from "../../styles/HomeStyle"
+import { useDispatch } from "react-redux";
+import { tipHandler } from "../../../services/actions/checkoutAction";
 
 const tipOptions = [
     {
@@ -25,6 +27,8 @@ const tipOptions = [
 ];
 
 export default function TipOption() {
+    const dispatch = useDispatch()
+
     const [isSelected, setIsSelected] = useState(false);
     const [tip, setTip] = useState(false);
     const [tip_amount, setTipAmt] = useState("");
@@ -32,13 +36,15 @@ export default function TipOption() {
         if (tip === "Other") {
             setTip(true);
             setTipAmt(tip);
+
         } else {
             setTip(false);
             setTipAmt(tip);
         }
     };
-    const handler = (tip) => {
+    const handler = async (tip) => {
         selectTip(tip);
+        await dispatch(tipHandler(tip))
     };
     const renderItem = ({ item }, tip_amount) => {
         return (
@@ -67,7 +73,7 @@ export default function TipOption() {
                     style={[styles.optionsLabels, { marginHorizontal: 4, fontSize: 16 }]}
                 >
                     Tip your hunger saviour{" "}
-                    {/* <Icon name="information-circle-outline" size={14} color="#226ccf" /> */}
+
                 </Text>
             </View>
             <Text style={styles.tipText}>
