@@ -5,22 +5,20 @@ import { styles } from "../../styles/HomeStyle"
 import { LinearGradient } from "expo-linear-gradient";
 import { getRestaurantByID } from "../../../services/actions/retaurantsAction"
 import { useDispatch, useSelector } from "react-redux";
-import { getSelectedPlan } from "../../../services/actions/checkoutAction";
-export default function PlanChooser({ restaurant_id, navigation }) {
+import { getSelectedPlan, setDeliverySlots } from "../../../services/actions/checkoutAction";
+export default function PlanChooser({ restaurant_id, navigation, category }) {
     const { nearByRestaurant } = useSelector(state => state.restaurantReducer)
     const dispatch = useDispatch()
     const getPlan = async (plan_name, base_price, customer_price, delivery_fee, index) => {
         await dispatch(getSelectedPlan(plan_name, base_price, customer_price, delivery_fee, index))
+        await dispatch(setDeliverySlots(category))
         navigation.navigate("checkout", {
             restaurant_id: restaurant_id,
         });
     };
-    const [plan, setPlan] = useState({});
-    const [restaurant, setRestaurant] = useState({})
     const [pricing, setPricing] = useState([])
     const getChefByID = async () => {
         const restaurant = await getRestaurantByID(restaurant_id, nearByRestaurant)
-        setRestaurant(restaurant)
         setPricing(restaurant.price_plans)
     }
     useEffect(() => {
@@ -45,7 +43,7 @@ export default function PlanChooser({ restaurant_id, navigation }) {
                                 >
                                     ${parseFloat(price.customer_price).toFixed(2)}
                                 </Text>
-                                {price.delivery_price && <Text style={{ fontSize: 12 }}>Delivery Charge: ${parseFloat(price.delivery_price).toFixed(2)}</Text>}
+                                {price.delivery_price?.(<Text style={{ fontSize: 12 }}>Delivery Charge: ${parseFloat(price.delivery_price).toFixed(2)}</Text>)}
                             </View>
 
                             <TouchableOpacity

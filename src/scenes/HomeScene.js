@@ -1,5 +1,5 @@
-import { View, Text, SafeAreaView, StatusBar } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { View, SafeAreaView, StatusBar } from 'react-native'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import HeaderComponent from './Components/home/headerTop/HeaderComponent'
 import Cuisines from './Components/home/headerCuisine/Cuisines'
@@ -9,7 +9,6 @@ import MealSelector from './Components/home/mealselector/MealSelector'
 
 export default function HomeScene({ navigation }) {
     const [category, setCategory] = useState('Lunch')
-    const { user } = useSelector(state => state.reducer)
     const { nearByRestaurant } = useSelector((state) => state.restaurantReducer)
     const { tempRestaurant } = useSelector((state) => state.restaurantReducer)
 
