@@ -1,5 +1,5 @@
 import { LinearGradient } from "expo-linear-gradient";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Text, View, FlatList, TouchableOpacity } from "react-native";
 import { TextInput } from "react-native-paper";
 import Icon from "react-native-vector-icons/Ionicons";
@@ -28,8 +28,6 @@ const tipOptions = [
 
 export default function TipOption() {
     const dispatch = useDispatch()
-
-    const [isSelected, setIsSelected] = useState(false);
     const [tip, setTip] = useState(false);
     const [tip_amount, setTipAmt] = useState("");
     const selectTip = (tip) => {
@@ -65,6 +63,10 @@ export default function TipOption() {
 
         );
     };
+    useEffect(() => {
+        setTipAmt(0)
+    }, [])
+
     return (
         <View style={styles.optionCard}>
             <View style={{ flexDirection: "row", alignItems: "center" }}>
@@ -73,7 +75,6 @@ export default function TipOption() {
                     style={[styles.optionsLabels, { marginHorizontal: 4, fontSize: 16 }]}
                 >
                     Tip your hunger saviour{" "}
-
                 </Text>
             </View>
             <Text style={styles.tipText}>

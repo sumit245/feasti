@@ -178,7 +178,7 @@ export default function Checkout({ route, navigation }) {
                   textAlign: 'center',
                 }}
               >
-                ${total}
+                ${parseFloat(total).toFixed(2)}
               </Text>
             </View>
 
