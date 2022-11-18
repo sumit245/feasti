@@ -63,9 +63,10 @@ export default function TipOption() {
 
         );
     };
+
     useEffect(() => {
         setTipAmt(0)
-    }, [])
+    }, [tip])
 
     return (
         <View style={styles.optionCard}>
