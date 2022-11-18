@@ -2,18 +2,17 @@ import React, { useEffect, useState } from "react";
 import { View, Text } from 'react-native'
 import { styles } from "../../styles/HomeStyle"
 import Icon from "react-native-vector-icons/Ionicons";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { calculateTotal } from "../../../services/actions/checkoutAction";
 
 export default function BillingTable() {
     const [price, setPrice] = useState(0)
     const [delivery, setDelivery] = useState(false)
     const [service_fee, setServiceFee] = useState(0)
-    const [delivery_fee, setDeliveryFee] = useState(0)
     const [tax, setTax] = useState(0)
     const [total, setTotal] = useState(0)
     const [discount, setDiscount] = useState(0)
-    const dispatch=useDispatch()
+    const dispatch = useDispatch()
     const { selectedPlan, isDelivery, tip, serviceFee, taxes, } = useSelector(state => state.checkoutReducer)
     const calculate = async () => {
         const { delivery_fee, base_price, customer_price } = selectedPlan
@@ -29,7 +28,7 @@ export default function BillingTable() {
         setTax(parseFloat(tax).toFixed(2))
         setServiceFee(parseFloat(serviceCharge).toFixed(2))
         setTotal(parseFloat(total).toFixed(2))
-        await dispatch(calculateTotal(customer_price,service_fee,tax,isDelivery,delivery_fee,total))
+        await dispatch(calculateTotal(customer_price, service_fee, tax, isDelivery, delivery_fee, total))
     }
     useEffect(() => {
         let componentMount = true

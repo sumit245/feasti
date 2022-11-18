@@ -64,10 +64,8 @@ export default function Checkout({ route, navigation }) {
     promo_code: '',
   });
 
-  const [addressLoading, setAddressLoading] = useState(true);
   const [isKeyboardOn, setKeyboardOn] = useState(false);
   const [isOrdering, setOrdering] = useState(false);
-  const [token, setToken] = useState('');
   const STRIPE_PUBLISHABLE_KEY = ""
 
   const orderNow = () => {
@@ -94,7 +92,7 @@ export default function Checkout({ route, navigation }) {
   }, []);
 
 
-  const { meal_type, documents, category, plan, isDelivery } = restaurant
+  const { meal_type, documents, plan, isDelivery } = restaurant
   const { plan_name, customer_price } = selectedPlan
   return (
     <SafeAreaView style={styles.container}>
@@ -156,7 +154,7 @@ export default function Checkout({ route, navigation }) {
           </View>
 
           <PlanDuration />
-          <DeliverySlots category={category} />
+          <DeliverySlots />
           <CheckoutAddress />
           <CheckoutCards />
           <DeliveryNotes />
