@@ -30,6 +30,7 @@ export default function TipOption() {
     const dispatch = useDispatch()
     const [tip, setTip] = useState(false);
     const [tip_amount, setTipAmt] = useState("");
+
     const selectTip = (tip) => {
         if (tip === "Other") {
             setTip(true);
@@ -65,8 +66,8 @@ export default function TipOption() {
     };
 
     useEffect(() => {
-        setTipAmt(0)
-    }, [tip])
+        handler(0)
+    }, [])
 
     return (
         <View style={styles.optionCard}>
