@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { Avatar, Card } from "react-native-paper";
 import Icon from "react-native-vector-icons/Ionicons";
 import { styles, width } from "../../../styles/HomeStyle"
-export default function ItemCard({ item, navigation }) {
+export default function ItemCard({ item, navigation, category }) {
     const [state, setState] = useState({
         discount: "",
         discount_type: "%",
@@ -16,6 +16,7 @@ export default function ItemCard({ item, navigation }) {
         _id,
         documents,
         restaurant_name,
+        restaurant_id,
         meal_type,
         rating,
         about,
@@ -54,6 +55,8 @@ export default function ItemCard({ item, navigation }) {
                                 title: item.restaurant_name,
                                 restaurant_id: item._id,
                                 distance: item.distance,
+                                id: item.restaurant_id,
+                                category: category,
                                 item,
                             })
                         }
@@ -63,7 +66,7 @@ export default function ItemCard({ item, navigation }) {
                             <Icon
                                 name="stop-circle"
                                 size={16}
-                                color={ meal_type === "Veg" || meal_type === "veg" ? "green" : "red"}
+                                color={meal_type === "Veg" || meal_type === "veg" ? "green" : "red"}
                             />
                         </Text>
                         <Text
