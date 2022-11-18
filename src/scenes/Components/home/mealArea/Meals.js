@@ -5,9 +5,9 @@ import EmptyChef from "../../utility/EmptyChef";
 import { useDispatch } from "react-redux";
 import { setTempRestaurant } from "../../../../services/actions/retaurantsAction";
 
-export default function Meals({ restaurant, navigation }) {
+export default function Meals({ restaurant, navigation, category }) {
     const dispatch = useDispatch()
-    const renderItem = ({ item }) => <ItemCard item={item} navigation={navigation} />
+    const renderItem = ({ item }) => <ItemCard item={item} navigation={navigation} category={category} />
 
     useEffect(async () => {
         await dispatch(setTempRestaurant(restaurant))

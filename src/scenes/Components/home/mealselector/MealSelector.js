@@ -5,13 +5,14 @@ import { Switch } from 'react-native-paper'
 import { useDispatch } from 'react-redux';
 import { filterRestaurant } from '../../../../services/actions/retaurantsAction';
 
-export default function MealSelector({ nearByRestaurant }) {
+export default function MealSelector({ nearByRestaurant, setCategory }) {
     const [isLunch, setIsLunch] = useState(false);
     const [isDelivery, setIsDelivery] = useState(false);
     const dispatch = useDispatch()
     const onToggleMeal = async () => {
         const value = isLunch ? "Lunch" : "Dinner"
         await dispatch(filterRestaurant(nearByRestaurant, "meal_type", value))
+        setCategory(value)
         setIsLunch(!isLunch)
     };
     const onTogglePickup = async () => {

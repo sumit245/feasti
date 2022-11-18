@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, SafeAreaView, ScrollView, Image, TouchableOpacity } from 'react-native'
+import { View, Text, SafeAreaView, ScrollView, Image, TouchableOpacity, ActivityIndicator } from 'react-native'
 import { avatarSize, styles, width } from './styles/HomeStyle'
 import HeaderTop from './Components/chefdetails/HeaderTop'
 import Icon from "react-native-vector-icons/Ionicons"
 import { TabView, TabBar } from "react-native-tab-view";
 import MenuItem from "./Components/chefdetails/MenuItem";
 import PlanChooser from './Components/chefdetails/PlanChooser'
+import { getMealForRestaurant } from '../services/actions/retaurantsAction'
+
 
 export default function ChefDetails({ route, navigation }) {
-    const { title, restaurant_id, item, distance } = route.params
+    const { title, restaurant_id, item, distance, id, category } = route.params
     const [review, setReview] = useState(0);
     const [index, setIndex] = useState(0)
+    const [meals, setMeals] = useState([])
+    const [loading, setLoading] = useState(false)
     const [routes] = useState([{ key: "first", title: "Monday" },
     { key: "second", title: "Tuesday" },
     { key: "third", title: "Wednesday" },
@@ -53,8 +57,22 @@ export default function ChefDetails({ route, navigation }) {
                 break;
         }
     };
+    const fetchMeals = async (id) => {
+        setLoading(false)
+        const meal = await getMealForRestaurant(id, category)
+        console.log('====================================');
+        console.log(meal);
+        console.log('====================================');
+        setMeals(meal)
+        setLoading(true)
+    }
+    useEffect(() => {
+        fetchMeals(id)
+    }, [id])
 
-    const { meals, documents, rating, about } = item;
+
+    const { documents, rating, about } = item;
+    if (!loading) { return (<ActivityIndicator animating={true} size="large" />) }
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView showsVerticalScrollIndicator={false}>

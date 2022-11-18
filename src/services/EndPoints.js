@@ -9,6 +9,7 @@ export const CUISINE_URL = BASE_URL + '/api/cuisine';
 export const RESTAURANT_URL = BASE_URL + '/api/newrest/category/';
 export const PROFIT_URL = BASE_URL + '/api/plans';
 export const SLOT_URL = BASE_URL + '/api/slots'
+export const MEALS_URL = BASE_URL + "/api/meals/"
 // export const COUPON_URL = BASE_URL + '/api/coupon';
 // export const CUISINE_TYPE_URL = BASE_URL + '/api/newrest/cuisine_type';
 // export const VEG_NON_VEG = BASE_URL + '/api/newrest/meal_type/';
