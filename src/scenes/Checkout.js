@@ -33,7 +33,7 @@ export default function Checkout({ route, navigation }) {
   const dispatch = useDispatch()
   const [restaurant, setRestaurant] = useState({})
   const [loaded, setLoaded] = useState(false)
-  const { restaurant_id } = route.params
+  const { restaurant_id, category } = route.params
 
   const getChefByID = async () => {
     const rest = await getRestaurantByID(restaurant_id, nearByRestaurant)
@@ -154,7 +154,7 @@ export default function Checkout({ route, navigation }) {
           </View>
 
           <PlanDuration />
-          <DeliverySlots />
+          <DeliverySlots category={category} />
           <CheckoutAddress />
           <CheckoutCards />
           <DeliveryNotes />

@@ -4,7 +4,7 @@ import { RadioButton } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 import { setDeliverySlot, setDeliverySlots } from '../../../services/actions/checkoutAction';
 import { styles } from '../../styles/HomeStyle';
-export default function DeliverySlots() {
+export default function DeliverySlots({ category }) {
 
     const { currentSlots } = useSelector(state => state.checkoutReducer)
 
