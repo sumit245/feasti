@@ -38,7 +38,7 @@ export default function BillingTable() {
         return () => {
             componentMount = false
         }
-    }, [isDelivery])
+    }, [isDelivery, selectedPlan, tip, taxes])
 
     return (
         <View style={styles.billingTable}>
