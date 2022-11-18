@@ -12,7 +12,6 @@ export default function DeliverySlots() {
     const [value, setValue] = useState('')
     const dispatch = useDispatch()
     useEffect(async () => {
-        await dispatch(setDeliverySlots(category))
         setSlots(currentSlots)
     }, [])
 
