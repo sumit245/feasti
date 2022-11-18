@@ -14,6 +14,7 @@ export default function PlanChooser({ restaurant_id, navigation, category }) {
         await dispatch(setDeliverySlots(category))
         navigation.navigate("checkout", {
             restaurant_id: restaurant_id,
+            category: category
         });
     };
     const [pricing, setPricing] = useState([])
