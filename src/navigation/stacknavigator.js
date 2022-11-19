@@ -24,8 +24,8 @@ export default function StackNavigator() {
     }, [])
 
     const getUser = async () => {
-        await dispatch(getActiveRestaurants('Dinner'))
-        await dispatch(getNearByRestaurant('Dinner'))
+        await dispatch(getActiveRestaurants('Lunch'))
+        await dispatch(getNearByRestaurant('Lunch'))
         await dispatch(getCuisines())
         await dispatch(getMyOrders())
         await dispatch(getMySubscription())
