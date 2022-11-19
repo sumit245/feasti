@@ -52,7 +52,6 @@ export default function Checkout({ route, navigation }) {
     restaurant: {},
     user: {},
     address: {},
-    plan: "",
     base_price: "",
     price: "",
     tip: 0,
