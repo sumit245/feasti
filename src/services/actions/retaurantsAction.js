@@ -52,7 +52,7 @@ export const getNearByRestaurant = (category) => async (dispatch) => {
                 return price.restaurant_id === restaurant.restaurant_id
             })
             const { isDelivery, price_plans } = prices
-            const { plans } = price_plans
+            const { plans } = price_plans.find((plan) => plan.category === category)
             restaurant.isDelivery = isDelivery
             restaurant.price_plans = plans
         })
