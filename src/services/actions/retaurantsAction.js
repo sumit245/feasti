@@ -52,8 +52,9 @@ export const getNearByRestaurant = (category) => async (dispatch) => {
                 return price.restaurant_id === restaurant.restaurant_id
             })
             const { isDelivery, price_plans } = prices
+            const { plans } = price_plans
             restaurant.isDelivery = isDelivery
-            restaurant.price_plans = price_plans
+            restaurant.price_plans = plans
         })
         dispatch({ type: GET_ALL_RESTAURANT, payload: nearByRestaurant })
     }, 1000)
