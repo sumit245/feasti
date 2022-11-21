@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { FlatList, View, Text } from "react-native";
+import React, { useEffect } from "react";
+import { FlatList } from "react-native";
 import ItemCard from "./ItemCard";
 import EmptyChef from "../../utility/EmptyChef";
 import { useDispatch } from "react-redux";
