@@ -53,6 +53,9 @@ export const getNearByRestaurant = (category) => async (dispatch) => {
             })
             const { isDelivery, price_plans } = prices
             const { plans } = price_plans.find((plan) => plan.category === category)
+            console.log('====================================');
+            console.log(plans);
+            console.log('====================================');
             restaurant.isDelivery = isDelivery
             restaurant.price_plans = plans
         })

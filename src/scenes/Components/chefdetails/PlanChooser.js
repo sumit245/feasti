@@ -18,6 +18,7 @@ export default function PlanChooser({ restaurant_id, navigation, category }) {
         });
     };
     const [pricing, setPricing] = useState([])
+
     const getChefByID = async () => {
         const restaurant = await getRestaurantByID(restaurant_id, nearByRestaurant)
         console.log(restaurant)
@@ -26,9 +27,9 @@ export default function PlanChooser({ restaurant_id, navigation, category }) {
     useEffect(() => {
         getChefByID()
     }, [])
+    
     return (
         <>
-
             <Text style={styles.headerText}>Choose your plan</Text>
             {
                 Array.isArray(pricing) && pricing.map((price, index) => (
