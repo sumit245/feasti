@@ -100,7 +100,7 @@ export default function ItemCard({ item, navigation, category }) {
 
             <View style={styles.pricing}>
                 {
-                    Array.isArray(price_plans.plans) && price_plans.plans.map((item, index) => (
+                    Array.isArray(price_plans) && price_plans.map((item, index) => (
                         <View style={styles.price} key={index}>
                             <Text>{item.plan_name}</Text>
                             <Text style={{ fontWeight: "bold" }}>
