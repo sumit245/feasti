@@ -21,7 +21,6 @@ export default function PlanChooser({ restaurant_id, navigation, category }) {
 
     const getChefByID = async () => {
         const restaurant = await getRestaurantByID(restaurant_id, nearByRestaurant)
-        console.log(restaurant)
         setPricing(restaurant.price_plans)
     }
 

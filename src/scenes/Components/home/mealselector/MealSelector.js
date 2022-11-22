@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { styles } from '../../../styles/HomeStyle'
 import { Switch } from 'react-native-paper'
 import { useDispatch } from 'react-redux';
-import { filterRestaurant } from '../../../../services/actions/retaurantsAction';
+import { filterRestaurant, getNearByRestaurant } from '../../../../services/actions/retaurantsAction';
 
 export default function MealSelector({ nearByRestaurant, setCategory }) {
     const [isLunch, setIsLunch] = useState(false);
@@ -11,7 +11,7 @@ export default function MealSelector({ nearByRestaurant, setCategory }) {
     const dispatch = useDispatch()
     const onToggleMeal = async () => {
         const value = isLunch ? "Lunch" : "Dinner"
-        await dispatch(filterRestaurant(nearByRestaurant, "meal_type", value))
+        await dispatch(getNearByRestaurant(value))
         setCategory(value)
         setIsLunch(!isLunch)
     };

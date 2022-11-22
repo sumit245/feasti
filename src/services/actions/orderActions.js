@@ -18,8 +18,5 @@ export const getMySubscription = () => async (dispatch) => {
     const { user_id } = JSON.parse(user)
     const response = await axios.get(SUBSCRIPTION_URL.concat(user_id))
     const { mySubscription } = response.data
-    console.log('====================================');
-    console.log(mySubscription.length);
-    console.log('====================================');
     dispatch({ type: MY_SUBSCRIPTION, payload: mySubscription })
 }

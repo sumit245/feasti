@@ -21,25 +21,21 @@ export const getNearByRestaurant = (category) => async (dispatch) => {
     const addNearByRestaurant = (inputRestaurant) => {
         nearByRestaurant.push(inputRestaurant)
     }
-    const calculateDistance = (inputCity, inputRestaurant) => {
-        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${inputCity}&key=AIzaSyCGANEgs9_ADpjRcHkHerl4C6dBUnp2zKs`)
-            .then((response) => {
-                const { results } = response.data
-                const { geometry } = results[0]
-                let restaurantLocation = geometry.location
-                let distance = getDistance(
-                    addresses[0].geo,
-                    { latitude: restaurantLocation.lat, longitude: restaurantLocation.lng },
-                );
-                distance = distance / 1000
-                if (distance < 10) {
-                    let restaurant = inputRestaurant
-                    restaurant.distance = distance
-                    addNearByRestaurant(restaurant)
-                }
-
-            })
-            .catch((err) => { console.log(err) })
+    const calculateDistance = async (inputCity, inputRestaurant) => {
+        const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${inputCity}&key=AIzaSyCGANEgs9_ADpjRcHkHerl4C6dBUnp2zKs`)
+        const { results } = response.data
+        const { geometry } = results[0]
+        let restaurantLocation = geometry.location
+        let distance = getDistance(
+            addresses[0].geo,
+            { latitude: restaurantLocation.lat, longitude: restaurantLocation.lng }
+        );
+        distance = distance / 1000
+        if (distance < 10) {
+            let restaurant = inputRestaurant
+            restaurant.distance = distance
+            addNearByRestaurant(restaurant)
+        }
     }
 
     restaurants.map((restaurant, key) => {
