@@ -5,9 +5,9 @@ import OTPLogin from "../scenes/Components/mobilelogin/OTPLogin";
 import UserDetail from "../scenes/Components/UserDetail"
 import AddAddress from "../scenes/Components/manageaddress/AddAddress";
 import { useDispatch, useSelector } from "react-redux";
-import { getExpoNotificationToken, removeNotificationSubscription } from "../services/actions/notificationActions";
+import { getExpoNotificationToken } from "../services/actions/notificationActions";
 import PinLogin from "../scenes/Components/pinlogin/PinLogin";
-import { getNearByRestaurant, getActiveRestaurants, getCuisines, getPricing } from "../services/actions/retaurantsAction";
+import { getNearByRestaurant, getActiveRestaurants, getCuisines } from "../services/actions/retaurantsAction";
 import ChefDetails from "../scenes/ChefDetails";
 import MaterialBottomNavigator from "./tabnavigator";
 import Checkout from "../scenes/Checkout";

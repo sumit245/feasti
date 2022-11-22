@@ -24,10 +24,11 @@ export default function PlanChooser({ restaurant_id, navigation, category }) {
         console.log(restaurant)
         setPricing(restaurant.price_plans)
     }
+
     useEffect(() => {
         getChefByID()
     }, [])
-    
+
     return (
         <>
             <Text style={styles.headerText}>Choose your plan</Text>
@@ -46,7 +47,7 @@ export default function PlanChooser({ restaurant_id, navigation, category }) {
                                 >
                                     ${parseFloat(price.customer_price).toFixed(2)}
                                 </Text>
-                                {price.delivery_price && <Text style={{ fontSize: 12 }}>Delivery Charge: ${parseFloat(price.delivery_price).toFixed(2)}</Text>}
+                                {parseFloat(price.delivery_price) > 0 && <Text style={{ fontSize: 12 }}>Delivery Charge: ${parseFloat(price.delivery_price).toFixed(2)}</Text>}
                             </View>
 
                             <TouchableOpacity
