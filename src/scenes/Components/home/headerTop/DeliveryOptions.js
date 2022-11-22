@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { View, TouchableOpacity, Text, Modal, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { getSaveAddresses } from '../../../../services/actions/addressactions';
 import { styles } from '../../../styles/HomeStyle';
 
-export default function DeliveryOptions({ props }) {
-    const [state, setState] = useState({
-        address: 'Select address',
-        addresses: [],
-    });
+export default function DeliveryOptions({ navigation }) {
+    const [address, setAddress] = useState('Select address');
+    const [addresses, setAddresses] = useState([])
     const [visible, setVisible] = useState(false);
 
-    const setAddress = async (address) => { };
-
-    async function fetchandsave() { }
+    async function fetchandsave() {
+        const response = await getSaveAddresses()
+        setAddresses(response)
+        setAddress(response[0].address_type)
+    }
     useEffect(() => {
         fetchandsave();
-    }, [state.addresses]);
+    }, []);
     return (
         <>
             <View style={styles.sortView}>
@@ -42,7 +43,7 @@ export default function DeliveryOptions({ props }) {
                                     style={{ height: 120 }}
                                     showsVerticalScrollIndicator={true}
                                 >
-                                    {state.addresses.map((data, key) => (
+                                    {addresses.map((data, key) => (
                                         <TouchableOpacity
                                             style={{
                                                 flexDirection: 'row',
@@ -55,6 +56,7 @@ export default function DeliveryOptions({ props }) {
                                             key={key}
                                             onPress={() => {
                                                 setAddress(data.address_type);
+                                                setVisible(!visible)
                                             }}
                                         >
                                             <Icon
@@ -79,11 +81,7 @@ export default function DeliveryOptions({ props }) {
                                                         { fontSize: 12, fontWeight: 'normal' },
                                                     ]}
                                                 >
-                                                    {(data.flat_num || '') +
-                                                        ',' +
-                                                        (data.locality || '') +
-                                                        ' ' +
-                                                        (data.city || '')}
+                                                    {data.addressLine1}
                                                 </Text>
                                             </View>
                                         </TouchableOpacity>
@@ -97,7 +95,7 @@ export default function DeliveryOptions({ props }) {
                                 ]}
                                 onPress={() => {
                                     setVisible(false);
-                                    Actions.push('listAddress', { isHome: true });
+                                    navigation.navigate('listAddress', { isHome: true });
                                 }}
                             >
                                 <Icon name="add-sharp" size={20} color="#ff6600" />
@@ -124,7 +122,7 @@ export default function DeliveryOptions({ props }) {
                         fontSize: 16,
                     }}
                 >
-                    {state.address}
+                    {address}
                 </Text>
             </View>
         </>

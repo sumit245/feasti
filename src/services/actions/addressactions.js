@@ -85,3 +85,8 @@ export const addAddressToDatabase = (id, address) => async (dispatch) => {
     await AsyncStorage.setItem('user', JSON.stringify(data))
     return status
 }
+export const getSaveAddresses = async () => {
+    const user = await AsyncStorage.getItem('user')
+    const { addresses } = JSON.parse(user)
+    return addresses
+}
