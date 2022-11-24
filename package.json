@@ -22,7 +22,7 @@
     "expo-linear-gradient": "~11.0.3",
     "expo-location": "~14.0.1",
     "expo-mail-composer": "~11.1.0",
-    "expo-modules-core": "~0.6.4",
+    "expo-modules-core": "~0.11.9",
     "expo-notifications": "~0.14.0",
     "expo-splash-screen": "~0.14.1",
     "expo-status-bar": "~1.2.0",
