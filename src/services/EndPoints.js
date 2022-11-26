@@ -16,7 +16,8 @@ export const PROFIT_URL = BASE_URL + '/api/plans';
 export const SLOT_URL = BASE_URL + '/api/slots'
 export const MEALS_URL = BASE_URL + "/api/meals/"
 export const COUPON_URL = BASE_URL + '/api/coupon';
-export const CUISINE_TYPE_URL = BASE_URL + '/api/newrest/cuisine_type';
+export const CUISINE_TYPE_URL = BASE_URL + '/api/newrest/cuisine_type/';
+export const SEARCH_BY_CITY = BASE_URL + '/api/newrest/searchbycity/'
 export const VEG_NON_VEG = BASE_URL + '/api/newrest/meal_type/';
 
 

@@ -1,23 +1,30 @@
 import { View, SafeAreaView, StatusBar } from 'react-native'
 import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import HeaderComponent from './Components/home/headerTop/HeaderComponent'
 import Cuisines from './Components/home/headerCuisine/Cuisines'
 import Meals from './Components/home/mealArea/Meals'
 import BannerCarousel from './Components/home/banner/BannerCarousel'
 import MealSelector from './Components/home/mealselector/MealSelector'
 import Loader from "../scenes/Components/utility/Loader"
+import { searchRestaurantByCity } from '../services/actions/retaurantsAction'
 
 
 export default function HomeScene({ navigation }) {
     const [category, setCategory] = useState('Lunch')
     const [loading, setLoading] = useState(false)
     const { nearByRestaurant } = useSelector((state) => state.restaurantReducer)
-    const { tempRestaurant } = useSelector((state) => state.restaurantReducer)
+    const dispatch = useDispatch()
+
+    const searchByCity = async (city) => {
+        setLoading(true)
+        await dispatch(searchRestaurantByCity(city))
+        setLoading(false)
+    }
 
     return (
         <SafeAreaView style={{ flex: 1, marginTop: StatusBar.currentHeight }} >
-            <HeaderComponent navigation={navigation} />
+            <HeaderComponent navigation={navigation} searchTerm={(city) => searchByCity(city)} />
             <View>
                 <Cuisines />
             </View>
