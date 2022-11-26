@@ -8,6 +8,7 @@ import FavoritePicker from './FavoritePicker';
 import { styles, width } from "../../../styles/HomeStyle"
 export default function HeaderComponent({
     favCount = 10,
+    navigation,
     applyfilter,
     clearfilter,
     searchTerm,
@@ -44,7 +45,7 @@ export default function HeaderComponent({
             )}
             <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <SearchComponent setSearch={setSearch} />
-                <FavoritePicker favCount={favCount} />
+                <FavoritePicker favCount={favCount} navigation={navigation} />
                 <SortAndFilter
                     applyFilter={applyfilter}
                     filterCount={filterCount}

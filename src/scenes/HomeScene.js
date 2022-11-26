@@ -17,7 +17,7 @@ export default function HomeScene({ navigation }) {
 
     return (
         <SafeAreaView style={{ flex: 1, marginTop: StatusBar.currentHeight }} >
-            <HeaderComponent />
+            <HeaderComponent navigation={navigation} />
             <View>
                 <Cuisines />
             </View>
