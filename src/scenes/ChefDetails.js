@@ -57,16 +57,10 @@ export default function ChefDetails({ route, navigation }) {
                 break;
         }
     };
-    const fetchMeals = async (id) => {
-        setLoading(false)
-        const meal = await getMealForRestaurant(id, category)
-        setMeals(meal)
-        setLoading(true)
-    }
+
     useEffect(() => {
-        console.log('====================================');
-        console.log(item);
-        console.log('====================================');
+        const { meals } = item
+        setMeals(meals)
     }, [id])
 
 
