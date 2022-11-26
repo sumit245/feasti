@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import { Badge } from "react-native-paper";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useSelector, useDispatch } from "react-redux";
+import { getFavoriteRestaurant } from "../../../../services/actions/retaurantsAction";
 
 export default function FavoritePicker({ navigation, favCount }) {
     const [count, setCount] = useState("0");
@@ -19,7 +20,7 @@ export default function FavoritePicker({ navigation, favCount }) {
         };
     }, [favCount]);
 
-    const getFavoriteRestaurant = async () => {
+    const getFavoriteRestaurants = async () => {
         await dispatch(getFavoriteRestaurant())
         navigation.navigate("favorites")
     }
@@ -31,7 +32,7 @@ export default function FavoritePicker({ navigation, favCount }) {
             <Icon
                 name="heart-outline"
                 size={26}
-                onPress={() => getFavoriteRestaurant()}
+                onPress={() => getFavoriteRestaurants()}
             />
             {count > 0 && (
                 <View style={{ marginTop: -6, marginLeft: -10 }}>
