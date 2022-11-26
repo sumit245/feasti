@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Avatar, Card } from "react-native-paper";
 import Icon from "react-native-vector-icons/Ionicons";
@@ -9,6 +9,7 @@ export default function ItemCard({ item, navigation, category }) {
     let { user } = useSelector(state => state.reducer)
     user = JSON.parse(user)
     const dispatch = useDispatch()
+    const [favorite, setFavorite] = useState(false)
     const [state, setState] = useState({
         discount: "",
         discount_type: "%",
@@ -16,7 +17,6 @@ export default function ItemCard({ item, navigation, category }) {
         promo_code: "",
         hasPromo: false,
     });
-    const [favorite, setFavorite] = useState(isFavorite)
     const {
         _id,
         documents,
@@ -26,9 +26,20 @@ export default function ItemCard({ item, navigation, category }) {
         rating,
         about,
         price_plans,
-        isFavorite
     } = item;
+
     const { discount, discount_type, plan_name, promo_code, hasPromo } = state;
+    useEffect(() => {
+        let componentMount = true
+        if (componentMount) {
+            const { favorite } = user
+            const isFavorite = Array.isArray(favorite) && favorite.include(restaurant_name)
+            setFavorite(isFavorite)
+        }
+        return () => {
+            componentMount = false
+        }
+    }, [favorite])
 
 
     const updateFavorite = async () => {
