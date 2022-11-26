@@ -38,7 +38,7 @@ export default function Favorites({ navigation }) {
     } else {
         return (
             <SafeAreaView style={styles.container}>
-                <HeaderSimple navigation={navigation} title="My Favorite" />
+                <HeaderSimple navigation={navigation} title="My Favorites" />
                 <FlatList
                     contentContainerStyle={{ paddingBottom: 10 }}
                     showsVerticalScrollIndicator={false}
