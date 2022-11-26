@@ -6,7 +6,7 @@ export default function HeaderSimple({ navigation, title }) {
     return (
         <View style={{ flexDirection: 'row', height: 48 }}>
             <BackButton navigation={navigation} />
-            <Text style={{ textAlign: 'center', fontSize: 20, color: "#000", fontWeight: 'bold', marginLeft: '20%' }}>{title}</Text>
+            <Text style={{ textAlign: 'center', fontSize: 20, color: "#000", fontWeight: 'bold', marginLeft: '25%' }}>{title}</Text>
         </View>
     )
 }
