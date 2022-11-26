@@ -4,7 +4,6 @@ import { styles } from './styles/HomeStyle'
 import Loader from "../scenes/Components/utility/Loader"
 import { useSelector } from 'react-redux'
 import ItemCard from "./Components/home/mealArea/ItemCard"
-import HeaderTop from './Components/chefdetails/HeaderTop'
 import HeaderSimple from './Components/home/headerTop/HeaderSimple'
 
 

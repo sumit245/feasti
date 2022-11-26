@@ -121,7 +121,35 @@ export const getMealForRestaurant = async (id, type) => {
     return meals
 }
 export const getFavoriteRestaurant = (id) => async (dispatch) => {
-    const favoriteResponse = await axios.get(`${GET_FAVORITE_RESTAURANT}${id}`);
-    const favorites = favoriteResponse.data;
-    dispatch({ type: GET_ALL_RESTAURANT, payload: favorites })
+    const response = await axios.get(`${GET_FAVORITE_RESTAURANT}${id}`);
+    const restaurants = response.data;
+    let nearByRestaurant = []
+
+    const addNearByRestaurant = (inputRestaurant) => {
+        nearByRestaurant.push(inputRestaurant)
+    }
+    const calculateDistance = async (inputCity, inputRestaurant) => {
+        const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${inputCity}&key=AIzaSyCGANEgs9_ADpjRcHkHerl4C6dBUnp2zKs`)
+        const { results } = response.data
+        const { geometry } = results[0]
+        let restaurantLocation = geometry.location
+        let distance = getDistance(
+            addresses[0].geo,
+            { latitude: restaurantLocation.lat, longitude: restaurantLocation.lng }
+        );
+        distance = distance / 1000
+        if (distance < 10) {
+            let restaurant = inputRestaurant
+            restaurant.distance = distance
+            addNearByRestaurant(restaurant)
+        }
+    }
+
+    restaurants.map((restaurant, key) => {
+        const { city } = restaurant;
+        calculateDistance(city, restaurant)
+    })
+    setTimeout(() => {
+        dispatch({ type: GET_ALL_RESTAURANT, payload: nearByRestaurant })
+    }, 1000)
 }
