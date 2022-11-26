@@ -7,11 +7,11 @@ import { useSelector } from "react-redux";
 export default function FavoritePicker({ navigation, favCount }) {
     const [count, setCount] = useState("0");
     let { user } = useSelector(state => state.reducer)
-    const { favorites } = JSON.parse(user)
     useEffect(() => {
         let componentMounted = true;
         if (componentMounted) {
-            setCount(favorites.length);
+            const { favorite } = JSON.parse(user)
+            setCount(favorite.length);
         }
         return () => {
             componentMounted = false;
