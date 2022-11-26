@@ -121,6 +121,8 @@ export const getMealForRestaurant = async (id, type) => {
     return meals
 }
 export const getFavoriteRestaurant = (id) => async (dispatch) => {
+    const user = await AsyncStorageLib.getItem('user')
+    const { addresses } = JSON.parse(user)
     const response = await axios.get(`${GET_FAVORITE_RESTAURANT}${id}`);
     const restaurants = response.data;
     let nearByRestaurant = []
