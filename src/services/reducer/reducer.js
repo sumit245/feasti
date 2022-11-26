@@ -1,5 +1,5 @@
 import {
-    SEND_OTP, SET_ERROR_MSG, SAVE_USER, GET_LOCAL_USER, CHECK_LOCAL_USER
+    SEND_OTP, SET_ERROR_MSG, SAVE_USER, GET_LOCAL_USER, CHECK_LOCAL_USER, SET_FAVORITE_MSG
 } from "../actions/actions";
 
 const initialState = {};
@@ -15,6 +15,8 @@ export default function reducer(state = initialState, action) {
             return { ...state, isLoggedIn: action.payload }
         case CHECK_LOCAL_USER:
             return { ...state, isLoggedIn: action.payload }
+        case SET_FAVORITE_MSG:
+            return { ...state, message: action.payload }
         default:
             return state;
     }

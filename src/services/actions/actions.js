@@ -2,7 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage"
 import axios from "axios";
 import { ADD_TO_FAVORITE, USER_URL } from "../EndPoints";
 import firebase from "../../firebase";
-import { Alert } from "react-native";
+
 
 export const SEND_OTP = "SEND_OTP"
 export const SET_ERROR_MSG = "SET_ERROR_MSG"
@@ -12,6 +12,7 @@ export const LOGIN_WITH_PIN = "LOGIN_WITH_PIN"
 export const GET_LOCAL_USER = "GET_LOCAL_USER"
 export const GET_LOCAL_PIN = "GET_LOCAL_PIN"
 export const CHECK_LOCAL_USER = "CHECK_LOCAL_USER"
+export const SET_FAVORITE_MSG = "SET_FAVORITE_MSG"
 
 export const getLocalUser = () => async (dispatch) => {
     const isLoggedIn = await AsyncStorage.getItem('isLoggedIn')
