@@ -7,18 +7,27 @@ import Meals from './Components/home/mealArea/Meals'
 import BannerCarousel from './Components/home/banner/BannerCarousel'
 import MealSelector from './Components/home/mealselector/MealSelector'
 import Loader from "../scenes/Components/utility/Loader"
-import { searchRestaurantByCity } from '../services/actions/retaurantsAction'
+import { getActiveRestaurants, searchRestaurantByCity } from '../services/actions/retaurantsAction'
 
 
 export default function HomeScene({ navigation }) {
     const [category, setCategory] = useState('Lunch')
     const [loading, setLoading] = useState(false)
+    const [refreshing, setRefreshing] = useState(false)
     const { nearByRestaurant } = useSelector((state) => state.restaurantReducer)
     const dispatch = useDispatch()
 
     const searchByCity = async (city) => {
         setLoading(true)
         await dispatch(searchRestaurantByCity(city))
+        setLoading(false)
+    }
+
+    const onRefresh = async () => {
+        setLoading(true)
+        setRefreshing(true)
+        await dispatch(getActiveRestaurants())
+        setRefreshing(false)
         setLoading(false)
     }
 
@@ -35,7 +44,12 @@ export default function HomeScene({ navigation }) {
                 setLoading={(value) => setLoading(value)} />
             {
                 !loading ? (
-                    <Meals restaurant={nearByRestaurant} navigation={navigation} category={category} />
+                    <Meals
+                        restaurant={nearByRestaurant}
+                        navigation={navigation}
+                        refreshing={refreshing}
+                        onRefresh={onRefresh}
+                        category={category} />
                 ) : (
                     <Loader msg="Please wait while apetizing food is coming!" />
                 )
