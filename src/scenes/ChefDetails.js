@@ -69,7 +69,12 @@ export default function ChefDetails({ route, navigation }) {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView showsVerticalScrollIndicator={false}>
-                <HeaderTop navigation={navigation} title={title} id={restaurant_id} distance={distance} />
+                <HeaderTop
+                    navigation={navigation}
+                    papers={item.papers}
+                    title={title}
+                    id={restaurant_id}
+                    distance={distance} />
                 <Image
                     source={{ uri: documents[1].banner_image }}
                     style={styles.headerImage}

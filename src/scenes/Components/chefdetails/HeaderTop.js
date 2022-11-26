@@ -4,7 +4,7 @@ import { styles } from "../../styles/HomeStyle"
 import BackButton from '../utility/BackButton'
 import Icon from "react-native-vector-icons/Ionicons"
 
-export default function HeaderTop({ navigation, title, id, distance }) {
+export default function HeaderTop({ navigation, title, papers, distance }) {
     return (
         <View style={styles.header} >
             <BackButton navigation={navigation} />
@@ -12,7 +12,7 @@ export default function HeaderTop({ navigation, title, id, distance }) {
                 <Text style={[styles.headerText, { padding: 0 }]}>{title}</Text>
                 <Text style={{ fontSize: 12 }}> <Icon name="location-outline" />{parseFloat(distance).toFixed(1)} km away</Text>
             </View>
-            <TouchableOpacity onPress={() => { navigation.navigate("documents", { id }) }}>
+            <TouchableOpacity onPress={() => { navigation.navigate("documents", { papers }) }}>
                 <Icon
                     name="images-outline"
                     size={24}

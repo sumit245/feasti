@@ -522,5 +522,28 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         bottom: 10,
         left: '45%',
-    }
+    },
+    centeredView: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 22,
+    },
+    openButton: {
+        backgroundColor: '#F194FF',
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2,
+    },
+    textStyle: {
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    imageThumbnail: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '98%',
+        width: 0.98 * width,
+    },
 })
