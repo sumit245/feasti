@@ -4,15 +4,18 @@ export const USER_URL = BASE_URL + '/api/users/';
 export const ADDRESS_URL = BASE_URL + '/api/users/addaddress/';
 export const CHANGE_ADDRESS_URL = BASE_URL + '/api/users/changeaddress/';
 
+
 // Restaurant Links
 export const CUISINE_URL = BASE_URL + '/api/cuisine';
 export const RESTAURANT_URL = BASE_URL + '/api/newrest/category/';
+export const ACTIVE_RESTAURANT_URL = BASE_URL + '/api/newrest/active/';
+export const GET_PICKUP_RESTAURANT = BASE_URL + '/api/newrest/filterpickup/'
 export const PROFIT_URL = BASE_URL + '/api/plans';
 export const SLOT_URL = BASE_URL + '/api/slots'
 export const MEALS_URL = BASE_URL + "/api/meals/"
-// export const COUPON_URL = BASE_URL + '/api/coupon';
+export const COUPON_URL = BASE_URL + '/api/coupon';
 export const CUISINE_TYPE_URL = BASE_URL + '/api/newrest/cuisine_type';
-// export const VEG_NON_VEG = BASE_URL + '/api/newrest/meal_type/';
+export const VEG_NON_VEG = BASE_URL + '/api/newrest/meal_type/';
 
 
 // Calculation Links

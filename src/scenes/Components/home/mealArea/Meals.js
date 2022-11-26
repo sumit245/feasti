@@ -8,9 +8,17 @@ import { setTempRestaurant } from "../../../../services/actions/retaurantsAction
 export default function Meals({ restaurant, navigation, category }) {
     const dispatch = useDispatch()
     const renderItem = ({ item }) => <ItemCard item={item} navigation={navigation} category={category} />
-
-    useEffect(async () => {
-        await dispatch(setTempRestaurant(restaurant))
+    const setTempRestaurants = () => {
+        dispatch(setTempRestaurant(restaurant))
+    }
+    useEffect(() => {
+        let componentMounted = true
+        if (componentMounted) {
+            setTempRestaurants()
+        }
+        return () => {
+            componentMounted = false
+        }
     }, [])
 
 

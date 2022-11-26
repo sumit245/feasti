@@ -1,22 +1,30 @@
-import { View, Text, FlatList, TouchableOpacity } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import { Text, FlatList, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
 import Icon from "react-native-vector-icons/Ionicons"
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { styles } from '../../../styles/HomeStyle'
 import Cuisine from './Cuisine'
 
-export default function Cuisines() {
+export default function Cuisines({ setLoading }) {
     const [highLighted, setHighLighted] = useState(false)
+    const [selectedCuisine, setSelectedCuisine] = useState("")
     const { cuisines } = useSelector(state => state.restaurantReducer)
+    const dispatch = useDispatch()
+    const selectCuisine = async (cuisineName) => {
+        setSelectedCuisine(cuisineName)
+        setLoading(true)
+        dispatch(filterRestaurantCuisine(cuisineName))
+        setLoading(false)
+    }
     const renderCuisine = ({ item }) => {
         return (
-            <TouchableOpacity onPress={() => selectCuisine(item.cuisineName)}>
-                <Cuisine
-                    image={item.image}
-                    title={item.cuisineName}
-                // highLighted={item.cuisineName === this.state.highLighted}
-                />
-            </TouchableOpacity>
+            <Cuisine
+                image={item.image}
+                title={item.cuisineName}
+                highLighted={item.cuisineName === selectedCuisine}
+                onPress={() => selectCuisine(item.cuisineName)}
+
+            />
         );
 
     }
@@ -27,15 +35,7 @@ export default function Cuisines() {
             data={cuisines}
             ListHeaderComponent={() => (
                 <>
-                    <TouchableOpacity
-                        style={[
-                            styles.firstCuisine,
-                            {
-                                borderColor: !highLighted ? '#ff9900' : 'fff',
-                            },
-                        ]}
-                        onPress={() => getApiData}
-                    >
+                    <TouchableOpacity style={[styles.firstCuisine, { borderColor: !highLighted ? '#ff9900' : 'fff' },]}>
                         <Icon name="restaurant-outline" size={20} />
                     </TouchableOpacity>
                     <Text

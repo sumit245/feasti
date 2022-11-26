@@ -137,7 +137,12 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 6,
         marginVertical: 4,
     },
-    pricing: { flexDirection: "row", marginBottom: 4, width: "100%", justifyContent: 'space-between' },
+    pricing: {
+        flexDirection: "row",
+        marginBottom: 4,
+        width: "100%",
+        justifyContent: 'space-between'
+    },
     headerText: {
         fontSize: 16,
         fontWeight: "bold",
@@ -458,5 +463,64 @@ export const styles = StyleSheet.create({
         borderTopWidth: 4,
         height: 12,
         marginHorizontal: 2,
+    },
+    navdrawer: {
+        flex: 1,
+        marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+        width: width,
+        backgroundColor: '#fff',
+    },
+    accountHeader: {
+        borderBottomWidth: 0.5,
+        borderBottomColor: '#ccc',
+        height: 100,
+        padding: 10,
+    },
+    drawerRow: {
+        borderBottomColor: '#888',
+        borderBottomWidth: 1,
+        borderBottomStartRadius: 120,
+        borderBottomEndRadius: 40,
+        width: width,
+        marginLeft: 2,
+        flexDirection: 'row',
+        padding: 14,
+        marginVertical: 1,
+    },
+    drawerText: {
+        marginLeft: 10,
+        paddingHorizontal: 10,
+        paddingVertical: 2,
+        fontSize: 16,
+        color: '#000',
+        fontWeight: 'bold',
+    },
+    profileContainer: {
+        height: 80,
+        width: 80,
+        borderRadius: 40,
+        borderColor: '#777',
+        borderWidth: 0.5,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    profilepic: {
+        height: 80,
+        width: 80,
+        borderRadius: 40,
+    },
+    imageNumName: {
+        flex: 1,
+        flexDirection: 'row',
+    },
+    logoutButton: {
+        position: 'absolute',
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+        justifyContent: 'center',
+        alignItems: 'center',
+        bottom: 10,
+        left: '45%',
     }
 })

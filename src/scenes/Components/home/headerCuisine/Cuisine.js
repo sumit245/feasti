@@ -1,10 +1,10 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import { styles } from "../../../styles/HomeStyle";
 import React from "react";
 
-export default function Cuisine({ image, title, highLighted }) {
+export default function Cuisine({ image, title, highLighted,onPress }) {
     return (
-        <View style={styles.cuisine}>
+        <TouchableOpacity style={styles.cuisine}>
             <Image
                 source={{ uri: image }}
                 style={[
@@ -13,14 +13,9 @@ export default function Cuisine({ image, title, highLighted }) {
                 ]}
                 resizeMode="contain"
             />
-            <Text
-                style={[
-                    styles.cuisine_name,
-                    { fontWeight: highLighted ? "bold" : "normal", color: highLighted ? "#ff6600" : "#000" },
-                ]}
-            >
+            <Text style={[styles.cuisine_name, { fontWeight: highLighted ? "bold" : "normal", color: highLighted ? "#ff6600" : "#000" }]}>
                 {title}
             </Text>
-        </View>
+        </TouchableOpacity>
     );
 }
