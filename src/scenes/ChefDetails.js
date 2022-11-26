@@ -64,7 +64,9 @@ export default function ChefDetails({ route, navigation }) {
         setLoading(true)
     }
     useEffect(() => {
-        fetchMeals(id)
+        console.log('====================================');
+        console.log(item);
+        console.log('====================================');
     }, [id])
 
 
