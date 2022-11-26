@@ -57,9 +57,10 @@ export default function ChefDetails({ route, navigation }) {
                 break;
         }
     };
-
     useEffect(() => {
+        setLoading(false)
         setMeals(item.meals)
+        setLoading(true)
     }, [id])
 
 
@@ -103,10 +104,7 @@ export default function ChefDetails({ route, navigation }) {
                         initialLayout={{ width: width }}
                     />
                 </View>
-                <PlanChooser
-                    navigation={navigation}
-                    restaurant_id={restaurant_id}
-                    category={category} />
+                <PlanChooser navigation={navigation} restaurant_id={restaurant_id} category={category} />
                 <Text style={styles.headerText}>About us </Text>
                 <View style={styles.about}>
                     <Text style={{ fontSize: 16, textAlign: "justify" }}>{about}</Text>
