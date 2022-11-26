@@ -31,10 +31,8 @@ export default function ItemCard({ item, navigation, category }) {
     const { discount, discount_type, plan_name, promo_code, hasPromo } = state;
 
 
-    const updateFavorite = () => {
-        if (!favorite) {
-            dispatch(addToFavorite(user._id, restaurant_name))
-        }
+    const updateFavorite = async () => {
+        await dispatch(addToFavorite(user._id, restaurant_name))
         setFavorite(!favorite)
     }
 
