@@ -120,13 +120,8 @@ export const getMealForRestaurant = async (id, type) => {
     const meals = response.data
     return meals
 }
-export const getFavoriteRestaurant = () => async (dispatch) => {
-    const users = await getUser("user");
-    const { _id } = users.data;
-    const favoriteResponse = await axios.get(`${GET_FAVORITE_RESTAURANT}${_id}`);
+export const getFavoriteRestaurant = (id) => async (dispatch) => {
+    const favoriteResponse = await axios.get(`${GET_FAVORITE_RESTAURANT}${id}`);
     const favorites = favoriteResponse.data.data;
-    console.log('====================================');
-    console.log(favorites);
-    console.log('====================================');
-    // dispatch({ type: GET_ALL_RESTAURANT, payload: favorites })
+    dispatch({ type: GET_ALL_RESTAURANT, payload: favorites })
 }
