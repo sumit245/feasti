@@ -12,10 +12,12 @@ export default function Cuisines({ setLoading }) {
     const { cuisines } = useSelector(state => state.restaurantReducer)
     const dispatch = useDispatch()
     const selectCuisine = async (cuisineName) => {
-        setSelectedCuisine(cuisineName)
         setLoading(true)
-        dispatch(getRestaurantByCuisine(cuisineName))
+        setSelectedCuisine(cuisineName)
+        await dispatch(getRestaurantByCuisine(cuisineName))
+        setHighLighted(true)
         setLoading(false)
+
     }
     const renderCuisine = ({ item }) => {
         return (
@@ -24,7 +26,6 @@ export default function Cuisines({ setLoading }) {
                 title={item.cuisineName}
                 highLighted={item.cuisineName === selectedCuisine}
                 onPress={(value) => selectCuisine(value)}
-
             />
         );
 
