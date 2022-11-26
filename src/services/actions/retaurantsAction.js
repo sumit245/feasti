@@ -158,5 +158,6 @@ export const getFavoriteRestaurant = (id) => async (dispatch) => {
 export const searchRestaurantByCity = (city) => async (dispatch) => {
     const response = await axios.get(`${SEARCH_BY_CITY}${city}`)
     const restaurant = response.data
+    console.log(restaurant);
     dispatch({ type: GET_ALL_RESTAURANT, payload: restaurant })
 }
