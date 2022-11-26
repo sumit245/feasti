@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import { View, Text } from "react-native";
 import { Badge } from "react-native-paper";
 import Icon from "react-native-vector-icons/Ionicons";
+import { useSelector } from "react-redux";
 
 export default function FavoritePicker({ navigation, favCount }) {
     const [count, setCount] = useState("0");
-
+    let { user } = useSelector(state => state.reducer)
+    const { favorites } = JSON.parse(user)
     useEffect(() => {
         let componentMounted = true;
         if (componentMounted) {
-            setCount(favCount);
+            setCount(favorites.length);
         }
         return () => {
             componentMounted = false;
