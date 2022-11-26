@@ -3,7 +3,7 @@ import React from 'react'
 import { styles, width } from '../../styles/HomeStyle'
 import HeaderSimple from "../home/headerTop/HeaderSimple"
 
-export default function Documents({ navigation }) {
+export default function Documents({ route, navigation }) {
     const { papers } = route.params
 
     return (

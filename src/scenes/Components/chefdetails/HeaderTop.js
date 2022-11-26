@@ -12,7 +12,7 @@ export default function HeaderTop({ navigation, title, papers, distance }) {
                 <Text style={[styles.headerText, { padding: 0 }]}>{title}</Text>
                 <Text style={{ fontSize: 12 }}> <Icon name="location-outline" />{parseFloat(distance).toFixed(1)} km away</Text>
             </View>
-            <TouchableOpacity onPress={() => { navigation.navigate("documents", { papers }) }}>
+            <TouchableOpacity onPress={() => { navigation.navigate("documents", { papers: papers }) }}>
                 <Icon
                     name="images-outline"
                     size={24}
