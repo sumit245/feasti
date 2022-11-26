@@ -24,6 +24,7 @@ export default function ItemCard({ item, navigation, category }) {
         restaurant_id,
         meal_type,
         rating,
+        distance,
         about,
         price_plans,
     } = item;
@@ -71,10 +72,10 @@ export default function ItemCard({ item, navigation, category }) {
                     <TouchableOpacity
                         onPress={() =>
                             navigation.navigate("chef_details", {
-                                title: item.restaurant_name,
-                                restaurant_id: item._id,
-                                distance: item.distance,
-                                id: item.restaurant_id,
+                                title: restaurant_name,
+                                restaurant_id: _id,
+                                distance: distance,
+                                id: restaurant_id,
                                 category: category,
                                 item,
                             })
