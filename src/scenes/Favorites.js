@@ -7,13 +7,15 @@ import ItemCard from "./Components/home/mealArea/ItemCard"
 import HeaderTop from './Components/chefdetails/HeaderTop'
 import HeaderSimple from './Components/home/headerTop/HeaderSimple'
 
-const renderItem = ({ item, index }) => (
-    <ItemCard key={index} index={index} item={item} isFavorite={true} />
-);
+
 
 export default function Favorites({ navigation }) {
     const [isFetching, setFetching] = useState(true);
     const [restaurant, setRestaurant] = useState([]);
+
+    const renderItem = ({ item, index }) => (
+        <ItemCard key={index} index={index} item={item} isFavorite={true} navigation={navigation} />
+    );
 
     const onRefresh = () => {
         setFetching(true);
