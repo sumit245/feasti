@@ -4,12 +4,14 @@ import { styles } from './styles/HomeStyle'
 import Loader from "../scenes/Components/utility/Loader"
 import { useSelector } from 'react-redux'
 import ItemCard from "./Components/home/mealArea/ItemCard"
+import HeaderTop from './Components/chefdetails/HeaderTop'
+import HeaderSimple from './Components/home/headerTop/HeaderSimple'
 
 const renderItem = ({ item, index }) => (
     <ItemCard key={index} index={index} item={item} isFavorite={true} />
 );
 
-export default function Favorites() {
+export default function Favorites({ navigation }) {
     const [isFetching, setFetching] = useState(true);
     const [restaurant, setRestaurant] = useState([]);
 
@@ -36,6 +38,7 @@ export default function Favorites() {
     } else {
         return (
             <SafeAreaView style={styles.container}>
+                <HeaderSimple navigation={navigation} title="My Favorite" />
                 <FlatList
                     contentContainerStyle={{ paddingBottom: 10 }}
                     showsVerticalScrollIndicator={false}
