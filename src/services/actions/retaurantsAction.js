@@ -15,6 +15,20 @@ export const GET_ALL_RESTAURANT = "GET_ALL_RESTAURANT"
 export const SET_TEMP_RESTAURANT = "SET_TEMP_RESTAURANT"
 export const GET_CUISINES = "GET_CUISINES"
 
+const calculateDistanceGlobal = async (inputCity) => {
+    const user = await AsyncStorageLib.getItem('user')
+    const { addresses } = JSON.parse(user)
+    const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${inputCity}&key=AIzaSyCGANEgs9_ADpjRcHkHerl4C6dBUnp2zKs`)
+    const { results } = response.data
+    const { geometry } = results[0]
+    let restaurantLocation = geometry.location
+    let distance = getDistance(
+        addresses[0].geo,
+        { latitude: restaurantLocation.lat, longitude: restaurantLocation.lng }
+    );
+    distance = distance / 1000
+    return distance
+}
 
 export const getNearByRestaurant = (category) => async (dispatch) => {
     const user = await AsyncStorageLib.getItem('user')
@@ -158,6 +172,14 @@ export const getFavoriteRestaurant = (id) => async (dispatch) => {
 export const searchRestaurantByCity = (city) => async (dispatch) => {
     const response = await axios.get(`${SEARCH_BY_CITY}${city}`)
     const restaurant = response.data
-    console.log(restaurant);
-    dispatch({ type: GET_ALL_RESTAURANT, payload: restaurant })
+    let restaurants = []
+    restaurant.map(async (item, key) => {
+        const { city } = item
+        const distance =await calculateDistanceGlobal(city)
+        item.distance = distance
+        restaurants.push(item)
+    })
+    setTimeout(() => {
+        dispatch({ type: GET_ALL_RESTAURANT, payload: restaurants })
+    }, 1000)
 }
