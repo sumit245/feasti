@@ -2,9 +2,9 @@ import { View, Text, Image, TouchableOpacity } from "react-native";
 import { styles } from "../../../styles/HomeStyle";
 import React from "react";
 
-export default function Cuisine({ image, title, highLighted,onPress }) {
+export default function Cuisine({ image, title, highLighted, onPress }) {
     return (
-        <TouchableOpacity style={styles.cuisine}>
+        <TouchableOpacity style={styles.cuisine} onPress={() => onPress(title)}>
             <Image
                 source={{ uri: image }}
                 style={[
