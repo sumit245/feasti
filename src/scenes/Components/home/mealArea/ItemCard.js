@@ -3,7 +3,12 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { Avatar, Card } from "react-native-paper";
 import Icon from "react-native-vector-icons/Ionicons";
 import { styles, width } from "../../../styles/HomeStyle"
+import { useSelector, useDispatch } from "react-redux";
+import { addToFavorite } from "../../../../services/actions/actions";
 export default function ItemCard({ item, navigation, category }) {
+    let { user } = useSelector(state => state.reducer)
+    user = JSON.parse(user)
+    const dispatch = useDispatch()
     const [state, setState] = useState({
         discount: "",
         discount_type: "%",
@@ -26,7 +31,12 @@ export default function ItemCard({ item, navigation, category }) {
     const { discount, discount_type, plan_name, promo_code, hasPromo } = state;
 
 
-    const updateFavorite = () => { setFavorite(!favorite) }
+    const updateFavorite = () => {
+        if (!favorite) {
+            dispatch(addToFavorite(user._id, restaurant_name))
+        }
+        setFavorite(!favorite)
+    }
 
     return (
         <Card style={styles.item} key={_id}>
