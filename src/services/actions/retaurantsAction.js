@@ -1,6 +1,13 @@
 import AsyncStorageLib from "@react-native-async-storage/async-storage"
 import axios from "axios"
-import { ACTIVE_RESTAURANT_URL, CUISINE_URL, GET_PICKUP_RESTAURANT, GET_PRICE_URL, MEALS_URL, RESTAURANT_URL } from "../EndPoints"
+import {
+    ACTIVE_RESTAURANT_URL,
+    CUISINE_URL,
+    GET_PICKUP_RESTAURANT,
+    GET_FAVORITE_RESTAURANT,
+    MEALS_URL,
+    RESTAURANT_URL
+} from "../EndPoints"
 import { getDistance } from "geolib"
 
 export const GET_ALL_RESTAURANT = "GET_ALL_RESTAURANT"
@@ -112,4 +119,11 @@ export const getMealForRestaurant = async (id, type) => {
     const response = await axios.get(`${MEALS_URL}${id}/${type}`)
     const meals = response.data
     return meals
+}
+export const getFavoriteRestaurant = () => async (dispatch) => {
+    const users = await getUser("user");
+    const { _id } = users.data;
+    const favoriteResponse = await axios.get(`${GET_FAVORITE_RESTAURANT}${_id}`);
+    const favorites = favoriteResponse.data.data;
+    dispatch({ type: GET_ALL_RESTAURANT, payload: favorites })
 }
