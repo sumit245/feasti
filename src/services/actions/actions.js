@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import axios from "axios";
-import { USER_URL } from "../EndPoints";
+import { ADD_TO_FAVORITE, USER_URL } from "../EndPoints";
 import firebase from "../../firebase";
 import { Alert } from "react-native";
 
@@ -78,7 +78,7 @@ export const signIn = (verificationId, verificationCode) => async (dispatch) => 
 }
 
 export const addToFavorite = (id, restaurant) => async (dispatch) => {
-    const response = await axios.put(`${FAVORITE_URL}${id}`, {
+    const response = await axios.put(`${ADD_TO_FAVORITE}${id}`, {
         favorite: restaurant
     })
     const { data, msg } = response.data
