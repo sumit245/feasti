@@ -33,7 +33,7 @@ export default function ItemCard({ item, navigation, category }) {
         let componentMount = true
         if (componentMount) {
             const { favorite } = user
-            const isFavorite = Array.isArray(favorite) && favorite.include(restaurant_name)
+            const isFavorite = Array.isArray(favorite) && favorite.includes(restaurant_name)
             setFavorite(isFavorite)
         }
         return () => {
