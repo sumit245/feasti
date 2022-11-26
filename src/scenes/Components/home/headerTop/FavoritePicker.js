@@ -21,7 +21,8 @@ export default function FavoritePicker({ navigation, favCount }) {
     }, [favCount]);
 
     const getFavoriteRestaurants = async () => {
-        await dispatch(getFavoriteRestaurant())
+        const { _id } = JSON.parse(user)
+        await dispatch(getFavoriteRestaurant(_id))
         navigation.navigate("favorites")
     }
 
