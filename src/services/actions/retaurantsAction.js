@@ -114,15 +114,17 @@ export const getRestaurantByCuisine = (cuisine) => async (dispatch) => {
     restaurants.map(async (restaurant, key) => {
         const { city } = restaurant;
         const distance = await calculateDistanceGlobal(city)
-        restaurant.distance = distance
-        nearByRestaurant.push(restaurant)
+        if (distance < 10) {
+            restaurant.distance = distance
+            nearByRestaurant.push(restaurant)
+        }
     })
 
     setTimeout(() => {
         dispatch({ type: GET_ALL_RESTAURANT, payload: nearByRestaurant })
     }, 1000)
 }
-// Get all favorite restaurants
+// Get all restaurant by cuisine
 
 
 export const getActiveRestaurants = () => async (dispatch) => {
