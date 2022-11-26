@@ -6,7 +6,8 @@ import {
     GET_PICKUP_RESTAURANT,
     GET_FAVORITE_RESTAURANT,
     MEALS_URL,
-    RESTAURANT_URL
+    RESTAURANT_URL,
+    SEARCH_BY_CITY
 } from "../EndPoints"
 import { getDistance } from "geolib"
 
@@ -140,18 +141,22 @@ export const getFavoriteRestaurant = (id) => async (dispatch) => {
             { latitude: restaurantLocation.lat, longitude: restaurantLocation.lng }
         );
         distance = distance / 1000
-        if (distance < 10) {
-            let restaurant = inputRestaurant
-            restaurant.distance = distance
-            addNearByRestaurant(restaurant)
-        }
+        let restaurant = inputRestaurant
+        restaurant.distance = distance
+        addNearByRestaurant(restaurant)
     }
 
     restaurants.map((restaurant, key) => {
         const { city } = restaurant;
         calculateDistance(city, restaurant)
     })
+
     setTimeout(() => {
         dispatch({ type: GET_ALL_RESTAURANT, payload: nearByRestaurant })
     }, 1000)
+}
+export const searchRestaurantByCity = (city) => async (dispatch) => {
+    const response = await axios.get(`${SEARCH_BY_CITY}${city}`)
+    const restaurant = response.data
+    dispatch({ type: GET_ALL_RESTAURANT, payload: restaurant })
 }
