@@ -4,7 +4,7 @@ import Icon from "react-native-vector-icons/Ionicons"
 import { useSelector, useDispatch } from 'react-redux'
 import { styles } from '../../../styles/HomeStyle'
 import Cuisine from './Cuisine'
-import { getRestaurantByCuisine } from '../../../../services/actions/retaurantsAction'
+import { getActiveRestaurants, getRestaurantByCuisine } from '../../../../services/actions/retaurantsAction'
 
 export default function Cuisines({ setLoading }) {
     const [highLighted, setHighLighted] = useState(false)
@@ -18,6 +18,12 @@ export default function Cuisines({ setLoading }) {
         setHighLighted(true)
         setLoading(false)
 
+    }
+    const fetchAllRestaurant = async () => {
+        setLoading(true)
+        setHighLighted(false)
+        await dispatch(getActiveRestaurants())
+        setLoading(false)
     }
     const renderCuisine = ({ item }) => {
         return (
@@ -37,7 +43,7 @@ export default function Cuisines({ setLoading }) {
             data={cuisines}
             ListHeaderComponent={() => (
                 <>
-                    <TouchableOpacity style={[styles.firstCuisine, { borderColor: !highLighted ? '#ff9900' : 'fff' }]}>
+                    <TouchableOpacity style={[styles.firstCuisine, { borderColor: !highLighted ? '#ff9900' : 'fff' }]} onPress={() => fetchAllRestaurant()}>
                         <Icon name="restaurant-outline" size={20} />
                     </TouchableOpacity>
                     <Text

@@ -112,9 +112,9 @@ export const getRestaurantByCuisine = (cuisine) => async (dispatch) => {
     let nearByRestaurant = []
 
     restaurants.map(async (restaurant, key) => {
-        const { city } = restaurant;
-        const distance = await calculateDistanceGlobal(city)
-        if (distance < 10) {
+        const { country } = restaurant;
+        const distance = await calculateDistanceGlobal(country)
+        if (distance < 200) {
             restaurant.distance = distance
             nearByRestaurant.push(restaurant)
         }
@@ -129,8 +129,21 @@ export const getRestaurantByCuisine = (cuisine) => async (dispatch) => {
 
 export const getActiveRestaurants = () => async (dispatch) => {
     const response = await axios.get(ACTIVE_RESTAURANT_URL)
-    const restaurant = response.data
-    dispatch({ type: GET_ALL_RESTAURANT, payload: restaurant })
+    const restaurants = response.data
+    let nearByRestaurant = []
+
+    restaurants.map(async (restaurant, key) => {
+        const { country } = restaurant;
+        const distance = await calculateDistanceGlobal(country)
+        if (distance < 200) {
+            restaurant.distance = distance
+            nearByRestaurant.push(restaurant)
+        }
+    })
+
+    setTimeout(() => {
+        dispatch({ type: GET_ALL_RESTAURANT, payload: nearByRestaurant })
+    }, 1000)
 }
 
 export const getCuisines = () => async (dispatch) => {
