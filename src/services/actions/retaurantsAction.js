@@ -112,8 +112,8 @@ export const getRestaurantByCuisine = (cuisine) => async (dispatch) => {
     let nearByRestaurant = []
 
     restaurants.map(async (restaurant, key) => {
-        const { country } = restaurant;
-        const distance = await calculateDistanceGlobal(country)
+        const { city } = restaurant;
+        const distance = await calculateDistanceGlobal(city)
         if (distance < 200) {
             restaurant.distance = distance
             nearByRestaurant.push(restaurant)
@@ -133,8 +133,8 @@ export const getActiveRestaurants = () => async (dispatch) => {
     let nearByRestaurant = []
 
     restaurants.map(async (restaurant, key) => {
-        const { country } = restaurant;
-        const distance = await calculateDistanceGlobal(country)
+        const { city } = restaurant;
+        const distance = await calculateDistanceGlobal(city)
         if (distance < 200) {
             restaurant.distance = distance
             nearByRestaurant.push(restaurant)
