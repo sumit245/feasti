@@ -1,4 +1,4 @@
-const BASE_URL = "http://192.168.1.3:5000"
+const BASE_URL = "http://18.117.246.192"
 // user related links
 export const USER_URL = BASE_URL + '/api/users/';
 export const ADDRESS_URL = BASE_URL + '/api/users/addaddress/';
