@@ -1,7 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import axios from "axios";
 import { ADD_TO_FAVORITE, USER_URL, GET_FAVORITE_RESTAURANT } from "../EndPoints";
-import { GET_ALL_RESTAURANT } from "./restaurantsAction"
+import { GET_ALL_RESTAURANT } from "./retaurantsAction";
 import firebase from "../../firebase";
 
 
