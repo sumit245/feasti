@@ -13,15 +13,16 @@ export default function Cuisines({ setLoading }) {
     const dispatch = useDispatch()
     const selectCuisine = async (cuisineName) => {
         setLoading(true)
+        setHighLighted(true)
         setSelectedCuisine(cuisineName)
         await dispatch(getRestaurantByCuisine(cuisineName))
-        setHighLighted(true)
         setLoading(false)
 
     }
     const fetchAllRestaurant = async () => {
         setLoading(true)
         setHighLighted(false)
+        setSelectedCuisine("")
         await dispatch(getActiveRestaurants())
         setLoading(false)
     }
