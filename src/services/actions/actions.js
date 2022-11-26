@@ -96,12 +96,5 @@ export const updateUser = (id, dataToSend) => async (dispatch) => {
     await AsyncStorage.setItem('user', JSON.stringify(data))
     return status
 }
-export const getFavoriteRestaurant = () => async (dispatch) => {
-    const users = await getUser("user");
-    const { _id } = users.data;
-    const favoriteResponse = await axios.get(`${GET_FAVORITE_RESTAURANT}${id}`);
-    const favorites = favoriteResponse.data.data;
-    dispatch({ type: GET_ALL_RESTAURANT, payload: favorites })
-}
 
 
