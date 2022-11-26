@@ -26,7 +26,7 @@ export default function HomeScene({ navigation }) {
         <SafeAreaView style={{ flex: 1, marginTop: StatusBar.currentHeight }} >
             <HeaderComponent navigation={navigation} searchTerm={(city) => searchByCity(city)} />
             <View>
-                <Cuisines />
+                <Cuisines setLoading={(value) => setLoading(value)} />
             </View>
             <BannerCarousel />
             <MealSelector
