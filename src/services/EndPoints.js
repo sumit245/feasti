@@ -4,6 +4,7 @@ export const USER_URL = BASE_URL + '/api/users/';
 export const ADDRESS_URL = BASE_URL + '/api/users/addaddress/';
 export const CHANGE_ADDRESS_URL = BASE_URL + '/api/users/changeaddress/';
 export const ADD_TO_FAVORITE = BASE_URL + '/api/users/addfavorite/'
+export const GET_FAVORITE_RESTAURANT = BASE_URL + '/api/users/getfavorite/'
 
 
 // Restaurant Links

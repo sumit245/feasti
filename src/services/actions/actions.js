@@ -1,6 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import axios from "axios";
-import { ADD_TO_FAVORITE, USER_URL } from "../EndPoints";
+import { ADD_TO_FAVORITE, USER_URL, GET_FAVORITE_RESTAURANT } from "../EndPoints";
+import { GET_ALL_RESTAURANT } from "./restaurantsAction"
 import firebase from "../../firebase";
 
 
@@ -94,6 +95,13 @@ export const updateUser = (id, dataToSend) => async (dispatch) => {
     dispatch({ type: SAVE_USER, payload: data })
     await AsyncStorage.setItem('user', JSON.stringify(data))
     return status
+}
+export const getFavoriteRestaurant = () => async (dispatch) => {
+    const users = await getUser("user");
+    const { _id } = users.data;
+    const favoriteResponse = await axios.get(`${GET_FAVORITE_RESTAURANT}${id}`);
+    const favorites = favoriteResponse.data.data;
+    dispatch({ type: GET_ALL_RESTAURANT, payload: favorites })
 }
 
 

@@ -12,6 +12,7 @@ import ChefDetails from "../scenes/ChefDetails";
 import MaterialBottomNavigator from "./tabnavigator";
 import Checkout from "../scenes/Checkout";
 import { getMyOrders, getMySubscription } from "../services/actions/orderActions";
+import Favorites from "../scenes/Favorites";
 const Stack = createStackNavigator()
 export default function StackNavigator() {
     const dispatch = useDispatch()
@@ -40,6 +41,7 @@ export default function StackNavigator() {
             <Stack.Screen name="home" component={MaterialBottomNavigator} />
             <Stack.Screen name="chef_details" component={ChefDetails} />
             <Stack.Screen name="checkout" component={Checkout} />
+            <Stack.Screen name="favorites" component={Favorites} />
         </Stack.Navigator>
     )
 }
