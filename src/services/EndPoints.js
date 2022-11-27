@@ -2,6 +2,7 @@ const BASE_URL = "http://18.117.246.192"
 //const BASE_URL='http://172.20.10.3:4001'
 // user related links
 export const USER_URL = BASE_URL + '/api/users/';
+export const ADD_CARD_URL = BASE_URL + '/api/users/addcard/'
 export const ADDRESS_URL = BASE_URL + '/api/users/addaddress/';
 export const CHANGE_ADDRESS_URL = BASE_URL + '/api/users/changeaddress/';
 export const ADD_TO_FAVORITE = BASE_URL + '/api/users/addfavorite/'
