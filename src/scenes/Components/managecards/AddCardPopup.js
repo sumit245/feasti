@@ -14,6 +14,9 @@ export default function AddCardPopup({ visible, title, setVisible }) {
             alert('Card Details not found. Please try again')
             setCreditCard({})
         }
+        if (card_holder === "") {
+            alert("Please Enter Card Holder's Name")
+        }
         console.log('====================================');
         console.log(creditCard);
         console.log('====================================');
