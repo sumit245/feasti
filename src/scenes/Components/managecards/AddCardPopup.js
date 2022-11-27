@@ -6,7 +6,12 @@ import { LiteCreditCardInput } from 'react-native-credit-card-input'
 export default function AddCardPopup({ visible, title, setVisible }) {
     const [card_holder, setCardHolder] = useState("")
     const cardAdd = () => { }
-    const _onChange = () => { }
+    const _onChange = (formData) => {
+        let creditCard = JSON.stringify(formData, null, "")
+        console.log('====================================');
+        console.log(creditCard);
+        console.log('====================================');
+    }
     const hideModal = () => {
         setVisible(false)
     }
