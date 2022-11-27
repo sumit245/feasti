@@ -11,10 +11,10 @@ export default function Documents({ route, navigation }) {
         <View style={styles.centeredView}>
             <Icons
                 name='ios-sad-outline'
-                size={36}
+                size={54}
                 color="#ff6600"
             />
-            <Text style={[styles.title, { fontSize: 16 }]}>Oops!!! This Restaurant does not have any specific document</Text>
+            <Text style={[styles.title, { fontSize: 16, textAlign: 'center' }]}>Oops!!! This Restaurant does not have{"\n"} any specific document</Text>
             <TouchableOpacity style={[styles.buttonEllipse, { marginTop: 8 }]} onPress={() => navigation.navigate('Meals')} >
                 <Text style={[styles.btnText, { marginLeft: 0, fontSize: 14 }]}>Explore More Homechef</Text>
             </TouchableOpacity>
