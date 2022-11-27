@@ -2,11 +2,13 @@ import { View, Text, StyleSheet, TextInput } from 'react-native'
 import React, { useEffect, useState, useRef } from 'react'
 import { Portal, Modal, Button, } from 'react-native-paper'
 import { LiteCreditCardInput } from 'react-native-credit-card-input'
+import { useDispatch } from 'react-redux'
+import { addCard } from '../../../services/actions/cardActions'
 
 export default function AddCardPopup({ visible, title, setVisible }) {
     const [card_holder, setCardHolder] = useState("")
     const [creditCard, setCreditCard] = useState({})
-    const cardForm = useRef()
+    const dispatch = useDispatch()
     const cardAdd = () => {
         const { values, valid, status } = JSON.parse(creditCard)
         if (!valid) {
@@ -25,9 +27,7 @@ export default function AddCardPopup({ visible, title, setVisible }) {
             cvc,
             brand: type
         }
-        console.log('====================================');
-        console.log(cardToSave);
-        console.log('====================================');
+        dispatch(addCard(cardToSave))
     }
     const _onChange = (formData) => {
         let card = JSON.stringify(formData, null, "")
@@ -51,7 +51,6 @@ export default function AddCardPopup({ visible, title, setVisible }) {
                 <LiteCreditCardInput
                     requiresCVC
                     autoFocus
-                    ref={cardForm}
                     inputStyle={styles.input}
                     validColor={"#228822"}
                     invalidColor={"#aa2222"}
