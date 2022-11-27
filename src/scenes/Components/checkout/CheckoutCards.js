@@ -11,10 +11,14 @@ export default function CheckoutCards({ navigation }) {
     const [hasCard, setHasCard] = useState(false)
     const { user } = useSelector(state => state.reducer)
     const [card, setCard] = useState({})
+    const [card_number, setCardNumber] = useState("")
     const { cards } = JSON.parse(user)
     const getAndSetCard = () => {
         if (cards.length > 0) {
             setCard(cards[0])
+            let number = cards[0].number
+            number = trimmer(number)
+            setCardNumber(number)
             setHasCard(true)
         } else {
             setHasCard(false)
@@ -60,7 +64,7 @@ export default function CheckoutCards({ navigation }) {
                                 width={50} />
                         </View>
                         <View>
-                            <Text style={styles.optionsLabels}>{trimmer(card.number)}</Text>
+                            <Text style={styles.optionsLabels}>{card_number}</Text>
                             <Text>{card.card_holder}</Text>
                         </View>
                     </View>
