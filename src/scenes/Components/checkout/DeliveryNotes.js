@@ -2,17 +2,15 @@ import React, { useState } from "react";
 import { Text, View, TextInput } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useDispatch } from "react-redux";
+import { notesHandler } from "../../../services/actions/checkoutAction";
 import { styles } from "../../styles/HomeStyle"
 
 export default function DeliveryNotes() {
     const [notes, setNotes] = useState("");
     const [pulled, setPulled] = useState(false);
     const dispatch = useDispatch()
-    const noteHandler = async () => {
-        let notes = {
-            notes: notes
-        }
-        await dispatch(notes)
+    const noteHandler = () => {
+        dispatch(notesHandler(notes))
         setPulled(false)
     }
     return (
