@@ -1,22 +1,18 @@
 import { View, Text, StyleSheet, TextInput } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { Portal, Modal, Button, } from 'react-native-paper'
 import { LiteCreditCardInput } from 'react-native-credit-card-input'
 
 export default function AddCardPopup({ visible, title, setVisible }) {
     const [card_holder, setCardHolder] = useState("")
     const [creditCard, setCreditCard] = useState({})
+    const cardForm = useRef()
     const cardAdd = () => {
         const { values, valid, status } = JSON.parse(creditCard)
         if (!valid) {
-            let status = {}
-            for (key in Object.keys(status)) {
-                if (status[key] !== "valid") {
-                    return status
-                }
-
-            }
-            alert(`${Object.keys(status)} is ${Object.values(status)}`)
+            cardForm.current.reset()
+            alert('Card Details not found. Please try again')
+            setCreditCard({})
         }
         console.log('====================================');
         console.log(creditCard);
@@ -44,6 +40,7 @@ export default function AddCardPopup({ visible, title, setVisible }) {
                 <LiteCreditCardInput
                     requiresCVC
                     autoFocus
+                    ref={cardForm}
                     inputStyle={styles.input}
                     validColor={"#228822"}
                     invalidColor={"#aa2222"}
