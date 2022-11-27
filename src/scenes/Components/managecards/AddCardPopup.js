@@ -10,7 +10,7 @@ export default function AddCardPopup({ visible, title, setVisible }) {
     const cardAdd = () => {
         const { values, valid, status } = JSON.parse(creditCard)
         if (!valid) {
-            cardForm.current.reset()
+            cardForm.current.value = ""
             alert('Card Details not found. Please try again')
             setCreditCard({})
         }
