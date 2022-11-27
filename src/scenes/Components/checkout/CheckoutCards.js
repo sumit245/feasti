@@ -35,8 +35,46 @@ export default function CheckoutCards({ navigation }) {
     const _nextAction = () => {
         navigation.navigate('checkout_card')
     }
-    if (!hasCard) {
-        return (
+    return (
+        hasCard ? (
+            <View style={styles.optionCard}>
+                <View style={styles.optionrow}>
+                    <View style={{ flexDirection: "row", alignItems: "center" }}>
+                        <View
+                            style={{
+                                width: 50,
+                                height: 50,
+                                borderRadius: 2,
+                                borderColor: "#ff6600",
+                                borderWidth: 0.8,
+                                marginRight: 4,
+                                alignItems: "center",
+                                justifyContent: "center",
+                            }}
+                        >
+                            <PaymentIcon type={
+                                card.brand === "master-card"
+                                    ? "mastercard"
+                                    : card.brand
+                            }
+                                width={50} />
+                        </View>
+                        <View>
+                            <Text style={styles.optionsLabels}>{trimmer(card.number)}</Text>
+                            <Text>{card.card_holder}</Text>
+                        </View>
+                    </View>
+                    <Button
+                        mode="text"
+                        color="#ff6600"
+                        style={{ marginRight: -20 }}
+                        onPress={_nextAction}
+                    >
+                        change
+                    </Button>
+                </View>
+            </View>
+        ) : (
             <TouchableOpacity style={styles.optionCard} onPress={_nextAction}>
                 <View style={styles.optionrow}>
                     <Text style={styles.optionsLabels}>{"Add a card"}</Text>
@@ -44,45 +82,5 @@ export default function CheckoutCards({ navigation }) {
                 </View>
             </TouchableOpacity>
         )
-    }
-    const { brand, card_holder, number } = card;
-    return (
-        <View style={styles.optionCard}>
-            <View style={styles.optionrow}>
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
-                    <View
-                        style={{
-                            width: 50,
-                            height: 50,
-                            borderRadius: 2,
-                            borderColor: "#ff6600",
-                            borderWidth: 0.8,
-                            marginRight: 4,
-                            alignItems: "center",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <PaymentIcon type={
-                            brand === "master-card"
-                                ? "mastercard"
-                                : brand
-                        }
-                            width={50} />
-                    </View>
-                    <View>
-                        <Text style={styles.optionsLabels}>{trimmer(number)}</Text>
-                        <Text>{card_holder}</Text>
-                    </View>
-                </View>
-                <Button
-                    mode="text"
-                    color="#ff6600"
-                    style={{ marginRight: -20 }}
-                    onPress={_nextAction}
-                >
-                    change
-                </Button>
-            </View>
-        </View>
     )
 }
