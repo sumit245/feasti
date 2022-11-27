@@ -23,7 +23,8 @@ export default function SavedCards({ credit_cards }) {
     return (
         <SwipeableFlatList
             data={data}
-            renderItem={renderItem}
+            renderItem={(item) => renderItem(item)}
+            keyExtractor={(item) => item.number}
             ListEmptyComponent={NoCard}
         />
     )
