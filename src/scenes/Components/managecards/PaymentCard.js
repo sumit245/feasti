@@ -26,7 +26,7 @@ export default function PaymentCard({ item }) {
                         }
                         width={50}
                     />
-                    <Text style={styles.creditcardNumber}>{card_number}</Text>
+                    <Text style={styles.creditcardNumber}>{number}</Text>
                 </View>
 
                 <RadioButton.Android
