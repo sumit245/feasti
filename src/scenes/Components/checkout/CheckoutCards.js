@@ -13,7 +13,7 @@ export default function CheckoutCards({ navigation }) {
     const [hasCard, setHasCard] = useState(false)
     const getCard = () => {
         try {
-            const { cards } = user
+            const { cards } = JSON.parse(user)
             Array.isArray(cards) && cards.length > 0 ?
                 setCard(cards[0])
                 : setHasCard(false)
