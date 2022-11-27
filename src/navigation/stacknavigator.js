@@ -14,7 +14,6 @@ import Checkout from "../scenes/Checkout";
 import { getMyOrders, getMySubscription } from "../services/actions/orderActions";
 import Favorites from "../scenes/Favorites";
 import Documents from "../scenes/Components/documents/Documents";
-import ListAddress from "../scenes/Components/manageaddress/ListAddress";
 import ListCards from "../scenes/Components/managecards/ListCards";
 const Stack = createStackNavigator()
 export default function StackNavigator() {
