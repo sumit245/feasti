@@ -8,14 +8,14 @@ export default function Documents({ route, navigation }) {
     const { papers } = route.params
 
     const ListEmptyComponent = () => (
-        <View style={{ position: 'absolute', left: '25%', top: '40%' }}>
+        <View style={{ position: 'absolute', left: '25%', top: '40%', alignItems: 'center', justifyContent: 'center' }}>
             <Icons
                 name='ios-sad-outline'
                 size={54}
                 color="#ff6600"
             />
             <Text style={[styles.title, { fontSize: 16, textAlign: 'center' }]}>Oops!!! This Restaurant does not have{"\n"} any specific document</Text>
-            <TouchableOpacity style={[styles.buttonEllipse, { marginTop: 8 }]} onPress={() => navigation.navigate('Meals')} >
+            <TouchableOpacity style={[styles.buttonEllipse, { marginTop: 14 }]} onPress={() => navigation.navigate('Meals')} >
                 <Text style={[styles.btnText, { marginLeft: 0, fontSize: 14 }]}>Explore More Homechef</Text>
             </TouchableOpacity>
         </View>
