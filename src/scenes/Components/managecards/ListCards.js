@@ -1,5 +1,5 @@
 import { View, Text, SafeAreaView } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { SwipeableFlatList } from 'react-native-swipe-list'
 import { styles } from '../../styles/HomeStyle'
 import HeaderSimple from '../home/headerTop/HeaderSimple'
