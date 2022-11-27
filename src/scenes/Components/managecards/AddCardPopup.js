@@ -5,12 +5,15 @@ import { LiteCreditCardInput } from 'react-native-credit-card-input'
 
 export default function AddCardPopup({ visible, title, setVisible }) {
     const [card_holder, setCardHolder] = useState("")
-    const cardAdd = () => { }
-    const _onChange = (formData) => {
-        let creditCard = JSON.stringify(formData, null, "")
+    const [creditCard, setCreditCard] = useState({})
+    const cardAdd = () => {
         console.log('====================================');
         console.log(creditCard);
         console.log('====================================');
+    }
+    const _onChange = (formData) => {
+        let card = JSON.stringify(formData, null, "")
+        setCreditCard(card)
     }
     const hideModal = () => {
         setVisible(false)
@@ -29,6 +32,7 @@ export default function AddCardPopup({ visible, title, setVisible }) {
                 </View>
                 <LiteCreditCardInput
                     requiresCVC
+                    autoFocus
                     inputStyle={styles.input}
                     validColor={"#228822"}
                     invalidColor={"#aa2222"}
@@ -38,6 +42,7 @@ export default function AddCardPopup({ visible, title, setVisible }) {
                             defaultValue: "123456778812",
                         }
                     }}
+
                 />
                 <View style={{ marginHorizontal: 8, marginVertical: 20 }}>
                     <Text style={styles.title}>Cardholder's Name</Text>
