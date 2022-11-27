@@ -7,6 +7,17 @@ export default function AddCardPopup({ visible, title, setVisible }) {
     const [card_holder, setCardHolder] = useState("")
     const [creditCard, setCreditCard] = useState({})
     const cardAdd = () => {
+        const { values, valid, status } = JSON.parse(creditCard)
+        if (!valid) {
+            let status = {}
+            for (key in Object.keys(status)) {
+                if (status[key] !== "valid") {
+                    return status
+                }
+
+            }
+            alert(`${Object.keys(status)} is ${Object.values(status)}`)
+        }
         console.log('====================================');
         console.log(creditCard);
         console.log('====================================');
