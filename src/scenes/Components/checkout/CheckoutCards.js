@@ -3,18 +3,87 @@ import { Text, View, TouchableOpacity } from "react-native";
 import { Button } from "react-native-paper";
 import { PaymentIcon } from "react-native-payment-icons";
 import Icon from "react-native-vector-icons/Ionicons";
+import { useSelector } from "react-redux";
 import { styles } from "../../styles/HomeStyle"
+import { trimmer } from "../../../services/actions/cardActions";
 
 export default function CheckoutCards({ navigation }) {
+    const { user } = useSelector(state => state.reducer)
+    const [card, setCard] = useState({})
+    const [hasCard, setHasCard] = useState(false)
+    const getCard = () => {
+        try {
+            const { cards } = user
+            Array.isArray(cards) && cards.length > 0 ?
+                setCard(cards[0])
+                : setHasCard(false)
+        } catch (error) {
+            setHasCard(false)
+        }
+        card && Object.keys(card).length > 0 ? setHasCard(true) : setHasCard(false)
+    }
+    useEffect(() => {
+        let componentMounted = true
+        if (componentMounted) {
+            getCard()
+        }
+
+        return () => {
+            componentMounted = false
+        }
+    }, [])
+
     const _nextAction = () => {
         navigation.navigate('checkout_card')
     }
+    if (!hasCard) {
+        return (
+            <TouchableOpacity style={styles.optionCard} onPress={_nextAction}>
+                <View style={styles.optionrow}>
+                    <Text style={styles.optionsLabels}>{"Add a card"}</Text>
+                    <Icon name="chevron-forward" color="#444" size={20} />
+                </View>
+            </TouchableOpacity>
+        )
+    }
+    const { brand, card_holder, number } = card;
     return (
-        <TouchableOpacity style={styles.optionCard} onPress={_nextAction}>
+        <View style={styles.optionCard}>
             <View style={styles.optionrow}>
-                <Text style={styles.optionsLabels}>{"Add a card"}</Text>
-                <Icon name="chevron-forward" color="#444" size={20} />
+                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                    <View
+                        style={{
+                            width: 50,
+                            height: 50,
+                            borderRadius: 2,
+                            borderColor: "#ff6600",
+                            borderWidth: 0.8,
+                            marginRight: 4,
+                            alignItems: "center",
+                            justifyContent: "center",
+                        }}
+                    >
+                        <PaymentIcon type={
+                            brand === "master-card"
+                                ? "mastercard"
+                                : brand
+                        }
+                            width={50} />
+                    </View>
+                    <View>
+                        <Text style={styles.optionsLabels}>{trimmer(number)}</Text>
+                        <Text>{card_holder}</Text>
+                    </View>
+                </View>
+                <Button
+                    mode="text"
+                    color="#ff6600"
+                    style={{ marginRight: -20 }}
+                    onPress={_nextAction}
+                >
+                    change
+                </Button>
             </View>
-        </TouchableOpacity>
+        </View>
     )
 }
