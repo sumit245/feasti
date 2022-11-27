@@ -34,7 +34,7 @@ export default function CheckoutCards({ navigation }) {
         return () => {
             componentMounted = false
         }
-    }, [card])
+    }, [hasCard])
 
     const _nextAction = () => {
         navigation.navigate('checkout_card')
