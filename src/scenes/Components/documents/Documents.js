@@ -8,7 +8,14 @@ export default function Documents({ route, navigation }) {
     const { papers } = route.params
 
     const ListEmptyComponent = () => (
-        <View style={{ position: 'absolute', left: '25%', top: '40%', alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{
+            position: 'absolute',
+            left: '25%',
+            top: '40%',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: width
+        }}>
             <Icons
                 name='ios-sad-outline'
                 size={54}
