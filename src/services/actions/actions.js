@@ -1,7 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import axios from "axios";
-import { ADD_TO_FAVORITE, USER_URL, GET_FAVORITE_RESTAURANT } from "../EndPoints";
-import { GET_ALL_RESTAURANT } from "./retaurantsAction";
+import { ADD_TO_FAVORITE, USER_URL } from "../EndPoints";
 import firebase from "../../firebase";
 
 
@@ -14,6 +13,7 @@ export const GET_LOCAL_USER = "GET_LOCAL_USER"
 export const GET_LOCAL_PIN = "GET_LOCAL_PIN"
 export const CHECK_LOCAL_USER = "CHECK_LOCAL_USER"
 export const SET_FAVORITE_MSG = "SET_FAVORITE_MSG"
+export const SAVE_CARDS = "SAVE_CARDS"
 
 export const getLocalUser = () => async (dispatch) => {
     const isLoggedIn = await AsyncStorage.getItem('isLoggedIn')
@@ -97,4 +97,9 @@ export const updateUser = (id, dataToSend) => async (dispatch) => {
     return status
 }
 
+export const getSavedCards = () => async (dispatch) => {
+    const user = await AsyncStorage.getItem('user')
+    const { cards } = JSON.parse(user)
+    dispatch({ type: SAVE_CARDS, payload: cards })
+}
 
