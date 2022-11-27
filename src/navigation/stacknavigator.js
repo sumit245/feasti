@@ -15,6 +15,7 @@ import { getMyOrders, getMySubscription } from "../services/actions/orderActions
 import Favorites from "../scenes/Favorites";
 import Documents from "../scenes/Components/documents/Documents";
 import ListCards from "../scenes/Components/managecards/ListCards";
+import CardsCheckout from "../scenes/Components/managecards/CardsCheckout";
 const Stack = createStackNavigator()
 export default function StackNavigator() {
     const dispatch = useDispatch()
@@ -46,6 +47,7 @@ export default function StackNavigator() {
             <Stack.Screen name="favorites" component={Favorites} />
             <Stack.Screen name="documents" component={Documents} />
             <Stack.Screen name="list_cards" component={ListCards} />
+            <Stack.Screen name="checkout_card" component={CardsCheckout} />
         </Stack.Navigator>
     )
 }
