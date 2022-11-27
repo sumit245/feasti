@@ -70,7 +70,7 @@ export default function Checkout({ route, navigation }) {
   const orderNow = () => {
     setOrdering(true)
     console.log('====================================');
-    console.log(state);
+    console.log(order);
     console.log('====================================');
     setOrdering(false)
   }
