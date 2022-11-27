@@ -20,7 +20,7 @@ export default function AddCardPopup({ visible, title, setVisible }) {
             >
                 <View style={styles.creditCardHeader}>
                     <Text style={styles.title}>{title}</Text>
-                    <Button mode='text' onPress={cardAdd} >Edit card</Button>
+                    <Button mode='text' onPress={cardAdd} >Save</Button>
                 </View>
                 <LiteCreditCardInput
                     requiresCVC
