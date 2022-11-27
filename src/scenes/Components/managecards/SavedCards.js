@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { SwipeableFlatList } from 'react-native-swipe-list'
 import PaymentCard from './PaymentCard'
 import NoCard from './NoCard'
