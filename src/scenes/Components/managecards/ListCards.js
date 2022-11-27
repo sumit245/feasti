@@ -43,7 +43,7 @@ export default function ListCards({ navigation }) {
             <SafeAreaView style={styles.container}>
                 <HeaderSimple title="Manage Payments" navigation={navigation} />
                 <WalletCard navigation={navigation} wallet_balance={wallet_balance} />
-                <SavedCards credit_cards={credit_cards} />
+                {/* <SavedCards credit_cards={credit_cards} /> */}
                 <LinearGradient colors={["#ff9900", "#ff6600"]} style={styles.bottomBtnRound}>
                     <TouchableOpacity
                         onPress={() => {
