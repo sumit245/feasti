@@ -35,11 +35,7 @@ export default function AddCardPopup({ visible, title, setVisible }) {
                     }}
                 />
                 <View style={{ marginHorizontal: 8, marginVertical: 20 }}>
-                    <Text
-                        style={styles.title}
-                    >
-                        Cardholder's Name
-                    </Text>
+                    <Text style={styles.title}>Cardholder's Name</Text>
                     <TextInput
                         placeholder="Name"
                         selectionColor="#ff6600"
@@ -84,5 +80,6 @@ const styles = StyleSheet.create({
     inputContainer: {
         borderBottomColor: "#777",
         borderBottomWidth: 0.5,
+        marginVertical: 12
     },
 })
