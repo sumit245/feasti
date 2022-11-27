@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text,StyleSheet } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import { PaymentIcon } from 'react-native-payment-icons';
 import { RadioButton } from 'react-native-paper';
 import { useEffect } from 'react';
 
 export default function PaymentCard({ item }) {
     const [trimmedState, setTrimmedState] = useState(false)
+    const changeSelector = () => {
+
+    }
     return (
         <View style={styles.creditcard}>
             <View style={styles.creditcardHeader}>
@@ -78,5 +81,5 @@ export default function PaymentCard({ item }) {
 }
 
 const styles = StyleSheet.create({
-    
+
 })
