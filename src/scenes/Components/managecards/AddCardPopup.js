@@ -9,7 +9,7 @@ export default function AddCardPopup({ visible, title, setVisible }) {
     const [card_holder, setCardHolder] = useState("")
     const [creditCard, setCreditCard] = useState({})
     const dispatch = useDispatch()
-    const cardAdd = () => {
+    const cardAdd = async () => {
         const { values, valid, status } = JSON.parse(creditCard)
         if (!valid) {
             cardForm.current.value = ""
@@ -27,7 +27,8 @@ export default function AddCardPopup({ visible, title, setVisible }) {
             cvc,
             brand: type
         }
-        dispatch(addCard(cardToSave))
+        const msg = await dispatch(addCard(cardToSave))
+        alert(msg)
     }
     const _onChange = (formData) => {
         let card = JSON.stringify(formData, null, "")
