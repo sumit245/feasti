@@ -5,9 +5,9 @@ import { PaymentIcon } from "react-native-payment-icons";
 import Icon from "react-native-vector-icons/Ionicons";
 import { styles } from "../../styles/HomeStyle"
 
-export default function CheckoutCards() {
+export default function CheckoutCards({ navigation }) {
     const _nextAction = () => {
-
+        navigation.navigate('checkout_card')
     }
     return (
         <TouchableOpacity style={styles.optionCard} onPress={_nextAction}>
