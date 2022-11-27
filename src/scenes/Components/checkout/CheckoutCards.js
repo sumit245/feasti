@@ -14,16 +14,15 @@ export default function CheckoutCards({ navigation }) {
     const getCard = () => {
         try {
             const { cards } = JSON.parse(user)
-            Array.isArray(cards) && cards.length > 0 ?
-                setCard(cards[0])
-                : setHasCard(false)
+            cards.length > 0 && setCard(cards[0])
+            setHasCard(true)
             console.log('====================================');
             console.log(cards);
             console.log('====================================');
         } catch (error) {
             setHasCard(false)
         }
-        card && Object.keys(card).length > 0 ? setHasCard(true) : setHasCard(false)
+
     }
     useEffect(() => {
         let componentMounted = true
@@ -34,7 +33,7 @@ export default function CheckoutCards({ navigation }) {
         return () => {
             componentMounted = false
         }
-    }, [])
+    }, [card])
 
     const _nextAction = () => {
         navigation.navigate('checkout_card')
