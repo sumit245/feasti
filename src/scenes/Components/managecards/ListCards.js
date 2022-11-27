@@ -7,8 +7,8 @@ import HeaderSimple from '../home/headerTop/HeaderSimple'
 export default function ListCards({ navigation }) {
     return (
         <SafeAreaView style={styles.container}>
-            <HeaderSimple title="Saved Cards" navigation={navigation} />
-            
+            <HeaderSimple title="Manage Payments" navigation={navigation} />
+
 
         </SafeAreaView>
     )
