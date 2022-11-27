@@ -9,7 +9,6 @@ import MaterialMapView from './MaterialMapView';
 import ManualEntry from './ManualEntry';
 import { useDispatch } from 'react-redux';
 import { getReadableAddress, setAdrressFromMap } from '../../../services/actions/addressactions';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 export default function AddAddress({ navigation }) {
     const dispatch = useDispatch()
 
