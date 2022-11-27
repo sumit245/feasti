@@ -546,4 +546,11 @@ export const styles = StyleSheet.create({
         height: '98%',
         width: 0.98 * width,
     },
+    noCardmsg: {
+        fontSize: 16,
+        textAlign: "center",
+        color: "#666",
+        paddingVertical: 10,
+        textTransform: "capitalize"
+    }
 })
