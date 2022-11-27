@@ -17,6 +17,9 @@ export default function CheckoutCards({ navigation }) {
             Array.isArray(cards) && cards.length > 0 ?
                 setCard(cards[0])
                 : setHasCard(false)
+            console.log('====================================');
+            console.log(cards);
+            console.log('====================================');
         } catch (error) {
             setHasCard(false)
         }
