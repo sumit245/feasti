@@ -8,18 +8,15 @@ import { styles } from "../../styles/HomeStyle"
 import { trimmer } from "../../../services/actions/cardActions";
 
 export default function CheckoutCards({ navigation }) {
+    const [hasCard, setHasCard] = useState(false)
     const { user } = useSelector(state => state.reducer)
     const [card, setCard] = useState({})
-    const [hasCard, setHasCard] = useState(false)
-    const getCard = () => {
-        try {
-            const { cards } = JSON.parse(user)
-            cards.length > 0 && setCard(cards[0])
+    const { cards } = JSON.parse(user)
+    const getAndSetCard = () => {
+        if (cards.length > 0) {
+            setCard(cards[0])
             setHasCard(true)
-            console.log('====================================');
-            console.log(cards);
-            console.log('====================================');
-        } catch (error) {
+        } else {
             setHasCard(false)
         }
 
@@ -27,7 +24,7 @@ export default function CheckoutCards({ navigation }) {
     useEffect(() => {
         let componentMounted = true
         if (componentMounted) {
-            getCard()
+            getAndSetCard()
         }
 
         return () => {

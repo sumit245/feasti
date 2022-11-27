@@ -5,7 +5,7 @@ import { styles } from "../../styles/HomeStyle"
 import { Button } from "react-native-paper";
 import { useSelector } from "react-redux";
 
-export default function CheckoutAddress() {
+export default function CheckoutAddress({ navigation }) {
     const [loading, setLoading] = useState(true);
     const [address, setAddress] = useState({
         address_type: "Home",
@@ -28,13 +28,14 @@ export default function CheckoutAddress() {
     }, [loading])
 
 
-    const onAddressSelect = () => { }
+    const onAddressSelect = () => {
+        navigation.navigate('list_address')
+    }
 
-    const _nextAction = () => { }
     return (
         loading ?
             (
-                <TouchableOpacity style={styles.optionCard} onPress={_nextAction} >
+                <TouchableOpacity style={styles.optionCard} onPress={onAddressSelect} >
                     <View style={styles.optionrow}>
                         <Text style={styles.optionsLabels}>{"Add new address"}</Text>
                         <Icon name="chevron-forward" color="#444" size={20} />
@@ -87,7 +88,7 @@ export default function CheckoutAddress() {
                             mode="text"
                             color="#ff6600"
                             style={{ marginRight: -20 }}
-                            onPress={_nextAction}
+                            onPress={onAddressSelect}
                         >
                             change
                         </Button>
