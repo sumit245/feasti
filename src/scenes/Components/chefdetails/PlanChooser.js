@@ -9,14 +9,18 @@ import { getSelectedPlan, setDeliverySlots } from "../../../services/actions/che
 export default function PlanChooser({ restaurant_id, navigation, category }) {
     const { nearByRestaurant } = useSelector(state => state.restaurantReducer)
     const dispatch = useDispatch()
+
     const getPlan = async (plan_name, base_price, customer_price, delivery_fee, index) => {
         await dispatch(getSelectedPlan(plan_name, base_price, customer_price, delivery_fee, index))
         await dispatch(setDeliverySlots(category))
+
         navigation.navigate("checkout", {
             restaurant_id: restaurant_id,
             category: category
         });
+
     };
+
     const [pricing, setPricing] = useState([])
 
     const getChefByID = async () => {
