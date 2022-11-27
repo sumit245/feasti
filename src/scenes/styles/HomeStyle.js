@@ -552,5 +552,15 @@ export const styles = StyleSheet.create({
         color: "#666",
         paddingVertical: 10,
         textTransform: "capitalize"
+    },
+    bottomBtnRound: {
+        borderRadius: 24,
+        borderWidth: 1,
+        borderColor: "#ff6600",
+        position: "absolute",
+        bottom: 20,
+        marginHorizontal: "25%",
+        padding: 10,
+        height: 48,
     }
 })
