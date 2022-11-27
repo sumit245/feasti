@@ -6,6 +6,7 @@ import HeaderSimple from '../home/headerTop/HeaderSimple'
 import { Provider } from 'react-native-paper'
 import { useSelector } from 'react-redux'
 import PaymentCard from './PaymentCard'
+import NoCard from './NoCard'
 
 export default function ListCards({ navigation }) {
     const { user } = useSelector(state => state.reducer)
@@ -32,6 +33,7 @@ export default function ListCards({ navigation }) {
                 <SwipeableFlatList
                     data={credit_cards}
                     renderItem={renderItem}
+                    ListEmptyComponent={NoCard}
                 />
             </SafeAreaView>
         </Provider>
