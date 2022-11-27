@@ -16,9 +16,10 @@ export default function CheckoutAddress() {
         country: '',
         postal_code: ''
     });
-    const { currentAddress } = useSelector(state => state.checkoutReducer)
+    const { user } = useSelector(state => state.reducer)
+    const { addresses } = JSON.parse(user)
     const getAndSetCurrentAddress = async () => {
-        setAddress(currentAddress)
+        setAddress(addresses[0])
         setLoading(false)
     }
 
