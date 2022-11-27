@@ -154,7 +154,7 @@ export default function Checkout({ route, navigation }) {
 
           <PlanDuration />
           <DeliverySlots category={category} />
-          <CheckoutAddress />
+          <CheckoutAddress navigation={navigation} />
           <CheckoutCards navigation={navigation} />
           <DeliveryNotes />
           <TipOption />
