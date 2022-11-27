@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 import HeaderSimple from '../home/headerTop/HeaderSimple'
 import { Provider } from 'react-native-paper'
 
-export default function CardsCheckout() {
+export default function CardsCheckout({ navigation }) {
     const { user } = useSelector(state => state.reducer)
     const [credit_cards, setCreditCards] = useState([])
     const [state, setState] = useState({
