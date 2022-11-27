@@ -29,13 +29,11 @@ export default function AddCardPopup({ visible, title, setVisible }) {
         }
         const msg = await dispatch(addCard(cardToSave))
         alert(msg)
+        setVisible(false)
     }
     const _onChange = (formData) => {
         let card = JSON.stringify(formData, null, "")
         setCreditCard(card)
-    }
-    const hideModal = () => {
-        setVisible(false)
     }
     return (
         <Portal>
@@ -43,7 +41,7 @@ export default function AddCardPopup({ visible, title, setVisible }) {
                 visible={visible}
                 contentContainerStyle={styles.addCreditCardContainer}
                 style={{ paddingBottom: 120 }}
-                onDismiss={hideModal}
+                onDismiss={() => setVisible(false)}
             >
                 <View style={styles.creditCardHeader}>
                     <Text style={styles.title}>{title}</Text>
