@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux'
 import SavedCards from "./SavedCards"
 import { LinearGradient } from 'expo-linear-gradient'
 import WalletCard from './WalletCard'
+import AddCardPopup from './AddCardPopup'
 
 export default function ListCards({ navigation }) {
     const { user } = useSelector(state => state.reducer)
@@ -16,6 +17,12 @@ export default function ListCards({ navigation }) {
         modalVisible: false,
         title: ""
     })
+    const hideModal = () => {
+        setState(prevState => ({
+            ...prevState,
+            modalVisible: false
+        }))
+    }
     useEffect(() => {
         let componentMount = true
         if (componentMount) {
@@ -27,7 +34,7 @@ export default function ListCards({ navigation }) {
             componentMount = false
         }
     }, [user])
-
+    const { modalVisible, title } = state
     return (
         <Provider>
             <SafeAreaView style={styles.container}>
@@ -43,6 +50,15 @@ export default function ListCards({ navigation }) {
                         <Text style={[styles.btnText, { marginLeft: 0 }]}>ADD NEW Card</Text>
                     </TouchableOpacity>
                 </LinearGradient>
+                {
+                    modalVisible && (
+                        <AddCardPopup
+                            visible={modalVisible}
+                            title={title}
+                            setVisible={hideModal}
+                        />
+                    )
+                }
             </SafeAreaView>
         </Provider>
     )
