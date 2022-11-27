@@ -5,12 +5,12 @@ import { styles } from '../../styles/HomeStyle'
 
 export default function NoCard() {
     return (
-        <View style={styles.container}>
+        <View style={styles.centeredView}>
             <Icon name="frowning" size={80} color="#666" />
             <Text style={styles.title}>
                 No Cards Added to payment method
             </Text>
-            <Text style={styles.headersubtitle}>
+            <Text style={styles.noCardmsg}>
                 You didn't have any cards saved.{"\n"}
                 Saved cards helps us to manage payments faster.
             </Text>
