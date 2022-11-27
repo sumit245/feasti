@@ -46,7 +46,7 @@ export default function StackNavigator() {
             <Stack.Screen name="checkout" component={Checkout} />
             <Stack.Screen name="favorites" component={Favorites} />
             <Stack.Screen name="documents" component={Documents} />
-            <Stack.Screen name="list_address" component={ListAddress} />
+            {/* <Stack.Screen name="list_address" component={ListAddress} /> */}
             <Stack.Screen name="list_cards" component={ListCards} />
         </Stack.Navigator>
     )
