@@ -51,8 +51,8 @@ const AddressCard = ({ item, checked, changeSelector }) => (
             item.address_type === 'home'
               ? 'home-outline'
               : item.address_type === 'office'
-              ? 'business-outline'
-              : 'earth-outline'
+                ? 'business-outline'
+                : 'earth-outline'
           }
           size={24}
           color="#777"

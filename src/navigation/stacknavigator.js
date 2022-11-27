@@ -14,6 +14,8 @@ import Checkout from "../scenes/Checkout";
 import { getMyOrders, getMySubscription } from "../services/actions/orderActions";
 import Favorites from "../scenes/Favorites";
 import Documents from "../scenes/Components/documents/Documents";
+import ListAddress from "../scenes/Components/manageaddress/ListAddress";
+import ListCards from "../scenes/Components/managecards/ListCards";
 const Stack = createStackNavigator()
 export default function StackNavigator() {
     const dispatch = useDispatch()
@@ -44,6 +46,8 @@ export default function StackNavigator() {
             <Stack.Screen name="checkout" component={Checkout} />
             <Stack.Screen name="favorites" component={Favorites} />
             <Stack.Screen name="documents" component={Documents} />
+            <Stack.Screen name="list_address" component={ListAddress} />
+            <Stack.Screen name="list_cards" component={ListCards} />
         </Stack.Navigator>
     )
 }
