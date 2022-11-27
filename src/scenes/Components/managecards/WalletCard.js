@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Image } from 'react-native'
 import React from 'react'
 import PIC from "../../../../assets/wallet.png"
 export default function WalletCard({ navigation, wallet_balance }) {
