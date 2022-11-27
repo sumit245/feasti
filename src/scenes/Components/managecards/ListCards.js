@@ -1,22 +1,23 @@
-import { View, Text, SafeAreaView } from 'react-native'
+import { View, Text, SafeAreaView,TouchableOpacity } from 'react-native'
 import React, { useState, useEffect } from 'react'
-import { SwipeableFlatList } from 'react-native-swipe-list'
 import { styles } from '../../styles/HomeStyle'
 import HeaderSimple from '../home/headerTop/HeaderSimple'
 import { Provider } from 'react-native-paper'
 import { useSelector } from 'react-redux'
 import PaymentCard from './PaymentCard'
-import NoCard from './NoCard'
+import SavedCards from "./SavedCards"
+import { LinearGradient } from 'expo-linear-gradient'
 
 export default function ListCards({ navigation }) {
     const { user } = useSelector(state => state.reducer)
     const [credit_cards, setCreditCards] = useState([])
+    const [state, setState] = useState({
+        modalVisible: false,
+        title: ""
+    })
     useEffect(() => {
         let componentMount = true
         if (componentMount) {
-            console.log('====================================');
-            console.log(user);
-            console.log('====================================');
             const { cards } = JSON.parse(user)
             setCreditCards(cards)
         }
@@ -24,17 +25,22 @@ export default function ListCards({ navigation }) {
             componentMount = false
         }
     }, [user])
-    const renderItem = ({ item }) => <PaymentCard item={item} />
+
     return (
         <Provider>
             <SafeAreaView style={styles.container}>
                 <HeaderSimple title="Manage Payments" navigation={navigation} />
 
-                <SwipeableFlatList
-                    data={credit_cards}
-                    renderItem={renderItem}
-                    ListEmptyComponent={NoCard}
-                />
+                <SavedCards credit_cards={credit_cards} />
+                <LinearGradient colors={["#ff9900", "#ff6600"]} style={styles.button}>
+                    <TouchableOpacity
+                        onPress={() => {
+                            setState({ modalVisible: true, title: "Add Card" });
+                        }}
+                    >
+                        <Text style={styles.btnText}>ADD NEW Card</Text>
+                    </TouchableOpacity>
+                </LinearGradient>
             </SafeAreaView>
         </Provider>
     )
