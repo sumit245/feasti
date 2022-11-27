@@ -17,8 +17,16 @@ export default function AddCardPopup({ visible, title, setVisible }) {
         if (card_holder === "") {
             alert("Please Enter Card Holder's Name")
         }
+        const { number, expiry, cvc, type } = values
+        const cardToSave = {
+            card_holder,
+            number,
+            expiry,
+            cvc,
+            brand: type
+        }
         console.log('====================================');
-        console.log(creditCard);
+        console.log(cardToSave);
         console.log('====================================');
     }
     const _onChange = (formData) => {
