@@ -6,6 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient'
 import { useSelector } from 'react-redux'
 import HeaderSimple from '../home/headerTop/HeaderSimple'
 import { Provider } from 'react-native-paper'
+import AddCardPopup from './AddCardPopup'
 
 export default function CardsCheckout({ navigation }) {
     const { user } = useSelector(state => state.reducer)
@@ -24,7 +25,13 @@ export default function CardsCheckout({ navigation }) {
             componentMount = false
         }
     }, [user])
-
+    const hideModal = () => {
+        setState(prevstate => ({
+            ...prevstate,
+            modalVisible: false
+        }))
+    }
+    const { modalVisible, title } = state
     return (
         <Provider>
             <SafeAreaView style={styles.container}>
@@ -39,6 +46,15 @@ export default function CardsCheckout({ navigation }) {
                         <Text style={[styles.btnText, { marginLeft: 0 }]}>ADD NEW Card</Text>
                     </TouchableOpacity>
                 </LinearGradient>
+                {
+                    modalVisible && (
+                        <AddCardPopup
+                            visible={modalVisible}
+                            setVisible={hideModal}
+                            title={title}
+                        />
+                    )
+                }
             </SafeAreaView>
         </Provider>
     )
