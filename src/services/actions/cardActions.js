@@ -6,8 +6,7 @@ export const addCard = (cardToAdd) => async (dispatch) => {
     const user = await AsyncStorageLib.getItem('user')
     const { _id } = JSON.parse(user)
     const response = await axios.put(`${ADD_CARD_URL}${_id}`, { card: cardToAdd })
-    const { data } = response
-    console.log('====================================');
-    console.log(data);
-    console.log('====================================');
+    const { data, msg } = response.data
+    await AsyncStorageLib.setItem('user', JSON.stringify(data))
+    return msg
 }
