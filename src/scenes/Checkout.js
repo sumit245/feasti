@@ -82,32 +82,35 @@ export default function Checkout({ route, navigation }) {
       email_id,
       currentAddress
     } = order
-    const orderToPlace = {
-      user_name,
-      phone,
-      email_id,
-      address: currentAddress,
-      card: currentCard,
-      user_id,
-      start_date,
-      end_date,
-      restaurant_id,
-      restaurant,
-      plan_name: selectedPlan.plan_name,
-      base_price: selectedPlan.base_price,
-      customer_price: selectedPlan.customer_price,
-      tip,
-      price: total,
-      time,
-      category,
-      tax,
-      delivery_fee: selectedPlan.delivery_fee,
-      service_fee: service_fee,
-      promo_code,
-      promo_id,
-      discount,
-      notes
-    }
+    console.log('====================================');
+    console.log(order);
+    console.log('====================================');
+    // const orderToPlace = {
+    //   user_name,
+    //   phone,
+    //   email_id,
+    //   address: currentAddress,
+    //   // card: currentCard,
+    //   user_id,
+    //   start_date,
+    //   end_date,
+    //   // restaurant_id,
+    //   // restaurant,
+    //   plan_name: selectedPlan.plan_name,
+    //   base_price: selectedPlan.base_price,
+    //   customer_price: selectedPlan.customer_price,
+    //   tip,
+    //   price: total,
+    //   time,
+    //   category,
+    //   tax,
+    //   delivery_fee: selectedPlan.delivery_fee,
+    //   service_fee: service_fee,
+    //   promo_code,
+    //   promo_id,
+    //   discount,
+    //   notes
+    // }
     setOrdering(false)
   }
 
