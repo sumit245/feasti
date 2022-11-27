@@ -562,7 +562,5 @@ export const styles = StyleSheet.create({
         marginHorizontal: "25%",
         padding: 10,
         height: 48,
-        alignItems: "center",
-        justifyContent: "center",
     }
 })

@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView,TouchableOpacity } from 'react-native'
+import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { styles } from '../../styles/HomeStyle'
 import HeaderSimple from '../home/headerTop/HeaderSimple'
@@ -38,7 +38,7 @@ export default function ListCards({ navigation }) {
                             setState({ modalVisible: true, title: "Add Card" });
                         }}
                     >
-                        <Text style={styles.btnText}>ADD NEW Card</Text>
+                        <Text style={[styles.btnText, { marginLeft: 0 }]}>ADD NEW Card</Text>
                     </TouchableOpacity>
                 </LinearGradient>
             </SafeAreaView>
