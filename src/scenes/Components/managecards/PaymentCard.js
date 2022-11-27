@@ -2,10 +2,18 @@ import React, { useEffect, useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { PaymentIcon } from 'react-native-payment-icons';
 import { RadioButton } from 'react-native-paper';
-
+import { trimmer, cvctrimmer } from "../../../services/actions/cardActions"
 export default function PaymentCard({ item, index }) {
     const [trimmedState, setTrimmedState] = useState(false)
     const [checked, setChecked] = useState(false)
+    let card_number = item.number;
+    card_number = trimmer(card_number);
+    let cryptcvc = "";
+    if (trimmedState) {
+        cryptcvc = cvctrimmer(item.cvc);
+    } else {
+        cryptcvc = item.cvc;
+    }
 
     const changeSelector = () => {
 
