@@ -3,8 +3,10 @@ import { View, Text, StyleSheet } from 'react-native'
 import { PaymentIcon } from 'react-native-payment-icons';
 import { RadioButton } from 'react-native-paper';
 
-export default function PaymentCard({ item }) {
+export default function PaymentCard({ item, index }) {
     const [trimmedState, setTrimmedState] = useState(false)
+    const [checked, setChecked] = useState(false)
+
     const changeSelector = () => {
 
     }

@@ -18,7 +18,7 @@ export default function SavedCards({ credit_cards }) {
         }
     }, [credit_cards])
 
-    const renderItem = ({ item }) => <PaymentCard item={item} />
+    const renderItem = ({ item, index }) => <PaymentCard item={item} index={index} />
     if (loading) return (<ActivityIndicator size="large" animating />)
     return (
         <SwipeableFlatList
