@@ -8,7 +8,7 @@ export default function Documents({ route, navigation }) {
     const { papers } = route.params
 
     const ListEmptyComponent = () => (
-        <View style={styles.centeredView}>
+        <View style={[styles.centeredView, { marginLeft: '10%' }]}>
             <Icons
                 name='ios-sad-outline'
                 size={54}
