@@ -32,7 +32,7 @@ export default function ListCards({ navigation }) {
                 <HeaderSimple title="Manage Payments" navigation={navigation} />
 
                 <SavedCards credit_cards={credit_cards} />
-                <LinearGradient colors={["#ff9900", "#ff6600"]} style={styles.button}>
+                <LinearGradient colors={["#ff9900", "#ff6600"]} style={styles.bottomBtnRound}>
                     <TouchableOpacity
                         onPress={() => {
                             setState({ modalVisible: true, title: "Add Card" });
