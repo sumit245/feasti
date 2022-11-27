@@ -1,9 +1,10 @@
-import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
-import { Portal, Modal, Button } from 'react-native-paper'
+import { View, Text, StyleSheet, TextInput } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { Portal, Modal, Button, } from 'react-native-paper'
 import { LiteCreditCardInput } from 'react-native-credit-card-input'
 
 export default function AddCardPopup({ visible, title, setVisible }) {
+    const [card_holder, setCardHolder] = useState("")
     const cardAdd = () => { }
     const _onChange = () => { }
     const hideModal = () => {
@@ -33,6 +34,20 @@ export default function AddCardPopup({ visible, title, setVisible }) {
                         }
                     }}
                 />
+                <View style={{ marginHorizontal: 8, marginVertical: 20 }}>
+                    <Text
+                        style={styles.title}
+                    >
+                        Cardholder's Name
+                    </Text>
+                    <TextInput
+                        placeholder="Name"
+                        selectionColor="#ff6600"
+                        defaultValue={card_holder}
+                        style={styles.inputContainer}
+                        onChangeText={(text) => setCardHolder(text)}
+                    />
+                </View>
             </Modal>
         </Portal>
     )
@@ -47,6 +62,7 @@ const styles = StyleSheet.create({
     creditCardHeader: {
         flexDirection: "row",
         justifyContent: "space-between",
+        alignItems: 'center',
         marginHorizontal: 8,
         marginBottom: 16,
     },
