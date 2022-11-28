@@ -14,7 +14,8 @@ import {
     SET_DELIVERY_PICKUP,
     SET_SERVICE_FEE,
     SET_TAXES,
-    SET_TOTAL
+    SET_TOTAL,
+    SET_SELECTED_CARD
 } from "../actions/checkoutAction";
 
 const order = {
@@ -49,6 +50,8 @@ export default function checkoutReducer(state = order, action) {
             return ({ ...state, time: action.payload })
         case SET_SELECTED_ADDRESS:
             return ({ ...state, currentAddress: action.payload })
+        case SET_SELECTED_CARD:
+            return ({ ...state, card: action.payload })
         case SET_NOTES:
             return ({ ...state, notes: action.payload })
         case SET_TIP_AMOUNT:
@@ -57,6 +60,7 @@ export default function checkoutReducer(state = order, action) {
             return ({ ...state, isDelivery: action.payload })
         case SET_SERVICE_FEE:
             return ({ ...state, serviceFee: action.payload })
+        
         case SET_TAXES:
             return ({ ...state, taxes: action.payload })
         case SET_TOTAL:
