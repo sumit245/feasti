@@ -25,7 +25,7 @@ import DeliverySelector from './Components/checkout/DeliverySelector';
 import BillingTable from "./Components/checkout/BillingTable"
 import { getRestaurantByID } from '../services/actions/retaurantsAction';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser, setServiceCharges } from '../services/actions/checkoutAction';
+import { getUser, placeOrder, setServiceCharges } from '../services/actions/checkoutAction';
 export default function Checkout({ route, navigation }) {
   const { nearByRestaurant } = useSelector(state => state.restaurantReducer)
   const { selectedPlan, total } = useSelector(state => state.checkoutReducer)
@@ -69,48 +69,7 @@ export default function Checkout({ route, navigation }) {
 
   const orderNow = () => {
     setOrdering(true)
-    const {
-      user_name,
-      user_id,
-      total,
-      tip,
-      time,
-      selectedPlan,
-      start_date,
-      end_date,
-      phone,
-      email_id,
-      currentAddress
-    } = order
-    console.log('====================================');
-    console.log(order);
-    console.log('====================================');
-    // const orderToPlace = {
-    //   user_name,
-    //   phone,
-    //   email_id,
-    //   address: currentAddress,
-    //   // card: currentCard,
-    //   user_id,
-    //   start_date,
-    //   end_date,
-    //   // restaurant_id,
-    //   // restaurant,
-    //   plan_name: selectedPlan.plan_name,
-    //   base_price: selectedPlan.base_price,
-    //   customer_price: selectedPlan.customer_price,
-    //   tip,
-    //   price: total,
-    //   time,
-    //   category,
-    //   tax,
-    //   delivery_fee: selectedPlan.delivery_fee,
-    //   service_fee: service_fee,
-    //   promo_code,
-    //   promo_id,
-    //   discount,
-    //   notes
-    // }
+    dispatch(placeOrder(order))
     setOrdering(false)
   }
 
