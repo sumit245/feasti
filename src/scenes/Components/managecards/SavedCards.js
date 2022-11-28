@@ -29,7 +29,7 @@ export default function SavedCards({ credit_cards }) {
             renderItem={(item) => renderItem(item)}
             keyExtractor={(item) => item.number}
             ListEmptyComponent={NoCard}
-            renderRightActions={({ item }) = rendeRightActionButton(item)}
+            renderRightActions={({ item }) => rendeRightActionButton(item)}
         />
     )
 }
