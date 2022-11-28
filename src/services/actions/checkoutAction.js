@@ -30,7 +30,9 @@ export const SET_DELIVERY_PICKUP = "SET_DELIVERY_PICKUP" //isDelivery
 export const SET_RESATURANT_ADDRESS = "SET_RESTAURANT_ADDRESS"
 export const SET_CURRENT_SLOT = "SET_CURRENT_SLOT"
 export const SET_SERVICE_FEE = "SET_SERVICE_FEE"
+export const SET_SERVICE_RATES = "SET_SERVICE_RATES"
 export const SET_TAXES = "SET_TAXES"
+
 
 export const getUser = () => async (dispatch) => {
     const user = await AsyncStorageLib.getItem('user')
@@ -98,6 +100,7 @@ export const setServiceCharges = () => async (dispatch) => {
     const response = await axios.get(CHECKOUT_URL)
     const { service_fee, taxes } = response.data
     dispatch({ type: SET_SERVICE_FEE, payload: service_fee })
+    dispatch({ type: SET_SERVICE_RATES, payload: service_fee })
     dispatch({ type: SET_TAXES, payload: taxes })
 }
 
@@ -111,7 +114,15 @@ export const calculateTotal = (price, serviceFee, tax, isDelivery, delivery_fee,
 }
 
 export const placeOrder = (order) => async (dispatch) => {
-    const response = await axios.post(PLACE_ORDER_URL, { orderToPlace: order })
+    const response = await axios.post(PLACE_ORDER_URL,
+        {
+            orderToPlace:
+            {
+                ...order,
+                order_time: new Date().toISOString(),
+                expiry_time: moment().add(15, 'minutes')
+            }
+        })
     const { data, msg, status } = response.data
     return { data, status }
 }
@@ -183,8 +194,8 @@ export const placeOrder = (order) => async (dispatch) => {
   //             start_date,
   //             end_date,
   //             notes,
-  //             order_time: new Date().toISOString(),
-  //             expiry_time: moment().add(15, 'minutes'),
+  //             ,
+  //             ,
   //           };
   //           axios
   //             .post(ORDER_URL, newOrder)

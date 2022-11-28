@@ -42,6 +42,7 @@ export default function Checkout({ route, navigation }) {
       locality,
       city,
       state: rest.state,
+      phone: rest.phone,
       country,
       postal_code
     }
@@ -70,7 +71,7 @@ export default function Checkout({ route, navigation }) {
         plan_name,
         start_date,
         category,
-        time
+        timebuild
       })
       setOrdering(false)
     }

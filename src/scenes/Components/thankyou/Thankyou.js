@@ -23,7 +23,7 @@ export default function Thankyou({ route, navigation }) {
                 resizeMode="cover"
             >
                 <View>
-                    <Text style={styles.title}>
+                    <Text style={[styles.title, { textAlign: 'center', marginTop: 64 }]}>
                         Thank you for ordering!!!
                     </Text>
                     <Text style={{ textAlign: "center", lineHeight: 20 }}>
