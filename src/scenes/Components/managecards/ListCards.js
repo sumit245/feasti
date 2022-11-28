@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native'
+import { Text, SafeAreaView, TouchableOpacity } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { styles } from '../../styles/HomeStyle'
 import HeaderSimple from '../home/headerTop/HeaderSimple'
@@ -27,9 +27,6 @@ export default function ListCards({ navigation }) {
         let componentMount = true
         if (componentMount) {
             const { cards, wallet_balance } = JSON.parse(user)
-            console.log('====================================');
-            console.log(cards);
-            console.log('====================================');
             setBalance(wallet_balance)
             setCreditCards(cards)
         }
