@@ -20,6 +20,10 @@ export const SET_DELIVERY_PICKUP = "SET_DELIVERY_PICKUP"
 export const SET_SERVICE_FEE = "SET_SERVICE_FEE"
 export const SET_TAXES = "SET_TAXES"
 export const SET_TOTAL = "SET_TOTAL"
+export const SET_CUSTOMER_PRICE = "SET_CUSTOMER_PRICE"
+export const SET_TOTAL_SERVICE = "SET_TOTAL_SERVICE"
+export const SET_DELIVERY_FEE = "SET_DELIVERY_FEE"
+export const SET_TOTAL_TAX = "SET_TOTAL_TAX"
 
 export const getUser = () => async (dispatch) => {
     const user = await AsyncStorageLib.getItem('user')
@@ -81,21 +85,17 @@ export const setServiceCharges = () => async (dispatch) => {
 }
 
 export const calculateTotal = (price, serviceFee, tax, isDelivery, delivery_fee, total) => async (dispatch) => {
+    dispatch({ type: SET_CUSTOMER_PRICE, payload: price })
+    dispatch({ type: SET_TOTAL_SERVICE, payload: serviceFee })
+    dispatch({ SET_TOTAL_TAX, payload: serviceFee })
+    isDelivery ? dispatch({ type: SET_DELIVERY_FEE, payload: delivery_fee }) :
+        dispatch({ type: SET_DELIVERY_FEE, payload: 'N/A' })
     dispatch({ type: SET_TOTAL, payload: total })
-    console.log('====================================');
-    console.log("price: ", price);
-    console.log('====================================');
-    console.log("Service Charge: ", serviceFee);
-    console.log('Delivery Fee: ', delivery_fee)
-    console.log('Tax: ', tax);
-    console.log('====================================');
-    console.log('Delivery: ', isDelivery);
-    console.log('====================================');
-    console.log('====================================');
-    console.log('====================================');
-    console.log('====================================');
 }
 
+export const placeOrder = (order) => async (dispatch) => {
+    await console.log(order);
+}
 // const orderNow = async () => {
   //   setOrdering(true);
   //   const {
