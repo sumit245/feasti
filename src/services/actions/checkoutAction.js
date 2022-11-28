@@ -113,7 +113,7 @@ export const calculateTotal = (price, serviceFee, tax, isDelivery, delivery_fee,
 export const placeOrder = (order) => async (dispatch) => {
     const response = await axios.post(PLACE_ORDER_URL, { orderToPlace: order })
     const { data, msg, status } = response.data
-    await console.log(status, msg);
+    return { data, status }
 }
 // const orderNow = async () => {
   //   setOrdering(true);
