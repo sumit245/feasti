@@ -136,15 +136,6 @@ export default class SortAndFilter extends Component {
                                         >
                                             Price
                                         </Text>
-                                        <Text
-                                            style={[
-                                                styles.filterText,
-                                                { color: selected === 2 ? "#ff660" : "#444" },
-                                            ]}
-                                            onPress={() => this.toggleRight("delivery_filter", 3)}
-                                        >
-                                            Delivery
-                                        </Text>
                                     </View>
                                     <View style={styles.sortContent}>
                                         {filter === "type_filter" ? (
@@ -211,35 +202,6 @@ export default class SortAndFilter extends Component {
                                                 <RadioButton.Item label="High to Low" value="h2l" />
                                                 <RadioButton.Item label="Low to High" value="l2h" />
                                             </RadioButton.Group>
-                                        ) : filter === "delivery_filter" ? (
-                                            <View
-                                                style={{
-                                                    // marginTop: "20%",
-                                                    alignItems: "flex-start",
-                                                    justifyContent: "center",
-                                                }}
-                                            >
-                                                <View style={{ flexDirection: 'row', paddingHorizontal: 10, justifyContent: 'space-between', alignItems: 'center' }} >
-                                                    <Checkbox
-                                                        status={'checked'}
-                                                        onPress={() => {
-                                                            setChecked(!checked);
-                                                        }}
-                                                        color="#ff6600"
-                                                    />
-                                                    <Text>Doorstep Delivery</Text>
-                                                </View>
-                                                <View style={{ flexDirection: 'row', paddingHorizontal: 10, justifyContent: 'space-between', alignItems: 'center' }} >
-                                                    <Checkbox
-                                                        status={'unchecked'}
-                                                        onPress={() => {
-                                                            setChecked(!checked);
-                                                        }}
-                                                        color="#ff6600"
-                                                    />
-                                                    <Text>Restaurant Pickup</Text>
-                                                </View>
-                                            </View>
                                         )
                                             : null}
                                     </View>
