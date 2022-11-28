@@ -31,7 +31,7 @@ export default function PaymentCard({ item, index }) {
         return () => {
             componentMount = false
         }
-    }, [item])
+    }, [item, trimmedState])
 
     return (
         <View style={styles.swipableCard} key={index}>
