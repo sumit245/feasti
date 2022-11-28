@@ -20,7 +20,7 @@ export default function SavedCards({ credit_cards }) {
     }, [credit_cards])
 
     const renderItem = ({ item, index }) => <PaymentCard item={item} index={index} />
-    const rendeRightActionButton = ({ item }) => <SwipableActions item={item} />
+    const rendeRightActionButton = ({ item, index }) => <SwipableActions item={item} index={index} />
     if (loading) return (<ActivityIndicator size="large" animating />)
     return (
         <SwipeableFlatList
@@ -29,7 +29,7 @@ export default function SavedCards({ credit_cards }) {
             renderItem={(item) => renderItem(item)}
             keyExtractor={(item) => item.number}
             ListEmptyComponent={NoCard}
-            renderRightActions={({ item }) => rendeRightActionButton(item)}
+            renderRightActions={({ item, index }) => rendeRightActionButton(item, index)}
         />
     )
 }
