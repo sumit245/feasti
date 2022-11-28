@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import { SwipeableQuickActions, SwipeableQuickActionButton } from 'react-native-swipe-list'
-import Trash from "../../../../assets/icon.png"
+import Trash from "../../../../assets/Trash.png"
 export default function SwipableActions({ item }) {
     const deleteAddress = () => { }
     return (

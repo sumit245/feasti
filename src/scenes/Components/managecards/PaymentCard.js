@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text } from 'react-native'
 import { PaymentIcon } from 'react-native-payment-icons';
 import { RadioButton } from 'react-native-paper';
+import { styles } from "../../styles/HomeStyle"
 import { trimmer, cvctrimmer } from "../../../services/actions/cardActions"
 export default function PaymentCard({ item, index }) {
     const [trimmedState, setTrimmedState] = useState(false)
@@ -19,8 +20,8 @@ export default function PaymentCard({ item, index }) {
 
     }
     return (
-        <View style={styles.creditcard}>
-            <View style={styles.creditcardHeader}>
+        <View style={styles.paymentCard}>
+            <View style={styles.paymentCardHeader}>
                 <View
                     style={{
                         flexDirection: "row",
@@ -46,7 +47,7 @@ export default function PaymentCard({ item, index }) {
                     color="#ff6600"
                 />
             </View>
-            <View style={styles.cardBody}>
+            <View style={styles.paymentCardBody}>
                 <View
                     style={{
                         flexDirection: "row",
@@ -88,7 +89,3 @@ export default function PaymentCard({ item, index }) {
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-
-})
