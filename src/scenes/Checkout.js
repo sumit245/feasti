@@ -25,7 +25,7 @@ import DeliverySelector from './Components/checkout/DeliverySelector';
 import BillingTable from "./Components/checkout/BillingTable"
 import { getRestaurantByID } from '../services/actions/retaurantsAction';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser, placeOrder, setRestaurantDetails, setServiceCharges } from '../services/actions/checkoutAction';
+import { getUser, placeOrder, setMealDetails, setRestaurantDetails, setServiceCharges } from '../services/actions/checkoutAction';
 export default function Checkout({ route, navigation }) {
   const { nearByRestaurant } = useSelector(state => state.restaurantReducer)
   const { selectedPlan, total } = useSelector(state => state.checkoutReducer)
@@ -39,7 +39,8 @@ export default function Checkout({ route, navigation }) {
     const rest = await getRestaurantByID(restaurant_id, nearByRestaurant)
     await dispatch(getUser())
     await dispatch(setServiceCharges())
-    await dispatch(setRestaurantDetails(restaurant_id, restaurant.restaurant_name))
+    await dispatch(setRestaurantDetails(restaurant_id, rest.restaurant_name))
+    await dispatch(setMealDetails(category, rest.meal_type))
     setRestaurant(rest)
     setLoaded(true)
   }
