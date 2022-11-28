@@ -36,7 +36,7 @@ export default function OrderCard({ item, navigation }) {
                             <Text style={{ fontSize: 12 }}>{item.plan_name}</Text>
                         </View>
                     </View>
-                    <Text style={[styles.title, { fontSize: 16 }]}>${item.total}</Text>
+                    <Text style={[styles.title, { fontSize: 16 }]}>${parseFloat(item.total).toFixed(2)}</Text>
                 </View>
 
             </Card.Content>
