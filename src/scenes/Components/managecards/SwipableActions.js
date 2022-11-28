@@ -1,9 +1,12 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import { SwipeableQuickActions, SwipeableQuickActionButton } from 'react-native-swipe-list'
 import Trash from "../../../../assets/Trash.png"
-export default function SwipableActions({ item }) {
-    const deleteAddress = () => { }
+export default function SwipableActions({ item, index }) {
+    const deleteCard = () => {
+        console.log('====================================');
+        console.log(index);
+        console.log('====================================');
+    }
     return (
         <SwipeableQuickActions
             style={{
@@ -16,10 +19,9 @@ export default function SwipableActions({ item }) {
                 style={{
                     backgroundColor: "#ff2244",
                     padding: 8,
-                    height: 100,
-                    marginLeft: -24
+                    height: 94,
                 }}
-                onPress={() => { deleteAddress(item.number) }}
+                onPress={() => deleteCard(index)}
                 imageSource={Trash}
                 imageStyle={{ height: 20, width: 20, alignSelf: "center" }}
             />
