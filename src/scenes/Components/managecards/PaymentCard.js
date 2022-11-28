@@ -19,11 +19,10 @@ export default function PaymentCard({ item, index }) {
             let number = trimmer(item.number);
             setCardNumber(number)
             let cryptcvc = "";
-            if (!trimmedState) {
-                cryptcvc = cvctrimmer(item.cvc);
-                setCvc(cryptcvc)
+            if (trimmedState) {
+                setCvc(item.cvc)
             } else {
-                cryptcvc = item.cvc;
+                cryptcvc = cvctrimmer(item.cvc);
                 setCvc(cryptcvc)
             }
         }
