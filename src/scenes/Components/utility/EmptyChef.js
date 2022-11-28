@@ -6,10 +6,15 @@ import { useSelector } from 'react-redux';
 export default function EmptyChef() {
     const { user } = useSelector(state => state.reducer)
     const [city, setCity] = useState("")
+    const [loaded, setLoaded] = useState(false)
+    const fetchCities = () => {
+        const { addresses } = JSON.parse(user)
+        setCity(addresses[0])
+        setLoaded(true)
+    }
     useEffect(() => {
-        let localUser = user && JSON.parse(user)
-        setCity(localUser.addresses[0].city)
-    }, [])
+        fetchCities()
+    }, [loaded])
 
     return (
         <View
