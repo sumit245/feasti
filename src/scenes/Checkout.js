@@ -47,7 +47,7 @@ export default function Checkout({ route, navigation }) {
     }
     await dispatch(getUser())
     await dispatch(setServiceCharges())
-    await dispatch(setRestaurantDetails(restaurant_id, rest.restaurant_name, restaurant_address))
+    await dispatch(setRestaurantDetails(rest.restaurant_id, rest.restaurant_name, restaurant_address))
     await dispatch(setMealDetails(category, rest.meal_type))
     setRestaurant(rest)
     setLoaded(true)
@@ -56,22 +56,6 @@ export default function Checkout({ route, navigation }) {
   useEffect(() => {
     getChefByID()
   }, [])
-
-  // const [state, setState] = useState({
-  //   loading: true,
-  //   restaurant: {},
-  //   user: {},
-  //   address: {},
-  //   base_price: "",
-  //   price: "",
-  //   tip: 0,
-  //   discount: 0,
-  //   card: {},
-  //   taxes: 0,
-  //   delivery_fee: 0,
-  //   service_fee: 0,
-  //   promo_code: '',
-  // });
 
   const [isKeyboardOn, setKeyboardOn] = useState(false);
   const [isOrdering, setOrdering] = useState(false);
