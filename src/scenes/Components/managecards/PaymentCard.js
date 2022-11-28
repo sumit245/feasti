@@ -36,7 +36,7 @@ export default function PaymentCard({ item, index }) {
     return (
         <View style={styles.swipableCard} key={index}>
             <View style={styles.swipableCardHeader}>
-                <View style={[styles.optionrow,{width:'100%'}]}>
+                <View style={styles.optionrow}>
                     <PaymentIcon
                         type={
                             item.brand === "master-card"
@@ -56,11 +56,11 @@ export default function PaymentCard({ item, index }) {
                 />
             </View>
             <View style={styles.swipableCardBody}>
-                <View style={[styles.optionrow,{width:'100%'}]}>
+                <View style={[styles.optionrow, { width: '100%' }]}>
                     <Text style={styles.title}> {item.card_holder} </Text>
                     <Text style={styles.title}>{cvc}</Text>
                 </View>
-                <View style={[styles.optionrow,{width:'100%'}]}>
+                <View style={[styles.optionrow, { width: '100%' }]}>
                     <Text style={styles.expiry}>{item.expiry}</Text>
                     <Text
                         style={styles.billLink}
