@@ -33,7 +33,7 @@ export default function Thankyou({ route, navigation }) {
                     <Text
                         style={{ fontSize: 16, textAlign: "center", fontWeight: "bold", lineHeight: 20, marginTop: 12 }}
                     >
-                        {plan_name}subscription will start from
+                        {plan_name} subscription will start from
                         {"\n" + start_date}.
                     </Text>
                     <Text
