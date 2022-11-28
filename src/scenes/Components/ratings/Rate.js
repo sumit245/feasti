@@ -14,7 +14,8 @@ import { AirbnbRating } from 'react-native-elements';
 import { Provider } from 'react-native-paper';
 import Loader from '../utility/Loader';
 
-export default function Rate({ navigation, restaurant, order }) {
+export default function Rate({ route, navigation }) {
+    const { order_id } = route.params
     const [selected, setSelected] = useState(false);
     const [details, setDetails] = useState('');
     const [rating, setRating] = useState(3);
@@ -35,36 +36,8 @@ export default function Rate({ navigation, restaurant, order }) {
         setSelected(!selected);
     };
     const onSubmit = () => { }
-    // const onSubmit = async () => {
-    //     setLoaded(true);
-    //     let review = {
-    //         user_id: order.user_id,
-    //         user_name: order.user_name,
-    //         restaurant_id: order.restaurant_id,
-    //         role: 'user',
-    //         order_id: order.order_id,
-    //         start_date: order.start_date,
-    //         end_date: order.end_date,
-    //         order_time: order.order_time,
-    //         delivered_on: order.end_date,
-    //         plan_name: order.plan,
-    //         base_price: parseFloat(order.base_price) - parseFloat(order.discount),
-    //         rating: rating,
-    //         details: details,
-    //         likes: likes,
-    //         review_at: moment(),
-    //     };
-    //     const response = await axios.post(
-    //         'http://54.146.133.108:5000/api/review/',
-    //         review
-    //     );
-    //     const { data } = response;
-    //     setLoaded(false);
-    //     if (data !== null) {
-    //         setPlaced(true);
-    //         Actions.pop();
-    //     }
-    // };
+
+
     const features = [
         'Taste',
         'Time',
@@ -97,7 +70,7 @@ export default function Rate({ navigation, restaurant, order }) {
                                     Thanks for rating!
                                 </Text>
                                 <Text style={{ textAlign: 'center', fontWeight: 'bold' }}>
-                                    Order {order.order_id}
+                                    Order {order_id}
                                 </Text>
                             </View>
                             <AirbnbRating
