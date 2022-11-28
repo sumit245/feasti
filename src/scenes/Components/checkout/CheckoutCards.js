@@ -12,8 +12,9 @@ export default function CheckoutCards({ navigation }) {
     const { user } = useSelector(state => state.reducer)
     const [card, setCard] = useState({})
     const [card_number, setCardNumber] = useState("")
-    const { cards } = JSON.parse(user)
+
     const getAndSetCard = () => {
+        const { cards } = JSON.parse(user)
         if (cards.length > 0) {
             setCard(cards[0])
             let number = cards[0].number

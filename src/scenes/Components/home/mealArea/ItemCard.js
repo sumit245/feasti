@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToFavorite } from "../../../../services/actions/actions";
 export default function ItemCard({ item, navigation, category }) {
     let { user } = useSelector(state => state.reducer)
-    user = JSON.parse(user)
+
     const dispatch = useDispatch()
     const [favorite, setFavorite] = useState(false)
     const [state, setState] = useState({
@@ -33,6 +33,7 @@ export default function ItemCard({ item, navigation, category }) {
     useEffect(() => {
         let componentMount = true
         if (componentMount) {
+            user = JSON.parse(user)
             const { favorite } = user
             const isFavorite = Array.isArray(favorite) && favorite.includes(restaurant_name)
             setFavorite(isFavorite)
