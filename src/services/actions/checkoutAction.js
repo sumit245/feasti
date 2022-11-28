@@ -23,13 +23,13 @@ export const SET_TOTAL = "SET_TOTAL"
 
 export const getUser = () => async (dispatch) => {
     const user = await AsyncStorageLib.getItem('user')
-    const currentUser = JSON.parse(user)
-    const { phone, first_name, last_name, email_id, user_id, addresses } = currentUser
+    const { phone, first_name, last_name, email_id, user_id, addresses, cards } = JSON.parse(user)
     dispatch({ type: SET_USER, payload: first_name + ' ' + last_name })
     dispatch({ type: SET_PHONE, payload: phone })
     dispatch({ type: SET_EMAIL_ID, payload: email_id })
     dispatch({ type: SET_USER_ID, payload: user_id })
     dispatch({ type: SET_SELECTED_ADDRESS, payload: addresses[0] })
+    dispatch({ type: SET_SELECTED_CARD, payload: cards[0] })
 }
 
 export const getSelectedPlan = (plan_name, base_price, customer_price, delivery_fee) => async (dispatch) => {
@@ -82,6 +82,18 @@ export const setServiceCharges = () => async (dispatch) => {
 
 export const calculateTotal = (price, serviceFee, tax, isDelivery, delivery_fee, total) => async (dispatch) => {
     dispatch({ type: SET_TOTAL, payload: total })
+    console.log('====================================');
+    console.log("price: ", price);
+    console.log('====================================');
+    console.log("Service Charge: ", serviceFee);
+    console.log('Delivery Fee: ', delivery_fee)
+    console.log('Tax: ', tax);
+    console.log('====================================');
+    console.log('Delivery: ', isDelivery);
+    console.log('====================================');
+    console.log('====================================');
+    console.log('====================================');
+    console.log('====================================');
 }
 
 // const orderNow = async () => {
