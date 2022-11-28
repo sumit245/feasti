@@ -1,7 +1,7 @@
 import AsyncStorageLib from "@react-native-async-storage/async-storage"
 import axios from "axios"
 import moment from "moment"
-import { CHECKOUT_URL, ORDER_URL, PROFIT_URL, SLOT_URL } from "../EndPoints"
+import { CHECKOUT_URL, ORDER_URL, PLACE_ORDER_URL, PROFIT_URL, SLOT_URL } from "../EndPoints"
 
 export const SET_SELECTED_MEAL = "SET_SELECTED_MEAL"
 export const SET_USER = "SET_USER" //user name
@@ -111,7 +111,7 @@ export const calculateTotal = (price, serviceFee, tax, isDelivery, delivery_fee,
 }
 
 export const placeOrder = (order) => async (dispatch) => {
-    const response = await axios.post(ORDER_URL, order)
+    const response = await axios.post(PLACE_ORDER_URL, order)
     const { data, msg, status } = response.data
     await console.log(status, msg);
 }
