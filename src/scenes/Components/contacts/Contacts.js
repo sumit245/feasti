@@ -11,14 +11,14 @@ import {
 } from "react-native";
 import { IconButton, Provider } from "react-native-paper";
 import BackButton from "../utility/BackButton";
-// import axios from "axios";
-// import { getUser } from "../../../services/user/getuser";
-// import * as MailComposer from "expo-mail-composer"
+import { useSelector, useDispatch } from "react-redux";
 
 const DARKGRAY = "#777";
 const { width, height } = Dimensions.get("window");
 
 export default function Contacts({ navigation }) {
+    const dispatch = useDispatch()
+    const { user } = useSelector(state => state.reducer)
     const [info, setInfo] = useState({
         receipient: "support@feasti.com",
         subject: "",
@@ -31,6 +31,20 @@ export default function Contacts({ navigation }) {
 
     const sendEmail = () => { }
     const deleteMsg = () => { }
+    useEffect(() => {
+        let componentMount = true
+        if (componentMount) {
+            const { email_id } = JSON.parse(user)
+            setInfo(info => ({
+                ...info,
+                email_id: email_id
+            }))
+        }
+        return () => {
+            componentMount = false
+        }
+    }, [user])
+
     return (
         <Provider>
             <SafeAreaView style={styles.container}>
