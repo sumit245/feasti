@@ -13,10 +13,10 @@ import HeaderTwo from "../home/headerTop/HeaderTwo";
 
 export default function Thankyou({ route, navigation }) {
     const { plan_name, start_date, category, time } = route.params
-    
+
     return (
         <SafeAreaView style={styles.container}>
-            <HeaderTwo navigation={navigation}/>
+            <HeaderTwo navigation={navigation} title="Order Placed!" />
             <ImageBackground
                 source={require("../../../../assets/order_placed.gif")}
                 style={{ width: "100%", height: "100%" }}

@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import BackButton from '../../utility/BackButton'
 
-export default function HeaderTwo({ navigation }) {
+export default function HeaderTwo({ navigation, title }) {
     return (
         <View style={{ flexDirection: 'row', height: 48, justifyContent: 'space-between', marginHorizontal: 2 }}>
             <BackButton navigation={navigation} />
