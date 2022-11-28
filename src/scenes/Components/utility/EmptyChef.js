@@ -7,7 +7,7 @@ export default function EmptyChef() {
     const { user } = useSelector(state => state.reducer)
     const [city, setCity] = useState("")
     useEffect(() => {
-        let localUser = JSON.parse(user)
+        let localUser = user && JSON.parse(user)
         setCity(localUser.addresses[0].city)
     }, [])
 
