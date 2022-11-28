@@ -8,7 +8,9 @@ import moment from "moment";
 import { styles } from "../../styles/HomeStyle";
 
 export default function OrderCard({ item, navigation }) {
-    const findAndRate = () => { }
+    const findAndRate = () => {
+        navigation.navigate('rate_order')
+    }
     return (
         <Card style={{ padding: 10, margin: 4 }} key={item.order_id}>
             <Card.Content>
