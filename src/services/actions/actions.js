@@ -110,9 +110,14 @@ export const deleteCardFromAPI = (index) => async (dispatch) => {
     const user = await AsyncStorage.getItem('user')
     let { _id, cards } = JSON.parse(user)
     Array.isArray(cards) && cards.splice(index, 1)
+    const response = await axios.put(`${USER_URL}/${_id}`, {
+        cards: cards
+    })
+    const { status, data, msg } = response.data
     console.log('====================================');
-    console.log(cards);
+    console.log(status, msg);
     console.log('====================================');
+    dispatch({ type: SAVE_USER, payload: data })
 }
 export const getSavedCards = () => async (dispatch) => {
     const user = await AsyncStorage.getItem('user')
