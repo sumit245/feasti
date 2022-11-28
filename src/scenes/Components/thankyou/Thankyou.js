@@ -7,28 +7,16 @@ import {
     TouchableOpacity,
 } from "react-native";
 import { styles } from "../../styles/HomeStyle";
+import HeaderTwo from "../home/headerTop/HeaderTwo";
 
 
 
 export default function Thankyou({ route, navigation }) {
-    const {plan_name,start_date,category,time}=route.params
-    const DoneRightButton = () => (
-        <TouchableOpacity onPress={() => navigation.navigate("home")}>
-            <Text
-                style={{
-                    textTransform: "uppercase",
-                    color: "#FF6600",
-                    fontWeight: "bold",
-                    marginRight: 8
-                }}
-            >
-                Done{" "}
-            </Text>
-
-        </TouchableOpacity>
-    );
+    const { plan_name, start_date, category, time } = route.params
+    
     return (
         <SafeAreaView style={styles.container}>
+            <HeaderTwo navigation={navigation}/>
             <ImageBackground
                 source={require("../../../../assets/order_placed.gif")}
                 style={{ width: "100%", height: "100%" }}
