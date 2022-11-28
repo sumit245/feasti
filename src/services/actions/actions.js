@@ -90,8 +90,7 @@ export const addToFavorite = (id, restaurant) => async (dispatch) => {
 
 export const updateUser = (id, dataToSend) => async (dispatch) => {
     const response = await axios.put(USER_URL + id, { ...dataToSend })
-    const { data } = response.data
-    const { status } = response.data
+    const { data, status } = response.data
     dispatch({ type: SAVE_USER, payload: data })
     await AsyncStorage.setItem('user', JSON.stringify(data))
     return status
@@ -102,10 +101,11 @@ export const addCard = (cardToAdd) => async (dispatch) => {
     const { _id } = JSON.parse(user)
     const response = await axios.put(`${ADD_CARD_URL}${_id}`, { card: cardToAdd })
     const { data, msg } = response.data
-    await AsyncStorage.setItem('user', JSON.stringify(data))
     dispatch({ type: SAVE_USER, payload: data })
+    await AsyncStorage.setItem('user', JSON.stringify(data))
     return msg
 }
+
 export const deleteCardFromAPI = (index) => async (dispatch) => {
     const user = await AsyncStorage.getItem('user')
     let { _id, cards } = JSON.parse(user)
@@ -114,9 +114,10 @@ export const deleteCardFromAPI = (index) => async (dispatch) => {
         cards: cards
     })
     const { data } = response.data
-    await AsyncStorage.setItem('user', JSON.stringify(data))
     dispatch({ type: SAVE_USER, payload: data })
+    await AsyncStorage.setItem('user', JSON.stringify(data))
 }
+
 export const getSavedCards = () => async (dispatch) => {
     const user = await AsyncStorage.getItem('user')
     const { cards } = JSON.parse(user)
