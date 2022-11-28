@@ -19,6 +19,7 @@ import CardsCheckout from "../scenes/Components/managecards/CardsCheckout";
 import Thankyou from "../scenes/Components/thankyou/Thankyou";
 import Contacts from "../scenes/Components/contacts/Contacts";
 import About from "../scenes/About"
+import Rate from "../scenes/Components/ratings"
 
 const Stack = createStackNavigator()
 export default function StackNavigator() {
@@ -55,6 +56,7 @@ export default function StackNavigator() {
             <Stack.Screen name="order_complete" component={Thankyou} />
             <Stack.Screen name="contacts" component={Contacts} />
             <Stack.Screen name="privacy_policy" component={About} />
+            <Stack.Screen name="rate_order" component={Rate} />
         </Stack.Navigator>
     )
 }
