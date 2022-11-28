@@ -13,7 +13,7 @@ export default function AccountPolicies({ navigation }) {
                 size={24}
                 brand
             />
-            <TouchableOpacity onPress={() => navigation.navigate('policies')}>
+            <TouchableOpacity onPress={() => navigation.navigate('privacy_policy')}>
                 <Text style={styles.drawerText}>About Us</Text>
             </TouchableOpacity>
         </View>
