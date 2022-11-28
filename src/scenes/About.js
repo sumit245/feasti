@@ -44,7 +44,7 @@ export default function About({ navigation }) {
         }
     };
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1, marginHorizontal: 2, backgroundColor: '#fff' }}>
             <HeaderSimple navigation={navigation} title="About Us" />
             <TabView
                 lazy
