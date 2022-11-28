@@ -87,7 +87,7 @@ export const setServiceCharges = () => async (dispatch) => {
 export const calculateTotal = (price, serviceFee, tax, isDelivery, delivery_fee, total) => async (dispatch) => {
     dispatch({ type: SET_CUSTOMER_PRICE, payload: price })
     dispatch({ type: SET_TOTAL_SERVICE, payload: serviceFee })
-    dispatch({ SET_TOTAL_TAX, payload: serviceFee })
+    dispatch({ type: SET_TOTAL_TAX, payload: tax })
     isDelivery ? dispatch({ type: SET_DELIVERY_FEE, payload: delivery_fee }) :
         dispatch({ type: SET_DELIVERY_FEE, payload: 'N/A' })
     dispatch({ type: SET_TOTAL, payload: total })
