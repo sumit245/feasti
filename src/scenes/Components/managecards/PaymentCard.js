@@ -7,28 +7,36 @@ import { trimmer, cvctrimmer } from "../../../services/actions/cardActions"
 export default function PaymentCard({ item, index }) {
     const [trimmedState, setTrimmedState] = useState(false)
     const [checked, setChecked] = useState(false)
-    let card_number = item.number;
-    card_number = trimmer(card_number);
-    let cryptcvc = "";
-    if (trimmedState) {
-        cryptcvc = cvctrimmer(item.cvc);
-    } else {
-        cryptcvc = item.cvc;
-    }
+    const [card_number, setCardNumber] = useState("")
+    const [cvc, setCvc] = useState("")
 
-    const changeSelector = () => {
-
+    const changeSelector = (selector) => {
+        setChecked(selector)
     }
+    useEffect(() => {
+        let componentMount = true
+        if (componentMount) {
+            let number = trimmer(item.number);
+            setCardNumber(number)
+            let cryptcvc = "";
+            if (trimmedState) {
+                cryptcvc = cvctrimmer(item.cvc);
+                setCvc(cryptcvc)
+            } else {
+                cryptcvc = item.cvc;
+                setCvc(cryptcvc)
+            }
+        }
+
+        return () => {
+            componentMount = false
+        }
+    }, [item])
+
     return (
-        <View style={styles.paymentCard}>
-            <View style={styles.paymentCardHeader}>
-                <View
-                    style={{
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                    }}
-                >
+        <View style={styles.swipableCard} key={index}>
+            <View style={styles.swipableCardHeader}>
+                <View style={styles.optionrow}>
                     <PaymentIcon
                         type={
                             item.brand === "master-card"
@@ -37,7 +45,7 @@ export default function PaymentCard({ item, index }) {
                         }
                         width={50}
                     />
-                    <Text style={styles.creditcardNumber}>{item.number}</Text>
+                    <Text style={styles.swipableCardHeaderText}>{card_number}</Text>
                 </View>
 
                 <RadioButton.Android
@@ -47,37 +55,15 @@ export default function PaymentCard({ item, index }) {
                     color="#ff6600"
                 />
             </View>
-            <View style={styles.paymentCardBody}>
-                <View
-                    style={{
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                        width: 300,
-                    }}
-                >
-                    <Text style={[styles.content, { fontWeight: "bold" }]}>
-                        {item.card_holder}
-                    </Text>
-                    <Text style={styles.cvc}>{cryptcvc || item.cvc}</Text>
+            <View style={styles.swipableCardBody}>
+                <View style={styles.optionrow}>
+                    <Text style={styles.title}> {item.card_holder} </Text>
+                    <Text style={styles.title}>{cvc}</Text>
                 </View>
-                <View
-                    style={{
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                        width: 300,
-                    }}
-                >
+                <View style={styles.optionrow}>
                     <Text style={styles.expiry}>{item.expiry}</Text>
                     <Text
-                        style={[
-                            styles.content,
-                            {
-                                color: "#226ccf",
-                                textDecorationLine: "underline",
-                                fontWeight: "bold",
-                                fontSize: 10,
-                            },
-                        ]}
+                        style={styles.billLink}
                         onPress={() => {
                             setTrimmedState(!trimmedState);
                         }}
