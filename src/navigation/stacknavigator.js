@@ -19,7 +19,7 @@ import CardsCheckout from "../scenes/Components/managecards/CardsCheckout";
 import Thankyou from "../scenes/Components/thankyou/Thankyou";
 import Contacts from "../scenes/Components/contacts/Contacts";
 import About from "../scenes/About"
-import Rate from "../scenes/Components/ratings"
+import Rate from "../scenes/Components/ratings/Rate"
 
 const Stack = createStackNavigator()
 export default function StackNavigator() {
