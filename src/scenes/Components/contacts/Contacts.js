@@ -57,7 +57,7 @@ export default function Contacts({ navigation }) {
                     }}
                 >
                     <View style={{ marginLeft: 8, flexDirection: 'row', alignItems: "center" }}>
-                        <BackButton />
+                        <BackButton navigation={navigation} />
                         <Text style={{ fontWeight: "bold", fontSize: 18 }}>Compose</Text>
                     </View>
 
