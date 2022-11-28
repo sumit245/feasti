@@ -21,7 +21,11 @@ import {
     SET_DELIVERY_FEE,
     SET_TOTAL_TAX,
     SET_RESTAURANT_ID,
-    SET_RESTAURANT_NAME
+    SET_RESTAURANT_NAME,
+    SET_PLAN_NAME,
+    SET_BASE_PRICE,
+    SET_CATEGORY,
+    SET_MEAL_TYPE
 } from "../actions/checkoutAction";
 
 const order = {
@@ -36,6 +40,8 @@ const order = {
 }
 export default function checkoutReducer(state = order, action) {
     switch (action.type) {
+        case SET_SELECTED_MEAL:
+            return ({ ...state, selectedPlan: action.payload })
         case SET_USER:
             return ({ ...state, user_name: action.payload })
         case SET_PHONE:
@@ -56,12 +62,10 @@ export default function checkoutReducer(state = order, action) {
             return ({ ...state, restaurant_id: action.payload })
         case SET_RESTAURANT_NAME:
             return ({ ...state, restaurant: action.payload })
-        case SET_SELECTED_MEAL:
-            return ({ ...state, selectedPlan: action.payload })
-        case SET_CURRENT_SLOT:
-            return ({ ...state, currentSlots: action.payload })
-        case SET_SELECTED_SLOT:
-            return ({ ...state, time: action.payload })
+        case SET_PLAN_NAME:
+            return ({ ...state, plan_name: action.payload })
+        case SET_BASE_PRICE:
+            return ({ ...state, base_price: action.payload })
         case SET_CUSTOMER_PRICE:
             return ({ ...state, customer_price: action.payload })
         case SET_TIP_AMOUNT:
@@ -71,13 +75,21 @@ export default function checkoutReducer(state = order, action) {
         case SET_DELIVERY_FEE:
             return ({ ...state, delivery_fee: action.payload })
         case SET_TOTAL_TAX:
-            return ({ ...state, delivery_fee: action.payload })
+            return ({ ...state, tax: action.payload })
+        case SET_SELECTED_SLOT:
+            return ({ ...state, time: action.payload })
         case SET_TOTAL:
             return ({ ...state, total: action.payload })
         case SET_NOTES:
             return ({ ...state, notes: action.payload })
+        case SET_CATEGORY:
+            return ({ ...state, category: action.payload })
+        case SET_MEAL_TYPE:
+            return ({ ...state, meal_type: action.payload })
         case SET_DELIVERY_PICKUP:
             return ({ ...state, isDelivery: action.payload })
+        case SET_CURRENT_SLOT:
+            return ({ ...state, currentSlots: action.payload })
         case SET_SERVICE_FEE:
             return ({ ...state, serviceFee: action.payload })
         case SET_TAXES:

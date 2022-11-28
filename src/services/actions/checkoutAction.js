@@ -12,20 +12,24 @@ export const SET_SELECTED_CARD = "SET_SELECTED_CARD" //card
 export const SET_USER_ID = "SET_USER_ID" //user id
 export const SET_START_DATE = "SET_START_DATE" //start date
 export const SET_END_DATE = "SET_END_DATE" //end date
-export const SET_RESTAURANT_ID = "SET_RESTAURANT_ID"
-export const SET_RESTAURANT_NAME = "SET_RESTAURANT_NAME"
+export const SET_RESTAURANT_ID = "SET_RESTAURANT_ID" //restaurant ID
+export const SET_RESTAURANT_NAME = "SET_RESTAURANT_NAME" // restaurant Name
+export const SET_PLAN_NAME = "SET_PLAN_NAME" //plan name
+export const SET_BASE_PRICE = "SET_BASE_PRICE" //Base  price
+export const SET_CUSTOMER_PRICE = "SET_CUSTOMER_PRICE" //customer price
+export const SET_TIP_AMOUNT = "SET_TIP_AMOUNT" //tip
+export const SET_TOTAL_SERVICE = "SET_TOTAL_SERVICE" //service fee
+export const SET_DELIVERY_FEE = "SET_DELIVERY_FEE" //delivery fee
+export const SET_TOTAL_TAX = "SET_TOTAL_TAX" //tax
+export const SET_SELECTED_SLOT = "SET_SELECTED_SLOT" //time
+export const SET_TOTAL = "SET_TOTAL" //total
+export const SET_NOTES = "SET_NOTES" //notes
+export const SET_CATEGORY = "SET_CATEGORY" //category
+export const SET_MEAL_TYPE = "SET_MEAL_TYPE" //meal_type
+export const SET_DELIVERY_PICKUP = "SET_DELIVERY_PICKUP" //isDelivery
 export const SET_CURRENT_SLOT = "SET_CURRENT_SLOT"
-export const SET_SELECTED_SLOT = "SET_SELECTED_SLOT"
-export const SET_NOTES = "SET_NOTES"
-export const SET_TIP_AMOUNT = "SET_TIP_AMOUNT"
-export const SET_DELIVERY_PICKUP = "SET_DELIVERY_PICKUP"
 export const SET_SERVICE_FEE = "SET_SERVICE_FEE"
 export const SET_TAXES = "SET_TAXES"
-export const SET_TOTAL = "SET_TOTAL"
-export const SET_CUSTOMER_PRICE = "SET_CUSTOMER_PRICE"
-export const SET_TOTAL_SERVICE = "SET_TOTAL_SERVICE"
-export const SET_DELIVERY_FEE = "SET_DELIVERY_FEE"
-export const SET_TOTAL_TAX = "SET_TOTAL_TAX"
 
 export const getUser = () => async (dispatch) => {
     const user = await AsyncStorageLib.getItem('user')
@@ -41,6 +45,10 @@ export const setRestaurantDetails = (id, name) => async (dispatch) => {
     await dispatch({ type: SET_RESTAURANT_ID, payload: id })
     await dispatch({ type: SET_RESTAURANT_NAME, payload: name })
 }
+export const setMealDetails = (category, meal_type) => async (dispatch) => {
+    await dispatch({ type: SET_CATEGORY, payload: category })
+    await dispatch({ type: SET_MEAL_TYPE, payload: meal_type })
+}
 export const getSelectedPlan = (plan_name, base_price, customer_price, delivery_fee) => async (dispatch) => {
     const plan = await axios.get(PROFIT_URL)
     const plans = plan.data
@@ -54,6 +62,8 @@ export const getSelectedPlan = (plan_name, base_price, customer_price, delivery_
         delivery_fee: delivery_fee
     }
     dispatch({ type: SET_SELECTED_MEAL, payload: selectedPlan })
+    dispatch({ type: SET_PLAN_NAME, payload: plan_name })
+    dispatch({ type: SET_BASE_PRICE, payload: base_price })
 }
 
 export const setDuration = (start_date, end_date) => async (dispatch) => {
