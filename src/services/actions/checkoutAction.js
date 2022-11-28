@@ -4,14 +4,16 @@ import moment from "moment"
 import { CHECKOUT_URL, ORDER_URL, PROFIT_URL, SLOT_URL } from "../EndPoints"
 
 export const SET_SELECTED_MEAL = "SET_SELECTED_MEAL"
-export const SET_SELECTED_ADDRESS = "SET_SELECTED_ADDRESS"
-export const SET_SELECTED_CARD = "SET_SELECTED_CARD"
-export const SET_USER = "SET_USER"
-export const SET_PHONE = "SET_PHONE"
-export const SET_EMAIL_ID = "SET_EMAIL_ID"
-export const SET_USER_ID = "SET_USER_ID"
-export const SET_START_DATE = "SET_START_DATE"
-export const SET_END_DATE = "SET_END_DATE"
+export const SET_USER = "SET_USER" //user name
+export const SET_PHONE = "SET_PHONE" //phone
+export const SET_EMAIL_ID = "SET_EMAIL_ID"//email id
+export const SET_SELECTED_ADDRESS = "SET_SELECTED_ADDRESS" //address
+export const SET_SELECTED_CARD = "SET_SELECTED_CARD" //card
+export const SET_USER_ID = "SET_USER_ID" //user id
+export const SET_START_DATE = "SET_START_DATE" //start date
+export const SET_END_DATE = "SET_END_DATE" //end date
+export const SET_RESTAURANT_ID = "SET_RESTAURANT_ID"
+export const SET_RESTAURANT_NAME = "SET_RESTAURANT_NAME"
 export const SET_CURRENT_SLOT = "SET_CURRENT_SLOT"
 export const SET_SELECTED_SLOT = "SET_SELECTED_SLOT"
 export const SET_NOTES = "SET_NOTES"
@@ -35,7 +37,10 @@ export const getUser = () => async (dispatch) => {
     dispatch({ type: SET_SELECTED_ADDRESS, payload: addresses[0] })
     dispatch({ type: SET_SELECTED_CARD, payload: cards[0] })
 }
-
+export const setRestaurantDetails = (id, name) => async (dispatch) => {
+    await dispatch({ type: SET_RESTAURANT_ID, payload: id })
+    await dispatch({ type: SET_RESTAURANT_NAME, payload: name })
+}
 export const getSelectedPlan = (plan_name, base_price, customer_price, delivery_fee) => async (dispatch) => {
     const plan = await axios.get(PROFIT_URL)
     const plans = plan.data
