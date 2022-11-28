@@ -3,8 +3,9 @@ import { View, Text, SafeAreaView } from "react-native";
 import { TabView, TabBar } from "react-native-tab-view";
 import AboutUs from "./Components/about/AboutUs";
 import Terms from "./Components/about/Terms";
+import HeaderSimple from "./Components/home/headerTop/HeaderSimple";
 
-export default function About() {
+export default function About({ navigation }) {
     const [index, setIndex] = useState(0);
 
     const [routes] = useState([
@@ -44,6 +45,7 @@ export default function About() {
     };
     return (
         <SafeAreaView style={{ flex: 1 }}>
+            <HeaderSimple navigation={navigation} title="About Us" />
             <TabView
                 lazy
                 navigationState={{ index, routes }}
