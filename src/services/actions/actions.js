@@ -40,9 +40,6 @@ export const loginWithPin = (enteredPin) => async (dispatch) => {
         isLoggedIn = true
         dispatch({ type: SAVE_USER, payload: user })
         await AsyncStorage.setItem('pin', JSON.stringify({ pin: enteredPin }))
-        // const pin = await AsyncStorage.getItem('pin')
-        // if (pin === enteredPin) {
-        // }
     } else {
         isLoggedIn = false
     }

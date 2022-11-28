@@ -42,7 +42,7 @@ export default function ListCards({ navigation }) {
         return () => {
             componentMount = false
         }
-    }, [user])
+    }, [])
 
     const { modalVisible, title } = state
 
