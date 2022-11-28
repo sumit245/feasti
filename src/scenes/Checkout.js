@@ -71,7 +71,7 @@ export default function Checkout({ route, navigation }) {
         plan_name,
         start_date,
         category,
-        timebuild
+        time
       })
       setOrdering(false)
     }
