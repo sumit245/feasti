@@ -26,14 +26,14 @@ export default function ListCards({ navigation }) {
     useEffect(() => {
         let componentMount = true
         if (componentMount) {
-            const { cards, wallet_balance } = user && JSON.parse(user)
+            const { cards, wallet_balance } = JSON.parse(user)
             setBalance(wallet_balance)
             setCreditCards(cards)
         }
         return () => {
             componentMount = false
         }
-    }, [user])
+    }, [])
     const { modalVisible, title } = state
     return (
         <Provider>
