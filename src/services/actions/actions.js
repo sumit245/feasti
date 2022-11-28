@@ -114,9 +114,7 @@ export const deleteCardFromAPI = (index) => async (dispatch) => {
         cards: cards
     })
     const { data } = response.data
-    console.log('====================================');
-    console.log(data);
-    console.log('====================================');
+    await AsyncStorage.setItem('user', JSON.stringify(data))
     dispatch({ type: SAVE_USER, payload: data })
 }
 export const getSavedCards = () => async (dispatch) => {

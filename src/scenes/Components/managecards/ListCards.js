@@ -33,7 +33,7 @@ export default function ListCards({ navigation }) {
         return () => {
             componentMount = false
         }
-    }, [])
+    }, [credit_cards, wallet_balance])
     const { modalVisible, title } = state
     return (
         <Provider>
