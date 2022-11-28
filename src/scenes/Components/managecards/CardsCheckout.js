@@ -18,7 +18,7 @@ export default function CardsCheckout({ navigation }) {
     useEffect(() => {
         let componentMount = true
         if (componentMount) {
-            const { cards } = JSON.parse(user)
+            const { cards } = user && JSON.parse(user)
             setCreditCards(cards)
         }
         return () => {
