@@ -562,5 +562,37 @@ export const styles = StyleSheet.create({
         marginHorizontal: "25%",
         padding: 10,
         height: 48,
-    }
+    },
+    paymentCard: {
+        margin: 4,
+        backgroundColor: "#fff",
+        borderRadius: 6,
+        borderColor: "#979797",
+        borderWidth: 0.5,
+        elevation: 4,
+        padding: 2,
+        marginVertical: 6,
+    },
+    paymentCardHeader: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        paddingHorizontal: 6,
+        height: 40,
+        borderBottomWidth: 0.2,
+        borderBottomColor: "#979797",
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 14,
+        marginHorizontal: 12,
+    },
+    content: {
+        fontSize: 14,
+        color: "#777",
+        paddingRight: 4,
+    },
+    paymentCardBody: {
+        marginHorizontal: 12,
+        padding: 4,
+        alignItems: "baseline",
+    },
 })
