@@ -25,7 +25,8 @@ import {
     SET_PLAN_NAME,
     SET_BASE_PRICE,
     SET_CATEGORY,
-    SET_MEAL_TYPE
+    SET_MEAL_TYPE,
+    SET_RESATURANT_ADDRESS
 } from "../actions/checkoutAction";
 
 const order = {
@@ -49,7 +50,7 @@ export default function checkoutReducer(state = order, action) {
         case SET_EMAIL_ID:
             return ({ ...state, email_id: action.payload })
         case SET_SELECTED_ADDRESS:
-            return ({ ...state, currentAddress: action.payload })
+            return ({ ...state, address: action.payload })
         case SET_SELECTED_CARD:
             return ({ ...state, card: action.payload })
         case SET_USER_ID:
@@ -88,6 +89,8 @@ export default function checkoutReducer(state = order, action) {
             return ({ ...state, meal_type: action.payload })
         case SET_DELIVERY_PICKUP:
             return ({ ...state, isDelivery: action.payload })
+        case SET_RESATURANT_ADDRESS:
+            return ({ ...state, restaurant_address: action.payload })
         case SET_CURRENT_SLOT:
             return ({ ...state, currentSlots: action.payload })
         case SET_SERVICE_FEE:

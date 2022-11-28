@@ -37,9 +37,17 @@ export default function Checkout({ route, navigation }) {
 
   const getChefByID = async () => {
     const rest = await getRestaurantByID(restaurant_id, nearByRestaurant)
+    const { locality, city, country, postal_code } = rest
+    const restaurant_address = {
+      locality,
+      city,
+      state: rest.state,
+      country,
+      postal_code
+    }
     await dispatch(getUser())
     await dispatch(setServiceCharges())
-    await dispatch(setRestaurantDetails(restaurant_id, rest.restaurant_name))
+    await dispatch(setRestaurantDetails(restaurant_id, rest.restaurant_name, restaurant_address))
     await dispatch(setMealDetails(category, rest.meal_type))
     setRestaurant(rest)
     setLoaded(true)
@@ -49,21 +57,21 @@ export default function Checkout({ route, navigation }) {
     getChefByID()
   }, [])
 
-  const [state, setState] = useState({
-    loading: true,
-    restaurant: {},
-    user: {},
-    address: {},
-    base_price: "",
-    price: "",
-    tip: 0,
-    discount: 0,
-    card: {},
-    taxes: 0,
-    delivery_fee: 0,
-    service_fee: 0,
-    promo_code: '',
-  });
+  // const [state, setState] = useState({
+  //   loading: true,
+  //   restaurant: {},
+  //   user: {},
+  //   address: {},
+  //   base_price: "",
+  //   price: "",
+  //   tip: 0,
+  //   discount: 0,
+  //   card: {},
+  //   taxes: 0,
+  //   delivery_fee: 0,
+  //   service_fee: 0,
+  //   promo_code: '',
+  // });
 
   const [isKeyboardOn, setKeyboardOn] = useState(false);
   const [isOrdering, setOrdering] = useState(false);
@@ -94,7 +102,7 @@ export default function Checkout({ route, navigation }) {
   }, []);
 
 
-  const { meal_type, documents, plan, isDelivery } = restaurant
+  const { meal_type, documents, isDelivery } = restaurant
   const { plan_name, customer_price } = selectedPlan
   return (
     <SafeAreaView style={styles.container}>

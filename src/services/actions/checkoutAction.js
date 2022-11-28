@@ -27,6 +27,7 @@ export const SET_NOTES = "SET_NOTES" //notes
 export const SET_CATEGORY = "SET_CATEGORY" //category
 export const SET_MEAL_TYPE = "SET_MEAL_TYPE" //meal_type
 export const SET_DELIVERY_PICKUP = "SET_DELIVERY_PICKUP" //isDelivery
+export const SET_RESATURANT_ADDRESS = "SET_RESTAURANT_ADDRESS"
 export const SET_CURRENT_SLOT = "SET_CURRENT_SLOT"
 export const SET_SERVICE_FEE = "SET_SERVICE_FEE"
 export const SET_TAXES = "SET_TAXES"
@@ -41,9 +42,10 @@ export const getUser = () => async (dispatch) => {
     dispatch({ type: SET_SELECTED_ADDRESS, payload: addresses[0] })
     dispatch({ type: SET_SELECTED_CARD, payload: cards[0] })
 }
-export const setRestaurantDetails = (id, name) => async (dispatch) => {
+export const setRestaurantDetails = (id, name, address) => async (dispatch) => {
     await dispatch({ type: SET_RESTAURANT_ID, payload: id })
     await dispatch({ type: SET_RESTAURANT_NAME, payload: name })
+    await dispatch({ type: SET_RESATURANT_ADDRESS, payload: address })
 }
 export const setMealDetails = (category, meal_type) => async (dispatch) => {
     await dispatch({ type: SET_CATEGORY, payload: category })
