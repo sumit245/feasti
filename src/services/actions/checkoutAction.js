@@ -64,7 +64,7 @@ export const setDeliverySlot = (value) => async (dispatch) => {
 }
 
 export const notesHandler = (value) => async (dispatch) => {
-    dispatch({ type: SET_NOTES, payload: value })
+    await dispatch({ type: SET_NOTES, payload: value })
 }
 export const tipHandler = (value) => async (dispatch) => {
     dispatch({ type: SET_TIP_AMOUNT, payload: value })
