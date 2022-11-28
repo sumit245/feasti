@@ -13,6 +13,7 @@ import {
 import { AirbnbRating } from 'react-native-elements';
 import { Provider } from 'react-native-paper';
 import Loader from '../utility/Loader';
+import HeaderSimple from "../home/headerTop/HeaderSimple"
 
 export default function Rate({ route, navigation }) {
     const { order_id } = route.params
@@ -55,6 +56,7 @@ export default function Rate({ route, navigation }) {
                         backgroundColor: '#fff',
                     }}
                 >
+                    <HeaderSimple navigation={navigation} title="Rate your Order" />
                     <KeyboardAvoidingView behavior="position" enabled>
                         <ScrollView contentInsetAdjustmentBehavior="automatic">
                             <View>
