@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import axios from "axios";
-import { ADD_TO_FAVORITE, USER_URL } from "../EndPoints";
+import { ADD_TO_FAVORITE, USER_URL, ADD_CARD_URL } from "../EndPoints";
 import firebase from "../../firebase";
 
 
