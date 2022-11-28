@@ -28,6 +28,7 @@ export default function AddCardPopup({ visible, title, setVisible }) {
             brand: type
         }
         const msg = await dispatch(addCard(cardToSave))
+        
         alert(msg)
         setVisible(false)
     }
