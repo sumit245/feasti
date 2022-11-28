@@ -19,7 +19,9 @@ import {
     SET_CUSTOMER_PRICE,
     SET_TOTAL_SERVICE,
     SET_DELIVERY_FEE,
-    SET_TOTAL_TAX
+    SET_TOTAL_TAX,
+    SET_RESTAURANT_ID,
+    SET_RESTAURANT_NAME
 } from "../actions/checkoutAction";
 
 const order = {
@@ -50,6 +52,10 @@ export default function checkoutReducer(state = order, action) {
             return ({ ...state, start_date: action.payload })
         case SET_END_DATE:
             return ({ ...state, end_date: action.payload })
+        case SET_RESTAURANT_ID:
+            return ({ ...state, restaurant_id: action.payload })
+        case SET_RESTAURANT_NAME:
+            return ({ ...state, restaurant: action.payload })
         case SET_SELECTED_MEAL:
             return ({ ...state, selectedPlan: action.payload })
         case SET_CURRENT_SLOT:
