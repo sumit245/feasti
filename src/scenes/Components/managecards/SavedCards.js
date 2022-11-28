@@ -27,7 +27,7 @@ export default function SavedCards({ credit_cards }) {
             data={data}
             contentContainerStyle={{ paddingBottom: 2, marginBottom: 4 }}
             renderItem={(item) => renderItem(item)}
-            keyExtractor={(item) => item.number}
+            keyExtractor={(item, index) => (item.number + index).toString()}
             ListEmptyComponent={NoCard}
             renderRightActions={(item) => rendeRightActionButton(item)}
         />
