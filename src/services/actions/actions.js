@@ -106,7 +106,14 @@ export const addCard = (cardToAdd) => async (dispatch) => {
     dispatch({ type: SAVE_USER, payload: data })
     return msg
 }
-
+export const deleteCardFromAPI = (index) => async (dispatch) => {
+    const user = await AsyncStorage.getItem('user')
+    let { _id, cards } = JSON.parse(user)
+    Array.isArray(cards) && cards.splice(index, 1)
+    console.log('====================================');
+    console.log(cards);
+    console.log('====================================');
+}
 export const getSavedCards = () => async (dispatch) => {
     const user = await AsyncStorage.getItem('user')
     const { cards } = JSON.parse(user)

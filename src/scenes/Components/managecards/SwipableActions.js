@@ -1,11 +1,12 @@
 import React from 'react'
 import { SwipeableQuickActions, SwipeableQuickActionButton } from 'react-native-swipe-list'
 import Trash from "../../../../assets/Trash.png"
+import { useDispatch } from 'react-redux'
+import { deleteCardFromAPI } from '../../../services/actions/actions'
 export default function SwipableActions({ item, index }) {
-    const deleteCard = () => {
-        console.log('====================================');
-        console.log(index);
-        console.log('====================================');
+    const dispatch = useDispatch()
+    const deleteCard = (index) => {
+        dispatch(deleteCardFromAPI(index))
     }
     return (
         <SwipeableQuickActions
