@@ -9,19 +9,15 @@ export default function SwipableActions({ item }) {
             style={{
                 alignItems: "center",
                 justifyContent: "center",
+                padding: 0
             }}
         >
             <SwipeableQuickActionButton
                 style={{
                     backgroundColor: "#ff2244",
                     padding: 8,
-                    height: 80,
-                }}
-                textStyle={{
-                    fontSize: 18,
-                    fontWeight: "bold",
-                    color: "#fff",
-                    padding: 4,
+                    height: 100,
+                    marginLeft: -24
                 }}
                 onPress={() => { deleteAddress(item.number) }}
                 imageSource={Trash}
