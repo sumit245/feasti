@@ -10,14 +10,18 @@ import WalletCard from './WalletCard'
 import AddCardPopup from './AddCardPopup'
 
 export default function ListCards({ navigation }) {
+
     const { user } = useSelector(state => state.reducer)
     const [credit_cards, setCreditCards] = useState([])
     const [wallet_balance, setBalance] = useState(0)
+
     const [loaded, setLoaded] = useState(false)
+
     const [state, setState] = useState({
         modalVisible: false,
         title: ""
     })
+
     const hideModal = () => {
         setState(prevState => ({
             ...prevState,
@@ -38,8 +42,10 @@ export default function ListCards({ navigation }) {
         return () => {
             componentMount = false
         }
-    }, [loaded])
+    }, [user])
+
     const { modalVisible, title } = state
+
     return (
         <Provider>
             <SafeAreaView style={styles.container}>
