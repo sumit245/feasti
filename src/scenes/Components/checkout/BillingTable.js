@@ -15,7 +15,7 @@ export default function BillingTable() {
     const dispatch = useDispatch()
     const { selectedPlan, isDelivery, tip, serviceFee, taxes, } = useSelector(state => state.checkoutReducer)
     const calculate = async () => {
-        const { delivery_fee, base_price, customer_price } = selectedPlan
+        const { delivery_fee, customer_price } = selectedPlan
         setPrice(customer_price)
         setDelivery(delivery_fee)
         let serviceCharge = customer_price * 0.01 * serviceFee;
@@ -38,7 +38,7 @@ export default function BillingTable() {
         return () => {
             componentMount = false
         }
-    }, [isDelivery, selectedPlan, tip, taxes])
+    }, [isDelivery, selectedPlan, tip, taxes, service_fee, tax, isDelivery])
 
     return (
         <View style={styles.billingTable}>
