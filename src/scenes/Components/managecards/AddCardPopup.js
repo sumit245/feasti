@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import { Portal, Modal, Button, } from 'react-native-paper'
 import { LiteCreditCardInput } from 'react-native-credit-card-input'
 import { useDispatch } from 'react-redux'
-import { addCard } from '../../../services/actions/cardActions'
+import { addCard } from "../../../services/actions/actions"
 
 export default function AddCardPopup({ visible, title, setVisible }) {
     const [card_holder, setCardHolder] = useState("")
