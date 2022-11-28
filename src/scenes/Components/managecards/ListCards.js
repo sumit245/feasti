@@ -13,6 +13,7 @@ export default function ListCards({ navigation }) {
     const { user } = useSelector(state => state.reducer)
     const [credit_cards, setCreditCards] = useState([])
     const [wallet_balance, setBalance] = useState(0)
+    const [loaded, setLoaded] = useState(false)
     const [state, setState] = useState({
         modalVisible: false,
         title: ""
@@ -23,17 +24,21 @@ export default function ListCards({ navigation }) {
             modalVisible: false
         }))
     }
+    const fetchCards = () => {
+        const { cards, wallet_balance } = JSON.parse(user)
+        setBalance(wallet_balance)
+        setCreditCards(cards)
+        setLoaded(true)
+    }
     useEffect(() => {
         let componentMount = true
         if (componentMount) {
-            const { cards, wallet_balance } = JSON.parse(user)
-            setBalance(wallet_balance)
-            setCreditCards(cards)
+            fetchCards()
         }
         return () => {
             componentMount = false
         }
-    }, [credit_cards, wallet_balance])
+    }, [loaded])
     const { modalVisible, title } = state
     return (
         <Provider>
