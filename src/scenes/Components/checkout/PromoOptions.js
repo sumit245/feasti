@@ -5,7 +5,7 @@ import Icon from "react-native-vector-icons/Fontisto";
 import { styles } from "../../styles/HomeStyle"
 
 export default function PromoOptions() {
-    const [coupons, setCoupons] = useState([])
+    const [coupons, setCoupons] = useState(null)
     const [pulled, setPulled] = useState(false)
     const [applied, setApplied] = useState(false)
     const [isAdmin, setAdmin] = useState(false)
