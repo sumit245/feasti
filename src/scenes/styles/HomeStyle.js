@@ -563,7 +563,7 @@ export const styles = StyleSheet.create({
         padding: 10,
         height: 48,
     },
-    paymentCard: {
+    swipableCard: {
         margin: 4,
         backgroundColor: "#fff",
         borderRadius: 6,
@@ -573,7 +573,7 @@ export const styles = StyleSheet.create({
         padding: 2,
         marginVertical: 6,
     },
-    paymentCardHeader: {
+    swipableCardHeader: {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
@@ -590,9 +590,14 @@ export const styles = StyleSheet.create({
         color: "#777",
         paddingRight: 4,
     },
-    paymentCardBody: {
+    swipableCardBody: {
         marginHorizontal: 12,
         padding: 4,
         alignItems: "baseline",
     },
+    swipableCardHeaderText: {
+        marginLeft: 8,
+        fontSize: 14,
+        fontWeight: 'bold'
+    }
 })
