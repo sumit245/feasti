@@ -26,6 +26,7 @@ export default function OTPLogin({ navigation }) {
     const _signIn = async () => {
         setLoading(true)
         const statusCode = await dispatch(signIn(verificationId, verificationCode))
+        console.log(statusCode)
         if (statusCode === 200) {
             navigation.navigate('userdetails')
         } else {

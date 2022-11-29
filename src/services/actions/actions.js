@@ -63,14 +63,17 @@ export const signIn = (verificationId, verificationCode) => async (dispatch) => 
         const response = await firebase.auth().signInWithCredential(credential);
         const { user } = response
         let phone = user.phoneNumber
-        const resp = await axios.post(USER_URL, { phone: phone })
-        let { status } = resp.data
-        let { data } = resp.data
+        console.log('====================================');
+        console.log(phone);
+        console.log('====================================');
+        const resp = await axios.post(`${USER_URL}`, { phone: phone })
+        let { status, data } = resp.data
         statusCode = status
         dispatch({ type: SAVE_USER, payload: data })
-        await AsyncStorage.setItem('user', JSON.stringify(data))
-        await AsyncStorage.setItem('isLoggedIn', JSON.stringify({ isLoggedIn: true }))
-    } catch (error) {
+        // await AsyncStorage.setItem('user', JSON.stringify(data))
+        // await AsyncStorage.setItem('isLoggedIn', JSON.stringify({ isLoggedIn: true }))
+    }
+    catch (error) {
         dispatch({ type: SET_ERROR_MSG, payload: error.message })
     }
     return statusCode

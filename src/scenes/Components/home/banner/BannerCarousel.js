@@ -10,14 +10,13 @@ import {
 import { width, styles } from "../../../styles/HomeStyle";
 import axios from "axios";
 import { LinearGradient } from "expo-linear-gradient"
+import { BANNER_URL } from "../../../../services/EndPoints";
 
 export default function BannerCarousel({ navigation }) {
     const [page, setPage] = useState([]);
     const [loaded, setLoaded] = useState(false);
     const fetchBanners = async () => {
-        const response = await axios.get(
-            "http://54.146.133.108:5000/api/promo/active"
-        );
+        const response = await axios.get(`${BANNER_URL}`);
         const data = await response.data;
         setPage(data);
         if (data.length !== 0) {

@@ -31,3 +31,4 @@ export const GET_PRICE_URL = BASE_URL + '/api/pricing/'
 // Orders and subscription Links
 export const ORDER_URL = BASE_URL + '/api/orders/getorderbyuser/';
 export const SUBSCRIPTION_URL = BASE_URL + '/api/orders/getsubscription/'
+export const BANNER_URL = BASE_URL + '/api/promo/active'
