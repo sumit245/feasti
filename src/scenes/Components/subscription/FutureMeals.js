@@ -18,7 +18,6 @@ export default function FutureMeals({ meals, futuredays }) {
             scrollEnabled
             style={{
                 backgroundColor: "transparent",
-                flex: 1,
                 flexDirection: 'row'
             }}
             contentContainerStyle={{ flexDirection: 'row' }}
