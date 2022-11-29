@@ -1,6 +1,8 @@
+import axios from "axios";
 import React, { useState, useCallback, useRef } from "react";
 import { FlatList, RefreshControl, SafeAreaView, ScrollView } from "react-native";
 import { useSelector } from "react-redux";
+import { ORDER_URL, SUBSCRIPTION_URL } from "../services/EndPoints";
 import NoSubscription from "./Components/subscription/NoSubscription";
 import SubscriptionItem from "./Components/subscription/SubscriptionItem";
 import { ITEM_SIZE, styles, width } from "./styles/HomeStyle";
@@ -8,8 +10,11 @@ import { ITEM_SIZE, styles, width } from "./styles/HomeStyle";
 
 export default function SubscriptionScene({ navigation }) {
     const [loading, setLoading] = useState(false);
-    const { subscription } = useSelector(state => state.orderReducer)
+    const [subscription, setSubscription] = useState([])
+    const user = useSelector(state => state.reducer)
+    const { user_id } = JSON.parse(user)
     const flatref = useRef()
+
     const wait = (timeout) => {
         return new Promise(resolve => setTimeout(resolve, timeout));
     }
@@ -17,6 +22,17 @@ export default function SubscriptionScene({ navigation }) {
         setLoading(true)
         wait(2000).then(() => setLoading(false));
     }, [])
+    const fetchSubscriptions = async () => {
+        setLoading(true)
+        const response = await axios.get(`${SUBSCRIPTION_URL}${user_id}`)
+        const subs = response.data
+        setSubscription(subs)
+        setLoading(false)
+    }
+    useEffect(() => {
+        fetchSubscriptions()
+    }, [])
+
 
     const renderItem = ({ item }) => <SubscriptionItem item={item} navigation={navigation} />
 
