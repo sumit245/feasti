@@ -3,6 +3,7 @@ import Icon from "react-native-vector-icons/Ionicons"
 import { IconButton } from 'react-native-paper'
 import React, { useEffect, useState } from 'react'
 const { width, height } = Dimensions.get('window')
+import moment from 'moment'
 
 export default function AddOns({ addon }) {
     const [myaddons, setMyAddOns] = useState([])
@@ -22,6 +23,18 @@ export default function AddOns({ addon }) {
             componentMounted = false
         }
     }, [])
+
+    useEffect(() => {
+        let subt = [];
+        let qties = [];
+        for (let i = 0; i < myaddons.length; i++) {
+            subt.push(0);
+            qties.push(0);
+        }
+        setSubtotal(subt);
+        setQty(qties);
+    }, [myaddons]);
+
     function add(accumulator, a) {
         return parseFloat(accumulator) + parseFloat(a);
     }
