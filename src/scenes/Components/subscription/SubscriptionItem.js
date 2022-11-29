@@ -118,7 +118,7 @@ export default function SubscriptionItem({ item }) {
           )}
           {/* Chef Address Section */}
           <View style={styles.optionCard}>
-            <AddOns addon={item.add_on} />
+            <AddOns addon={item.meals[0].add_on} />
           </View>
           {/* AddOns Section */}
           <View style={styles.optionCard}>
