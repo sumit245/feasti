@@ -49,7 +49,7 @@ export default function SubscriptionScene({ navigation }) {
                 contentContainerStyle={{ paddingBottom: 10 }}
                 showsHorizontalScrollIndicator={false}
                 showsVerticalScrollIndicator={false}
-                data={[]}
+                data={subscription}
                 ref={flatref}
                 renderItem={(item) => renderItem(item)}
                 keyExtractor={(item) => item._id}
