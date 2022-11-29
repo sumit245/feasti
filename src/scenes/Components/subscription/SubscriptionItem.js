@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, Linking, ScrollView, SafeAreaView } from "react-native";
 import moment from "moment";
 import { height, styles, width } from "../../styles/HomeStyle"
@@ -9,20 +9,23 @@ import FutureMeals from "./FutureMeals";
 import LinkOpen from "../utility/LinkOpen";
 
 export default function SubscriptionItem({ item }) {
-  const [remaining,setRemaining]=useState(0)
+  const [remaining, setRemaining] = useState(0)
   const { address } = item
   useEffect(() => {
     let componentMounted = true
     if (componentMounted) {
-      const remainingMeal = moment(item.end_date).diff(item.start_date)
+      const remainingMeal = moment(item.end_date).diff(item.start_date, 'days')
+      console.log('====================================');
+      console.log(item);
+      console.log('====================================');
       setRemaining(remainingMeal)
     }
-  
+
     return () => {
-      componentMounted=false
+      componentMounted = false
     }
   }, [item])
-  
+
   return (
     <SafeAreaView style={[styles.container, { width: width }]}>
       <View style={[styles.header, { backgroundColor: "#FFF" }]}>
@@ -63,12 +66,11 @@ export default function SubscriptionItem({ item }) {
         {/* calendar tabs */}
         <View
           style={{
-            backgroundColor: "#FFF",
             flex: 1,
             justifyContent: "space-between",
           }}
         >
-          {/* <View style={styles.optionCard}>
+          <View style={styles.optionCard}>
             <View style={styles.optionrow}>
               <Text style={styles.title}>Upcoming Meal</Text>
               {item.isDelivered && (
@@ -79,8 +81,8 @@ export default function SubscriptionItem({ item }) {
             </View>
             <Text>Today, {moment().format("DD MMM")}</Text>
             <View style={styles.indicator} />
-            <CurrentMeal meal={item.meals[0]} />
-          </View> */}
+            {/* <CurrentMeal meal={item.meals[0]} /> */}
+          </View>
           {/* Current Meal Section */}
 
           <View style={styles.optionCard}>
