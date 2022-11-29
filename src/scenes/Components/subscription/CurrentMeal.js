@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, Image } from "react-native";
 import { styles } from "../../styles/HomeStyle";
 import Icon from "react-native-vector-icons/Ionicons";
 
 export default function CurrentMeal({ meal, index }) {
-    const { image, meal_name, description, type } = meal;
+    const [image, setImage] = useState("")
+    const [meal_name, setMealName] = useState("")
+    const [description, setDescription] = useState("")
+    const [type, setType] = useState("veg")
+    useEffect(() => {
+        console.log('====================================');
+        console.log(meal);
+        console.log('====================================');
+    }, [])
+
+
+
     return (
         <View style={{ paddingHorizontal: 2, marginHorizontal: 2 }}>
             <Image
