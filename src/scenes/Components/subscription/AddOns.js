@@ -1,7 +1,8 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native'
+import { View, Text, TouchableOpacity, Image, Dimensions } from 'react-native'
 import Icon from "react-native-vector-icons/Ionicons"
 import { IconButton } from 'react-native-paper'
 import React, { useEffect, useState } from 'react'
+const { width, height } = Dimensions.get('window')
 
 export default function AddOns({ addon }) {
     const [myaddons, setMyAddOns] = useState([])
@@ -10,7 +11,7 @@ export default function AddOns({ addon }) {
     const [subtotal, setSubtotal] = useState([]);
     const [total, setTotal] = useState(0);
     const [extrass, setExtras] = useState([]);
-    
+
     useEffect(() => {
         let componentMounted = true
         if (componentMounted) {
