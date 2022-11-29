@@ -21,7 +21,7 @@ export default function FutureMeals({ meals, futuredays }) {
                 flexDirection: 'row'
             }}
             contentContainerStyle={{ flexDirection: 'row' }}
-            tabStyle={{ width: '30%' }}
+            tabStyle={{ width: 'auto' }}
             activeColor="#ff6600"
             labelStyle={{ fontWeight: "bold", color: "#000" }}
             inactiveColor="#272727"
