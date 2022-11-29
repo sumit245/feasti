@@ -31,7 +31,7 @@ export default function SubscriptionScene({ navigation }) {
     }
     useEffect(() => {
         fetchSubscriptions()
-    }, [])
+    }, [user])
 
 
     const renderItem = ({ item }) => <SubscriptionItem item={item} navigation={navigation} />
