@@ -2,7 +2,15 @@ import {
     SEND_OTP, SET_ERROR_MSG, SAVE_USER, GET_LOCAL_USER, CHECK_LOCAL_USER, SET_FAVORITE_MSG, SAVE_CARDS
 } from "../actions/actions";
 
-const initialState = {};
+const initialState = {
+    verificationId: "",
+    codeSent: false,
+    user: {},
+    isLoggedIn: false,
+    message: "",
+    cards: [],
+    addresses: []
+};
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case SEND_OTP:
