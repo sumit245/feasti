@@ -81,7 +81,7 @@ export default function SubscriptionItem({ item }) {
             </View>
             <Text>Today, {moment().format("DD MMM")}</Text>
             <View style={styles.indicator} />
-            {/* <CurrentMeal meal={item.meals[0]} /> */}
+            <CurrentMeal meal={item.meals[0]} />
           </View>
           {/* Current Meal Section */}
 
