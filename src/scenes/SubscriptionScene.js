@@ -25,8 +25,8 @@ export default function SubscriptionScene({ navigation }) {
     const fetchSubscriptions = async () => {
         setLoading(true)
         const response = await axios.get(`${SUBSCRIPTION_URL}${user_id}`)
-        const subs = response.data
-        setSubscription(subs)
+        const {mySubscription} = response.data
+        setSubscription(mySubscription)
         setLoading(false)
     }
     useEffect(() => {
