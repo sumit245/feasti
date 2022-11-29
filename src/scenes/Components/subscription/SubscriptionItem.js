@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import { View, Text, Linking, ScrollView, SafeAreaView } from "react-native";
 import moment from "moment";
 import { height, styles, width } from "../../styles/HomeStyle"
@@ -9,8 +9,20 @@ import FutureMeals from "./FutureMeals";
 import LinkOpen from "../utility/LinkOpen";
 
 export default function SubscriptionItem({ item }) {
-  const remaining = 0
+  const [remaining,setRemaining]=useState(0)
   const { address } = item
+  useEffect(() => {
+    let componentMounted = true
+    if (componentMounted) {
+      const remainingMeal = moment(item.end_date).diff(item.start_date)
+      setRemaining(remainingMeal)
+    }
+  
+    return () => {
+      componentMounted=false
+    }
+  }, [item])
+  
   return (
     <SafeAreaView style={[styles.container, { width: width }]}>
       <View style={[styles.header, { backgroundColor: "#FFF" }]}>
