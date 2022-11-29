@@ -9,10 +9,11 @@ export default function CurrentMeal({ meal, index }) {
     const [description, setDescription] = useState("")
     const [type, setType] = useState("veg")
     useEffect(() => {
-        console.log('====================================');
-        console.log(meal.meal_name);
-        console.log('====================================');
-    }, [])
+        setMealName(meal.meal_name)
+        setImage(meal.image)
+        setDescription(meal.description)
+        setType(meal.type)
+    }, [meal])
 
 
 
