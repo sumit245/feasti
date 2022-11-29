@@ -10,7 +10,7 @@ export default function CurrentMeal({ meal, index }) {
     const [type, setType] = useState("veg")
     useEffect(() => {
         console.log('====================================');
-        console.log(typeof meal);
+        console.log(meal.meal_name);
         console.log('====================================');
     }, [])
 
