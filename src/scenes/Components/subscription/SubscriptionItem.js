@@ -15,9 +15,6 @@ export default function SubscriptionItem({ item }) {
     let componentMounted = true
     if (componentMounted) {
       const remainingMeal = moment(item.end_date).diff(item.start_date, 'days')
-      console.log('====================================');
-      console.log(item);
-      console.log('====================================');
       setRemaining(remainingMeal)
     }
 
