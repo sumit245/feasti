@@ -11,7 +11,7 @@ import { ITEM_SIZE, styles, width } from "./styles/HomeStyle";
 export default function SubscriptionScene({ navigation }) {
     const [loading, setLoading] = useState(false);
     const [subscription, setSubscription] = useState([])
-    const user = useSelector(state => state.reducer)
+    const { user } = useSelector(state => state.reducer)
     const { user_id } = JSON.parse(user)
     const flatref = useRef()
 
