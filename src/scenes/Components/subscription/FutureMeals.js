@@ -13,27 +13,25 @@ export default function FutureMeals({ meals, futuredays }) {
     ]);
 
     const renderTabBar = (props) => (
-        <View>
-            <TabBar
-                {...props}
-                scrollEnabled
-                style={{
-                    backgroundColor: "transparent",
-                    flex: 1,
-                    flexDirection: 'row'
-                }}
-                contentContainerStyle={{ flexDirection: 'row' }}
-                tabStyle={{ width: 'auto' }}
-                activeColor="#ff6600"
-                labelStyle={{ fontWeight: "bold", color: "#000" }}
-                inactiveColor="#272727"
-                indicatorStyle={{
-                    backgroundColor: "#ff9900",
-                    marginHorizontal: 2,
-                    marginVertical: 4,
-                }}
-            />
-        </View>
+        <TabBar
+            {...props}
+            scrollEnabled
+            style={{
+                backgroundColor: "transparent",
+                flex: 1,
+                flexDirection: 'row'
+            }}
+            contentContainerStyle={{ flexDirection: 'row' }}
+            tabStyle={{ width: '30%' }}
+            activeColor="#ff6600"
+            labelStyle={{ fontWeight: "bold", color: "#000" }}
+            inactiveColor="#272727"
+            indicatorStyle={{
+                backgroundColor: "#ff9900",
+                marginHorizontal: 2,
+                marginVertical: 4,
+            }}
+        />
     );
 
     const renderScene = ({ item }) => <CurrentMeal meal={meals[0]} />;
