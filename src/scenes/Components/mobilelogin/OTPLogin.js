@@ -27,11 +27,11 @@ export default function OTPLogin({ navigation }) {
         setLoading(true)
         const statusCode = await dispatch(signIn(verificationId, verificationCode))
         console.log(statusCode)
-        // if (statusCode === 200) {
-        //     navigation.navigate('userdetails')
-        // } else {
-        //     navigation.navigate('home')
-        // }
+        if (statusCode === 200) {
+            navigation.navigate('userdetails')
+        } else {
+            navigation.navigate('home')
+        }
         setLoading(false)
     }
     return (
