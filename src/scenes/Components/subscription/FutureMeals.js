@@ -9,19 +9,22 @@ export default function FutureMeals({ meals, futuredays }) {
     const [routes] = useState([
         { key: "first", title: futuredays[0] },
         { key: "second", title: futuredays[1] },
-        { key: "third", title: futuredays[2] },
+        { key:"third", title: futuredays[2] }
+        
     ]);
 
     const renderTabBar = (props) => (
         <TabBar
             {...props}
-            tabStyle={{ width: width / 3 }}
+            tabStyle={{ width: width / 3.3,flexDirection:'row' }}
             scrollEnabled
             style={{
                 backgroundColor: "transparent",
-                flexDirection: 'row'
+             //   flexDirection: 'row',
+              
             }}
-            contentContainerStyle={{ flexDirection: 'row', justifyContent: 'space-between' }}
+            indicatorContainerStyle={{flexDirection:'row'}}
+            contentContainerStyle={{ flexDirection: 'row', justifyContent: 'space-between',flex:1 }}
             activeColor="#ff6600"
             labelStyle={{ fontWeight: "bold" }}
             inactiveColor="#272727"
@@ -37,14 +40,6 @@ export default function FutureMeals({ meals, futuredays }) {
                 return <CurrentMeal index={route.key} meal={meals.find((o) => o.day === route.title)} />;
             case "third":
                 return <CurrentMeal index={route.key} meal={meals.find((o) => o.day === route.title)} />;
-            case "fourth":
-                return <CurrentMeal index={route.key} meal={meals.find((o) => o.day === route.title)} />;
-            case "fifth":
-                return <CurrentMeal index={route.key} meal={meals.find((o) => o.day === route.title)} />;
-            case "sixth":
-                return <CurrentMeal index={route.key} meal={meals.find((o) => o.day === route.title)} />;
-            case "seventh":
-                return <CurrentMeal index={route.key} meal={meals.find((o) => o.day === route.title)} />;
             default:
                 break;
         }
@@ -52,7 +47,7 @@ export default function FutureMeals({ meals, futuredays }) {
 
 
     return (
-        <View style={{ height: 280 }}>
+        <View style={{ height: 300 }}>
             <TabView
                 lazy
                 swipeEnabled

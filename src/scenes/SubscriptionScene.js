@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useCallback, useRef, useEffect } from "react";
-import { FlatList, RefreshControl, SafeAreaView, ScrollView } from "react-native";
+import { View,FlatList, RefreshControl, SafeAreaView, ScrollView } from "react-native";
 import { useSelector } from "react-redux";
 import { ORDER_URL, SUBSCRIPTION_URL } from "../services/EndPoints";
 import NoSubscription from "./Components/subscription/NoSubscription";
@@ -34,7 +34,11 @@ export default function SubscriptionScene({ navigation }) {
     }, [user])
 
 
-    const renderItem = ({ item }) => <SubscriptionItem item={item} navigation={navigation} />
+    const renderItem = ({ item }) => (
+        <View style={{flexDirection:'column'}}>
+        <SubscriptionItem item={item} navigation={navigation} />
+        </View>
+    )
 
     return (
         <SafeAreaView style={styles.container}
@@ -43,7 +47,7 @@ export default function SubscriptionScene({ navigation }) {
         // }
         >
             <FlatList
-                horizontal
+               horizontal
                 pagingEnabled
                 ListEmptyComponent={() => <NoSubscription navigation={navigation} />}
                 contentContainerStyle={{ paddingBottom: 10 }}
