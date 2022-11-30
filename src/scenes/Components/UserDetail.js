@@ -62,6 +62,9 @@ export default function UserDetail({ navigation }) {
       profile_picture: uri
     };
     const response = await dispatch(updateUser(id, dataToSend))
+    console.log('====================================');
+    console.log(response);
+    console.log('====================================');
     navigation.navigate('add_address')
   };
 

@@ -62,9 +62,6 @@ export const signIn = (verificationId, verificationCode) => async (dispatch) => 
     const response = await firebase.auth().signInWithCredential(credential);
     const { user } = response
     let phone = user.phoneNumber
-    console.log('====================================');
-    console.log("trying to signin");
-    console.log('====================================');
     const resp = await axios.post(`${USER_URL}`, { phone: phone })
     let { status, data } = resp.data
     statusCode = status
