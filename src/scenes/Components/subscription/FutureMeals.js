@@ -15,21 +15,15 @@ export default function FutureMeals({ meals, futuredays }) {
     const renderTabBar = (props) => (
         <TabBar
             {...props}
+            tabStyle={{ width: width / 3 }}
             scrollEnabled
             style={{
                 backgroundColor: "transparent",
-                flexDirection: 'row'
             }}
-            contentContainerStyle={{ flexDirection: 'row' }}
-            tabStyle={{ width: 'auto' }}
             activeColor="#ff6600"
-            labelStyle={{ fontWeight: "bold", color: "#000" }}
+            labelStyle={{ fontWeight: "bold" }}
             inactiveColor="#272727"
-            indicatorStyle={{
-                backgroundColor: "#ff9900",
-                marginHorizontal: 2,
-                marginVertical: 4,
-            }}
+            indicatorStyle={{ backgroundColor: "#ff9900", marginHorizontal: 2 }}
         />
     );
 
