@@ -30,7 +30,6 @@
     "geolib": "^3.3.3",
     "moment": "^2.29.2",
     "react": "17.0.2",
-    "react-dom": "^18.2.0",
     "react-native": "0.68.2",
     "react-native-banner-carousel": "^1.0.3",
     "react-native-calendar-picker": "^7.1.2",
