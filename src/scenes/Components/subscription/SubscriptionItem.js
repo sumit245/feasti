@@ -24,7 +24,7 @@ export default function SubscriptionItem({ item }) {
   }, [item])
 
   return (
-    <SafeAreaView style={[styles.container, { width: width }]}>
+    <SafeAreaView style={[styles.container, { width: width,flexDirection:'column' }]}>
       <View style={[styles.header, { backgroundColor: "#FFF" }]}>
         <View style={{ marginLeft: 4 }}>
           <Text style={styles.headerTitle}>
@@ -127,7 +127,10 @@ export default function SubscriptionItem({ item }) {
           {/* Notes Section */}
           <Text style={styles.headerText}>Future Meals</Text>
           <View style={styles.optionCard}>
-            <FutureMeals meals={item.meals} futuredays={['Wednesday', 'Thursday', 'Friday']} />
+            <View style={{flexDirection:'column'}}>
+
+            <FutureMeals meals={item.meals} futuredays={['Wednesday', 'Thursday','Friday']} />
+            </View>
           </View>
           {/* Future Meals */}
         </View>

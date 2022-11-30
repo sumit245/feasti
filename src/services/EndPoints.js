@@ -1,5 +1,5 @@
 // const BASE_URL = "http://192.168.1.3:5000" //local IP address 
-const BASE_URL = "http://18.117.246.192/"   //aws IP address
+const BASE_URL = "http://18.117.246.192"   //aws IP address
 
 // user related links
 export const USER_URL = BASE_URL + '/api/users/';
