@@ -9,7 +9,7 @@ export default function EmptyChef() {
     const [loaded, setLoaded] = useState(false)
     const fetchCities = () => {
         const { addresses } = JSON.parse(user)
-        setCity(addresses[0])
+        setCity(addresses[0].city)
         setLoaded(true)
     }
     useEffect(() => {
