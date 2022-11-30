@@ -127,7 +127,7 @@ export default function SubscriptionItem({ item }) {
           {/* Notes Section */}
           <Text style={styles.headerText}>Future Meals</Text>
           <View style={styles.optionCard}>
-            <View>
+            <View style={{ flexDirection: 'column' }}>
               <FutureMeals meals={item.meals} futuredays={['Wednesday', 'Thursday', 'Friday']} />
             </View>
           </View>
