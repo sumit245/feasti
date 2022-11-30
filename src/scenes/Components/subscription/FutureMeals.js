@@ -30,19 +30,19 @@ export default function FutureMeals({ meals, futuredays }) {
     const renderScene = ({ route }) => {
         switch (route.key) {
             case "first":
-                return <CurrentMeal index={route.key} meals={meals.find((o) => o.day === route.title)} />;
+                return <CurrentMeal index={route.key} meal={meals.find((o) => o.day === route.title)} />;
             case "second":
-                return <CurrentMeal index={route.key} meals={meals.find((o) => o.day === route.title)} />;
+                return <CurrentMeal index={route.key} meal={meals.find((o) => o.day === route.title)} />;
             case "third":
-                return <CurrentMeal index={route.key} meals={meals.find((o) => o.day === route.title)} />;
+                return <CurrentMeal index={route.key} meal={meals.find((o) => o.day === route.title)} />;
             case "fourth":
-                return <CurrentMeal index={route.key} meals={meals.find((o) => o.day === route.title)} />;
+                return <CurrentMeal index={route.key} meal={meals.find((o) => o.day === route.title)} />;
             case "fifth":
-                return <CurrentMeal index={route.key} meals={meals.find((o) => o.day === route.title)} />;
+                return <CurrentMeal index={route.key} meal={meals.find((o) => o.day === route.title)} />;
             case "sixth":
-                return <CurrentMeal index={route.key} meals={meals.find((o) => o.day === route.title)} />;
+                return <CurrentMeal index={route.key} meal={meals.find((o) => o.day === route.title)} />;
             case "seventh":
-                return <CurrentMeal index={route.key} meals={meals.find((o) => o.day === route.title)} />;
+                return <CurrentMeal index={route.key} meal={meals.find((o) => o.day === route.title)} />;
             default:
                 break;
         }
