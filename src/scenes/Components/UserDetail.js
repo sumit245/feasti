@@ -71,7 +71,7 @@ export default function UserDetail({ navigation }) {
 
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: "#ffffff" }]}>
-      <BackButton />
+      <BackButton navigation={navigation} />
       <Text style={styles.lightText}>We need some details to serve you better</Text>
       <View
         style={{
