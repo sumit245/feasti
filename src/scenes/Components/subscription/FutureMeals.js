@@ -19,7 +19,9 @@ export default function FutureMeals({ meals, futuredays }) {
             scrollEnabled
             style={{
                 backgroundColor: "transparent",
+                flexDirection: 'row'
             }}
+            contentContainerStyle={{ flexDirection: 'row', justifyContent: 'space-between' }}
             activeColor="#ff6600"
             labelStyle={{ fontWeight: "bold" }}
             inactiveColor="#272727"
