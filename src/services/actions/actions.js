@@ -35,7 +35,8 @@ export const getLocalPin = () => async (dispatch) => {
 
 export const loginWithPin = (enteredPin) => async (dispatch) => {
     let isLoggedIn = false
-    const user = await AsyncStorage.getItem('user')
+    let user = await AsyncStorage.getItem('user')
+    user = JSON.parse(user)
     if (user !== null) {
         isLoggedIn = true
         dispatch({ type: SAVE_USER, payload: user })
