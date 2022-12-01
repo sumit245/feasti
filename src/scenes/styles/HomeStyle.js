@@ -512,6 +512,8 @@ export const styles = StyleSheet.create({
     imageNumName: {
         flex: 1,
         flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
     },
     logoutButton: {
         position: 'absolute',
