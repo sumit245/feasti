@@ -65,7 +65,7 @@ export const signIn = (verificationId, verificationCode) => async (dispatch) => 
     const resp = await axios.post(`${USER_URL}`, { phone: phone })
     let { status, data } = resp.data
     statusCode = status
-    dispatch({ type: SAVE_USER, payload: data })
+    dispatch({ type: SAVE_USER, payload: JSON.stringify(data) })
     await AsyncStorage.setItem('user', JSON.stringify(data))
     await AsyncStorage.setItem('isLoggedIn', JSON.stringify({ isLoggedIn: true }))
     return statusCode
