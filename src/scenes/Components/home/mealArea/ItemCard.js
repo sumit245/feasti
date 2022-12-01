@@ -10,6 +10,7 @@ export default function ItemCard({ item, navigation, category }) {
 
     const dispatch = useDispatch()
     const [favorite, setFavorite] = useState(false)
+    const [userID, setUserID] = useState("")
     const [state, setState] = useState({
         discount: "",
         discount_type: "%",
@@ -34,9 +35,10 @@ export default function ItemCard({ item, navigation, category }) {
         let componentMount = true
         if (componentMount) {
             user = JSON.parse(user)
-            const { favorite } = user
+            const { _id, favorite } = user
             const isFavorite = Array.isArray(favorite) && favorite.includes(restaurant_name)
             setFavorite(isFavorite)
+            setUserID(_id)
         }
         return () => {
             componentMount = false
@@ -45,7 +47,7 @@ export default function ItemCard({ item, navigation, category }) {
 
 
     const updateFavorite = async () => {
-        await dispatch(addToFavorite(user._id, restaurant_name))
+        await dispatch(addToFavorite(userID, restaurant_name))
         setFavorite(!favorite)
     }
 
