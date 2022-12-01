@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import { Badge } from "react-native-paper";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,10 +9,11 @@ export default function FavoritePicker({ navigation }) {
     const [count, setCount] = useState("0");
     const dispatch = useDispatch()
     let { user } = useSelector(state => state.reducer)
+
     useEffect(() => {
         let componentMounted = true;
         if (componentMounted) {
-            const { favorite } = JSON.parse(user)
+            const { favorite } = user
             setCount(favorite.length);
         }
         return () => {
