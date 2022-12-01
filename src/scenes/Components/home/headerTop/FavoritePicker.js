@@ -13,7 +13,7 @@ export default function FavoritePicker({ navigation }) {
     useEffect(() => {
         let componentMounted = true;
         if (componentMounted) {
-            const { favorite } = user
+            const { favorite } = JSON.parse(user)
             setCount(favorite.length);
         }
         return () => {
