@@ -36,7 +36,6 @@ export const getLocalPin = () => async (dispatch) => {
 export const loginWithPin = (enteredPin) => async (dispatch) => {
     let isLoggedIn = false
     let user = await AsyncStorage.getItem('user')
-    user = JSON.parse(user)
     if (user !== null) {
         isLoggedIn = true
         dispatch({ type: SAVE_USER, payload: user })
@@ -77,7 +76,7 @@ export const addToFavorite = (id, restaurant) => async (dispatch) => {
         favorite: restaurant
     })
     const { data, msg } = response.data
-    dispatch({ type: SAVE_USER, payload: data })
+    dispatch({ type: SAVE_USER, payload: JSON.stringify(data) })
     await AsyncStorage.setItem('user', JSON.stringify(data))
     dispatch({ type: SET_FAVORITE_MSG, payload: msg })
 }
