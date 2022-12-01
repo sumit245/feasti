@@ -22,6 +22,7 @@ import About from "../scenes/About"
 import Rate from "../scenes/Components/ratings/Rate"
 import NotificationScreen from "../scenes/NotificationScreen";
 import EditAccount from "../scenes/EditAccount";
+import ListAddress from "../scenes/Components/manageaddress/ListAddress";
 
 const Stack = createStackNavigator()
 export default function StackNavigator() {
@@ -54,6 +55,7 @@ export default function StackNavigator() {
             <Stack.Screen name="favorites" component={Favorites} />
             <Stack.Screen name="documents" component={Documents} />
             <Stack.Screen name="list_cards" component={ListCards} />
+            <Stack.Screen name="list_address" component={ListAddress} />
             <Stack.Screen name="checkout_card" component={CardsCheckout} />
             <Stack.Screen name="order_complete" component={Thankyou} />
             <Stack.Screen name="contacts" component={Contacts} />
