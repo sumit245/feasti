@@ -34,6 +34,7 @@ export default function ListCards({ navigation }) {
         setCreditCards(cards)
         setLoaded(true)
     }
+    
     useEffect(() => {
         let componentMount = true
         if (componentMount) {
@@ -42,7 +43,7 @@ export default function ListCards({ navigation }) {
         return () => {
             componentMount = false
         }
-    }, [])
+    }, [user])
 
     const { modalVisible, title } = state
 
