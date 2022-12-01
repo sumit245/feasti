@@ -105,7 +105,7 @@ export const addCard = (cardToAdd) => async (dispatch) => {
 export const deleteCardFromAPI = (index) => async (dispatch) => {
     const user = await AsyncStorage.getItem('user')
     let { _id, cards } = JSON.parse(user)
-    cards = Array.isArray(cards) && cards.splice(index, 1)
+    Array.isArray(cards) && cards.splice(index, 1)
     const response = await axios.put(`${USER_URL}/${_id}`, {
         cards: cards
     })
