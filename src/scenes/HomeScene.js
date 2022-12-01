@@ -7,7 +7,7 @@ import Meals from './Components/home/mealArea/Meals'
 import BannerCarousel from './Components/home/banner/BannerCarousel'
 import MealSelector from './Components/home/mealselector/MealSelector'
 import Loader from "../scenes/Components/utility/Loader"
-import { getActiveRestaurants, searchRestaurantByCity } from '../services/actions/retaurantsAction'
+import { getActiveRestaurants, getNearByRestaurant, searchRestaurantByCity } from '../services/actions/retaurantsAction'
 
 
 export default function HomeScene({ navigation }) {
@@ -15,6 +15,7 @@ export default function HomeScene({ navigation }) {
     const [loading, setLoading] = useState(false)
     const [refreshing, setRefreshing] = useState(false)
     const { nearByRestaurant } = useSelector((state) => state.restaurantReducer)
+    const [restaurant,setRestaurant]=useState([])
     const dispatch = useDispatch()
 
     const searchByCity = async (city) => {
@@ -27,9 +28,22 @@ export default function HomeScene({ navigation }) {
         setLoading(true)
         setRefreshing(true)
         await dispatch(getActiveRestaurants())
+        await dispatch(getNearByRestaurant('Lunch'))
         setRefreshing(false)
         setLoading(false)
     }
+
+    useEffect(() => {
+        let componentMounted = true
+        if (componentMounted) {
+            setRestaurant(nearByRestaurant)
+        }
+    
+      return () => {
+        
+      }
+    }, [nearByRestaurant])
+    
 
     return (
         <SafeAreaView style={{ flex: 1, marginTop: StatusBar.currentHeight }} >
