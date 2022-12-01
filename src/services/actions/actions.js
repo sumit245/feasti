@@ -76,7 +76,7 @@ export const addToFavorite = (id, restaurant) => async (dispatch) => {
         favorite: restaurant
     })
     const { data, msg } = response.data
-    console.log(msg)
+    dispatch({ type: SAVE_USER, payload: data })
     await AsyncStorage.setItem('user', JSON.stringify(data))
     dispatch({ type: SET_FAVORITE_MSG, payload: msg })
 }

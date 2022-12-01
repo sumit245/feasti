@@ -5,7 +5,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { useSelector, useDispatch } from "react-redux";
 import { getFavoriteRestaurant } from "../../../../services/actions/retaurantsAction";
 
-export default function FavoritePicker({ navigation, favCount }) {
+export default function FavoritePicker({ navigation }) {
     const [count, setCount] = useState("0");
     const dispatch = useDispatch()
     let { user } = useSelector(state => state.reducer)
