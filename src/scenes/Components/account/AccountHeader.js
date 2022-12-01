@@ -18,7 +18,7 @@ export default function AccountHeader({ data, navigation }) {
                     >
                         {data.first_name} {data.last_name}
                     </Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('editaccount')}>
+                    <TouchableOpacity onPress={() => navigation.navigate('edit_account')}>
                         <Text style={{ color: '#ff6600', fontWeight: 'bold' }}>
                             Edit Account
                         </Text>

@@ -21,6 +21,7 @@ import Contacts from "../scenes/Components/contacts/Contacts";
 import About from "../scenes/About"
 import Rate from "../scenes/Components/ratings/Rate"
 import NotificationScreen from "../scenes/NotificationScreen";
+import EditAccount from "../scenes/EditAccount";
 
 const Stack = createStackNavigator()
 export default function StackNavigator() {
@@ -59,6 +60,7 @@ export default function StackNavigator() {
             <Stack.Screen name="privacy_policy" component={About} />
             <Stack.Screen name="rate_order" component={Rate} />
             <Stack.Screen name="manage_notification" component={NotificationScreen} />
+            <Stack.Screen name="edit_account" component={EditAccount} />
         </Stack.Navigator>
     )
 }

@@ -15,7 +15,7 @@ export default function HomeScene({ navigation }) {
     const [loading, setLoading] = useState(false)
     const [refreshing, setRefreshing] = useState(false)
     const { nearByRestaurant } = useSelector((state) => state.restaurantReducer)
-    const [restaurant,setRestaurant]=useState([])
+    const [restaurant, setRestaurant] = useState([])
     const dispatch = useDispatch()
 
     const searchByCity = async (city) => {
@@ -36,14 +36,15 @@ export default function HomeScene({ navigation }) {
     useEffect(() => {
         let componentMounted = true
         if (componentMounted) {
+            dispatch(getNearByRestaurant('Lunch'))
             setRestaurant(nearByRestaurant)
         }
-    
-      return () => {
-        
-      }
+
+        return () => {
+
+        }
     }, [nearByRestaurant])
-    
+
 
     return (
         <SafeAreaView style={{ flex: 1, marginTop: StatusBar.currentHeight }} >
