@@ -4,7 +4,6 @@ import { styles } from '../../styles/HomeStyle'
 import HeaderSimple from '../home/headerTop/HeaderSimple'
 import { Provider } from 'react-native-paper'
 import { useSelector } from 'react-redux'
-import SavedCards from "./SavedCards"
 import { LinearGradient } from 'expo-linear-gradient'
 
 
