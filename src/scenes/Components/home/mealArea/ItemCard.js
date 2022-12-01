@@ -43,7 +43,7 @@ export default function ItemCard({ item, navigation, category }) {
         return () => {
             componentMount = false
         }
-    }, [favorite])
+    }, [user])
 
 
     const updateFavorite = async () => {
@@ -111,7 +111,7 @@ export default function ItemCard({ item, navigation, category }) {
                             color: "#ff6600",
                             fontWeight: "bold",
                         }}
-                        onPress={() => Actions.push("reviews")}
+                        onPress={() => navigation.navigate("reviews")}
                     >
                         <Icon name="star" color="#ff6600" />
                         {rating || "5"}
