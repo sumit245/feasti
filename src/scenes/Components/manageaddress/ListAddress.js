@@ -48,7 +48,7 @@ export default function ListAddress({ navigation }) {
   return (
     <Provider>
       <SafeAreaView style={styles.container}>
-        <HeaderSimple title="Manage Payments" navigation={navigation} />
+        <HeaderSimple title="Manage Address" navigation={navigation} />
         <WalletCard navigation={navigation} wallet_balance={wallet_balance} />
         <SavedCards credit_cards={credit_cards} />
         <LinearGradient colors={["#ff9900", "#ff6600"]} style={styles.bottomBtnRound}>
