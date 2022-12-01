@@ -2,12 +2,9 @@ import React, { useEffect } from "react";
 import { FlatList } from "react-native";
 import ItemCard from "./ItemCard";
 import EmptyChef from "../../utility/EmptyChef";
-import { useDispatch } from "react-redux";
-import { setTempRestaurant } from "../../../../services/actions/retaurantsAction";
 import { RefreshControl } from "react-native";
 
 export default function Meals({ restaurant, navigation, category, onRefresh, refreshing }) {
-
     const renderItem = ({ item }) => <ItemCard item={item} navigation={navigation} category={category} />
 
     return (
