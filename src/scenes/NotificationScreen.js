@@ -6,6 +6,8 @@ import {
     ScrollView,
     TouchableOpacity,
     SafeAreaView,
+    Platform,
+    StatusBar,
 } from "react-native";
 import { Card } from "react-native-paper";
 import HeaderSimple from "../scenes/Components/home/headerTop/HeaderSimple"
@@ -63,7 +65,8 @@ const styles = StyleSheet.create({
     },
     container: {
         backgroundColor: "#fefefe",
-        flex: 1
+        flex: 1,
+        marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
     },
     notifCard: {
         marginVertical: 4,
