@@ -12,7 +12,6 @@ import {
 import { Button } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
 import * as ImagePicker from 'expo-image-picker';
-import axios from 'axios';
 import BackButton from './utility/BackButton';
 import styles from "../styles/AuthStyle"
 import { useDispatch, useSelector } from 'react-redux';
