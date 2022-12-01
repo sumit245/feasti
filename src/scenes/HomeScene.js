@@ -36,14 +36,16 @@ export default function HomeScene({ navigation }) {
     useEffect(() => {
         let componentMounted = true
         if (componentMounted) {
+            setLoading(true)
             dispatch(getNearByRestaurant('Lunch'))
             setRestaurant(nearByRestaurant)
+            setLoading(false)
         }
 
         return () => {
 
         }
-    }, [nearByRestaurant])
+    }, [loading])
 
 
     return (
