@@ -94,6 +94,9 @@ export const addCard = (cardToAdd) => async (dispatch) => {
     const { _id } = JSON.parse(user)
     const response = await axios.put(`${ADD_CARD_URL}${_id}`, { card: cardToAdd })
     const { data, msg } = response.data
+    console.log('====================================');
+    console.log(data);
+    console.log('====================================');
     dispatch({ type: SAVE_USER, payload: JSON.stringify(data) })
     await AsyncStorage.setItem('user', JSON.stringify(data))
     return msg
