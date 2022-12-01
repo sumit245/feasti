@@ -24,7 +24,7 @@ export default function AccountScene({ navigation }) {
         return () => {
             componentMount = false
         }
-    }, [])
+    }, [user])
 
     const logout = async () => {
         await AsyncStorageLib.clear()

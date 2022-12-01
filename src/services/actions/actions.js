@@ -89,6 +89,14 @@ export const updateUser = (id, dataToSend) => async (dispatch) => {
     return status
 }
 
+export const editUser = (id, dataToSend) => async (dispatch) => {
+    const response = await axios.put(USER_URL + id, { ...dataToSend })
+    const { data, status } = response.data
+    dispatch({ type: SAVE_USER, payload: JSON.stringify(data) })
+    await AsyncStorage.setItem('user', JSON.stringify(data))
+    return status
+}
+
 export const addCard = (cardToAdd) => async (dispatch) => {
     const user = await AsyncStorage.getItem('user')
     const { _id } = JSON.parse(user)

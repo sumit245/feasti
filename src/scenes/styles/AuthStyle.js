@@ -94,6 +94,7 @@ export default styles = StyleSheet.create({
     width: width,
     backgroundColor: '#fff',
     justifyContent: 'space-between',
+    marginHorizontal: 8
   },
   lightText: {
     textAlign: 'justify',
