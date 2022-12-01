@@ -18,7 +18,7 @@ export default function FavoritePicker({ navigation, favCount }) {
         return () => {
             componentMounted = false;
         };
-    }, [favCount]);
+    }, [user]);
 
     const getFavoriteRestaurants = async () => {
         const { _id } = JSON.parse(user)
