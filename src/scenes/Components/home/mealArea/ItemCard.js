@@ -43,7 +43,7 @@ export default function ItemCard({ item, navigation, category }) {
             setState(promo)
             setState({
                 ...state,
-                hasPromo: promo.length > 0 ? true : false
+                hasPromo: Array.isArray(promo) && promo.length > 0 ? true : false
             })
         }
         return () => {
