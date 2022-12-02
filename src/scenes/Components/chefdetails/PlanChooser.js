@@ -19,6 +19,11 @@ export default function PlanChooser({ restaurant_id, navigation, category, coupo
                 savedCoupons.push(chefCoupon)
                 dispatch(saveAllCoupons(savedCoupons))
             }
+            else {
+                dispatch(saveAllCoupons(coupons))
+            }
+        } else {
+            dispatch(saveAllCoupons(coupons))
         }
         await dispatch(getSelectedPlan(plan_name, base_price, customer_price, delivery_fee, index))
         await dispatch(setDeliverySlots(category))
