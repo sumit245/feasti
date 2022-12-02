@@ -48,10 +48,11 @@ export const loginWithPin = (enteredPin) => async (dispatch) => {
 }
 
 export const sendOTP = (phone, verifier) => async (dispatch) => {
+    dispatch({ type: SET_PHONE_NUMBER, payload: phone })
     try {
         const phoneProvider = new firebase.auth.PhoneAuthProvider()
         const verificationId = await phoneProvider.verifyPhoneNumber(phone, verifier)
-        dispatch({ type: SET_PHONE_NUMBER, payload: phone })
+
         dispatch({ type: SEND_OTP, payload: verificationId })
     } catch (error) {
         dispatch({ type: SET_ERROR_MSG, payload: error.message })
