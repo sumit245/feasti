@@ -27,6 +27,15 @@ export default function ItemCard({ item, navigation, category }) {
         promo
     } = item;
 
+    useEffect(() => {
+        Array.isArray(promo) ? setState({
+            ...promo[0],
+            hasPromo: true
+        }) : setState(null)
+
+    }, [item])
+
+
     const { discount, discount_type, plan_name, promo_code, hasPromo } = state;
     useEffect(() => {
         let componentMount = true
@@ -36,14 +45,6 @@ export default function ItemCard({ item, navigation, category }) {
             const isFavorite = Array.isArray(favorite) && favorite.includes(restaurant_name)
             setFavorite(isFavorite)
             setUserID(_id)
-            Array.isArray(promo) ? setState(...promo[0]) : setState(null)
-            console.log('====================================');
-            console.log(discount);
-            console.log('====================================');
-            setState({
-                ...state,
-                hasPromo: Array.isArray(promo) && promo.length > 0 ? true : false
-            })
         }
         return () => {
             componentMount = false
