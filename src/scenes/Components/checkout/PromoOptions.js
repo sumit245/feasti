@@ -59,7 +59,8 @@ export default function PromoOptions() {
                             style={{
                                 textAlign: "justify",
                                 padding: 4,
-                                fontSize: 12
+                                fontSize: 12,
+                                lineHeight: 1.2
                             }}
                         >
                             {
@@ -68,7 +69,7 @@ export default function PromoOptions() {
                                         ? "$" + coupon.discount : coupon.discount + "%"} off on your delivery.` :
                                     `Get ${coupon.discount_type === "$"
                                         ? "$" + coupon.discount
-                                        : coupon.discount} off on ${coupon.plan_name || ""}.`
+                                        : coupon.discount} off on ${coupon.plan_name || "all meals"}.`
                             }
                             {"\n"}Use Code
                             <Text style={{ fontWeight: "bold", marginLeft: 4 }}>
