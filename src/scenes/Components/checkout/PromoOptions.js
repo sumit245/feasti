@@ -65,11 +65,10 @@ export default function PromoOptions() {
                             {
                                 coupon.isDelivery ?
                                     `Get ${coupon.discount_type === "$"
-                                        ? "$" + coupon.discount : coupon.discount + "%"} off on your delivery.
-                                `:
+                                        ? "$" + coupon.discount : coupon.discount + "%"} off on your delivery.` :
                                     `Get ${coupon.discount_type === "$"
                                         ? "$" + coupon.discount
-                                        : coupon.discount} off on ${coupon.plan_name}.`
+                                        : coupon.discount} off on ${coupon.plan_name || ""}.`
                             }
                             {"\n"}Use Code
                             <Text style={{ fontWeight: "bold", marginLeft: 4 }}>
