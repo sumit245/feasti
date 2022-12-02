@@ -6,7 +6,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { getRestaurantByID } from "../../../services/actions/retaurantsAction"
 import { useDispatch, useSelector } from "react-redux";
 import { getSelectedPlan, setDeliverySlots } from "../../../services/actions/checkoutAction";
-export default function PlanChooser({ restaurant_id, navigation, category }) {
+export default function PlanChooser({ restaurant_id, navigation, category, coupon }) {
     const { nearByRestaurant } = useSelector(state => state.restaurantReducer)
     const dispatch = useDispatch()
 
@@ -30,6 +30,9 @@ export default function PlanChooser({ restaurant_id, navigation, category }) {
 
     useEffect(() => {
         getChefByID()
+        console.log('=============coupon is==============');
+        console.log(coupon);
+        console.log('====================================');
     }, [])
 
     return (

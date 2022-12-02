@@ -6,8 +6,6 @@ import Icon from "react-native-vector-icons/Ionicons"
 import { TabView, TabBar } from "react-native-tab-view";
 import MenuItem from "./Components/chefdetails/MenuItem";
 import PlanChooser from './Components/chefdetails/PlanChooser'
-import { getMealForRestaurant } from '../services/actions/retaurantsAction'
-
 
 export default function ChefDetails({ route, navigation }) {
     const { title, restaurant_id, item, distance, id, category } = route.params
@@ -109,7 +107,7 @@ export default function ChefDetails({ route, navigation }) {
                         initialLayout={{ width: width }}
                     />
                 </View>
-                <PlanChooser navigation={navigation} restaurant_id={restaurant_id} category={category} />
+                <PlanChooser navigation={navigation} restaurant_id={restaurant_id} category={category} coupon={item.promo} />
                 <Text style={styles.headerText}>About us </Text>
                 <View style={styles.about}>
                     <Text style={{ fontSize: 16, textAlign: "justify" }}>{about}</Text>
