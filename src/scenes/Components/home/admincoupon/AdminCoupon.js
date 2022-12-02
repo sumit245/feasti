@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import { Portal, Modal } from 'react-native-paper';
 
-export default function ({ visible, hideModal, discount, promo_code }) {
+export default function ({ visible, hideModal, discount, promo_code, isDelivery }) {
 
     return (
         <Portal>
@@ -23,10 +23,10 @@ export default function ({ visible, hideModal, discount, promo_code }) {
                     }}
                 >
                     <Text style={styles.discountText}>
-                        {discount}
+                        {isDelivery ? discount + '%' : discount}
                         <Text style={styles.discountTrailing}> OFF</Text>
                     </Text>
-                    <Text>Enjoy {discount} off on your next order</Text>
+                    <Text>{isDelivery ? `Get your next delivery at ${discount}% OFF` : `Enjoy ${discount} off on your next order`}</Text>
                     <Text style={styles.couponText}>
                         Use coupon code{' '}
                         <Text style={{ color: '#ffa500' }}>{promo_code}</Text>
