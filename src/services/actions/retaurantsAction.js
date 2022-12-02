@@ -8,7 +8,8 @@ import {
     MEALS_URL,
     RESTAURANT_URL,
     SEARCH_BY_CITY,
-    CUISINE_TYPE_URL
+    CUISINE_TYPE_URL,
+    COUPON_URL
 } from "../EndPoints"
 import { getDistance } from "geolib"
 
@@ -169,4 +170,11 @@ export const getMealForRestaurant = async (id, type) => {
     const response = await axios.get(`${MEALS_URL}${id}/${type}`)
     const meals = response.data
     return meals
+}
+
+export const getAdminCoupon = async () => {
+    const response = await axios.get(COUPON_URL)
+    const { coupons } = response.data
+    const shuffle = (arr) => arr.map((a) => ({ sort: Math.random(), value: a })).sort((a, b) => a.sort - b.sort).map((a) => a.value);
+    return shuffle(coupons)
 }
