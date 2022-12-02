@@ -36,7 +36,7 @@ export default function ItemCard({ item, navigation, category }) {
             const isFavorite = Array.isArray(favorite) && favorite.includes(restaurant_name)
             setFavorite(isFavorite)
             setUserID(_id)
-            Array.isArray(promo) ? setState(promo[0]) : setState(null)
+            Array.isArray(promo) ? setState(...promo[0]) : setState(null)
             console.log('====================================');
             console.log(discount);
             console.log('====================================');
