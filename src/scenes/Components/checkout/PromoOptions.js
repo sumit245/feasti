@@ -48,21 +48,34 @@ export default function PromoOptions() {
                             flexDirection: "row",
                             justifyContent: "space-between",
                             flex: 1,
+                            padding: 4,
+                            borderBottomColor: '#dcdcdc',
+                            borderBottomWidth: 1,
+                            marginVertical: 2
                         }}
                         key={key}
                     >
                         <Text
-                            style={{ textAlign: "justify", padding: 4, fontSize: 12 }}
+                            style={{
+                                textAlign: "justify",
+                                padding: 4,
+                                fontSize: 12
+                            }}
                         >
-                            Get{" "}
-                            {coupon.discount_type === "$"
-                                ? "$" + coupon.discount
-                                : coupon.discount + "%"}{" "}
-                            off on {coupon.plan_name} plan.
+                            {
+                                coupon.isDelivery ?
+                                    `Get ${coupon.discount_type === "$"
+                                        ? "$" + coupon.discount : coupon.discount}
+                                        off on your delivery.
+                                `:
+                                    `Get ${coupon.discount_type === "$"
+                                        ? "$" + coupon.discount
+                                        : coupon.discount}{" "}
+                            off on ${coupon.plan_name}.`
+                            }
                             {"\n"}Use Code
-                            <Text style={{ fontWeight: "bold" }}>
-                                {" "}
-                                {coupon.promo_code}
+                            <Text style={{ fontWeight: "bold", marginLeft: 4 }}>
+                                {" "}{coupon.promo_code}.
                             </Text>
                         </Text>
                         <Button mode="text" color="#ff6600" onPress={() => applyCoupon()}>
