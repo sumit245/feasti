@@ -8,9 +8,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSelectedPlan, setDeliverySlots } from "../../../services/actions/checkoutAction";
 export default function PlanChooser({ restaurant_id, navigation, category, coupon }) {
     const { nearByRestaurant } = useSelector(state => state.restaurantReducer)
+    const { coupons } = useSelector(state => state.restaurantReducer)
     const dispatch = useDispatch()
 
     const getPlan = async (plan_name, base_price, customer_price, delivery_fee, index) => {
+        let chefCoupon = Array.isArray(coupon) ? coupon[0] : null
+        if (chefCoupon !== null) {
+            if (chefCoupon.plan_name === plan_name) {
+                console.log('=============coupon is==============');
+                console.log(coupon);
+                console.log('====================================');
+            }
+        }
         await dispatch(getSelectedPlan(plan_name, base_price, customer_price, delivery_fee, index))
         await dispatch(setDeliverySlots(category))
 
@@ -22,6 +31,7 @@ export default function PlanChooser({ restaurant_id, navigation, category, coupo
     };
 
     const [pricing, setPricing] = useState([])
+    const [promotions, setPromotions] = useState("")
 
     const getChefByID = async () => {
         const restaurant = await getRestaurantByID(restaurant_id, nearByRestaurant)
@@ -30,9 +40,6 @@ export default function PlanChooser({ restaurant_id, navigation, category, coupo
 
     useEffect(() => {
         getChefByID()
-        console.log('=============coupon is==============');
-        console.log(coupon);
-        console.log('====================================');
     }, [])
 
     return (

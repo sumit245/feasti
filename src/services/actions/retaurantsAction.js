@@ -9,7 +9,6 @@ import {
     RESTAURANT_URL,
     SEARCH_BY_CITY,
     CUISINE_TYPE_URL,
-    COUPON_URL,
     ADMIN_COUPON_URL
 } from "../EndPoints"
 import { getDistance } from "geolib"
@@ -17,6 +16,7 @@ import { getDistance } from "geolib"
 export const GET_ALL_RESTAURANT = "GET_ALL_RESTAURANT"
 export const SET_TEMP_RESTAURANT = "SET_TEMP_RESTAURANT"
 export const GET_CUISINES = "GET_CUISINES"
+export const SET_COUPONS = "SET_COUPONS"
 
 const calculateDistanceGlobal = async (inputCity) => {
     const user = await AsyncStorageLib.getItem('user')
@@ -173,9 +173,10 @@ export const getMealForRestaurant = async (id, type) => {
     return meals
 }
 
-export const getAdminCoupon = async () => {
+export const getAdminCoupon = () => async (dispatch) => {
     const response = await axios.get(ADMIN_COUPON_URL)
     const { coupons } = await response.data
+    dispatch({ type: SET_COUPONS, payload: coupons })
     const shuffle = (arr) => arr.map((a) => ({ sort: Math.random(), value: a })).sort((a, b) => a.sort - b.sort).map((a) => a.value);
     return shuffle(coupons)
 }

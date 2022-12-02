@@ -39,7 +39,7 @@ export default function HomeScene({ navigation }) {
         setLoading(false)
     }
     const getCoupon = async () => {
-        const coupons = await getAdminCoupon()
+        const coupons = await dispatch(getAdminCoupon())
         let { isDelivery, discount, promo_code } = coupons[0];
         setisDelivery(isDelivery);
         setDiscount(discount);
