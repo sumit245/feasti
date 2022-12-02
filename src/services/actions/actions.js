@@ -87,7 +87,7 @@ export const addToFavorite = (id, restaurant) => async (dispatch) => {
 export const updateUser = (id, dataToSend) => async (dispatch) => {
     const response = await axios.put(USER_URL + id, { ...dataToSend })
     const { data, status } = response.data
-    dispatch({ type: SAVE_USER, payload: data })
+    dispatch({ type: SAVE_USER, payload: JSON.stringify(data) })
     await AsyncStorage.setItem('user', JSON.stringify(data))
     return status
 }
