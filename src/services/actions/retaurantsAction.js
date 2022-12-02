@@ -175,7 +175,7 @@ export const getMealForRestaurant = async (id, type) => {
 
 export const getAdminCoupon = async () => {
     const response = await axios.get(ADMIN_COUPON_URL)
-    const coupons = await response.data
+    const { coupons } = await response.data
     console.log('====================================');
     console.log(coupons);
     console.log('====================================');
