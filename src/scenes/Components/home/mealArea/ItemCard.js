@@ -28,6 +28,7 @@ export default function ItemCard({ item, navigation, category }) {
         distance,
         about,
         price_plans,
+        promo
     } = item;
 
     const { discount, discount_type, plan_name, promo_code, hasPromo } = state;
@@ -39,6 +40,7 @@ export default function ItemCard({ item, navigation, category }) {
             const isFavorite = Array.isArray(favorite) && favorite.includes(restaurant_name)
             setFavorite(isFavorite)
             setUserID(_id)
+            console.log(promo)
         }
         return () => {
             componentMount = false
