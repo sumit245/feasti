@@ -40,6 +40,7 @@ export default function HomeScene({ navigation }) {
     }
     const getCoupon = async () => {
         const coupons = await getAdminCoupon()
+        console.log(coupons);
         let { promo_text, discount, promo_code } = coupons[0];
         let promo = promo_text.replace(/X/i, promo_code);
         promo = promo.replace(/y/i, discount);
