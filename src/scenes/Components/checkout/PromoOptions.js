@@ -60,7 +60,7 @@ export default function PromoOptions() {
                                 textAlign: "justify",
                                 padding: 4,
                                 fontSize: 12,
-                                lineHeight: 1.2
+                                lineHeight: 16
                             }}
                         >
                             {
