@@ -12,7 +12,7 @@ export default function PromoOptions() {
     const [applied, setApplied] = useState(false)
     const [isAdmin, setAdmin] = useState(false)
     useEffect(() => {
-        setCoupons[allCoupons]
+        setCoupons(allCoupons)
     }, [allCoupons])
     const applyCoupon = () => {
     }
