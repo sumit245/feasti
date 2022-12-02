@@ -12,6 +12,10 @@ export default function ItemCard({ item, navigation, category }) {
     const [favorite, setFavorite] = useState(false)
     const [userID, setUserID] = useState("")
     const [state, setState] = useState({
+        discount: "",
+        discount_type: '',
+        plan_name: '',
+        promo_code: '',
         hasPromo: false,
     });
     const {
@@ -31,7 +35,10 @@ export default function ItemCard({ item, navigation, category }) {
         Array.isArray(promo) ? setState({
             ...promo[0],
             hasPromo: true
-        }) : setState(null)
+        }) : setState({
+            ...state,
+            hasPromo: false
+        })
 
     }, [item])
 
