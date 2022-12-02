@@ -33,7 +33,7 @@ export default function ManualEntry({ address, navigation, geometry }) {
 
   useEffect(() => {
     const { _id } = JSON.parse(user)
-    setId(user._id)
+    setId(_id)
   }, [])
 
 
