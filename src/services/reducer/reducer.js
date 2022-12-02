@@ -1,8 +1,9 @@
 import {
-    SEND_OTP, SET_ERROR_MSG, SAVE_USER, GET_LOCAL_USER, CHECK_LOCAL_USER, SET_FAVORITE_MSG, SAVE_CARDS
+    SEND_OTP, SET_ERROR_MSG, SAVE_USER, GET_LOCAL_USER, CHECK_LOCAL_USER, SET_FAVORITE_MSG, SAVE_CARDS, SET_PHONE_NUMBER
 } from "../actions/actions";
 
 const initialState = {
+    phone: "",
     verificationId: "",
     codeSent: false,
     user: {},
@@ -13,6 +14,8 @@ const initialState = {
 };
 export default function reducer(state = initialState, action) {
     switch (action.type) {
+        case SET_PHONE_NUMBER:
+            return { ...state, phone: action.payload }
         case SEND_OTP:
             return { ...state, verificationId: action.payload, codeSent: true }
         case SET_ERROR_MSG:

@@ -6,6 +6,7 @@ import firebase from "../../firebase";
 
 export const SEND_OTP = "SEND_OTP"
 export const SET_ERROR_MSG = "SET_ERROR_MSG"
+export const SET_PHONE_NUMBER = "SET_PHONE_NUMBER"
 export const SIGN_IN = "SIGN_IN"
 export const SAVE_USER = "SAVE_USER"
 export const LOGIN_WITH_PIN = "LOGIN_WITH_PIN"
@@ -50,6 +51,7 @@ export const sendOTP = (phone, verifier) => async (dispatch) => {
     try {
         const phoneProvider = new firebase.auth.PhoneAuthProvider()
         const verificationId = await phoneProvider.verifyPhoneNumber(phone, verifier)
+        dispatch({ type: SET_PHONE_NUMBER, payload: phone })
         dispatch({ type: SEND_OTP, payload: verificationId })
     } catch (error) {
         dispatch({ type: SET_ERROR_MSG, payload: error.message })

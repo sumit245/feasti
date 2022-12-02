@@ -14,7 +14,7 @@ import { signIn } from '../../../services/actions/actions'
 
 export default function OTPLogin({ navigation }) {
     const otpRef = useRef()
-    const { verificationId } = useSelector(state => state.reducer)
+    const { phone, verificationId } = useSelector(state => state.reducer)
     const [verificationCode, setVerificationCode] = useState("")
     const [loading, setLoading] = useState(false)
     const [terms, setTerms] = useState(false);
@@ -41,7 +41,7 @@ export default function OTPLogin({ navigation }) {
                     <Logo />
                     <View style={styles.mobin}>
                         <Text style={[styles.instructions, { marginTop: 5 }]}>
-                            A 6-digit OTP has been sent to your registered mobile number +919649240944
+                            A 6-digit OTP has been sent to your registered mobile number {phone}
                         </Text>
                         <View>
                             <OTPTextView
