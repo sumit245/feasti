@@ -57,7 +57,7 @@ export const getReadableAddress = () => async (dispatch) => {
     console.log('====================================');
     const addressLine1 = address_components[0].long_name + ", " + address_components[1].long_name + ", " + address_components[2].long_name
     const addressLine2 = address_components[3].long_name + ", " + address_components[4].long_name
-    const city = Array.isArray(address_components) && address_components.filter(item => Array.isArray(item.types) && item.types.includes('administrative_area_level_3'))[0].long_name
+    const city = Array.isArray(address_components) && address_components.filter(item => Array.isArray(item.types) && item.types.includes('administrative_area_level_2'))[0].long_name
     const states = Array.isArray(address_components) && address_components.filter(item => Array.isArray(item.types) && item.types.includes('administrative_area_level_1'))[0].long_name
     const country = Array.isArray(address_components) && address_components.filter(item => Array.isArray(item.types) && item.types.includes('country'))[0].long_name
     const postal_code = Array.isArray(address_components) && address_components.filter(item => Array.isArray(item.types) && item.types.includes('postal_code'))[0].long_name
