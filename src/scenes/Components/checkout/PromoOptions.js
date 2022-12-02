@@ -7,16 +7,15 @@ import { styles } from "../../styles/HomeStyle"
 
 export default function PromoOptions() {
     const { allCoupons } = useSelector(state => state.checkoutReducer)
-    const [coupons, setCoupons] = useState(null)
+    const [coupons, setCoupons] = useState([])
     const [pulled, setPulled] = useState(false)
     const [applied, setApplied] = useState(false)
     const [isAdmin, setAdmin] = useState(false)
     useEffect(() => {
-        console.log('====================================');
-        console.log(allCoupons);
-        console.log('====================================');
+        setCoupons[allCoupons]
     }, [])
-
+    const applyCoupon = () => {
+    }
     return (
         <View style={styles.optionCard}>
             <View style={[styles.optionrow, { alignItems: "center" }]}>
@@ -43,54 +42,34 @@ export default function PromoOptions() {
             </View>
 
             {pulled && (
-                <View>
-                    {
-                        isAdmin && (
-                            <View
-                                style={{
-                                    flexDirection: "row",
-                                    justifyContent: "space-between",
-                                    flex: 1,
-                                }}
-                            >
-                                <Text style={{ textAlign: "justify", padding: 4, fontSize: 12 }}>
-                                    {" " + adminCoupon.split(".")[0] + "\n" + adminCoupon.split(".")[1]}
-                                </Text>
-
-                                <Button mode="text" color="#ff6600" onPress={this.applyAdminCoupon}>
-                                    {adminApplied ? "APPLIED" : "APPLY"}
-                                </Button>
-                            </View>
-                        )}
-                    {
-                        coupons !== null && (
-                            <View
-                                style={{
-                                    flexDirection: "row",
-                                    justifyContent: "space-between",
-                                    flex: 1,
-                                }}
-                            >
-                                <Text
-                                    style={{ textAlign: "justify", padding: 4, fontSize: 12 }}
-                                >
-                                    Get{" "}
-                                    {coupons.discount_type === "$"
-                                        ? "$" + coupons.discount
-                                        : coupons.discount + "%"}{" "}
-                                    off on {coupons.plan_name} plan.
-                                    {"\n"}Use Code
-                                    <Text style={{ fontWeight: "bold" }}>
-                                        {" "}
-                                        {coupons.promo_code}
-                                    </Text>
-                                </Text>
-                                <Button mode="text" color="#ff6600" onPress={this.applyCoupon}>
-                                    {applied ? "APPLIED" : "APPLY"}
-                                </Button>
-                            </View>
-                        )}
-                </View>
+                coupons.map((coupon, key) => (
+                    <View
+                        style={{
+                            flexDirection: "row",
+                            justifyContent: "space-between",
+                            flex: 1,
+                        }}
+                        key={key}
+                    >
+                        <Text
+                            style={{ textAlign: "justify", padding: 4, fontSize: 12 }}
+                        >
+                            Get{" "}
+                            {coupon.discount_type === "$"
+                                ? "$" + coupon.discount
+                                : coupon.discount + "%"}{" "}
+                            off on {coupon.plan_name} plan.
+                            {"\n"}Use Code
+                            <Text style={{ fontWeight: "bold" }}>
+                                {" "}
+                                {coupon.promo_code}
+                            </Text>
+                        </Text>
+                        <Button mode="text" color="#ff6600" onPress={() => applyCoupon()}>
+                            {applied ? "APPLIED" : "APPLY"}
+                        </Button>
+                    </View>
+                ))
             )
             }
         </View>

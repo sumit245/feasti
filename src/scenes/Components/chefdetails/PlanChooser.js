@@ -16,7 +16,7 @@ export default function PlanChooser({ restaurant_id, navigation, category, coupo
         if (chefCoupon !== null) {
             if (chefCoupon.plan_name === plan_name) {
                 let savedCoupons = [...coupons]
-                savedCoupons.push(coupon)
+                savedCoupons.push(chefCoupon)
                 dispatch(saveAllCoupons(savedCoupons))
             }
         }
