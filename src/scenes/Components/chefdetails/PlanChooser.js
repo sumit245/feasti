@@ -5,7 +5,7 @@ import { styles } from "../../styles/HomeStyle"
 import { LinearGradient } from "expo-linear-gradient";
 import { getRestaurantByID } from "../../../services/actions/retaurantsAction"
 import { useDispatch, useSelector } from "react-redux";
-import { getSelectedPlan, setDeliverySlots } from "../../../services/actions/checkoutAction";
+import { getSelectedPlan, saveAllCoupons, setDeliverySlots } from "../../../services/actions/checkoutAction";
 export default function PlanChooser({ restaurant_id, navigation, category, coupon }) {
     const { nearByRestaurant } = useSelector(state => state.restaurantReducer)
     const { coupons } = useSelector(state => state.restaurantReducer)
@@ -15,9 +15,9 @@ export default function PlanChooser({ restaurant_id, navigation, category, coupo
         let chefCoupon = Array.isArray(coupon) ? coupon[0] : null
         if (chefCoupon !== null) {
             if (chefCoupon.plan_name === plan_name) {
-                console.log('=============coupon is==============');
-                console.log(coupon);
-                console.log('====================================');
+                let savedCoupons = [...coupons]
+                savedCoupons.push(coupon)
+                dispatch(saveAllCoupons(savedCoupons))
             }
         }
         await dispatch(getSelectedPlan(plan_name, base_price, customer_price, delivery_fee, index))

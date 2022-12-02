@@ -1,14 +1,22 @@
-import React, { Component, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View, TextInput } from "react-native";
 import { Button } from "react-native-paper";
 import Icon from "react-native-vector-icons/Fontisto";
+import { useSelector } from "react-redux";
 import { styles } from "../../styles/HomeStyle"
 
 export default function PromoOptions() {
+    const { allCoupons } = useSelector(state => state.checkoutReducer)
     const [coupons, setCoupons] = useState(null)
     const [pulled, setPulled] = useState(false)
     const [applied, setApplied] = useState(false)
     const [isAdmin, setAdmin] = useState(false)
+    useEffect(() => {
+        console.log('====================================');
+        console.log(allCoupons);
+        console.log('====================================');
+    }, [])
+
     return (
         <View style={styles.optionCard}>
             <View style={[styles.optionrow, { alignItems: "center" }]}>

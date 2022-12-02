@@ -32,6 +32,7 @@ export const SET_CURRENT_SLOT = "SET_CURRENT_SLOT"
 export const SET_SERVICE_FEE = "SET_SERVICE_FEE"
 export const SET_SERVICE_RATES = "SET_SERVICE_RATES"
 export const SET_TAXES = "SET_TAXES"
+export const SAVE_COUPONS = "SAVE_COUPONS"
 
 
 export const getUser = () => async (dispatch) => {
@@ -69,7 +70,9 @@ export const getSelectedPlan = (plan_name, base_price, customer_price, delivery_
     dispatch({ type: SET_PLAN_NAME, payload: plan_name })
     dispatch({ type: SET_BASE_PRICE, payload: base_price })
 }
-
+export const saveAllCoupons = (coupons) => async (dispatch) => {
+    dispatch({ type: SAVE_COUPONS, payload: coupons })
+}
 export const setDuration = (start_date, end_date) => async (dispatch) => {
     dispatch({ type: SET_START_DATE, payload: moment(start_date).format('DD-MMM-YYYY') })
     dispatch({ type: SET_END_DATE, payload: moment(end_date).format('DD-MMM-YYYY') })
