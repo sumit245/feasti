@@ -16,7 +16,7 @@ export default function HomeScene({ navigation }) {
     const [category, setCategory] = useState('Lunch')
     const [loading, setLoading] = useState(false)
     const [refreshing, setRefreshing] = useState(false)
-    const [coupon, setCoupon] = useState('');
+    const [isDelivery, setisDelivery] = useState('');
     const [discount, setDiscount] = useState(0);
     const [hasAdminCoupon, setHasCoupon] = useState(false)
     const [promo_code, setPromoCode] = useState('');
@@ -40,11 +40,8 @@ export default function HomeScene({ navigation }) {
     }
     const getCoupon = async () => {
         const coupons = await getAdminCoupon()
-        console.log(coupons);
-        let { promo_text, discount, promo_code } = coupons[0];
-        let promo = promo_text.replace(/X/i, promo_code);
-        promo = promo.replace(/y/i, discount);
-        setCoupon(promo);
+        let { isDelivery, discount, promo_code } = coupons[0];
+        setisDelivery(isDelivery);
         setDiscount(discount);
         setPromoCode(promo_code);
         setHasCoupon(true)
@@ -90,7 +87,9 @@ export default function HomeScene({ navigation }) {
                         visible={hasAdminCoupon}
                         hideModal={() => setHasCoupon(!hasAdminCoupon)}
                         discount={discount}
-                        promo_code={promo_code} />
+                        promo_code={promo_code}
+                        isDelivery={isDelivery}
+                    />
                 }
             </SafeAreaView>
         </Provider>
