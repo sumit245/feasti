@@ -12,10 +12,6 @@ export default function ItemCard({ item, navigation, category }) {
     const [favorite, setFavorite] = useState(false)
     const [userID, setUserID] = useState("")
     const [state, setState] = useState({
-        discount: "",
-        discount_type: "%",
-        plan_name: "",
-        promo_code: "",
         hasPromo: false,
     });
     const {
@@ -40,7 +36,7 @@ export default function ItemCard({ item, navigation, category }) {
             const isFavorite = Array.isArray(favorite) && favorite.includes(restaurant_name)
             setFavorite(isFavorite)
             setUserID(_id)
-            setState(promo)
+            setState(promo[0])
             setState({
                 ...state,
                 hasPromo: Array.isArray(promo) && promo.length > 0 ? true : false
