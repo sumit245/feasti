@@ -70,7 +70,7 @@ export default function PromoOptions() {
                                 `:
                                     `Get ${coupon.discount_type === "$"
                                         ? "$" + coupon.discount
-                                        : coupon.discount}{" "}
+                                        : coupon.discount}
                             off on ${coupon.plan_name}.`
                             }
                             {"\n"}Use Code
