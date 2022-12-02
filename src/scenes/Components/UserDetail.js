@@ -26,7 +26,6 @@ export default function UserDetail({ navigation }) {
   })
   const [id, setId] = useState("")
   const { user } = useSelector(state => state.reducer)
-  const { _id } = user
   const dispatch = useDispatch()
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -68,6 +67,7 @@ export default function UserDetail({ navigation }) {
   };
 
   useEffect(() => {
+    const { _id } = JSON.parse(user)
     setId(_id)
   }, [])
 
