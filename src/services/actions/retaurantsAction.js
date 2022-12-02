@@ -175,7 +175,10 @@ export const getMealForRestaurant = async (id, type) => {
 
 export const getAdminCoupon = async () => {
     const response = await axios.get(ADMIN_COUPON_URL)
-    const coupons  = await response.data
+    const coupons = await response.data
+    console.log('====================================');
+    console.log(coupons);
+    console.log('====================================');
     const shuffle = (arr) => arr.map((a) => ({ sort: Math.random(), value: a })).sort((a, b) => a.sort - b.sort).map((a) => a.value);
     return shuffle(coupons)
 }
