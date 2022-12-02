@@ -40,7 +40,11 @@ export default function ItemCard({ item, navigation, category }) {
             const isFavorite = Array.isArray(favorite) && favorite.includes(restaurant_name)
             setFavorite(isFavorite)
             setUserID(_id)
-            console.log(promo)
+            setState(promo)
+            setState({
+                ...state,
+                hasPromo: promo.length > 0 ? true : false
+            })
         }
         return () => {
             componentMount = false
