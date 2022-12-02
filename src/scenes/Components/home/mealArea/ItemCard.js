@@ -38,6 +38,9 @@ export default function ItemCard({ item, navigation, category }) {
             setUserID(_id)
             const coupon = Array.isArray(promo) && promo[0]
             setState(coupon)
+            console.log('====================================');
+            console.log(coupon);
+            console.log('====================================');
             setState({
                 ...state,
                 hasPromo: Array.isArray(promo) && promo.length > 0 ? true : false
