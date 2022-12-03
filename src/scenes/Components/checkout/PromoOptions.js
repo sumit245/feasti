@@ -17,6 +17,7 @@ export default function PromoOptions({ providing_delivery }) {
         setCoupons(allCoupons)
         let btns = [...applied]
         allCoupons.map((coup, index) => { btns.push(false) })
+        dispatch(setCouponDiscount(0))
         setApplied(btns)
     }, [allCoupons])
     const applyCoupon = async (key) => {

@@ -9,6 +9,7 @@ export default function BillingTable() {
     const [price, setPrice] = useState(0)
     const [delivery, setDelivery] = useState(false)
     const [service_fee, setServiceFee] = useState(0)
+    const [promo, setPromo] = useState(0)
     const [tax, setTax] = useState(0)
     const [total, setTotal] = useState(0)
     const dispatch = useDispatch()
@@ -17,8 +18,9 @@ export default function BillingTable() {
         const { delivery_fee, customer_price } = selectedPlan
         setPrice(customer_price)
         setDelivery(delivery_fee)
+        setPromo(discount)
         let serviceCharge = customer_price * 0.01 * serviceFee;
-        let total = parseFloat(serviceCharge) + parseFloat(customer_price) + parseFloat(tip) - parseFloat(discount)
+        let total = parseFloat(serviceCharge) + parseFloat(customer_price) + parseFloat(tip) - parseFloat(promo)
         if (isDelivery) {
             total = parseFloat(total) + parseFloat(delivery_fee)
         }
@@ -69,7 +71,7 @@ export default function BillingTable() {
 
             <View style={styles.billRow}>
                 <Text style={styles.billText}>Promo discount</Text>
-                <Text style={styles.billText}>${discount}</Text>
+                <Text style={styles.billText}>${parseFloat(promo).toFixed(2)}</Text>
             </View>
             <View style={styles.billRow}>
                 <Text style={styles.billText}>Tip Amount</Text>
