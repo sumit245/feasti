@@ -5,7 +5,7 @@ import Icon from "react-native-vector-icons/Fontisto";
 import { useSelector } from "react-redux";
 import { styles } from "../../styles/HomeStyle"
 
-export default function PromoOptions() {
+export default function PromoOptions({ providing_delivery }) {
     const { allCoupons } = useSelector(state => state.checkoutReducer)
     const [coupons, setCoupons] = useState([])
     const [pulled, setPulled] = useState(false)
@@ -13,9 +13,14 @@ export default function PromoOptions() {
     const [isAdmin, setAdmin] = useState(false)
     useEffect(() => {
         setCoupons(allCoupons)
+        let btns = [...applied]
+        allCoupons.map((coup, index) => { btns.push(false) })
+        setApplied(btns)
     }, [allCoupons])
     const applyCoupon = (key) => {
-        setApplied(!applied)
+        let btns = [...applied]
+        btns[key] = !btns[key]
+        setApplied(btns)
         console.log('====================================');
         console.log("Selected Coupon is ", coupons[key]);
         console.log('====================================');
