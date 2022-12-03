@@ -9,7 +9,7 @@ export default function PromoOptions() {
     const { allCoupons } = useSelector(state => state.checkoutReducer)
     const [coupons, setCoupons] = useState([])
     const [pulled, setPulled] = useState(false)
-    const [applied, setApplied] = useState(false)
+    const [applied, setApplied] = useState([])
     const [isAdmin, setAdmin] = useState(false)
     useEffect(() => {
         setCoupons(allCoupons)
@@ -81,7 +81,7 @@ export default function PromoOptions() {
                             </Text>
                         </Text>
                         <Button mode="text" color="#ff6600" onPress={() => applyCoupon(key)}>
-                            {applied ? "APPLIED" : "APPLY"}
+                            {applied[key] ? "APPLIED" : "APPLY"}
                         </Button>
                     </View>
                 ))
