@@ -9,7 +9,7 @@ import MaterialMapView from './MaterialMapView';
 import ManualEntry from './ManualEntry';
 import { useDispatch } from 'react-redux';
 import { getReadableAddress, setAdrressFromMap } from '../../../services/actions/addressactions';
-export default function AddAddress({ navigation }) {
+export default function AddAddress({ navigation, route }) {
     const dispatch = useDispatch()
     const { page } = route.params
     const [address, setAddress] = useState({

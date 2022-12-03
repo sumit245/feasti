@@ -8,7 +8,7 @@ import { LinearGradient } from 'expo-linear-gradient'
 import SavedAddress from './SavedAddress'
 
 
-export default function ListAddress({ navigation }) {
+export default function ListAddress({ navigation, route }) {
   const { page } = route.params
   const { user } = useSelector(state => state.reducer)
   const [addresses, setAddresses] = useState([])
