@@ -7,7 +7,7 @@ export default function AccountAddress({ navigation }) {
     return (
         <View style={styles.drawerRow}>
             <Icons name="earth" color={'#000'} size={24} brand />
-            <TouchableOpacity onPress={() => { navigation.navigate('list_address') }}>
+            <TouchableOpacity onPress={() => { navigation.navigate('list_address', { page: 'Account' }) }}>
                 <Text style={styles.drawerText}>Manage Address</Text>
             </TouchableOpacity>
         </View>

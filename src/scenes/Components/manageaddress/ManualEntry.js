@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addAddressToDatabase } from "../../../services/actions/addressactions";
 import { height } from "../../styles/AuthStyle";
 
-export default function ManualEntry({ address, navigation, geometry }) {
+export default function ManualEntry({ address, navigation, page }) {
   const { user } = useSelector(state => state.reducer)
   const [id, setId] = useState("")
   const [state, setState] = useState({
@@ -43,7 +43,7 @@ export default function ManualEntry({ address, navigation, geometry }) {
       address_type: address_type,
     }
     const response = await dispatch(addAddressToDatabase(id, address))
-    response === 200 ? navigation.navigate('pin_login') : null
+    response === 200 ? navigation.navigate(page) : null
   }
 
   return (

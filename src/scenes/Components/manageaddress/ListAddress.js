@@ -9,6 +9,7 @@ import SavedAddress from './SavedAddress'
 
 
 export default function ListAddress({ navigation }) {
+  const { page } = route.params
   const { user } = useSelector(state => state.reducer)
   const [addresses, setAddresses] = useState([])
   const [loaded, setLoaded] = useState(false)
@@ -37,7 +38,7 @@ export default function ListAddress({ navigation }) {
         <SavedAddress address={addresses} />
         <LinearGradient colors={["#ff9900", "#ff6600"]} style={styles.bottomBtnRound}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('add_address')}
+            onPress={() => navigation.navigate('add_address', { page: page })}
           >
             <Text style={[styles.btnText, { marginLeft: 0 }]}>ADD NEW address</Text>
           </TouchableOpacity>

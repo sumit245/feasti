@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux';
 import { getReadableAddress, setAdrressFromMap } from '../../../services/actions/addressactions';
 export default function AddAddress({ navigation }) {
     const dispatch = useDispatch()
-
+    const { page } = route.params
     const [address, setAddress] = useState({
         addressLine1: "",
         addressLine2: "",
@@ -33,6 +33,7 @@ export default function AddAddress({ navigation }) {
         const address = await dispatch(setAdrressFromMap(location))
         setAddress(address)
     }
+
     useEffect(() => {
         getAddress()
     }, [])
@@ -42,7 +43,12 @@ export default function AddAddress({ navigation }) {
             <SafeAreaView style={AuthStyle.container}>
                 <MaterialMapView changeMarkerAddress={changeMarkerAddress} />
                 <ScrollView >
-                    {address !== null && <ManualEntry address={address} navigation={navigation} geometry={address.location} />}
+                    {address !== null && <ManualEntry
+                        address={address}
+                        navigation={navigation}
+                        geometry={address.location}
+                        page={page}
+                    />}
                 </ScrollView>
             </SafeAreaView>
             : <SafeAreaView style={AuthStyle.container}>
