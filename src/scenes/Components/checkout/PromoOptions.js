@@ -11,7 +11,7 @@ export default function PromoOptions({ providing_delivery }) {
     const [coupons, setCoupons] = useState([])
     const [pulled, setPulled] = useState(false)
     const [applied, setApplied] = useState([])
-    const [isAdmin, setAdmin] = useState(false)
+    const [couponUsed, setCouponUsed] = useState(false)
     const dispatch = useDispatch()
     useEffect(() => {
         setCoupons(allCoupons)
@@ -25,9 +25,7 @@ export default function PromoOptions({ providing_delivery }) {
         btns[key] = !btns[key]
         setApplied(btns)
         await dispatch(setCouponDiscount(coupons[key].discount))
-        console.log('====================================');
-        console.log("Selected Coupon is ", coupons[key]);
-        console.log('====================================');
+        setCouponUsed(!couponUsed)
     }
     return (
         <View style={styles.optionCard}>
@@ -89,7 +87,10 @@ export default function PromoOptions({ providing_delivery }) {
                                 {" "}{coupon.promo_code}.
                             </Text>
                         </Text>
-                        <Button mode="text" color={applied[key] ? "#ff0000" : "#ff6600"} onPress={() => applyCoupon(key)}>
+                        <Button
+                            mode="text" color={applied[key] ? "#ff0000" : "#ff6600"}
+                            disabled={couponUsed}
+                            onPress={() => applyCoupon(key)}>
                             {applied[key] ? "Remove" : "APPLY"}
                         </Button>
                     </View>
