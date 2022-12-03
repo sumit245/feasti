@@ -29,7 +29,7 @@ export default function CheckoutAddress({ navigation }) {
 
 
     const onAddressSelect = () => {
-        navigation.navigate('list_address')
+        navigation.navigate('list_address', { page: 'checkout' })
     }
 
     return (
