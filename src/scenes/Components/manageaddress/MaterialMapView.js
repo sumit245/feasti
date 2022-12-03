@@ -7,7 +7,7 @@ import { checkLocationPermission, setAdrressFromMap } from "../../../services/ac
 import styles from "../../styles/AuthStyle"
 
 
-export default function MaterialMapView({ changeMarkerAddress }) {
+export default function MaterialMapView({ changeMarkerAddress, navigation }) {
   const [location, setLocation] = useState(null)
   const dispatch = useDispatch()
   const getAddress = async () => {

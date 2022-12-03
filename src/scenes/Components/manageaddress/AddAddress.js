@@ -41,7 +41,7 @@ export default function AddAddress({ navigation, route }) {
     return (
         loaded ?
             <SafeAreaView style={AuthStyle.container}>
-                <MaterialMapView changeMarkerAddress={changeMarkerAddress} />
+                <MaterialMapView changeMarkerAddress={changeMarkerAddress} navigation={navigation} />
                 <ScrollView >
                     {address !== null && <ManualEntry
                         address={address}
