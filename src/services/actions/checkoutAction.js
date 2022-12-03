@@ -96,7 +96,7 @@ export const notesHandler = (value) => async (dispatch) => {
 export const tipHandler = (value) => async (dispatch) => {
     dispatch({ type: SET_TIP_AMOUNT, payload: value })
 }
-export const setCoupons = (value) => async (dispatch) => {
+export const setCouponDiscount = (value) => async (dispatch) => {
     dispatch({ type: SET_DISCOUNT, payload: value })
 }
 export const setDeliveryPickup = (value) => async (dispatch) => {

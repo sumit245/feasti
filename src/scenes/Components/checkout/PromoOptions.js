@@ -3,6 +3,7 @@ import { Text, View, TextInput } from "react-native";
 import { Button } from "react-native-paper";
 import Icon from "react-native-vector-icons/Fontisto";
 import { useSelector, useDispatch } from "react-redux";
+import { setCouponDiscount } from "../../../services/actions/checkoutAction";
 import { styles } from "../../styles/HomeStyle"
 
 export default function PromoOptions({ providing_delivery }) {
@@ -22,7 +23,7 @@ export default function PromoOptions({ providing_delivery }) {
         let btns = [...applied]
         btns[key] = !btns[key]
         setApplied(btns)
-        await dispatch(setCoupons(coupons[key].discount))
+        await dispatch(setCouponDiscount(coupons[key].discount))
         console.log('====================================');
         console.log("Selected Coupon is ", coupons[key]);
         console.log('====================================');
