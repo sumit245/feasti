@@ -28,7 +28,8 @@ import {
     SET_MEAL_TYPE,
     SET_RESATURANT_ADDRESS,
     SET_SERVICE_RATES,
-    SAVE_COUPONS
+    SAVE_COUPONS,
+    SET_DISCOUNT
 } from "../actions/checkoutAction";
 
 const order = {
@@ -73,6 +74,8 @@ export default function checkoutReducer(state = order, action) {
             return ({ ...state, customer_price: action.payload })
         case SET_TIP_AMOUNT:
             return ({ ...state, tip: action.payload })
+        case SET_DISCOUNT:
+            return ({ ...state, discount: action.payload })
         case SET_TOTAL_SERVICE:
             return ({ ...state, service_fee: action.payload })
         case SET_DELIVERY_FEE:

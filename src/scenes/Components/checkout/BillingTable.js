@@ -11,9 +11,8 @@ export default function BillingTable() {
     const [service_fee, setServiceFee] = useState(0)
     const [tax, setTax] = useState(0)
     const [total, setTotal] = useState(0)
-    const [discount, setDiscount] = useState(0)
     const dispatch = useDispatch()
-    const { selectedPlan, isDelivery, tip, serviceFee, taxes, } = useSelector(state => state.checkoutReducer)
+    const { selectedPlan, isDelivery, tip, serviceFee, taxes, discount } = useSelector(state => state.checkoutReducer)
     const calculate = async () => {
         const { delivery_fee, customer_price } = selectedPlan
         setPrice(customer_price)
@@ -28,7 +27,7 @@ export default function BillingTable() {
         setTax(parseFloat(tax).toFixed(2))
         setServiceFee(parseFloat(serviceCharge).toFixed(2))
         setTotal(parseFloat(total).toFixed(2))
-        await dispatch(calculateTotal(customer_price, service_fee, tax, isDelivery, delivery_fee, total))
+        await dispatch(calculateTotal(customer_price, service_fee, tax, isDelivery, delivery_fee, total, discount))
     }
     useEffect(() => {
         let componentMount = true

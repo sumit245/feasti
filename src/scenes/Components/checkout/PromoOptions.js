@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Text, View, TextInput } from "react-native";
 import { Button } from "react-native-paper";
 import Icon from "react-native-vector-icons/Fontisto";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { styles } from "../../styles/HomeStyle"
 
 export default function PromoOptions({ providing_delivery }) {
@@ -11,16 +11,18 @@ export default function PromoOptions({ providing_delivery }) {
     const [pulled, setPulled] = useState(false)
     const [applied, setApplied] = useState([])
     const [isAdmin, setAdmin] = useState(false)
+    const dispatch = useDispatch()
     useEffect(() => {
         setCoupons(allCoupons)
         let btns = [...applied]
         allCoupons.map((coup, index) => { btns.push(false) })
         setApplied(btns)
     }, [allCoupons])
-    const applyCoupon = (key) => {
+    const applyCoupon = async (key) => {
         let btns = [...applied]
         btns[key] = !btns[key]
         setApplied(btns)
+        await dispatch(setCoupons(coupons[key].discount))
         console.log('====================================');
         console.log("Selected Coupon is ", coupons[key]);
         console.log('====================================');
@@ -85,8 +87,8 @@ export default function PromoOptions({ providing_delivery }) {
                                 {" "}{coupon.promo_code}.
                             </Text>
                         </Text>
-                        <Button mode="text" color="#ff6600" onPress={() => applyCoupon(key)}>
-                            {applied[key] ? "APPLIED" : "APPLY"}
+                        <Button mode="text" color={applied[key] ? "#ff0000" : "#ff6600"} onPress={() => applyCoupon(key)}>
+                            {applied[key] ? "Remove" : "APPLY"}
                         </Button>
                     </View>
                 ))

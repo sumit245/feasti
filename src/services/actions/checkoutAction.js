@@ -33,6 +33,7 @@ export const SET_SERVICE_FEE = "SET_SERVICE_FEE"
 export const SET_SERVICE_RATES = "SET_SERVICE_RATES"
 export const SET_TAXES = "SET_TAXES"
 export const SAVE_COUPONS = "SAVE_COUPONS"
+export const SET_DISCOUNT = "SET_DISCOUNT"
 
 
 export const getUser = () => async (dispatch) => {
@@ -95,6 +96,9 @@ export const notesHandler = (value) => async (dispatch) => {
 export const tipHandler = (value) => async (dispatch) => {
     dispatch({ type: SET_TIP_AMOUNT, payload: value })
 }
+export const setCoupons = (value) => async (dispatch) => {
+    dispatch({ type: SET_DISCOUNT, payload: value })
+}
 export const setDeliveryPickup = (value) => async (dispatch) => {
     dispatch({ type: SET_DELIVERY_PICKUP, payload: value })
 }
@@ -107,12 +111,13 @@ export const setServiceCharges = () => async (dispatch) => {
     dispatch({ type: SET_TAXES, payload: taxes })
 }
 
-export const calculateTotal = (price, serviceFee, tax, isDelivery, delivery_fee, total) => async (dispatch) => {
+export const calculateTotal = (price, serviceFee, tax, isDelivery, delivery_fee, total, discount) => async (dispatch) => {
     dispatch({ type: SET_CUSTOMER_PRICE, payload: price })
     dispatch({ type: SET_TOTAL_SERVICE, payload: serviceFee })
     dispatch({ type: SET_TOTAL_TAX, payload: tax })
     isDelivery ? dispatch({ type: SET_DELIVERY_FEE, payload: delivery_fee }) :
         dispatch({ type: SET_DELIVERY_FEE, payload: 'N/A' })
+    dispatch({ type: SET_DISCOUNT, payload: discount })
     dispatch({ type: SET_TOTAL, payload: total })
 }
 
