@@ -1,34 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { View, Text } from 'react-native'
 import { RadioButton } from 'react-native-paper';
 import { styles } from "../../styles/HomeStyle"
 import Icon from "react-native-vector-icons/Ionicons"
 
 export default function AddressCard({ item, index }) {
-    const [trimmedState, setTrimmedState] = useState(false)
     const [checked, setChecked] = useState(false)
 
     const changeSelector = (selector) => {
         setChecked(selector)
     }
-    useEffect(() => {
-        let componentMount = true
-        if (componentMount) {
-            let number = trimmer(item.number);
-            setCardNumber(number)
-            let cryptcvc = "";
-            if (trimmedState) {
-                setCvc(item.cvc)
-            } else {
-                cryptcvc = cvctrimmer(item.cvc);
-                setCvc(cryptcvc)
-            }
-        }
 
-        return () => {
-            componentMount = false
-        }
-    }, [item, trimmedState])
 
     return (
         <View style={styles.swipableCard} key={index}>
