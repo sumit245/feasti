@@ -27,7 +27,7 @@ export default function AddressCard({ item, index }) {
                         size={24}
                         color="#777"
                     />
-                    <Text style={styles.swipableCardHeaderText}>{item.address_type}</Text>
+                    <Text style={[styles.swipableCardHeaderText, { textTransform: 'capitalize' }]}>{item.address_type}</Text>
                 </View>
 
                 <RadioButton.Android
@@ -39,8 +39,7 @@ export default function AddressCard({ item, index }) {
             </View>
             <View style={styles.swipableCardBody}>
                 <View style={[styles.optionrow, { width: '100%' }]}>
-                    <Text style={styles.title}> {item.addressLine1} </Text>
-                    <Text style={styles.title}>{item.city}</Text>
+                    <Text style={styles.title}> {item.addressLine1},{item.city} </Text>
                 </View>
                 <View style={[styles.optionrow, { width: '100%' }]}>
                     <Text style={styles.expiry}>{item.postal_code}, {item.state}, {item.country}</Text>
