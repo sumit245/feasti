@@ -40,7 +40,8 @@ const order = {
         postal_code: ""
     },
     total: 0,
-    serviceFee: 0
+    serviceFee: 0,
+    discount: 0
 }
 export default function checkoutReducer(state = order, action) {
     switch (action.type) {
