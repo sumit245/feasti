@@ -34,9 +34,6 @@ export default function BillingTable() {
     useEffect(() => {
         let componentMount = true
         if (componentMount) {
-            console.log('====================================');
-            console.log(discount);
-            console.log('====================================');
             calculate()
         }
         return () => {

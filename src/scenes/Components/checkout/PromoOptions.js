@@ -91,7 +91,7 @@ export default function PromoOptions({ providing_delivery }) {
                             mode="text" color={applied[key] ? "#ff0000" : "#ff6600"}
                             disabled={couponUsed}
                             onPress={() => applyCoupon(key)}>
-                            {applied[key] ? "Remove" : "APPLY"}
+                            {applied[key] ? "Applied" : "APPLY"}
                         </Button>
                     </View>
                 ))
