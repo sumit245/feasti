@@ -20,7 +20,7 @@ export default function BillingTable() {
         setDelivery(delivery_fee)
         setPromo(discount)
         let serviceCharge = customer_price * 0.01 * serviceFee;
-        let total = parseFloat(serviceCharge) + parseFloat(customer_price) + parseFloat(tip) - parseFloat(promo)
+        let total = parseFloat(serviceCharge) + parseFloat(customer_price) + parseFloat(tip) - parseFloat(discount)
         if (isDelivery) {
             total = parseFloat(total) + parseFloat(delivery_fee)
         }
