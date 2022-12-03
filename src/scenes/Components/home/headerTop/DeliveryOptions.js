@@ -95,7 +95,7 @@ export default function DeliveryOptions({ navigation }) {
                                 ]}
                                 onPress={() => {
                                     setVisible(false);
-                                    navigation.navigate('listAddress', { page: 'home' });
+                                    navigation.navigate('list_address', { page: 'home' });
                                 }}
                             >
                                 <Icon name="add-sharp" size={20} color="#ff6600" />
