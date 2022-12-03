@@ -15,6 +15,7 @@ export default function PromoOptions() {
         setCoupons(allCoupons)
     }, [allCoupons])
     const applyCoupon = (key) => {
+        setApplied(!applied)
         console.log('====================================');
         console.log("Selected Coupon is ", coupons[key]);
         console.log('====================================');
