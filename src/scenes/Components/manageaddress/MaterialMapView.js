@@ -45,7 +45,7 @@ export default function MaterialMapView({ changeMarkerAddress }) {
           />
         </MapView>
         <View style={styles.mapBackPosition}>
-          <BackButton />
+          <BackButton navigation={navigation} />
         </View>
       </View> : <View />
   );
