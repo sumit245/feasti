@@ -6,8 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { setCouponDiscount } from "../../../services/actions/checkoutAction";
 import { styles } from "../../styles/HomeStyle"
 
-export default function PromoOptions({ providing_delivery }) {
-    const { allCoupons } = useSelector(state => state.checkoutReducer)
+export default function PromoOptions() {
+    const { allCoupons, isDelivery } = useSelector(state => state.checkoutReducer)
     const [coupons, setCoupons] = useState([])
     const [pulled, setPulled] = useState(false)
     const [applied, setApplied] = useState([])
@@ -75,7 +75,7 @@ export default function PromoOptions({ providing_delivery }) {
                             }}
                         >
                             {
-                                coupon.isDelivery ?
+                                isDelivery && coupon.isDelivery ?
                                     `Get ${coupon.discount_type === "$"
                                         ? "$" + coupon.discount : coupon.discount + "%"} off on your delivery.` :
                                     `Get ${coupon.discount_type === "$"
