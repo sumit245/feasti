@@ -26,7 +26,7 @@ export default function HeaderComponent({
     return (
         <View style={!isSearching ? styles.header : styles.headerWithSearch}>
             {!isSearching ? (
-                <DeliveryOptions />
+                <DeliveryOptions navigation={navigation} />
             ) : (
                 <Searchbar
                     placeholder="Search..."
