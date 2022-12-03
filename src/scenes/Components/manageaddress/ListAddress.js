@@ -5,68 +5,43 @@ import HeaderSimple from '../home/headerTop/HeaderSimple'
 import { Provider } from 'react-native-paper'
 import { useSelector } from 'react-redux'
 import { LinearGradient } from 'expo-linear-gradient'
+import SavedAddress from './SavedAddress'
 
 
 export default function ListAddress({ navigation }) {
-
   const { user } = useSelector(state => state.reducer)
-  const [credit_cards, setCreditCards] = useState([])
-  const [wallet_balance, setBalance] = useState(0)
-
+  const [addresses, setAddresses] = useState([])
   const [loaded, setLoaded] = useState(false)
 
-  const [state, setState] = useState({
-    modalVisible: false,
-    title: ""
-  })
-
-  const hideModal = () => {
-    setState(prevState => ({
-      ...prevState,
-      modalVisible: false
-    }))
-  }
-  const fetchCards = () => {
-    const { cards, wallet_balance } = JSON.parse(user)
-    setBalance(wallet_balance)
-    setCreditCards(cards)
+  const fetchAddress = () => {
+    const { addresses } = JSON.parse(user)
+    setAddresses(addresses)
     setLoaded(true)
   }
 
   useEffect(() => {
     let componentMount = true
     if (componentMount) {
-      fetchCards()
+      fetchAddress()
     }
     return () => {
       componentMount = false
     }
   }, [user])
 
-  const { modalVisible, title } = state
 
   return (
     <Provider>
       <SafeAreaView style={styles.container}>
         <HeaderSimple title="Manage Address" navigation={navigation} />
+        <SavedAddress address={addresses} />
         <LinearGradient colors={["#ff9900", "#ff6600"]} style={styles.bottomBtnRound}>
           <TouchableOpacity
-            onPress={() => {
-              setState({ modalVisible: true, title: "Add Card" });
-            }}
+            onPress={() => navigation.navigate('add_address')}
           >
-            <Text style={[styles.btnText, { marginLeft: 0 }]}>ADD NEW Card</Text>
+            <Text style={[styles.btnText, { marginLeft: 0 }]}>ADD NEW address</Text>
           </TouchableOpacity>
         </LinearGradient>
-        {
-          modalVisible && (
-            <AddCardPopup
-              visible={modalVisible}
-              title={title}
-              setVisible={hideModal}
-            />
-          )
-        }
       </SafeAreaView>
     </Provider>
   )
