@@ -14,7 +14,10 @@ export default function PromoOptions() {
     useEffect(() => {
         setCoupons(allCoupons)
     }, [allCoupons])
-    const applyCoupon = () => {
+    const applyCoupon = (key) => {
+        console.log('====================================');
+        console.log("Selected Coupon is ", coupons[key]);
+        console.log('====================================');
     }
     return (
         <View style={styles.optionCard}>
@@ -76,7 +79,7 @@ export default function PromoOptions() {
                                 {" "}{coupon.promo_code}.
                             </Text>
                         </Text>
-                        <Button mode="text" color="#ff6600" onPress={() => applyCoupon()}>
+                        <Button mode="text" color="#ff6600" onPress={() => applyCoupon(key)}>
                             {applied ? "APPLIED" : "APPLY"}
                         </Button>
                     </View>
