@@ -19,18 +19,15 @@ export default function PlanChooser({ restaurant_id, navigation, category, coupo
             savedCoupons.splice(savedCoupons.indexOf(myCoupon), 1)
         }
         if (chefCoupon !== null) {
-            console.log('====================================');
-            console.log(savedCoupons);
-            console.log('====================================');
             if (chefCoupon.plan_name === plan_name) {
                 savedCoupons.push(chefCoupon)
                 dispatch(saveAllCoupons(savedCoupons))
             }
             else {
-                dispatch(saveAllCoupons(coupons))
+                dispatch(saveAllCoupons(savedCoupons))
             }
         } else {
-            dispatch(saveAllCoupons(coupons))
+            dispatch(saveAllCoupons(savedCoupons))
         }
         await dispatch(getSelectedPlan(plan_name, base_price, customer_price, delivery_fee, index))
         await dispatch(setDeliverySlots(category))
