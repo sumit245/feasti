@@ -1,7 +1,7 @@
 import AsyncStorageLib from "@react-native-async-storage/async-storage"
 import axios from "axios"
 import moment from "moment"
-import { CHECKOUT_URL, ORDER_URL, PLACE_ORDER_URL, PROFIT_URL, SLOT_URL } from "../EndPoints"
+import { CHECKOUT_URL, PLACE_ORDER_URL, PROFIT_URL, SLOT_URL } from "../EndPoints"
 
 export const SET_SELECTED_MEAL = "SET_SELECTED_MEAL"
 export const SET_USER = "SET_USER" //user name
@@ -134,113 +134,4 @@ export const placeOrder = (order) => async (dispatch) => {
     const { data, msg, status } = response.data
     return { data, status }
 }
-// const orderNow = async () => {
-  //   setOrdering(true);
-  //   const {
-  //     user,
-  //     restaurant,
-  //     address,
-  //     card,
-  //     total,
-  //     plan,
-  //     tip,
-  //     discount,
-  //     delivery_fee,
-  //     service_fee,
-  //     taxes,
-  //     base_price,
-  //     price,
-  //     start_date,
-  //     end_date,
-  //     notes,
-  //     time,
-  //     category,
-  //     meal_type,
-  //     promo_id,
-  //     promo_code,
-  //   } = state;
-
-  //   const result = await getCreditCardToken(card);
-  //   if (result.error) {
-  //     setOrdering(false);
-  //     alert(result.error.message);
-  //   } else {
-  //     stripeTokenHandler(
-  //       result.id,
-  //       parseFloat(total),
-  //       user.user_id,
-  //       restaurant_id,
-  //       plan
-  //     )
-  //       .then((resp) => {
-  //         const { paid } = resp;
-  //         if (paid) {
-  //           const { user_id, email_id, first_name, last_name, phone } = user;
-  //           const newOrder = {
-  //             time: time,
-  //             user_id: user_id,
-  //             restaurant_id: restaurant_id,
-  //             email_id: email_id,
-  //             promo_id: promo_id,
-  //             promo_code: promo_code,
-  //             user_name: first_name + ' ' + last_name,
-  //             address,
-  //             card: card,
-  //             category: category,
-  //             meal_type: meal_type,
-  //             phone: phone,
-  //             restaurant,
-  //             plan,
-  //             base_price,
-  //             price,
-  //             discount,
-  //             delivery_fee,
-  //             service_fee,
-  //             taxes,
-  //             total,
-  //             tip,
-  //             start_date,
-  //             end_date,
-  //             notes,
-  //             ,
-  //             ,
-  //           };
-  //           axios
-  //             .post(ORDER_URL, newOrder)
-  //             .then((response) => {
-  //               setOrdering(false);
-  //               const { data } = response;
-  //               Actions.push('thankyou', { id: data.data._id, msg: data.msg });
-  //               sendPushNotification(token, 'Order Placed 🍜', data.msg);
-  //             })
-  //             .catch((err) => {
-  //               setOrdering(false);
-  //               console.log(err);
-  //               alert('Error ordering food');
-  //             });
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         setOrdering(false);
-  //         alert('Error in stripe');
-  //       });
-  //   }
-  // };
-
-  // const response = await getUser('user');
-    // const user = await response.data;
-    // const { addresses, cards } = user;
-    // if (user !== null) {
-    //   setState({
-    //     ...state,
-    //     user: user,
-    //     loading: false,
-    //     address: addresses[0],
-    //     card: cards[0],
-    //   });
-    //   setAddressLoading(false);
-    // } else {
-    //   alert('Please login or register to proceed');
-    //   Actions.jump('auth');
-    // }
 
