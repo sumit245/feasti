@@ -23,7 +23,8 @@ export default function BannerCarousel({ navigation }) {
             setLoaded(true);
         }
     };
-    const registerClicks = (restaurant) => {
+    const registerClicks = (param) => {
+        const { banner, restaurant } = param
         console.log('====================================');
         console.log(restaurant);
         console.log('====================================');
@@ -32,12 +33,15 @@ export default function BannerCarousel({ navigation }) {
         //     "http://54.146.133.108:5000/api/chefdashboard/getchefbyidandupdatebannercount/" +
         //     id
         // );
-        // const {restaurant_name,restaurant_id}=restaurant
-        // navigation.navigate("chef_details", {
-        //     title: restaurant.restaurant.restaurant_name,
-        //     item: restaurant.restaurant,
-        //     promo: restaurant.banner,
-        // });
+        const { restaurant_name, restaurant_id, category, _id } = restaurant
+        navigation.navigate("chef_details", {
+            title: restaurant_name,
+            restaurant_id: _id,
+            distance: 3,
+            id: restaurant_id,
+            category,
+            item: restaurant,
+        });
     };
     useEffect(() => {
         LogBox.ignoreAllLogs(true);
