@@ -64,7 +64,7 @@ export default function HomeScene({ navigation }) {
                 <View>
                     <Cuisines setLoading={(value) => setLoading(value)} />
                 </View>
-                <BannerCarousel />
+                <BannerCarousel navigation={navigation} />
                 <MealSelector
                     setCategory={(value) => setCategory(value)}
                     category={category}

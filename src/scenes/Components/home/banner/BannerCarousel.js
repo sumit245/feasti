@@ -23,17 +23,21 @@ export default function BannerCarousel({ navigation }) {
             setLoaded(true);
         }
     };
-    const registerClicks = async (restaurant) => {
-        const id = restaurant.banner.promo_id;
-        const response = await axios.get(
-            "http://54.146.133.108:5000/api/chefdashboard/getchefbyidandupdatebannercount/" +
-            id
-        );
-        navigation.navigate("details", {
-            title: restaurant.restaurant.restaurant_name,
-            item: restaurant.restaurant,
-            promo: restaurant.banner,
-        });
+    const registerClicks = (restaurant) => {
+        console.log('====================================');
+        console.log(restaurant);
+        console.log('====================================');
+        // const id = restaurant.banner.promo_id;
+        // const response = await axios.get(
+        //     "http://54.146.133.108:5000/api/chefdashboard/getchefbyidandupdatebannercount/" +
+        //     id
+        // );
+        // const {restaurant_name,restaurant_id}=restaurant
+        // navigation.navigate("chef_details", {
+        //     title: restaurant.restaurant.restaurant_name,
+        //     item: restaurant.restaurant,
+        //     promo: restaurant.banner,
+        // });
     };
     useEffect(() => {
         LogBox.ignoreAllLogs(true);
