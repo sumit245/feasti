@@ -13,13 +13,13 @@ export default function PlanChooser({ restaurant_id, navigation, category, coupo
 
     const getPlan = async (plan_name, base_price, customer_price, delivery_fee, index) => {
         let chefCoupon = Array.isArray(coupon) ? coupon[0] : null
+        let savedCoupons = [...coupons]
+        let myCoupon = savedCoupons.find((coupon) => coupon.isDelivery === true)
+        console.log('====================================');
+        console.log(myCoupon);
+        console.log('====================================');
         if (chefCoupon !== null) {
             if (chefCoupon.plan_name === plan_name) {
-                let savedCoupons = [...coupons]
-                let myCoupon = savedCoupons.find((coupon) => coupon.isDelivery === true)
-                console.log('====================================');
-                console.log(myCoupon);
-                console.log('====================================');
                 savedCoupons.push(chefCoupon)
                 dispatch(saveAllCoupons(savedCoupons))
             }
