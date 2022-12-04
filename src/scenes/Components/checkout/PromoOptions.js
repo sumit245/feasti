@@ -75,7 +75,7 @@ export default function PromoOptions() {
                             }}
                         >
                             {
-                                coupon.isDelivery ?
+                                isDelivery && coupon.isDelivery ?
                                     (`Get ${coupon.discount_type === "$"
                                         ? "$" + coupon.discount : coupon.discount + "%"} off on your delivery.`) :
                                     (`Get ${coupon.discount_type === "$"
