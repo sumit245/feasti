@@ -4,21 +4,25 @@ import { styles } from './styles/HomeStyle'
 import NoOrders from "./Components/myorders/NoOrders"
 import OrderHeader from "./Components/myorders/OrderHeader"
 import OrderCard from "./Components/myorders/OrderCard"
-import { getMyOrders } from '../services/actions/orderActions';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function OrderScene({ navigation }) {
     const { myOrders } = useSelector(state => state.orderReducer)
     const [loading, setLoading] = useState(false)
+    const [data, setData] = useState([])
     const dispatch = useDispatch()
     const onRefresh = () => { }
     const renderItem = ({ item }) => <OrderCard item={item} navigation={navigation} />;
+
+    useEffect(() => {
+        setData(myOrders)
+    }, [myOrders])
 
 
     return (
         <SafeAreaView style={styles.container}>
             <FlatList
-                data={myOrders}
+                data={data}
                 refreshControl={
                     <RefreshControl
                         refreshing={loading}
