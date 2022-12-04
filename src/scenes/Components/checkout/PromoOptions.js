@@ -32,7 +32,7 @@ export default function PromoOptions() {
             console.log('Delivery Coupon Applicable');
             console.log('====================================');
         }
-        if (coupons[key].discount_type !== "%") {
+        if (coupons[key].discount_type === "%") {
             console.log('====================================');
             console.log('Percentage Coupon Applicable');
             console.log('====================================');
