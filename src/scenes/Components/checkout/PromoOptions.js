@@ -3,11 +3,11 @@ import { Text, View, TextInput } from "react-native";
 import { Button } from "react-native-paper";
 import Icon from "react-native-vector-icons/Fontisto";
 import { useSelector, useDispatch } from "react-redux";
-import { setCouponDiscount } from "../../../services/actions/checkoutAction";
+import { setCouponDiscount, SET_DELIVERY_FEE } from "../../../services/actions/checkoutAction";
 import { styles } from "../../styles/HomeStyle"
 
 export default function PromoOptions() {
-    const { allCoupons, isDelivery, delivery_fee } = useSelector(state => state.checkoutReducer)
+    const { allCoupons, isDelivery, delivery_fee, customer_price } = useSelector(state => state.checkoutReducer)
     const [coupons, setCoupons] = useState([])
     const [pulled, setPulled] = useState(false)
     const [applied, setApplied] = useState([])
@@ -31,11 +31,16 @@ export default function PromoOptions() {
         console.log(coupons[key]);
         console.log('====================================');
         if (coupons[key].isDelivery && isDelivery) {
+            let disc = parseFloat(delivery_fee) * parseFloat(coupons[key].discount) * 0.01
+            await dispatch(setCouponDiscount(disc))
+            // dispatch({ type: SET_DELIVERY_FEE, payload: 0 })
             console.log('====================================');
             console.log('Delivery Coupon Applicable');
             console.log('====================================');
         }
         if (coupons[key].discount_type === "%") {
+            let disc = parseFloat(customer_price) * parseFloat(coupons[key].discount) * 0.01
+            await dispatch(setCouponDiscount(disc))
             console.log('====================================');
             console.log('Percentage Coupon Applicable');
             console.log('====================================');
