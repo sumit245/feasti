@@ -28,7 +28,7 @@ export default function PromoOptions() {
             await dispatch(setCouponDiscount(coupons[key].discount))
         }
         console.log('====================================');
-        console.log(coupons[key]);
+        console.log(coupons[key].discount_type);
         console.log('====================================');
         if (coupons[key].isDelivery && isDelivery) {
             let disc = parseFloat(delivery_fee) * parseFloat(coupons[key].discount) * 0.01
