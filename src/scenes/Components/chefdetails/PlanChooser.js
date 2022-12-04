@@ -16,7 +16,7 @@ export default function PlanChooser({ restaurant_id, navigation, category, coupo
         if (chefCoupon !== null) {
             if (chefCoupon.plan_name === plan_name) {
                 let savedCoupons = [...coupons]
-                let myCoupon = savedCoupons.filter((coupon) => coupon.isDelivery === isDelivery)
+                let myCoupon = savedCoupons.filter((coupon) => coupon.isDelivery !== isDelivery)
                 console.log('====================================');
                 console.log(myCoupon);
                 console.log('====================================');
