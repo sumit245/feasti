@@ -62,7 +62,7 @@ export default function ChefDetails({ route, navigation }) {
     }, [id])
 
 
-    const { documents, rating, about } = item;
+    const { documents, rating, about, isDelivery } = item;
     if (!loading) { return (<ActivityIndicator animating={true} size="large" />) }
     return (
         <SafeAreaView style={styles.container}>
@@ -107,7 +107,11 @@ export default function ChefDetails({ route, navigation }) {
                         initialLayout={{ width: width }}
                     />
                 </View>
-                <PlanChooser navigation={navigation} restaurant_id={restaurant_id} category={category} coupon={item.promo} />
+                <PlanChooser
+                    navigation={navigation}
+                    restaurant_id={restaurant_id}
+                    isDelivery={isDelivery}
+                    category={category} coupon={item.promo} />
                 <Text style={styles.headerText}>About us </Text>
                 <View style={styles.about}>
                     <Text style={{ fontSize: 16, textAlign: "justify" }}>{about}</Text>
