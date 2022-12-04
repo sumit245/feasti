@@ -76,11 +76,11 @@ export default function PromoOptions() {
                         >
                             {
                                 coupon.isDelivery ?
-                                    `Get ${coupon.discount_type === "$"
-                                        ? "$" + coupon.discount : coupon.discount + "%"} off on your delivery.` :
-                                    `Get ${coupon.discount_type === "$"
+                                    (`Get ${coupon.discount_type === "$"
+                                        ? "$" + coupon.discount : coupon.discount + "%"} off on your delivery.`) :
+                                    (`Get ${coupon.discount_type === "$"
                                         ? "$" + coupon.discount
-                                        : coupon.discount} off on ${coupon.plan_name || "all meals"}.`
+                                        : coupon.discount} off on ${coupon.plan_name || "all meals"}.`)
                             }
                             {"\n"}Use Code
                             <Text style={{ fontWeight: "bold", marginLeft: 4 }}>
