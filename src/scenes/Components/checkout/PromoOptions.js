@@ -7,7 +7,7 @@ import { setCouponDiscount } from "../../../services/actions/checkoutAction";
 import { styles } from "../../styles/HomeStyle"
 
 export default function PromoOptions() {
-    const { allCoupons, isDelivery } = useSelector(state => state.checkoutReducer)
+    const { allCoupons, isDelivery, delivery_fee } = useSelector(state => state.checkoutReducer)
     const [coupons, setCoupons] = useState([])
     const [pulled, setPulled] = useState(false)
     const [applied, setApplied] = useState([])
@@ -24,7 +24,19 @@ export default function PromoOptions() {
         let btns = [...applied]
         btns[key] = !btns[key]
         setApplied(btns)
-        await dispatch(setCouponDiscount(coupons[key].discount))
+        if (coupons[key].discount_type !== "%") {
+            await dispatch(setCouponDiscount(coupons[key].discount))
+        }
+        if (coupons[key].isDelivery && isDelivery) {
+            console.log('====================================');
+            console.log('Delivery Coupon Applicable');
+            console.log('====================================');
+        }
+        if (coupons[key].discount_type !== "%") {
+            console.log('====================================');
+            console.log('Percentage Coupon Applicable');
+            console.log('====================================');
+        }
         setCouponUsed(!couponUsed)
     }
     return (
