@@ -27,6 +27,9 @@ export default function PromoOptions() {
         if (coupons[key].discount_type !== "%") {
             await dispatch(setCouponDiscount(coupons[key].discount))
         }
+        console.log('====================================');
+        console.log(coupons[key]);
+        console.log('====================================');
         if (coupons[key].isDelivery && isDelivery) {
             console.log('====================================');
             console.log('Delivery Coupon Applicable');
