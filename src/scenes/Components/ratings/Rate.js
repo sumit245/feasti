@@ -14,6 +14,7 @@ import { AirbnbRating } from 'react-native-elements';
 import { Provider } from 'react-native-paper';
 import Loader from '../utility/Loader';
 import HeaderSimple from "../home/headerTop/HeaderSimple"
+import { submitRating } from '../../../services/actions/actions';
 
 export default function Rate({ route, navigation }) {
     const { user_id, user_name, order_id, restaurant_id, order_time, plan_name, base_price, start_date, end_date } = route.params
@@ -36,7 +37,7 @@ export default function Rate({ route, navigation }) {
         setLikes(like);
         setSelected(!selected);
     };
-    const onSubmit = () => {
+    const onSubmit = async () => {
         const body = {
             user_id,
             user_name,
@@ -51,8 +52,9 @@ export default function Rate({ route, navigation }) {
             likes,
             rating
         }
+        const { msg } = await submitRating(body)
         console.log('====================================');
-        console.log(body);
+        console.log(msg);
         console.log('====================================');
     }
 

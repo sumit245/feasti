@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import axios from "axios";
-import { ADD_TO_FAVORITE, USER_URL, ADD_CARD_URL } from "../EndPoints";
+import { ADD_TO_FAVORITE, USER_URL, ADD_CARD_URL, RATING_URL } from "../EndPoints";
 import firebase from "../../firebase";
 
 
@@ -132,5 +132,11 @@ export const getSavedCards = () => async (dispatch) => {
     const user = await AsyncStorage.getItem('user')
     const { cards } = JSON.parse(user)
     dispatch({ type: SAVE_CARDS, payload: cards })
+}
+
+export const submitRating = async (body) => {
+    const response = await axios.post(`${RATING_URL}`, body)
+    const { msg } = response.data
+    return msg
 }
 
