@@ -13,7 +13,7 @@ import { checkHasReview } from "../../../services/actions/actions";
 export default function OrderCard({ item, navigation }) {
     const findAndRate = async () => {
         const { user_id, user_name, order_id, restaurant_id, order_time, plan_name, base_price, start_date, end_date } = item
-        const hasReview = checkHasReview(user_id, order_id)
+        const hasReview = await checkHasReview(user_id, order_id)
         if (!hasReview) {
             navigation.navigate('rate_order', {
                 user_id,
