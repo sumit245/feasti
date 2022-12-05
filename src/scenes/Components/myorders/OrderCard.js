@@ -7,7 +7,7 @@ import NewsPaper from "react-native-vector-icons/MaterialCommunityIcons";
 import moment from "moment";
 import { styles } from "../../styles/HomeStyle";
 import axios from "axios";
-import { GET_CHEF_FROM_BANNER } from "../../../services/EndPoints";
+import { GET_CHEF_FROM_BANNER, GET_ORDER_DETAILS, ORDER_URL } from "../../../services/EndPoints";
 import { checkHasReview } from "../../../services/actions/actions";
 
 export default function OrderCard({ item, navigation }) {
@@ -42,6 +42,12 @@ export default function OrderCard({ item, navigation }) {
             category,
             item: restaurant,
         });
+    }
+    const openReceipt = async (id) => {
+        const response = await axios.get(`${GET_ORDER_DETAILS}${id}`)
+        const order = response.data
+        navigation.navigate('order_details', { order, title: order.order_id })
+
     }
     return (
         <Card style={{ padding: 10, margin: 4 }} key={item.order_id}>
@@ -78,7 +84,7 @@ export default function OrderCard({ item, navigation }) {
                 <View style={{ alignItems: "center" }}>
                     <TouchableOpacity
                         style={[styles.actionButton, { backgroundColor: "#ccc" }]}
-                        onPress={() => fetchOrderByID(item.order_id)}
+                        onPress={() => openReceipt(item.order_id)}
                     >
                         <NewsPaper name="newspaper" size={16} color="#FFF" />
                     </TouchableOpacity>

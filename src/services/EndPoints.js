@@ -31,6 +31,7 @@ export const CHECKOUT_URL = BASE_URL + '/api/checkout/6088240787ea8208fcb85863';
 export const GET_PRICE_URL = BASE_URL + '/api/pricing/'
 
 // Orders and subscription Links
+export const GET_ORDER_DETAILS = BASE_URL + '/api/orders/getOrderByID/'
 export const ORDER_URL = BASE_URL + '/api/orders/getorderbyuser/';
 export const SUBSCRIPTION_URL = BASE_URL + '/api/orders/getsubscription/'
 export const BANNER_URL = BASE_URL + '/api/promo/active'
