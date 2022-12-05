@@ -1,4 +1,4 @@
-import { GET_ALL_RESTAURANT, GET_CUISINES, SET_COUPONS, SET_TEMP_RESTAURANT } from "../actions/retaurantsAction";
+import { GET_ALL_RESTAURANT, GET_CUISINES, SET_COUPONS, SET_REVIEWS, SET_REVIEW_COUNTS, SET_TEMP_RESTAURANT } from "../actions/retaurantsAction";
 
 const initialState = {}
 export default function restaurantReducer(state = initialState, action) {
@@ -11,6 +11,10 @@ export default function restaurantReducer(state = initialState, action) {
             return { ...state, tempRestaurant: action.payload }
         case GET_CUISINES:
             return { ...state, cuisines: action.payload }
+        case SET_REVIEWS:
+            return { ...state, reviewCounts: action.payload }
+        case SET_REVIEW_COUNTS:
+            return { ...state, reviews: action.payload }
         default:
             return state;
     }

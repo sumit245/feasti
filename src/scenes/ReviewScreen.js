@@ -1,11 +1,10 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Text, FlatList, SafeAreaView, StatusBar } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import moment from "moment";
 import { avatarify } from "./Components/utility/helpers";
 import { width } from "./styles/HomeStyle";
-import { RATING_URL } from "../services/EndPoints";
+import { useSelector } from "react-redux";
 import HeaderSimple from "./Components/home/headerTop/HeaderSimple"
 const ReviewItem = ({ title, avatar, review }) => {
     let stars = [];
@@ -153,18 +152,12 @@ const ReviewItem = ({ title, avatar, review }) => {
 };
 
 export default function Rewards({ route, navigation }) {
-    const { restaurant_id } = route.params
-    const [review, setReview] = useState([]);
-
-    const fetchReview = async (id) => {
-        const response = await axios.get(`${RATING_URL}/getmyreview/${id}`);
-        const review = response.data;
-        review.reverse();
-        setReview(review);
-    };
+    const { reviews } = useSelector(state => state.restaurantReducer)
+    const [review, setReview] = useState([])
     useEffect(() => {
-        fetchReview(restaurant_id);
-    }, [restaurant_id]);
+        setReview(reviews)
+    }, [reviews])
+
     const stars = ["1", "2", "3", "4", "5"];
     const ListHeader = () => (
         <View

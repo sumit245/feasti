@@ -9,7 +9,8 @@ import {
     RESTAURANT_URL,
     SEARCH_BY_CITY,
     CUISINE_TYPE_URL,
-    ADMIN_COUPON_URL
+    ADMIN_COUPON_URL,
+    RATING_URL
 } from "../EndPoints"
 import { getDistance } from "geolib"
 
@@ -17,6 +18,8 @@ export const GET_ALL_RESTAURANT = "GET_ALL_RESTAURANT"
 export const SET_TEMP_RESTAURANT = "SET_TEMP_RESTAURANT"
 export const GET_CUISINES = "GET_CUISINES"
 export const SET_COUPONS = "SET_COUPONS"
+export const SET_REVIEW_COUNTS = "SET_REVIEW_COUNTS"
+export const SET_REVIEWS = "SET_REVIEWS"
 
 const calculateDistanceGlobal = async (inputCity) => {
     const user = await AsyncStorageLib.getItem('user')
@@ -179,4 +182,10 @@ export const getAdminCoupon = () => async (dispatch) => {
     dispatch({ type: SET_COUPONS, payload: coupons })
     const shuffle = (arr) => arr.map((a) => ({ sort: Math.random(), value: a })).sort((a, b) => a.sort - b.sort).map((a) => a.value);
     return shuffle(coupons)
+}
+export const getMyReview = (id) => async (dispatch) => {
+    const response = await axios.get(`${RATING_URL}/getmyreview/${id}`);
+    const review = response.data;
+    dispatch({ type: SET_REVIEW_COUNTS, payload: review.length })
+    dispatch({ type: SET_REVIEWS, payload: review.reverse() })
 }

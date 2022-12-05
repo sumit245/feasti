@@ -6,10 +6,14 @@ import Icon from "react-native-vector-icons/Ionicons"
 import { TabView, TabBar } from "react-native-tab-view";
 import MenuItem from "./Components/chefdetails/MenuItem";
 import PlanChooser from './Components/chefdetails/PlanChooser'
+import { useDispatch, useSelector, useSelector } from 'react-redux'
+import { getMyReview } from '../services/actions/retaurantsAction'
 
 export default function ChefDetails({ route, navigation }) {
     const { title, restaurant_id, item, distance, id, category } = route.params
-    const [review, setReview] = useState(0);
+    const { reviewCounts } = useSelector(state => state.restaurantReducer)
+    const dispatch = useDispatch()
+    const [reviewCount, setReviewCount] = useState(0)
     const [index, setIndex] = useState(0)
     const [meals, setMeals] = useState([])
     const [loading, setLoading] = useState(false)
@@ -57,9 +61,15 @@ export default function ChefDetails({ route, navigation }) {
     };
     useEffect(() => {
         setLoading(false)
+        dispatch(getMyReview(id))
         setMeals(item.meals)
         setLoading(true)
     }, [id])
+
+    useEffect(() => {
+        setReviewCount(reviewCounts)
+    }, [reviewCounts])
+
 
 
     const { documents, rating, about, isDelivery } = item;
@@ -92,7 +102,7 @@ export default function ChefDetails({ route, navigation }) {
                         {rating || "5" + "/5 | "}
                         <Text style={{ color: "#226ccf", textDecorationLine: "underline" }}>
                             {" "}
-                            Reviews ({review})
+                            Reviews ({reviewCount})
                         </Text>
                     </Text>
                 </TouchableOpacity>
