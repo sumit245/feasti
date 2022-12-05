@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { View, StyleSheet, Text, FlatList } from "react-native";
+import { View, StyleSheet, Text, FlatList, SafeAreaView, StatusBar } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import moment from "moment";
 import { avatarify } from "./Components/utility/helpers";
 import { width } from "./styles/HomeStyle";
 import { RATING_URL } from "../services/EndPoints";
+import HeaderSimple from "./Components/home/headerTop/HeaderSimple"
 const ReviewItem = ({ title, avatar, review }) => {
     let stars = [];
     for (let index = 0; index < parseInt(review.rating); index++) {
@@ -158,9 +159,6 @@ export default function Rewards({ route, navigation }) {
     const fetchReview = async (id) => {
         const response = await axios.get(`${RATING_URL}/getmyreview/${id}`);
         const review = response.data;
-        console.log('====================================');
-        console.log(review);
-        console.log('====================================');
         review.reverse();
         setReview(review);
     };
@@ -200,20 +198,22 @@ export default function Rewards({ route, navigation }) {
     );
     const renderItem = ({ item }) => <ReviewItem review={item} />;
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
+            <HeaderSimple title="Reviews" navigation={navigation} />
             <FlatList
                 data={review}
                 ListHeaderComponent={ListHeader}
                 renderItem={renderItem}
                 keyExtractor={(item) => item._id}
             />
-        </View>
+        </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        marginTop: StatusBar.currentHeight
     },
     item: {
         padding: 5,
