@@ -24,7 +24,7 @@ export default function OrderDetails({ route, navigation }) {
         setTotal(order.total)
         setServiceFee(order.service_fee)
         Number(order.delivery_fee) ? setDelivery(order.delivery_fee) : setDelivery(0)
-        Number(order.discount) ? setDelivery(order.discount) : setDelivery(0)
+        Number(order.discount) ? setDiscount(order.discount) : setDiscount(0)
 
     }, [order]);
 
@@ -130,9 +130,9 @@ export default function OrderDetails({ route, navigation }) {
                         <Text style={styles.text}>Paid from: </Text>
                         <View style={{ flexDirection: "row" }}>
                             <PaymentIcon type={
-                                item.brand === "master-card"
+                                card.brand === "master-card"
                                     ? "mastercard"
-                                    : item.brand
+                                    : card.brand
                             }
                                 width={50} />
                             <Text style={styles.normalText}>{trimmer(card.number)}</Text>
