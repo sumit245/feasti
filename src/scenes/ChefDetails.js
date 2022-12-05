@@ -84,7 +84,7 @@ export default function ChefDetails({ route, navigation }) {
                     width={avatarSize}
                 />
                 <TouchableOpacity
-                    onPress={() => navigation.navigate("chef_reviews", { restaurant_id: restaurant_id })}
+                    onPress={() => navigation.navigate("chef_reviews", { restaurant_id: id })}
                     style={styles.ratingAndReviews}
                 >
                     <Icon name="star" color="#ff6600" />

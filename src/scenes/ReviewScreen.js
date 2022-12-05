@@ -155,14 +155,17 @@ export default function Rewards({ route, navigation }) {
     const { restaurant_id } = route.params
     const [review, setReview] = useState([]);
 
-    const fetchReview = async () => {
-        const response = await axios.get(`${RATING_URL}/getmyreview/${restaurant_id}`);
+    const fetchReview = async (id) => {
+        const response = await axios.get(`${RATING_URL}/getmyreview/${id}`);
         const review = response.data;
+        console.log('====================================');
+        console.log(review);
+        console.log('====================================');
         review.reverse();
         setReview(review);
     };
     useEffect(() => {
-        fetchReview();
+        fetchReview(restaurant_id);
     }, [restaurant_id]);
     const stars = ["1", "2", "3", "4", "5"];
     const ListHeader = () => (
