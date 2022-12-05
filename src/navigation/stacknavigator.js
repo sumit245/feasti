@@ -24,6 +24,7 @@ import NotificationScreen from "../scenes/NotificationScreen";
 import EditAccount from "../scenes/EditAccount";
 import ListAddress from "../scenes/Components/manageaddress/ListAddress";
 import Rewards from "../scenes/ReviewScreen";
+import OrderDetails from "../scenes/Components/orderdetails/OrderDetails";
 
 const Stack = createStackNavigator()
 export default function StackNavigator() {
@@ -65,6 +66,7 @@ export default function StackNavigator() {
             <Stack.Screen name="manage_notification" component={NotificationScreen} />
             <Stack.Screen name="edit_account" component={EditAccount} />
             <Stack.Screen name="chef_reviews" component={Rewards} />
+            <Stack.Screen name="order_details" component={OrderDetails} />
         </Stack.Navigator>
     )
 }
