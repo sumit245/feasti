@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Alert } from "react-native";
 import { Avatar, Card } from "react-native-paper";
 import Icon from "react-native-vector-icons/Ionicons";
 import Redo from "react-native-vector-icons/FontAwesome5";
@@ -8,21 +8,27 @@ import moment from "moment";
 import { styles } from "../../styles/HomeStyle";
 import axios from "axios";
 import { GET_CHEF_FROM_BANNER } from "../../../services/EndPoints";
+import { checkHasReview } from "../../../services/actions/actions";
 
 export default function OrderCard({ item, navigation }) {
-    const findAndRate = () => {
-        const {user_id,user_name,order_id,restaurant_id,order_time,plan_name,base_price,start_date,end_date}=item
-        navigation.navigate('rate_order', {
-            user_id,
-            user_name,
-            order_id,
-            restaurant_id,
-            order_time,
-            plan_name,
-            base_price,
-            start_date,
-            end_date
-        })
+    const findAndRate = async () => {
+        const { user_id, user_name, order_id, restaurant_id, order_time, plan_name, base_price, start_date, end_date } = item
+        const hasReview = checkHasReview(user_id, order_id)
+        if (!hasReview) {
+            navigation.navigate('rate_order', {
+                user_id,
+                user_name,
+                order_id,
+                restaurant_id,
+                order_time,
+                plan_name,
+                base_price,
+                start_date,
+                end_date
+            })
+        } else {
+            Alert.alert('Warning', 'You have already placed review for this order', [{ text: "OK" }])
+        }
     }
     const getChefByIdAndNavigate = async (id) => {
         const response = await axios.get(`${GET_CHEF_FROM_BANNER}${id}`)

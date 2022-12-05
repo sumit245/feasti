@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import axios from "axios";
-import { ADD_TO_FAVORITE, USER_URL, ADD_CARD_URL, RATING_URL } from "../EndPoints";
+import { ADD_TO_FAVORITE, USER_URL, ADD_CARD_URL, RATING_URL, CHECK_RATING_URL } from "../EndPoints";
 import firebase from "../../firebase";
 
 
@@ -138,5 +138,11 @@ export const submitRating = async (body) => {
     const response = await axios.post(`${RATING_URL}`, body)
     const { msg } = response.data
     return msg
+}
+
+export const checkHasReview = async (user_id, order_id) => {
+    const response = await axios.get(`${CHECK_RATING_URL}${user_id}/${order_id}`)
+    const { hasReview } = response.data
+    return hasReview
 }
 

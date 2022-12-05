@@ -9,6 +9,7 @@ import {
     ScrollView,
     SafeAreaView,
     KeyboardAvoidingView,
+    Alert,
 } from 'react-native';
 import { AirbnbRating } from 'react-native-elements';
 import { Provider } from 'react-native-paper';
@@ -52,10 +53,8 @@ export default function Rate({ route, navigation }) {
             likes,
             rating
         }
-        const { msg } = await submitRating(body)
-        console.log('====================================');
-        console.log(msg);
-        console.log('====================================');
+        const msg = await submitRating(body)
+        Alert.alert("Success", msg, [{ text: 'OK',onPress:navigation.goBack}])
     }
 
 
