@@ -18,7 +18,7 @@ export default function OrderCard({ item, navigation }) {
     const getChefByIdAndNavigate = async (id) => {
         const response = await axios.get(`${GET_CHEF_FROM_BANNER}${id}`)
         const restaurant = response.data
-        const { restaurant_name, _id, restaurant_id } = restaurant
+        const { restaurant_name, _id, restaurant_id, category } = restaurant
         navigation.navigate("chef_details", {
             title: restaurant_name,
             restaurant_id: _id,
