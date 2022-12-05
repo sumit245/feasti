@@ -23,6 +23,7 @@ export const ADMIN_COUPON_URL = BASE_URL + '/api/admin-coupon/'
 export const CUISINE_TYPE_URL = BASE_URL + '/api/newrest/cuisine_type/';
 export const SEARCH_BY_CITY = BASE_URL + '/api/newrest/searchbycity/'
 export const VEG_NON_VEG = BASE_URL + '/api/newrest/meal_type/';
+export const GET_CHEF_FROM_BANNER = BASE_URL + '/api/newrest/getchefbyId/'
 
 
 // Calculation Links

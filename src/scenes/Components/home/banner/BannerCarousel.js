@@ -10,7 +10,7 @@ import {
 import { width, styles } from "../../../styles/HomeStyle";
 import axios from "axios";
 import { LinearGradient } from "expo-linear-gradient"
-import { BANNER_URL } from "../../../../services/EndPoints";
+import { BANNER_URL, GET_CHEF_FROM_BANNER } from "../../../../services/EndPoints";
 
 export default function BannerCarousel({ navigation }) {
     const [page, setPage] = useState([]);
@@ -23,24 +23,17 @@ export default function BannerCarousel({ navigation }) {
             setLoaded(true);
         }
     };
-    const registerClicks = (param) => {
+    const registerClicks = async (param) => {
         const { banner, restaurant } = param
-        console.log('====================================');
-        console.log(restaurant.meals);
-        console.log('====================================');
-        // const id = restaurant.banner.promo_id;
-        // const response = await axios.get(
-        //     "http://54.146.133.108:5000/api/chefdashboard/getchefbyidandupdatebannercount/" +
-        //     id
-        // );
         const { restaurant_name, restaurant_id, category, _id } = restaurant
+        const response = await axios.get(`${GET_CHEF_FROM_BANNER}${restaurant_id}`)
         navigation.navigate("chef_details", {
             title: restaurant_name,
             restaurant_id: _id,
             distance: 3,
             id: restaurant_id,
             category,
-            item: restaurant,
+            item: response.data,
         });
     };
     useEffect(() => {
