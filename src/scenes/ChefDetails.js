@@ -102,7 +102,7 @@ export default function ChefDetails({ route, navigation }) {
                         {rating || "5" + "/5 | "}
                         <Text style={{ color: "#226ccf", textDecorationLine: "underline" }}>
                             {" "}
-                            Reviews ({reviewCount})
+                            Reviews ({reviewCounts})
                         </Text>
                     </Text>
                 </TouchableOpacity>

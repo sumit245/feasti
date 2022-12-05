@@ -1,6 +1,8 @@
 import { GET_ALL_RESTAURANT, GET_CUISINES, SET_COUPONS, SET_REVIEWS, SET_REVIEW_COUNTS, SET_TEMP_RESTAURANT } from "../actions/retaurantsAction";
 
-const initialState = {}
+const initialState = {
+    reviewsCounts: 0
+}
 export default function restaurantReducer(state = initialState, action) {
     switch (action.type) {
         case GET_ALL_RESTAURANT:
