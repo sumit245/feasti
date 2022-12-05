@@ -46,7 +46,10 @@ export default function OrderCard({ item, navigation }) {
     const openReceipt = async (id) => {
         const response = await axios.get(`${GET_ORDER_DETAILS}${id}`)
         const order = response.data
-        navigation.navigate('order_details', { order, title: order.order_id })
+        console.log('====================================');
+        console.log(order);
+        console.log('====================================');
+        // navigation.navigate('order_details', { order, title: order.order_id })
 
     }
     return (
