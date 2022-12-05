@@ -3,28 +3,30 @@ import { View, Text, ScrollView } from "react-native";
 import Icon from "react-native-vector-icons/Fontisto";
 import moment from "moment";
 import { styles } from "../../styles/orderStyles";
+import HeaderSimple from "../home/headerTop/HeaderSimple";
+import { PaymentIcon } from "react-native-payment-icons";
 export default function OrderDetails({ route, navigation }) {
     const { order, title } = route.params
-    const { address_type, city, flat_num, locality, postal_code } = order.address;
-    const [taxes, setTaxes] = useState(0);
+    const { address_type, city, addressLine1, states, postal_code } = order.address;
+    const [tax, setTax] = useState(0);
+    const [subtotal, setSubTotal] = useState(0)
+    const [tip, setTip] = useState(0)
+    const [discount, setDiscount] = useState(0)
+    const [delivery, setDelivery] = useState(0)
+    const [total, setTotal] = useState(0)
     const [service_fee, setServiceFee] = useState(0);
     const { card } = order;
 
     useEffect(() => {
-        let tax = order.taxes;
-        let sf = order.service_fee;
-        let calcSF = parseFloat(order.price) * parseFloat(sf) * 0.01;
-        let calcTax =
-            (parseFloat(order.price) +
-                parseFloat(order.delivery_fee) +
-                parseFloat(calcSF) -
-                parseFloat(order.discount) +
-                parseFloat(order.tip)) *
-            parseFloat(order.taxes) *
-            0.01;
-        setServiceFee(calcSF);
-        setTaxes(calcTax);
-    }, []);
+        setSubTotal(order.customer_price)
+        setTax(order.tax)
+        setTip(order.tip)
+        setTotal(order.total)
+        setServiceFee(order.service_fee)
+        Number(order.delivery_fee) ? setDelivery(order.delivery_fee) : setDelivery(0)
+        Number(order.discount) ? setDelivery(order.discount) : setDelivery(0)
+
+    }, [order]);
 
     const trimmer = (word) => {
         for (let i = 0; i <= word.length - 5; i++) {
@@ -53,6 +55,7 @@ export default function OrderDetails({ route, navigation }) {
             }}
             contentInsetAdjustmentBehavior="automatic"
         >
+            <HeaderSimple title={order.order_id} navigation={navigation} />
             <View style={styles.formHeader}>
                 <View style={styles.row}>
                     <View style={styles.headerRows}>
@@ -86,10 +89,10 @@ export default function OrderDetails({ route, navigation }) {
                             <Text style={[styles.normalText, { marginVertical: 2 }]}>
                                 {(address_type || "") +
                                     ", " +
-                                    (flat_num || "") +
+                                    (addressLine1 || "") +
                                     ",\n" +
                                     (city || "") +
-                                    (locality || "") +
+                                    (states || "") +
                                     ", " +
                                     (postal_code || "")}
                             </Text>
@@ -115,32 +118,23 @@ export default function OrderDetails({ route, navigation }) {
                     </View>
                     <View style={styles.headerRows}>
                         <Text style={styles.normalText}>
-                            {order.plan === "twoPlan"
-                                ? "2 Days"
-                                : order.plan === "fifteenPlan"
-                                    ? "15 Days"
-                                    : "30 Days"}
+                            {order.plan_name}
                         </Text>
                         <Text style={styles.normalText}>{order.start_date}</Text>
                         <Text style={styles.normalText}>{order.end_date}</Text>
-                        <Text style={styles.normalText}>${order.price}</Text>
+                        <Text style={styles.normalText}>${order.customer_price}</Text>
                     </View>
                 </View>
                 <View style={styles.row}>
                     <View>
                         <Text style={styles.text}>Paid from: </Text>
                         <View style={{ flexDirection: "row" }}>
-                            <Icon
-                                name={
-                                    card.brand === "master-card"
-                                        ? "mastercard"
-                                        : card.brand === "diners-club"
-                                            ? "dinners-club"
-                                            : card.brand
-                                }
-                                size={20}
-                                color="#226ccf"
-                            />
+                            <PaymentIcon type={
+                                item.brand === "master-card"
+                                    ? "mastercard"
+                                    : item.brand
+                            }
+                                width={50} />
                             <Text style={styles.normalText}>{trimmer(card.number)}</Text>
                         </View>
                     </View>
@@ -156,11 +150,15 @@ export default function OrderDetails({ route, navigation }) {
                             <Text style={[styles.text, { marginVertical: 1 }]}>
                                 Subtotal:{" "}
                             </Text>
-                            <Text style={[styles.text, { marginVertical: 1 }]}>
-                                Delivery Fee:{" "}
-                            </Text>
+                            {
+                                order.isDelivery &&
+                                <Text style={[styles.text, { marginVertical: 1 }]}>
+                                    Delivery Fee:{" "}
+                                </Text>
+                            }
+
                             <Text style={[styles.text, { marginVertical: 1, marginTop: 1 }]}>
-                                Service Fee({order.service_fee}%):
+                                Service Fee({order.service_rate}%):
                             </Text>
                             <Text style={[styles.text, { marginVertical: 1, marginTop: 1 }]}>
                                 Tip:{" "}
@@ -175,30 +173,24 @@ export default function OrderDetails({ route, navigation }) {
                         </View>
                         <View>
                             <Text style={[styles.normalText, { textAlign: "right" }]}>
-                                ${order.price}
+                                ${parseFloat(subtotal).toFixed(2)}
                             </Text>
-                            <Text style={[styles.normalText, { textAlign: "right" }]}>
-                                ${order.delivery_fee}
-                            </Text>
+                            {order.isDelivery &&
+                                <Text style={[styles.normalText, { textAlign: "right" }]}>
+                                    ${parseFloat(delivery).toFixed(2)}
+                                </Text>
+                            }
                             <Text style={[styles.normalText, { textAlign: "right" }]}>
                                 ${parseFloat(service_fee).toFixed(2)}
                             </Text>
                             <Text style={[styles.normalText, { textAlign: "right" }]}>
-                                ${order.tip}
+                                ${parseFloat(tip).toFixed(2)}
                             </Text>
                             <Text style={[styles.normalText, { textAlign: "right" }]}>
-                                {"$" + order.discount}
+                                {"$" + parseFloat(tax).toFixed(2)}
                             </Text>
                             <Text style={[styles.normalText, { textAlign: "right" }]}>
-                                ${parseFloat(taxes).toFixed(2)}
-                            </Text>
-                            <Text
-                                style={[
-                                    styles.normalText,
-                                    { textAlign: "right", marginTop: 12 },
-                                ]}
-                            >
-                                ${order.total}
+                                ${parseFloat(total).toFixed(2)}
                             </Text>
                         </View>
                     </View>
