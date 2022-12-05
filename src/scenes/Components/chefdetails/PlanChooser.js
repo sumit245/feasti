@@ -40,7 +40,6 @@ export default function PlanChooser({ restaurant_id, navigation, category, coupo
     };
 
     const [pricing, setPricing] = useState([])
-    const [promotions, setPromotions] = useState("")
 
     const getChefByID = async () => {
         const restaurant = await getRestaurantByID(restaurant_id, nearByRestaurant)

@@ -23,6 +23,7 @@ import Rate from "../scenes/Components/ratings/Rate"
 import NotificationScreen from "../scenes/NotificationScreen";
 import EditAccount from "../scenes/EditAccount";
 import ListAddress from "../scenes/Components/manageaddress/ListAddress";
+import Rewards from "../scenes/ReviewScreen";
 
 const Stack = createStackNavigator()
 export default function StackNavigator() {
@@ -63,6 +64,7 @@ export default function StackNavigator() {
             <Stack.Screen name="rate_order" component={Rate} />
             <Stack.Screen name="manage_notification" component={NotificationScreen} />
             <Stack.Screen name="edit_account" component={EditAccount} />
+            <Stack.Screen name="chef_reviews" component={Rewards} />
         </Stack.Navigator>
     )
 }
