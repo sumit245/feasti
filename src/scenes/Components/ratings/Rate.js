@@ -37,8 +37,22 @@ export default function Rate({ route, navigation }) {
         setSelected(!selected);
     };
     const onSubmit = () => {
+        const body = {
+            user_id,
+            user_name,
+            order_id,
+            restaurant_id,
+            order_time,
+            plan_name,
+            base_price,
+            start_date,
+            end_date,
+            details,
+            likes,
+            rating
+        }
         console.log('====================================');
-        console.log(user_id, user_name, order_id, restaurant_id, order_time, plan_name, base_price, start_date, end_date);
+        console.log(body);
         console.log('====================================');
     }
 
