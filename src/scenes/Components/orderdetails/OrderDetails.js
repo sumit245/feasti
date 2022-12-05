@@ -3,7 +3,8 @@ import { View, Text, ScrollView } from "react-native";
 import Icon from "react-native-vector-icons/Fontisto";
 import moment from "moment";
 import { styles } from "../../styles/orderStyles";
-export default function OrderDetails({ order, title }) {
+export default function OrderDetails({ route, navigation }) {
+    const { order, title } = route.params
     const { address_type, city, flat_num, locality, postal_code } = order.address;
     const [taxes, setTaxes] = useState(0);
     const [service_fee, setServiceFee] = useState(0);
