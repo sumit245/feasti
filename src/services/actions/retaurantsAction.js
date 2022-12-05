@@ -188,4 +188,5 @@ export const getMyReview = (id) => async (dispatch) => {
     const review = response.data;
     dispatch({ type: SET_REVIEW_COUNTS, payload: review.length })
     dispatch({ type: SET_REVIEWS, payload: review.reverse() })
+    return review.length
 }

@@ -61,14 +61,16 @@ export default function ChefDetails({ route, navigation }) {
     };
     useEffect(() => {
         setLoading(false)
-        dispatch(getMyReview(id))
         setMeals(item.meals)
         setLoading(true)
     }, [id])
-
+    const fetchReviews = async (id) => {
+        const count = await dispatch(getMyReview(id))
+        setReviewCount(count)
+    }
     useEffect(() => {
-        setReviewCount(reviewCounts)
-    }, [reviewCounts])
+        fetchReviews(id)
+    }, [id, reviewCounts])
 
 
 
@@ -102,7 +104,7 @@ export default function ChefDetails({ route, navigation }) {
                         {rating || "5" + "/5 | "}
                         <Text style={{ color: "#226ccf", textDecorationLine: "underline" }}>
                             {" "}
-                            Reviews ({reviewCounts})
+                            Reviews ({reviewCount})
                         </Text>
                     </Text>
                 </TouchableOpacity>
