@@ -163,7 +163,7 @@ export default function Rewards({ route, navigation }) {
     };
     useEffect(() => {
         fetchReview();
-    }, []);
+    }, [restaurant_id]);
     const stars = ["1", "2", "3", "4", "5"];
     const ListHeader = () => (
         <View
