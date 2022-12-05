@@ -26,7 +26,7 @@ export default function BannerCarousel({ navigation }) {
     const registerClicks = (param) => {
         const { banner, restaurant } = param
         console.log('====================================');
-        console.log(restaurant);
+        console.log(restaurant.meals);
         console.log('====================================');
         // const id = restaurant.banner.promo_id;
         // const response = await axios.get(
