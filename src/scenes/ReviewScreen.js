@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Text, FlatList } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import moment from "moment";
-import { avatarify } from "../../src/scenes/Components/utility/helpers";
-import { width } from "./styles/HomeStyles";
+import { avatarify } from "./Components/utility/helpers";
+import { width } from "./styles/HomeStyle";
 import { RATING_URL } from "../services/EndPoints";
 const ReviewItem = ({ title, avatar, review }) => {
     let stars = [];
