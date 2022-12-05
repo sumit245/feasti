@@ -72,7 +72,7 @@ const ReviewItem = ({ title, avatar, review }) => {
                                 textAlign: "right",
                             }}
                         >
-                            {moment(review.review_at).format("DD MMM, YYYY")}
+                            {moment(review.createdAt).format("DD MMM, YYYY")}
                         </Text>
                     </View>
 
