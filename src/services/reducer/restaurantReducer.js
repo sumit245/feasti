@@ -12,9 +12,9 @@ export default function restaurantReducer(state = initialState, action) {
         case GET_CUISINES:
             return { ...state, cuisines: action.payload }
         case SET_REVIEWS:
-            return { ...state, reviewCounts: action.payload }
-        case SET_REVIEW_COUNTS:
             return { ...state, reviews: action.payload }
+        case SET_REVIEW_COUNTS:
+            return { ...state, reviewsCounts: action.payload }
         default:
             return state;
     }
