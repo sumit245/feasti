@@ -6,12 +6,27 @@ import Redo from "react-native-vector-icons/FontAwesome5";
 import NewsPaper from "react-native-vector-icons/MaterialCommunityIcons";
 import moment from "moment";
 import { styles } from "../../styles/HomeStyle";
+import axios from "axios";
+import { GET_CHEF_FROM_BANNER } from "../../../services/EndPoints";
 
 export default function OrderCard({ item, navigation }) {
     const findAndRate = () => {
         navigation.navigate('rate_order', {
             order_id: item.order_id
         })
+    }
+    const getChefByIdAndNavigate = async (id) => {
+        const response = await axios.get(`${GET_CHEF_FROM_BANNER}${id}`)
+        const restaurant = response.data
+        const { restaurant_name, _id, restaurant_id } = restaurant
+        navigation.navigate("chef_details", {
+            title: restaurant_name,
+            restaurant_id: _id,
+            distance: 3,
+            id: restaurant_id,
+            category,
+            item: restaurant,
+        });
     }
     return (
         <Card style={{ padding: 10, margin: 4 }} key={item.order_id}>
@@ -67,7 +82,7 @@ export default function OrderCard({ item, navigation }) {
                 <View style={{ alignItems: "center" }}>
                     <TouchableOpacity
                         style={[styles.actionButton, { backgroundColor: "green" }]}
-                        onPress={() => navigation.push("details")}
+                        onPress={() => getChefByIdAndNavigate(item.restaurant_id)}
                     >
                         <Redo name="redo-alt" size={16} color="#FFF" />
                     </TouchableOpacity>
