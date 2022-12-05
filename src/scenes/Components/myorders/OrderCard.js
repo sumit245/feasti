@@ -11,8 +11,17 @@ import { GET_CHEF_FROM_BANNER } from "../../../services/EndPoints";
 
 export default function OrderCard({ item, navigation }) {
     const findAndRate = () => {
+        const {user_id,user_name,order_id,restaurant_id,order_time,plan_name,base_price,start_date,end_date}=item
         navigation.navigate('rate_order', {
-            order_id: item.order_id
+            user_id,
+            user_name,
+            order_id,
+            restaurant_id,
+            order_time,
+            plan_name,
+            base_price,
+            start_date,
+            end_date
         })
     }
     const getChefByIdAndNavigate = async (id) => {

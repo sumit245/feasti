@@ -16,7 +16,7 @@ import Loader from '../utility/Loader';
 import HeaderSimple from "../home/headerTop/HeaderSimple"
 
 export default function Rate({ route, navigation }) {
-    const { order_id } = route.params
+    const { user_id, user_name, order_id, restaurant_id, order_time, plan_name, base_price, start_date, end_date } = route.params
     const [selected, setSelected] = useState(false);
     const [details, setDetails] = useState('');
     const [rating, setRating] = useState(3);
@@ -36,7 +36,11 @@ export default function Rate({ route, navigation }) {
         setLikes(like);
         setSelected(!selected);
     };
-    const onSubmit = () => { }
+    const onSubmit = () => {
+        console.log('====================================');
+        console.log(user_id, user_name, order_id, restaurant_id, order_time, plan_name, base_price, start_date, end_date);
+        console.log('====================================');
+    }
 
 
     const features = [
