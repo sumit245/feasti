@@ -187,6 +187,9 @@ export default function OrderDetails({ route, navigation }) {
                                 ${parseFloat(tip).toFixed(2)}
                             </Text>
                             <Text style={[styles.normalText, { textAlign: "right" }]}>
+                                ${parseFloat(discount).toFixed(2)}
+                            </Text>
+                            <Text style={[styles.normalText, { textAlign: "right" }]}>
                                 {"$" + parseFloat(tax).toFixed(2)}
                             </Text>
                             <Text style={[styles.normalText, { textAlign: "right" }]}>
