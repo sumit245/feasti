@@ -6,7 +6,7 @@ import Icon from "react-native-vector-icons/Ionicons"
 import { TabView, TabBar } from "react-native-tab-view";
 import MenuItem from "./Components/chefdetails/MenuItem";
 import PlanChooser from './Components/chefdetails/PlanChooser'
-import { useDispatch, useSelector, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getMyReview } from '../services/actions/retaurantsAction'
 
 export default function ChefDetails({ route, navigation }) {
