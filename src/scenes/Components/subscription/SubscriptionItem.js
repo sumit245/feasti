@@ -17,7 +17,7 @@ export default function SubscriptionItem({ item }) {
   const [loading, setLoading] = useState(false)
   const { address } = item
   const setMealImages = () => {
-    const today = moment().weekday
+    const today = moment().weekday()
     console.log('====================================');
     console.log(today);
     console.log('====================================');
