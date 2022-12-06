@@ -23,11 +23,11 @@ export default function SubscriptionItem({ item }) {
     const day1 = moment().add(1, 'day').format('dddd')
     const day2 = moment().add(2, 'day').format('dddd')
     const day3 = moment().add(3, 'day').format('dddd')
-    const todaymeal = meals.find((o) => o.day === day0)
+    const todaymeal = item.meals.find((o) => o.day === day0)
     setTodayMeal(todaymeal)
-    const meal1 = meals.find((o) => o.day === day1)
-    const meal2 = meals.find((o) => o.day === day2)
-    const meal3 = meals.find((o) => o.day === day3)
+    const meal1 = item.meals.find((o) => o.day === day1)
+    const meal2 = item.meals.find((o) => o.day === day2)
+    const meal3 = item.meals.find((o) => o.day === day3)
     const futuremeals = [meal1, meal2, meal3]
     const futuredays = [day1, day2, day3]
     setFutureDays(futureDays)
