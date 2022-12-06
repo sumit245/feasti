@@ -18,6 +18,7 @@ export default function SubscriptionItem({ item }) {
   const [loading, setLoading] = useState(false)
   const { address } = item
   const setMealImages = () => {
+
     const day0 = moment().format('dddd')
     const day1 = moment().add(1, 'day').format('dddd')
     const day2 = moment().add(2, 'day').format('dddd')
@@ -35,9 +36,9 @@ export default function SubscriptionItem({ item }) {
   useEffect(() => {
     let componentMounted = true
     if (componentMounted) {
+      setMeals(item.meals)
       setLoading(false)
       setMealImages()
-      setMeals(item.meals)
       const remainingMeal = moment(item.end_date).diff(item.start_date, 'days')
       setRemaining(remainingMeal)
       setLoading(true)
