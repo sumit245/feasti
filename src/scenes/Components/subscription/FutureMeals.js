@@ -18,7 +18,7 @@ export default function FutureMeals({ meals, futuredays }) {
     useEffect(() => {
         setLoading(false)
         setData(meals)
-        const firstMeal=meals.find((o)=>o.day===routes[0].title)
+        const firstMeal = meals.find((o) => o.day === routes[0].title)
         console.log('====================================');
         console.log(typeof firstMeal);
         console.log('====================================');
@@ -48,11 +48,18 @@ export default function FutureMeals({ meals, futuredays }) {
     const renderScene = ({ route }) => {
         switch (route.key) {
             case "first":
-                return <CurrentMeal index={route.key} meal={data.find((o) => o.day === route.title)} />;
+                return typeof data.find((o) => o.day === route.title) !== 'undefined' ?
+                    <CurrentMeal index={route.key} meal={data.find((o) => o.day === route.title)} /> :
+                    null
+
             case "second":
-                return <CurrentMeal index={route.key} meal={data.find((o) => o.day === route.title)} />;
+                return typeof data.find((o) => o.day === route.title) !== 'undefined' ?
+                    <CurrentMeal index={route.key} meal={data.find((o) => o.day === route.title)} /> :
+                    null;
             case "third":
-                return <CurrentMeal index={route.key} meal={data.find((o) => o.day === route.title)} />;
+                return typeof data.find((o) => o.day === route.title) !== 'undefined' ?
+                    <CurrentMeal index={route.key} meal={data.find((o) => o.day === route.title)} /> :
+                    null
             default:
                 break;
         }
