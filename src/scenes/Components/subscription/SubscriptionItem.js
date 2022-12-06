@@ -127,12 +127,12 @@ export default function SubscriptionItem({ item }) {
           </View>
           {/* Notes Section */}
           <Text style={styles.headerText}>Future Meals</Text>
-          {/* <View style={styles.optionCard}>
-            <View style={{flexDirection:'column'}}>
+          <View style={styles.optionCard}>
+            <View style={{ flexDirection: 'column' }}>
 
-            <FutureMeals meals={item.meals} futuredays={['Wednesday', 'Thursday','Friday']} />
+              <FutureMeals meals={item.meals} futuredays={['Wednesday', 'Thursday', 'Friday']} />
             </View>
-          </View> */}
+          </View>
           {/* Future Meals */}
         </View>
       </ScrollView>
