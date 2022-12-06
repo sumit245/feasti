@@ -12,13 +12,21 @@ import Loader from "../utility/Loader"
 export default function SubscriptionItem({ item }) {
   const [remaining, setRemaining] = useState(0)
   const [meals, setMeals] = useState([])
+  const [todayMeal, setTodayMeal] = useState({})
+  const [futureMeals, setFutureMeals] = useState([])
   const [loading, setLoading] = useState(false)
   const { address } = item
+  const setMealImages = () => {
+    const today = moment().weekday
+    console.log('====================================');
+    console.log(today);
+    console.log('====================================');
+  }
   useEffect(() => {
     let componentMounted = true
     if (componentMounted) {
       setLoading(false)
-
+      setMealImages()
       setMeals(item.meals)
       const remainingMeal = moment(item.end_date).diff(item.start_date, 'days')
       setRemaining(remainingMeal)
