@@ -12,14 +12,14 @@ export default function CurrentMeal({ meal, index }) {
     useEffect(() => {
         setLoading(false)
         console.log('====================================');
-        console.log(meal);
+        console.log(meal.meal_name);
         console.log('====================================');
         setMealName(meal.meal_name)
         setImage(meal.image)
         setDescription(meal.description)
         setType(meal.type)
         setLoading(true)
-    }, [meal])
+    }, [])
 
     if (!loading) { return (<Text>...</Text>) }
     return (

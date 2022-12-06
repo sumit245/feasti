@@ -19,7 +19,7 @@ export default function FutureMeals({ meals, futuredays }) {
         setLoading(false)
         setData(meals)
         setLoading(true)
-    }, [meals])
+    }, [meals,loading])
 
 
     const renderTabBar = (props) => (
