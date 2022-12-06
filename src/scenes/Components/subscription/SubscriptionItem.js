@@ -17,9 +17,10 @@ export default function SubscriptionItem({ item }) {
   const [loading, setLoading] = useState(false)
   const { address } = item
   const setMealImages = () => {
-    const today = moment().weekday()
+    const today = moment().format('dddd')
+    const tomorrow=moment().add(1,'day').format('dddd')
     console.log('====================================');
-    console.log(today);
+    console.log(today,tomorrow);
     console.log('====================================');
   }
   useEffect(() => {

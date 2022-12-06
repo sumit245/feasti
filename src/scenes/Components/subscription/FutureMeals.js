@@ -22,7 +22,7 @@ export default function FutureMeals({ meals, futuredays }) {
         console.log('====================================');
         console.log(typeof firstMeal);
         console.log('====================================');
-        // setLoading(true)
+        setLoading(true)
     }, [data])
 
 
