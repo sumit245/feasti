@@ -16,6 +16,7 @@ export default function SubscriptionItem({ item }) {
     if (componentMounted) {
       const remainingMeal = moment(item.end_date).diff(item.start_date, 'days')
       setRemaining(remainingMeal)
+      console.log(item)
     }
 
     return () => {
@@ -24,7 +25,7 @@ export default function SubscriptionItem({ item }) {
   }, [item])
 
   return (
-    <SafeAreaView style={[styles.container, { width: width,flexDirection:'column' }]}>
+    <SafeAreaView style={[styles.container, { width: width, flexDirection: 'column' }]}>
       <View style={[styles.header, { backgroundColor: "#FFF" }]}>
         <View style={{ marginLeft: 4 }}>
           <Text style={styles.headerTitle}>
@@ -67,7 +68,7 @@ export default function SubscriptionItem({ item }) {
             justifyContent: "space-between",
           }}
         >
-          <View style={styles.optionCard}>
+          {/* <View style={styles.optionCard}>
             <View style={styles.optionrow}>
               <Text style={styles.title}>Upcoming Meal</Text>
               {item.isDelivered && (
@@ -79,7 +80,7 @@ export default function SubscriptionItem({ item }) {
             <Text>Today, {moment().format("DD MMM")}</Text>
             <View style={styles.indicator} />
             <CurrentMeal meal={item.meals[0]} />
-          </View>
+          </View> */}
           {/* Current Meal Section */}
 
           <View style={styles.optionCard}>
@@ -117,21 +118,21 @@ export default function SubscriptionItem({ item }) {
             </>
           )}
           {/* Chef Address Section */}
-          <View style={styles.optionCard}>
+          {/* <View style={styles.optionCard}>
             <AddOns addon={item.meals[0].add_on} />
-          </View>
+          </View> */}
           {/* AddOns Section */}
           <View style={styles.optionCard}>
             <Notes note={item.notes} order_id={item._id} />
           </View>
           {/* Notes Section */}
           <Text style={styles.headerText}>Future Meals</Text>
-          <View style={styles.optionCard}>
+          {/* <View style={styles.optionCard}>
             <View style={{flexDirection:'column'}}>
 
             <FutureMeals meals={item.meals} futuredays={['Wednesday', 'Thursday','Friday']} />
             </View>
-          </View>
+          </View> */}
           {/* Future Meals */}
         </View>
       </ScrollView>
