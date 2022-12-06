@@ -18,7 +18,8 @@ export default function SubscriptionItem({ item }) {
     let componentMounted = true
     if (componentMounted) {
       setLoading(false)
-      setMeals(item)
+
+      setMeals(item.meals)
       const remainingMeal = moment(item.end_date).diff(item.start_date, 'days')
       setRemaining(remainingMeal)
       setLoading(true)
