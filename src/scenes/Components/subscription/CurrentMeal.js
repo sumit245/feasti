@@ -16,7 +16,7 @@ export default function CurrentMeal({ meal, index }) {
         setDescription(meal.description)
         setType(meal.type)
         setLoading(true)
-    }, [meal])
+    }, [])
 
     if (!loading) { return (<Text>...</Text>) }
     return (

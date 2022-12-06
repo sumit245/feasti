@@ -24,7 +24,7 @@ export default function AddOns({ addon }) {
         return () => {
             componentMounted = false
         }
-    }, [addon])
+    }, [])
 
     useEffect(() => {
         let subt = [];
