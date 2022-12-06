@@ -128,7 +128,7 @@ export default function SubscriptionItem({ item }) {
           )}
           {/* Chef Address Section */}
           <View style={styles.optionCard}>
-            {/* <AddOns addon={meals[0].add_on} /> */}
+            <AddOns addon={meals[0].add_on} />
           </View>
           {/* AddOns Section */}
           <View style={styles.optionCard}>
@@ -138,7 +138,7 @@ export default function SubscriptionItem({ item }) {
           <Text style={styles.headerText}>Future Meals</Text>
           <View style={styles.optionCard}>
             <View style={{ flexDirection: 'column' }}>
-              {/* <FutureMeals meals={meals} futuredays={['Wednesday', 'Thursday', 'Friday']} /> */}
+              <FutureMeals meals={meals} futuredays={['Wednesday', 'Thursday', 'Friday']} />
             </View>
           </View>
           {/* Future Meals */}
