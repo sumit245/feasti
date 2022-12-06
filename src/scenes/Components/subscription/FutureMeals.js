@@ -3,7 +3,6 @@ import { View } from 'react-native'
 import { TabBar, TabView } from "react-native-tab-view";
 import CurrentMeal from "./CurrentMeal";
 import { width } from "../../styles/HomeStyle";
-import { set } from "react-native-reanimated";
 export default function FutureMeals({ meals, futuredays }) {
     const [index, setIndex] = useState(0);
     const [data, setData] = useState([])
