@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { ORDER_URL, SUBSCRIPTION_URL } from "../services/EndPoints";
 import NoSubscription from "./Components/subscription/NoSubscription";
 import SubscriptionItem from "./Components/subscription/SubscriptionItem";
+import Loader from "./Components/utility/Loader";
 import { ITEM_SIZE, styles, width } from "./styles/HomeStyle";
 
 
@@ -23,11 +24,11 @@ export default function SubscriptionScene({ navigation }) {
         wait(2000).then(() => setLoading(false));
     }, [])
     const fetchSubscriptions = async () => {
-        setLoading(true)
+        setLoading(false)
         const response = await axios.get(`${SUBSCRIPTION_URL}${user_id}`)
         const {mySubscription} = response.data
         setSubscription(mySubscription)
-        setLoading(false)
+        setLoading(true)
     }
     useEffect(() => {
         fetchSubscriptions()
@@ -39,7 +40,10 @@ export default function SubscriptionScene({ navigation }) {
         <SubscriptionItem item={item} navigation={navigation} />
         </View>
     )
-
+    if (!loading) {
+        return (
+        <Loader msg="Please wait while we are fetching your subscription"/>
+    )}
     return (
         <SafeAreaView style={styles.container}
         //     refreshControl={
@@ -57,7 +61,6 @@ export default function SubscriptionScene({ navigation }) {
                 ref={flatref}
                 renderItem={(item) => renderItem(item)}
                 keyExtractor={(item) => item._id}
-
             />
         </SafeAreaView>
     )
