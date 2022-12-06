@@ -118,9 +118,9 @@ export default function SubscriptionItem({ item }) {
             </>
           )}
           {/* Chef Address Section */}
-          {/* <View style={styles.optionCard}>
+          <View style={styles.optionCard}>
             <AddOns addon={item.meals[0].add_on} />
-          </View> */}
+          </View>
           {/* AddOns Section */}
           <View style={styles.optionCard}>
             <Notes note={item.notes} order_id={item._id} />
