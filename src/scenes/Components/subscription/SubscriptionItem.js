@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Linking, ScrollView, SafeAreaView } from "react-native";
+import { View, Text, ScrollView, SafeAreaView } from "react-native";
 import moment from "moment";
-import { height, styles, width } from "../../styles/HomeStyle"
+import { styles, width } from "../../styles/HomeStyle"
 import CurrentMeal from "./CurrentMeal";
 import AddOns from "./AddOns";
 import Notes from "./Notes";
 import FutureMeals from "./FutureMeals";
 import LinkOpen from "../utility/LinkOpen";
+import Loader from "../utility/Loader"
 
 export default function SubscriptionItem({ item }) {
   const [remaining, setRemaining] = useState(0)
+  const [meals, setMeals] = useState([])
+  const [loading, setLoading] = useState(false)
   const { address } = item
   useEffect(() => {
     let componentMounted = true
     if (componentMounted) {
+      setLoading(false)
+      setMeals(item)
       const remainingMeal = moment(item.end_date).diff(item.start_date, 'days')
       setRemaining(remainingMeal)
-      console.log(item)
+      setLoading(true)
     }
 
     return () => {
@@ -24,6 +29,9 @@ export default function SubscriptionItem({ item }) {
     }
   }, [item])
 
+  if (!loading) {
+    return <Loader msg="Fetching your subscription Details" />
+  }
   return (
     <SafeAreaView style={[styles.container, { width: width, flexDirection: 'column' }]}>
       <View style={[styles.header, { backgroundColor: "#FFF" }]}>
@@ -79,7 +87,7 @@ export default function SubscriptionItem({ item }) {
             </View>
             <Text>Today, {moment().format("DD MMM")}</Text>
             <View style={styles.indicator} />
-            <CurrentMeal meal={item.meals[0]} />
+            <CurrentMeal meal={meals[0]} />
           </View>
           {/* Current Meal Section */}
 
@@ -119,7 +127,7 @@ export default function SubscriptionItem({ item }) {
           )}
           {/* Chef Address Section */}
           <View style={styles.optionCard}>
-            <AddOns addon={item.meals[0].add_on} />
+            <AddOns addon={meals[0].add_on} />
           </View>
           {/* AddOns Section */}
           <View style={styles.optionCard}>
@@ -130,7 +138,7 @@ export default function SubscriptionItem({ item }) {
           <View style={styles.optionCard}>
             <View style={{ flexDirection: 'column' }}>
 
-              <FutureMeals meals={item.meals} futuredays={['Wednesday', 'Thursday', 'Friday']} />
+              <FutureMeals meals={meals} futuredays={['Wednesday', 'Thursday', 'Friday']} />
             </View>
           </View>
           {/* Future Meals */}
