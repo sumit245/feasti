@@ -11,9 +11,6 @@ export default function CurrentMeal({ meal, index }) {
     const [type, setType] = useState("veg")
     useEffect(() => {
         setLoading(false)
-        console.log('====================================');
-        console.log(meal);
-        console.log('====================================');
         setMealName(meal.meal_name)
         setImage(meal.image)
         setDescription(meal.description)
