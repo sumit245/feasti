@@ -18,8 +18,11 @@ export default function FutureMeals({ meals, futuredays }) {
     useEffect(() => {
         setLoading(false)
         setData(meals)
+        console.log('====================================');
+        console.log(meals.length);
+        console.log('====================================');
         setLoading(true)
-    }, [meals,loading])
+    }, [meals, loading])
 
 
     const renderTabBar = (props) => (
