@@ -68,7 +68,7 @@ export default function SubscriptionItem({ item }) {
             justifyContent: "space-between",
           }}
         >
-          {/* <View style={styles.optionCard}>
+          <View style={styles.optionCard}>
             <View style={styles.optionrow}>
               <Text style={styles.title}>Upcoming Meal</Text>
               {item.isDelivered && (
@@ -80,7 +80,7 @@ export default function SubscriptionItem({ item }) {
             <Text>Today, {moment().format("DD MMM")}</Text>
             <View style={styles.indicator} />
             <CurrentMeal meal={item.meals[0]} />
-          </View> */}
+          </View>
           {/* Current Meal Section */}
 
           <View style={styles.optionCard}>
