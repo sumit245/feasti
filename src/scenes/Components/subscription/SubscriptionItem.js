@@ -14,14 +14,23 @@ export default function SubscriptionItem({ item }) {
   const [meals, setMeals] = useState([])
   const [todayMeal, setTodayMeal] = useState({})
   const [futureMeals, setFutureMeals] = useState([])
+  const [futureDays, setFutureDays] = useState([])
   const [loading, setLoading] = useState(false)
   const { address } = item
   const setMealImages = () => {
-    const today = moment().format('dddd')
-    const tomorrow=moment().add(1,'day').format('dddd')
-    console.log('====================================');
-    console.log(today,tomorrow);
-    console.log('====================================');
+    const day0 = moment().format('dddd')
+    const day1 = moment().add(1, 'day').format('dddd')
+    const day2 = moment().add(2, 'day').format('dddd')
+    const day3 = moment().add(3, 'day').format('dddd')
+    const todaymeal = meals.find((o) => o.day === day0)
+    setTodayMeal(todaymeal)
+    const meal1 = meals.find((o) => o.day === day1)
+    const meal2 = meals.find((o) => o.day === day2)
+    const meal3 = meals.find((o) => o.day === day3)
+    const futuremeals = [meal1, meal2, meal3]
+    const futuredays = [day1, day2, day3]
+    setFutureDays(futureDays)
+    setFutureMeals(futuremeals)
   }
   useEffect(() => {
     let componentMounted = true
@@ -147,7 +156,7 @@ export default function SubscriptionItem({ item }) {
           <Text style={styles.headerText}>Future Meals</Text>
           <View style={styles.optionCard}>
             <View style={{ flexDirection: 'column' }}>
-              <FutureMeals meals={meals} futuredays={['Wednesday', 'Thursday', 'Friday']} />
+              <FutureMeals meals={futureMeals} futuredays={futureDays} />
             </View>
           </View>
           {/* Future Meals */}
