@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import { TabBar, TabView } from "react-native-tab-view";
 import CurrentMeal from "./CurrentMeal";
 import { width } from "../../styles/HomeStyle";
 export default function FutureMeals({ meals, futuredays }) {
+    const [loading, setLoading] = useState(false)
     const [index, setIndex] = useState(0);
     const [data, setData] = useState([])
 
@@ -15,7 +16,9 @@ export default function FutureMeals({ meals, futuredays }) {
     ]);
 
     useEffect(() => {
+        setLoading(false)
         setData(meals)
+        setLoading(true)
     }, [meals])
 
 
@@ -50,8 +53,7 @@ export default function FutureMeals({ meals, futuredays }) {
                 break;
         }
     }
-
-
+    if (!loading) { return (<Text>...</Text>) }
     return (
         <View style={{ height: 300 }}>
             <TabView

@@ -6,6 +6,7 @@ const { width, height } = Dimensions.get('window')
 import moment from 'moment'
 
 export default function AddOns({ addon }) {
+    const [loading, setLoading] = useState(false)
     const [myaddons, setMyAddOns] = useState([])
     const [pulled, setPulled] = useState(false)
     const [qty, setQty] = useState([]);
@@ -16,13 +17,14 @@ export default function AddOns({ addon }) {
     useEffect(() => {
         let componentMounted = true
         if (componentMounted) {
+            setLoading(false)
             setMyAddOns(addon)
         }
 
         return () => {
             componentMounted = false
         }
-    }, [])
+    }, [addon])
 
     useEffect(() => {
         let subt = [];
@@ -33,6 +35,7 @@ export default function AddOns({ addon }) {
         }
         setSubtotal(subt);
         setQty(qties);
+        setLoading(true)
     }, [myaddons]);
 
     function add(accumulator, a) {
@@ -97,7 +100,7 @@ export default function AddOns({ addon }) {
             alert("You have already ordered add-ons for the day");
         }
     };
-
+    if (!loading) { return (<Text>...</Text>) }
     if (myaddons.length > 0) {
         return (
             <View

@@ -4,19 +4,21 @@ import { styles } from "../../styles/HomeStyle";
 import Icon from "react-native-vector-icons/Ionicons";
 
 export default function CurrentMeal({ meal, index }) {
+    const [loading, setLoading] = useState(false)
     const [image, setImage] = useState("")
     const [meal_name, setMealName] = useState("")
     const [description, setDescription] = useState("")
     const [type, setType] = useState("veg")
     useEffect(() => {
+        setLoading(false)
         setMealName(meal.meal_name)
         setImage(meal.image)
         setDescription(meal.description)
         setType(meal.type)
+        setLoading(true)
     }, [meal])
 
-
-
+    if (!loading) { return (<Text>...</Text>) }
     return (
         <View style={{ paddingHorizontal: 2, marginHorizontal: 2 }}>
             <Image
