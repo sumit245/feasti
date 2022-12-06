@@ -28,8 +28,14 @@ export default function SubscriptionItem({ item }) {
     const meal1 = item.meals.find((o) => o.day === day1)
     const meal2 = item.meals.find((o) => o.day === day2)
     const meal3 = item.meals.find((o) => o.day === day3)
-    const futuremeals = [meal1, meal2, meal3]
-    const futuredays = [day1, day2, day3]
+    let futuremeals = []
+    let futuredays = []
+    futuredays.push(day1)
+    futuredays.push(day2)
+    futuredays.push(day3)
+    futuremeals.push(meal1)
+    futuremeals.push(meal2)
+    futuremeals.push(meal3)
     setFutureDays(futureDays)
     setFutureMeals(futuremeals)
   }
@@ -157,7 +163,7 @@ export default function SubscriptionItem({ item }) {
           <Text style={styles.headerText}>Future Meals</Text>
           <View style={styles.optionCard}>
             <View style={{ flexDirection: 'column' }}>
-              <FutureMeals meals={futureMeals} futuredays={futureDays} />
+              <FutureMeals meals={meals} futuredays={futureDays} />
             </View>
           </View>
           {/* Future Meals */}

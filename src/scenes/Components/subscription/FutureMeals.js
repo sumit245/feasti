@@ -18,11 +18,11 @@ export default function FutureMeals({ meals, futuredays }) {
     useEffect(() => {
         setLoading(false)
         setData(meals)
-        const firstMeal = meals.find((o) => o.day === routes[0].title)
+        // const firstMeal = meals.find((o) => o.day === routes[0].title)
         console.log('====================================');
-        console.log(typeof firstMeal);
+        console.log(typeof meals);
         console.log('====================================');
-        setLoading(true)
+        //setLoading(true)
     }, [data])
 
 
