@@ -192,7 +192,7 @@ export default function OrderDetails({ route, navigation }) {
                             <Text style={[styles.normalText, { textAlign: "right" }]}>
                                 {"$" + parseFloat(tax).toFixed(2)}
                             </Text>
-                            <Text style={[styles.normalText, { textAlign: "right" }]}>
+                            <Text style={[styles.text, { marginVertical: 1, marginTop: 16 }]}>
                                 ${parseFloat(total).toFixed(2)}
                             </Text>
                         </View>
