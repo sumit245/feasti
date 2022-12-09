@@ -12,6 +12,7 @@ export default function ItemCard({ item, navigation, category }) {
     const [favorite, setFavorite] = useState(false)
     const [userID, setUserID] = useState("")
     const [state, setState] = useState({
+        promo_id:"",
         discount: "",
         discount_type: '',
         plan_name: '',

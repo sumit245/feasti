@@ -14,6 +14,7 @@ export default function PlanChooser({ restaurant_id, navigation, category, coupo
     const getPlan = async (plan_name, base_price, customer_price, delivery_fee, index) => {
         let chefCoupon = Array.isArray(coupon) ? coupon[0] : null
         let savedCoupons = [...coupons]
+        console.log(savedCoupons);
         let myCoupon = savedCoupons.find((coupon) => coupon.isDelivery === true)
         if (!isDelivery) {
             savedCoupons.splice(savedCoupons.indexOf(myCoupon), 1)

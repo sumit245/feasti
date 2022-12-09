@@ -123,7 +123,8 @@ export default function ChefDetails({ route, navigation }) {
                     navigation={navigation}
                     restaurant_id={restaurant_id}
                     isDelivery={isDelivery}
-                    category={category} coupon={item.promo} />
+                    category={category} 
+                    coupon={item.promo} />
                 <Text style={styles.headerText}>About us </Text>
                 <View style={styles.about}>
                     <Text style={{ fontSize: 16, textAlign: "justify" }}>{about}</Text>
