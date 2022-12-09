@@ -35,5 +35,6 @@ export const GET_ORDER_DETAILS = BASE_URL + '/api/orders/getOrderByID/'
 export const ORDER_URL = BASE_URL + '/api/orders/getorderbyuser/';
 export const SUBSCRIPTION_URL = BASE_URL + '/api/orders/getsubscription/'
 export const BANNER_URL = BASE_URL + '/api/promo/active'
+export const BANNER_UPDATE_URL = BASE_URL + '/api/promo/getchefbyidandupdatebannercount/'
 export const RATING_URL = BASE_URL + '/api/review'
 export const CHECK_RATING_URL = BASE_URL + '/api/review/getreviewByUser/'

@@ -10,7 +10,7 @@ import {
 import { width, styles } from "../../../styles/HomeStyle";
 import axios from "axios";
 import { LinearGradient } from "expo-linear-gradient"
-import { BANNER_URL, GET_CHEF_FROM_BANNER } from "../../../../services/EndPoints";
+import { BANNER_UPDATE_URL, BANNER_URL, GET_CHEF_FROM_BANNER } from "../../../../services/EndPoints";
 
 export default function BannerCarousel({ navigation }) {
     const [page, setPage] = useState([]);
@@ -25,9 +25,7 @@ export default function BannerCarousel({ navigation }) {
     };
     const registerClicks = async (param) => {
         const { banner, restaurant } = param
-        console.log('====================================');
-        console.log(banner);
-        console.log('====================================');
+        await axios.get(`${BANNER_UPDATE_URL}${banner.promo_id}/${banner._id}`)
         const { restaurant_name, restaurant_id, category, _id } = restaurant
         const response = await axios.get(`${GET_CHEF_FROM_BANNER}${restaurant_id}`)
         navigation.navigate("chef_details", {
