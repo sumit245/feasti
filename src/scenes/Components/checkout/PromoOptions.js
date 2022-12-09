@@ -20,30 +20,22 @@ export default function PromoOptions() {
         dispatch(setCouponDiscount(0))
         setApplied(btns)
     }, [allCoupons])
+
     const applyCoupon = async (key) => {
         let btns = [...applied]
         btns[key] = !btns[key]
         setApplied(btns)
+        const { discount, promo_code, promo_id } = coupons[key]
         if (coupons[key].discount_type !== "%") {
-            await dispatch(setCouponDiscount(coupons[key].discount))
+            await dispatch(setCouponDiscount(discount, promo_code, promo_id))
         }
-        console.log('====================================');
-        console.log(coupons[key]);
-        console.log('====================================');
         if (coupons[key].isDelivery && isDelivery) {
-            let disc = parseFloat(delivery_fee) * parseFloat(coupons[key].discount) * 0.01
-            await dispatch(setCouponDiscount(disc))
-            // dispatch({ type: SET_DELIVERY_FEE, payload: 0 })
-            console.log('====================================');
-            console.log('Delivery Coupon Applicable');
-            console.log('====================================');
+            let disc = parseFloat(delivery_fee) * parseFloat(discount) * 0.01
+            await dispatch(setCouponDiscount(disc, promo_code, promo_id))
         }
         if (coupons[key].discount_type === "%") {
-            let disc = parseFloat(customer_price) * parseFloat(coupons[key].discount) * 0.01
-            await dispatch(setCouponDiscount(disc))
-            console.log('====================================');
-            console.log('Percentage Coupon Applicable');
-            console.log('====================================');
+            let disc = parseFloat(customer_price) * parseFloat(discount) * 0.01
+            await dispatch(setCouponDiscount(disc, promo_code, promo_id))
         }
         setCouponUsed(!couponUsed)
     }

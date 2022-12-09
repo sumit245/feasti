@@ -25,6 +25,7 @@ import EditAccount from "../scenes/EditAccount";
 import ListAddress from "../scenes/Components/manageaddress/ListAddress";
 import Rewards from "../scenes/ReviewScreen";
 import OrderDetails from "../scenes/Components/orderdetails/OrderDetails";
+import { getLocalUser } from "../services/actions/actions";
 
 const Stack = createStackNavigator()
 export default function StackNavigator() {
@@ -37,9 +38,15 @@ export default function StackNavigator() {
         dispatch(getMyOrders())
         dispatch(getMySubscription())
     }
-
+    const checkLogin = async () => {
+        const isLoggedIn = await dispatch(getLocalUser())
+        console.log('====================================');
+        console.log(isLoggedIn);
+        console.log('====================================');
+    }
     useEffect(() => {
         getPreloadedData()
+        checkLogin()
     }, [])
 
 

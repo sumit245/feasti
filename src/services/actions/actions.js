@@ -121,13 +121,20 @@ export const deleteCardFromAPI = (index) => async (dispatch) => {
         cards: cards
     })
     const { data } = response.data
-    console.log('====================================');
-    console.log(data);
-    console.log('====================================');
     dispatch({ type: SAVE_USER, payload: JSON.stringify(data) })
     await AsyncStorage.setItem('user', JSON.stringify(data))
 }
-
+export const deleteAddressFromAPI = (index) => async (dispatch) => {
+    const user = await AsyncStorage.getItem('user')
+    let { _id, addresses } = JSON.parse(user)
+    Array.isArray(addresses) && addresses.splice(index, 1)
+    const response = await axios.put(`${USER_URL}/${_id}`, {
+        addresses: addresses
+    })
+    const { data } = response.data
+    dispatch({ type: SAVE_USER, payload: JSON.stringify(data) })
+    await AsyncStorage.setItem('user', JSON.stringify(data))
+}
 export const getSavedCards = () => async (dispatch) => {
     const user = await AsyncStorage.getItem('user')
     const { cards } = JSON.parse(user)

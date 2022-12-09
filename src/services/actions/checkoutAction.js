@@ -33,6 +33,8 @@ export const SET_SERVICE_FEE = "SET_SERVICE_FEE"
 export const SET_SERVICE_RATES = "SET_SERVICE_RATES"
 export const SET_TAXES = "SET_TAXES"
 export const SAVE_COUPONS = "SAVE_COUPONS"
+export const SAVE_PROMO_ID = "SAVE_PROMO_ID"
+export const SAVE_PROMO_CODE = "SAVE_PROMO_CODE"
 export const SET_DISCOUNT = "SET_DISCOUNT"
 
 
@@ -96,8 +98,10 @@ export const notesHandler = (value) => async (dispatch) => {
 export const tipHandler = (value) => async (dispatch) => {
     dispatch({ type: SET_TIP_AMOUNT, payload: value })
 }
-export const setCouponDiscount = (value) => async (dispatch) => {
+export const setCouponDiscount = (value, code, id) => async (dispatch) => {
     dispatch({ type: SET_DISCOUNT, payload: value })
+    dispatch({ type: SAVE_PROMO_CODE, payload: code })
+    dispatch({ type: SAVE_PROMO_ID, payload: id })
 }
 export const setDeliveryPickup = (value) => async (dispatch) => {
     dispatch({ type: SET_DELIVERY_PICKUP, payload: value })

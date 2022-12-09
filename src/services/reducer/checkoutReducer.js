@@ -29,7 +29,9 @@ import {
     SET_RESATURANT_ADDRESS,
     SET_SERVICE_RATES,
     SAVE_COUPONS,
-    SET_DISCOUNT
+    SET_DISCOUNT,
+    SAVE_PROMO_CODE,
+    SAVE_PROMO_ID
 } from "../actions/checkoutAction";
 
 const order = {
@@ -77,6 +79,10 @@ export default function checkoutReducer(state = order, action) {
             return ({ ...state, tip: action.payload })
         case SET_DISCOUNT:
             return ({ ...state, discount: action.payload })
+        case SAVE_PROMO_CODE:
+            return { ...state, promo_code: action.payload }
+        case SAVE_PROMO_ID:
+            return { ...state, promo_id: action.payload }
         case SET_TOTAL_SERVICE:
             return ({ ...state, service_fee: action.payload })
         case SET_DELIVERY_FEE:

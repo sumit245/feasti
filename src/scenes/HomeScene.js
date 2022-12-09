@@ -49,12 +49,12 @@ export default function HomeScene({ navigation }) {
     useEffect(() => {
         let componentMounted = true
         if (componentMounted) {
-            setLoading(true)
+            setLoading(true)    
             dispatch(getNearByRestaurant('Lunch'))
             getCoupon()
             setLoading(false)
         }
-    }, [loading])
+    }, [])
 
 
     return (

@@ -27,7 +27,7 @@ export default function SavedAddress({ address }) {
             data={data}
             contentContainerStyle={{ paddingBottom: 2, marginBottom: 4 }}
             renderItem={(item) => renderItem(item)}
-            keyExtractor={(item, index) => (item.number + index).toString()}
+            keyExtractor={(item, index) => (item._id + index).toString()}
             ListEmptyComponent={NoAddress}
             renderRightActions={(item) => rendeRightActionButton(item)}
         />
