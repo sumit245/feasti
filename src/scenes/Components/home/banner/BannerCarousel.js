@@ -25,6 +25,9 @@ export default function BannerCarousel({ navigation }) {
     };
     const registerClicks = async (param) => {
         const { banner, restaurant } = param
+        console.log('====================================');
+        console.log(banner);
+        console.log('====================================');
         const { restaurant_name, restaurant_id, category, _id } = restaurant
         const response = await axios.get(`${GET_CHEF_FROM_BANNER}${restaurant_id}`)
         navigation.navigate("chef_details", {
