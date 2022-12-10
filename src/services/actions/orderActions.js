@@ -1,5 +1,5 @@
 import axios from "axios"
-import { ORDER_UPDATE, ORDER_URL, SUBSCRIPTION_URL } from "../EndPoints"
+import { CURRENT_ORDER_URL, ORDER_UPDATE, ORDER_URL, SUBSCRIPTION_URL } from "../EndPoints"
 import AsyncStorageLib from "@react-native-async-storage/async-storage"
 
 export const MY_ORDERS = "MY_ORDERS"
@@ -29,9 +29,15 @@ export const setAddOns = (add_on, order_id, id, add_on_total) => async (dispatch
     dispatch({ type: SET_ORDER_ID, payload: order_id })
     dispatch({ type: SET_ID, payload: id })
     dispatch({ type: ADD_ON_TOTAL, payload: add_on_total })
-    // const response = await axios.put(`${ORDER_UPDATE}${id}`, { add_on })
+    // 
     // const { data, status, message } = response.data
     // console.log('====================================');
     // console.log(status);
     // console.log('====================================');
+}
+export const placeAddOns = (orderID, id, add_on) => async (dispatch) => {
+    const response = await axios.put(`${ORDER_UPDATE}${id}`, { add_on })
+    const currentResponse = await axios.put(`${CURRENT_ORDER_URL}${orderID}`, { add_on: add_on })
+    const { data, status, msg } = response.data
+    return msg
 }

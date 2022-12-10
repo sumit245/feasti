@@ -18,6 +18,7 @@ import PIC from "../../../../assets/wallet.png"
 import HeaderSimple from "../home/headerTop/HeaderSimple"
 import { useSelector, useDispatch } from 'react-redux'
 import { updateUser, updateWallet } from '../../../services/actions/actions'
+import { placeAddOns } from '../../../services/actions/orderActions'
 
 export default function PayForAddOn({ route, navigation }) {
     const { user } = useSelector(state => state.reducer)
@@ -47,13 +48,19 @@ export default function PayForAddOn({ route, navigation }) {
 
     const recharge = async () => {
         setLoading(true)
-        const wallet_balance={wallet_balance:parseFloat(value)}
+        const wallet_balance = { wallet_balance: parseFloat(value) }
         const status = await dispatch(updateWallet(userId, wallet_balance))
         setLoading(false)
     }
-    const onSubmit = () => {
+    const onSubmit = async () => {
         if (balance < total) {
             Alert.alert('Warning', `Please recharge with minimum $${parseFloat(total - balance).toFixed(2)}`, [{ text: "OK" }])
+        } else {
+            setOrdering(true)
+            const msg = await dispatch(placeAddOns(orderID, updateID, add_on))
+            await dispatch(updateUser(userId, { wallet_balance: parseFloat(balance - addOnTotal).toFixed(2) }))
+            setOrdering(false)
+            Alert.alert('Success', `${msg}`, [{ text: "OK", onPress: navigation.goBack() }])
         }
     }
     const onChangeText = (text) => { setValue(text) }
