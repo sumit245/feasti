@@ -48,7 +48,7 @@ export default function PayForAddOn({ route, navigation }) {
 
     const recharge = async () => {
         setLoading(true)
-        const wallet_balance = { wallet_balance: parseFloat(value) }
+        const wallet_balance = { wallet_balance: parseFloat(value) + parseFloat(balance) }
         const status = await dispatch(updateWallet(userId, wallet_balance))
         setLoading(false)
     }
@@ -70,7 +70,6 @@ export default function PayForAddOn({ route, navigation }) {
             <ScrollView contentContainerStyle={{ flex: 1, justifyContent: 'space-between' }}>
                 <StripeProvider>
                     <View>
-                        {/* <WalletCard navigation={navigation} wallet_balance={0} /> */}
                         <View
                             style={{
                                 padding: 10,
