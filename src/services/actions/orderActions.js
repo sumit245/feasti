@@ -36,7 +36,7 @@ export const setAddOns = (add_on, order_id, id, add_on_total) => async (dispatch
     // console.log('====================================');
 }
 export const placeAddOns = (orderID, id, add_on) => async (dispatch) => {
-    const response = await axios.put(`${ORDER_UPDATE}${id}`, { add_on })
+    const response = await axios.put(`${ORDER_UPDATE}${id}`, { ...add_on })
     const currentResponse = await axios.put(`${CURRENT_ORDER_URL}${orderID}`, { add_on: add_on })
     const { data, status, msg } = response.data
     return msg
