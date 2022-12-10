@@ -9,7 +9,7 @@ import FutureMeals from "./FutureMeals";
 import LinkOpen from "../utility/LinkOpen";
 import Loader from "../utility/Loader"
 
-export default function SubscriptionItem({ item }) {
+export default function SubscriptionItem({ item, navigation }) {
   const [remaining, setRemaining] = useState(0)
   const [meals, setMeals] = useState([])
   const [todayMeal, setTodayMeal] = useState({})
@@ -152,17 +152,21 @@ export default function SubscriptionItem({ item }) {
           )}
           {/* Chef Address Section */}
           <View style={styles.optionCard}>
-            <AddOns addon={typeof todayMeal !== "undefined" && todayMeal.add_on} />
+            
+            <AddOns addon={typeof todayMeal !== "undefined" && todayMeal.add_on} navigation={navigation} />
           </View>
           {/* AddOns Section */}
           <View style={styles.optionCard}>
+            <Text style={{ fontWeight: "bold", marginBottom: 4, fontSize: 14 }}>
+              Notes
+            </Text>
             <Notes note={item.notes} order_id={item._id} />
           </View>
           {/* Notes Section */}
           <Text style={styles.headerText}>Future Meals</Text>
           <View style={styles.optionCard}>
             <View style={{ flexDirection: 'column' }}>
-              <FutureMeals meals={meals} futuredays={futureDays} />
+              <FutureMeals meals={futureMeals} futuredays={futureDays} />
             </View>
           </View>
           {/* Future Meals */}

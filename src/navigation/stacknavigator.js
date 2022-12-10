@@ -25,6 +25,7 @@ import EditAccount from "../scenes/EditAccount";
 import ListAddress from "../scenes/Components/manageaddress/ListAddress";
 import Rewards from "../scenes/ReviewScreen";
 import OrderDetails from "../scenes/Components/orderdetails/OrderDetails";
+import PayForAddOn from "../scenes/Components/wallet/PayForAddOn";
 import { getLocalUser } from "../services/actions/actions";
 
 const Stack = createStackNavigator()
@@ -74,6 +75,7 @@ export default function StackNavigator() {
             <Stack.Screen name="edit_account" component={EditAccount} />
             <Stack.Screen name="chef_reviews" component={Rewards} />
             <Stack.Screen name="order_details" component={OrderDetails} />
+            <Stack.Screen name="place_add_on" component={PayForAddOn} />
         </Stack.Navigator>
     )
 }

@@ -5,10 +5,10 @@ import React, { useEffect, useState } from 'react'
 const { width, height } = Dimensions.get('window')
 import moment from 'moment'
 
-export default function AddOns({ addon }) {
+export default function AddOns({ addon, navigation }) {
     const [loading, setLoading] = useState(false)
     const [myaddons, setMyAddOns] = useState([])
-    const [hasAddOn, setHasAddOns] = useState(true)
+    const [hasAddOn, setHasAddOns] = useState(false)
     const [pulled, setPulled] = useState(false)
     const [qty, setQty] = useState([]);
     const [subtotal, setSubtotal] = useState([]);
@@ -100,6 +100,7 @@ export default function AddOns({ addon }) {
             console.log('====================================');
             console.log(datatoplace);
             console.log('====================================');
+            navigation.navigate('place_add_on', { title: "Add Extras" })
         } else {
             alert("You have already ordered add-ons for the day");
         }

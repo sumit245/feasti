@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TextInput } from "react-native";
+import { View, TextInput, Text } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 import { styles } from "../../styles/HomeStyle"
 
@@ -9,6 +9,7 @@ export default function Notes({ note }) {
     const noteHandler = () => { }
     return (
         <View style={styles.optionCard}>
+           
             <View style={styles.optionrow}>
                 <TextInput
                     autoFocus={pulled}
