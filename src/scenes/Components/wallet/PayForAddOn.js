@@ -5,18 +5,20 @@ import {
     ScrollView,
     TouchableOpacity,
     ActivityIndicator,
-    Image
+    Image,
+    Alert
 } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { StripeProvider } from '@stripe/stripe-react-native'
-import { Checkbox, TextInput } from 'react-native-paper'
+import { Checkbox, TextInput, Colors } from 'react-native-paper'
 import { LinearGradient } from 'expo-linear-gradient'
 import { styles } from '../../styles/HomeStyle'
 import CheckoutCard from "../checkout/CheckoutCards"
 import PIC from "../../../../assets/wallet.png"
 import HeaderSimple from "../home/headerTop/HeaderSimple"
 import { useSelector, useDispatch } from 'react-redux'
-import { Alert } from 'react-native'
+import { updateUser, updateWallet } from '../../../services/actions/actions'
+
 export default function PayForAddOn({ route, navigation }) {
     const { user } = useSelector(state => state.reducer)
     const { addOnTotal, orderID, updateID, add_on } = useSelector(state => state.orderReducer)
@@ -27,11 +29,14 @@ export default function PayForAddOn({ route, navigation }) {
     const [loading, setLoading] = useState(false)
     const [ordering, setOrdering] = useState(false)
     const [balance, setBalance] = useState(0)
+    const [userId, setUserId] = useState("")
     const [total, setTotal] = useState(0)
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        const { wallet_balance } = JSON.parse(user)
+        const { wallet_balance, _id } = JSON.parse(user)
         setBalance(wallet_balance)
+        setUserId(_id)
     }, [user])
 
     useEffect(() => {
@@ -40,7 +45,12 @@ export default function PayForAddOn({ route, navigation }) {
 
 
 
-    const recharge = () => { }
+    const recharge = async () => {
+        setLoading(true)
+        const wallet_balance={wallet_balance:parseFloat(value)}
+        const status = await dispatch(updateWallet(userId, wallet_balance))
+        setLoading(false)
+    }
     const onSubmit = () => {
         if (balance < total) {
             Alert.alert('Warning', `Please recharge with minimum $${parseFloat(total - balance).toFixed(2)}`, [{ text: "OK" }])

@@ -91,7 +91,13 @@ export const updateUser = (id, dataToSend) => async (dispatch) => {
     await AsyncStorage.setItem('user', JSON.stringify(data))
     return status
 }
-
+export const updateWallet = (id, wallet_balance) => async (dispatch) => {
+    const response = await axios.put(USER_URL + id, wallet_balance)
+    const { data, status } = response.data
+    dispatch({ type: SAVE_USER, payload: JSON.stringify(data) })
+    await AsyncStorage.setItem('user', JSON.stringify(data))
+    return status
+}
 export const editUser = (id, dataToSend) => async (dispatch) => {
     const response = await axios.put(USER_URL + id, { ...dataToSend })
     const { data, status } = response.data
