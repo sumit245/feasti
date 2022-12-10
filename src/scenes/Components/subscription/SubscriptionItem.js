@@ -44,7 +44,7 @@ export default function SubscriptionItem({ item, navigation }) {
       setMeals(item.meals)
       setLoading(false)
       setMealImages()
-      const remainingMeal = moment(item.end_date).diff(item.start_date, 'days')
+      const remainingMeal = moment(item.end_date).diff(moment(), 'days')
       setRemaining(remainingMeal)
       setLoading(true)
     }
