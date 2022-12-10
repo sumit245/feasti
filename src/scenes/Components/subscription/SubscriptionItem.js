@@ -115,7 +115,7 @@ export default function SubscriptionItem({ item }) {
             </View>
             <Text>Today, {moment().format("DD MMM")}</Text>
             <View style={styles.indicator} />
-            <CurrentMeal meal={todayMeal} />
+            <CurrentMeal meal={typeof todayMeal !== "undefined" ? todayMeal : null} />
           </View>
           {/* Current Meal Section */}
 
