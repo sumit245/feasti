@@ -56,8 +56,9 @@ export default function PayForAddOn({ route, navigation }) {
         if (balance < total) {
             Alert.alert('Warning', `Please recharge with minimum $${parseFloat(total - balance).toFixed(2)}`, [{ text: "OK" }])
         } else {
+            let add_on_place = [...add_on]
             setOrdering(true)
-            const msg = await dispatch(placeAddOns(orderID, updateID, add_on))
+            const msg = await dispatch(placeAddOns(orderID, updateID, add_on_place))
             await dispatch(updateUser(userId, { wallet_balance: parseFloat(balance - addOnTotal).toFixed(2) }))
             setOrdering(false)
             Alert.alert('Success', `${msg}`, [{ text: "OK", onPress: navigation.goBack() }])
