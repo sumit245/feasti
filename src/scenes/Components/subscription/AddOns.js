@@ -8,6 +8,7 @@ import moment from 'moment'
 export default function AddOns({ addon }) {
     const [loading, setLoading] = useState(false)
     const [myaddons, setMyAddOns] = useState([])
+    const [hasAddOn, setHasAddOns] = useState(true)
     const [pulled, setPulled] = useState(false)
     const [qty, setQty] = useState([]);
     const [subtotal, setSubtotal] = useState([]);
@@ -96,6 +97,9 @@ export default function AddOns({ addon }) {
                     };
                 }
             );
+            console.log('====================================');
+            console.log(datatoplace);
+            console.log('====================================');
         } else {
             alert("You have already ordered add-ons for the day");
         }

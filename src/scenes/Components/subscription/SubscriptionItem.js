@@ -37,9 +37,6 @@ export default function SubscriptionItem({ item }) {
     futuremeals.push(meal3)
     setFutureDays(futuredays)
     setFutureMeals(futuremeals)
-    console.log('====================================');
-    console.log(day0);
-    console.log('====================================');
   }
   useEffect(() => {
     let componentMounted = true
@@ -155,7 +152,7 @@ export default function SubscriptionItem({ item }) {
           )}
           {/* Chef Address Section */}
           <View style={styles.optionCard}>
-            <AddOns addon={meals[0].add_on} />
+            <AddOns addon={typeof todayMeal !== "undefined" && todayMeal.add_on} />
           </View>
           {/* AddOns Section */}
           <View style={styles.optionCard}>
