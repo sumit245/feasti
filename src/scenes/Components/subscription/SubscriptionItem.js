@@ -18,7 +18,6 @@ export default function SubscriptionItem({ item }) {
   const [loading, setLoading] = useState(false)
   const { address } = item
   const setMealImages = () => {
-
     const day0 = moment().format('dddd')
     const day1 = moment().add(1, 'day').format('dddd')
     const day2 = moment().add(2, 'day').format('dddd')
@@ -36,8 +35,11 @@ export default function SubscriptionItem({ item }) {
     futuremeals.push(meal1)
     futuremeals.push(meal2)
     futuremeals.push(meal3)
-    setFutureDays(futureDays)
+    setFutureDays(futuredays)
     setFutureMeals(futuremeals)
+    console.log('====================================');
+    console.log(day0);
+    console.log('====================================');
   }
   useEffect(() => {
     let componentMounted = true
@@ -59,7 +61,7 @@ export default function SubscriptionItem({ item }) {
     return <Loader msg="Fetching your subscription Details" />
   }
   return (
-    <SafeAreaView style={[styles.container, { width: width, flexDirection: 'column' }]}>
+    <SafeAreaView style={[styles.container, { width: width, marginTop: 0 }]}>
       <View style={[styles.header, { backgroundColor: "#FFF" }]}>
         <View style={{ marginLeft: 4 }}>
           <Text style={styles.headerTitle}>
@@ -113,7 +115,7 @@ export default function SubscriptionItem({ item }) {
             </View>
             <Text>Today, {moment().format("DD MMM")}</Text>
             <View style={styles.indicator} />
-            <CurrentMeal meal={meals[0]} />
+            <CurrentMeal meal={todayMeal} />
           </View>
           {/* Current Meal Section */}
 

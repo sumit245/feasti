@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { View, Text } from 'react-native'
-import { TabBar, TabView } from "react-native-tab-view";
+import {
+    Animated,
+    View,
+    TouchableOpacity,
+    StyleSheet,
+    StatusBar,
+    Text
+} from 'react-native'
+import { TabView } from 'react-native-tab-view';
 import CurrentMeal from "./CurrentMeal";
 import { width } from "../../styles/HomeStyle";
 export default function FutureMeals({ meals, futuredays }) {
@@ -12,54 +19,53 @@ export default function FutureMeals({ meals, futuredays }) {
         { key: "first", title: futuredays[0] },
         { key: "second", title: futuredays[1] },
         { key: "third", title: futuredays[2] }
-
     ]);
 
     useEffect(() => {
         setLoading(false)
         setData(meals)
-        // const firstMeal = meals.find((o) => o.day === routes[0].title)
+        setLoading(true)
+    }, [])
+    useEffect(() => {
         console.log('====================================');
-        console.log(typeof meals);
+        console.log(index);
         console.log('====================================');
-        //setLoading(true)
-    }, [data])
+    }, [index])
 
 
-    const renderTabBar = (props) => (
-        <TabBar
-            {...props}
-            tabStyle={{ width: width / 3.3, flexDirection: 'row' }}
-            scrollEnabled
-            style={{
-                backgroundColor: "transparent",
-                //   flexDirection: 'row',
+    const _renderTabBar = (props) => {
+        const inputRange = props.navigationState.routes.map((x, i) => i);
+        return (
+            <View style={styles.tabBar}>
+                {props.navigationState.routes.map((route, i) => {
+                    const opacity = props.position.interpolate({
+                        inputRange,
+                        outputRange: inputRange.map((inputIndex) =>
+                            inputIndex === i ? 1 : 0.5
+                        ),
+                    });
 
-            }}
-            indicatorContainerStyle={{ flexDirection: 'row' }}
-            contentContainerStyle={{ flexDirection: 'row', justifyContent: 'space-between', flex: 1 }}
-            activeColor="#ff6600"
-            labelStyle={{ fontWeight: "bold" }}
-            inactiveColor="#272727"
-            indicatorStyle={{ backgroundColor: "#ff9900", marginHorizontal: 2 }}
-        />
-    );
+                    return (
+                        <TouchableOpacity
+                            style={[styles.tabItem, { borderBottomWidth: index === i ? 2 : 0, borderBottomColor: index === i ? "#ff6600" : "#000" }]}
+                            onPress={() => setIndex(i)}>
+                            <Animated.Text style={[styles.tabbarLabel, { opacity, color: index === i ? "#ff6600" : "#000" }]}>{route.title}</Animated.Text>
+                        </TouchableOpacity>
+                    );
+                })}
+            </View>
+        );
+    }
+
 
     const renderScene = ({ route }) => {
         switch (route.key) {
             case "first":
-                return typeof data.find((o) => o.day === route.title) !== 'undefined' ?
-                    <CurrentMeal index={route.key} meal={data.find((o) => o.day === route.title)} /> :
-                    null
-
+                return <CurrentMeal meal={data.find((o) => o.day === futuredays[0])} />
             case "second":
-                return typeof data.find((o) => o.day === route.title) !== 'undefined' ?
-                    <CurrentMeal index={route.key} meal={data.find((o) => o.day === route.title)} /> :
-                    null;
+                return <CurrentMeal meal={data.find((o) => o.day === futuredays[1])} />
             case "third":
-                return typeof data.find((o) => o.day === route.title) !== 'undefined' ?
-                    <CurrentMeal index={route.key} meal={data.find((o) => o.day === route.title)} /> :
-                    null
+                return <CurrentMeal meal={data.find((o) => o.day === futuredays[2])} />
             default:
                 break;
         }
@@ -73,9 +79,27 @@ export default function FutureMeals({ meals, futuredays }) {
                 navigationState={{ index, routes }}
                 renderScene={renderScene}
                 onIndexChange={setIndex}
-                renderTabBar={renderTabBar}
-                initialLayout={{ width: width }}
+                renderTabBar={_renderTabBar}
             />
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    tabBar: {
+        flexDirection: 'row',
+        paddingVertical: 8,
+    },
+    tabItem: {
+        flex: 1,
+        alignItems: 'center',
+        padding: 4,
+    },
+    tabbarLabel: {
+        color: "#000",
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
+        textAlign: 'center',
+        fontSize: 16
+    }
+})
