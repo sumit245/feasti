@@ -7,7 +7,7 @@ import {
     ActivityIndicator,
     Image
 } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { StripeProvider } from '@stripe/stripe-react-native'
 import { Checkbox, TextInput } from 'react-native-paper'
 import { LinearGradient } from 'expo-linear-gradient'
@@ -15,18 +15,37 @@ import { styles } from '../../styles/HomeStyle'
 import CheckoutCard from "../checkout/CheckoutCards"
 import PIC from "../../../../assets/wallet.png"
 import HeaderSimple from "../home/headerTop/HeaderSimple"
-
+import { useSelector, useDispatch } from 'react-redux'
+import { Alert } from 'react-native'
 export default function PayForAddOn({ route, navigation }) {
+    const { user } = useSelector(state => state.reducer)
+    const { addOnTotal, orderID, updateID, add_on } = useSelector(state => state.orderReducer)
     const { title } = route.params
-    const [value, setValue] = useState(0)
+    const [value, setValue] = useState("0")
     const [checked, setChecked] = useState(false)
     const [isAddOn, setIsAddOn] = useState(true)
     const [loading, setLoading] = useState(false)
     const [ordering, setOrdering] = useState(false)
     const [balance, setBalance] = useState(0)
     const [total, setTotal] = useState(0)
+
+    useEffect(() => {
+        const { wallet_balance } = JSON.parse(user)
+        setBalance(wallet_balance)
+    }, [user])
+
+    useEffect(() => {
+        setTotal(addOnTotal)
+    }, [addOnTotal, add_on, orderID, updateID])
+
+
+
     const recharge = () => { }
-    const onSubmit = () => { }
+    const onSubmit = () => {
+        if (balance < total) {
+            Alert.alert('Warning', `Please recharge with minimum ${total - balance}`, [{ text: "OK" }])
+        }
+    }
     const onChangeText = (text) => { setValue(text) }
     return (
         <SafeAreaView style={styles.container} >
@@ -116,7 +135,6 @@ export default function PayForAddOn({ route, navigation }) {
                                     placeholder="5.00"
                                     keyboardType="numeric"
                                     onChangeText={(text) => onChangeText(text)}
-                                    value={value}
                                 />
                             </View>
                         </View>

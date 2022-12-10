@@ -16,6 +16,8 @@ export default function SubscriptionItem({ item, navigation }) {
   const [futureMeals, setFutureMeals] = useState([])
   const [futureDays, setFutureDays] = useState([])
   const [loading, setLoading] = useState(false)
+  const [id, setId] = useState("")
+  const [order_id, setOrderId] = useState("")
   const { address } = item
   const setMealImages = () => {
     const day0 = moment().format('dddd')
@@ -45,6 +47,8 @@ export default function SubscriptionItem({ item, navigation }) {
       setLoading(false)
       setMealImages()
       const remainingMeal = moment(item.end_date).diff(moment(), 'days')
+      setId(item._id)
+      setOrderId(item.order_id)
       setRemaining(remainingMeal)
       setLoading(true)
     }
@@ -152,8 +156,11 @@ export default function SubscriptionItem({ item, navigation }) {
           )}
           {/* Chef Address Section */}
           <View style={styles.optionCard}>
-            
-            <AddOns addon={typeof todayMeal !== "undefined" && todayMeal.add_on} navigation={navigation} />
+            <AddOns
+              addon={typeof todayMeal !== "undefined" && todayMeal.add_on}
+              id={id}
+              order_id={order_id}
+              navigation={navigation} />
           </View>
           {/* AddOns Section */}
           <View style={styles.optionCard}>

@@ -4,8 +4,9 @@ import { IconButton } from 'react-native-paper'
 import React, { useEffect, useState } from 'react'
 const { width, height } = Dimensions.get('window')
 import moment from 'moment'
-
-export default function AddOns({ addon, navigation }) {
+import { useSelector, useDispatch } from 'react-redux'
+import { setAddOns } from '../../../services/actions/orderActions'
+export default function AddOns({ addon, navigation, order_id, id }) {
     const [loading, setLoading] = useState(false)
     const [myaddons, setMyAddOns] = useState([])
     const [hasAddOn, setHasAddOns] = useState(false)
@@ -14,12 +15,14 @@ export default function AddOns({ addon, navigation }) {
     const [subtotal, setSubtotal] = useState([]);
     const [total, setTotal] = useState(0);
     const [extrass, setExtras] = useState([]);
+    const dispatch = useDispatch()
 
     useEffect(() => {
         let componentMounted = true
         if (componentMounted) {
             setLoading(false)
             setMyAddOns(addon)
+            setTotal(0)
         }
 
         return () => {
@@ -35,6 +38,7 @@ export default function AddOns({ addon, navigation }) {
             qties.push(0);
         }
         setSubtotal(subt);
+
         setQty(qties);
         setLoading(true)
     }, [myaddons]);
@@ -86,7 +90,7 @@ export default function AddOns({ addon, navigation }) {
 
     const orderExtras = () => {
         if (!hasAddOn) {
-            const datatoplace = Array.from(new Set(extrass.map((s) => s.item))).map(
+            const add_on = Array.from(new Set(extrass.map((s) => s.item))).map(
                 (item) => {
                     let singleadds = extrass.filter((s) => s.item === item);
                     let quantity = singleadds.reduce((max, addon) =>
@@ -97,9 +101,7 @@ export default function AddOns({ addon, navigation }) {
                     };
                 }
             );
-            console.log('====================================');
-            console.log(datatoplace);
-            console.log('====================================');
+            dispatch(setAddOns(add_on, order_id, id, total))
             navigation.navigate('place_add_on', { title: "Add Extras" })
         } else {
             alert("You have already ordered add-ons for the day");
@@ -214,7 +216,7 @@ export default function AddOns({ addon, navigation }) {
                 >
                     <TouchableOpacity
                         onPress={orderExtras}
-                        disabled={qty === 0}
+                        disabled={total === 0}
                         style={{ marginRight: 8 }}
                     >
                         <Text
