@@ -43,7 +43,7 @@ export default function PayForAddOn({ route, navigation }) {
     const recharge = () => { }
     const onSubmit = () => {
         if (balance < total) {
-            Alert.alert('Warning', `Please recharge with minimum ${total - balance}`, [{ text: "OK" }])
+            Alert.alert('Warning', `Please recharge with minimum $${parseFloat(total - balance).toFixed(2)}`, [{ text: "OK" }])
         }
     }
     const onChangeText = (text) => { setValue(text) }
