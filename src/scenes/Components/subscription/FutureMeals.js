@@ -61,11 +61,11 @@ export default function FutureMeals({ meals, futuredays }) {
     const renderScene = ({ route }) => {
         switch (route.key) {
             case "first":
-                return <CurrentMeal meal={data.find((o) => o.day === futuredays[0])} />
+                return typeof data.find((o) => o.day === futuredays[0]) !== "undefined" ? <CurrentMeal meal={data.find((o) => o.day === futuredays[0])} /> : null
             case "second":
-                return <CurrentMeal meal={data.find((o) => o.day === futuredays[1])} />
+                return typeof data.find((o) => o.day === futuredays[1]) !== "undefined" ? <CurrentMeal meal={data.find((o) => o.day === futuredays[1])} /> : null
             case "third":
-                return <CurrentMeal meal={data.find((o) => o.day === futuredays[2])} />
+                return typeof data.find((o) => o.day === futuredays[2]) !== "undefined" ? <CurrentMeal meal={data.find((o) => o.day === futuredays[2])} /> : null
             default:
                 break;
         }
