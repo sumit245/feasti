@@ -1,11 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList } from "react-native";
 import ItemCard from "./ItemCard";
 import EmptyChef from "../../utility/EmptyChef";
 import { RefreshControl } from "react-native";
 
 export default function Meals({ restaurant, navigation, category, onRefresh, refreshing }) {
+    const [data, setData] = useState([])
     const renderItem = ({ item }) => <ItemCard item={item} navigation={navigation} category={category} />
+    useEffect(() => {
+        setData(data)
+    }, [restaurant])
 
     return (
         <FlatList

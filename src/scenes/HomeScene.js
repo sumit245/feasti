@@ -15,7 +15,7 @@ import AdminCoupon from './Components/home/admincoupon/AdminCoupon'
 export default function HomeScene({ navigation }) {
     const [category, setCategory] = useState('Lunch')
     const [loading, setLoading] = useState(true)
-    const [refreshing, setRefreshing] = useState(false)
+    const [data, setData] = useState([])
     const [isDelivery, setisDelivery] = useState('');
     const [discount, setDiscount] = useState(0);
     const [hasAdminCoupon, setHasCoupon] = useState(false)
@@ -46,13 +46,19 @@ export default function HomeScene({ navigation }) {
     useEffect(() => {
         let componentMounted = true
         if (componentMounted) {
-            setLoading(true)
-            dispatch(getNearByRestaurant('Lunch'))
-            getCoupon()
-            setLoading(false)
+            async function fetchData() {
+                setLoading(true)
+                getCoupon()
+                await dispatch(getNearByRestaurant('Lunch'))
+                setData(nearByRestaurant)
+                setLoading(false)
+            }
+            fetchData()
         }
-    }, [])
-
+        return () => {
+            componentMounted = false
+        }
+    }, [nearByRestaurant])
 
     return (
         <Provider>
@@ -69,7 +75,7 @@ export default function HomeScene({ navigation }) {
                 {
                     !loading ? (
                         <Meals
-                            restaurant={nearByRestaurant}
+                            restaurant={data}
                             navigation={navigation}
                             refreshing={loading}
                             onRefresh={onRefresh}
