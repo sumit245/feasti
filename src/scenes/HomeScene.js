@@ -33,7 +33,6 @@ export default function HomeScene({ navigation }) {
     const onRefresh = async () => {
         setLoading(true)
         setRefreshing(true)
-        await dispatch(getActiveRestaurants())
         await dispatch(getNearByRestaurant('Lunch'))
         setRefreshing(false)
         setLoading(false)
@@ -49,7 +48,7 @@ export default function HomeScene({ navigation }) {
     useEffect(() => {
         let componentMounted = true
         if (componentMounted) {
-            setLoading(true)    
+            setLoading(true)
             dispatch(getNearByRestaurant('Lunch'))
             getCoupon()
             setLoading(false)

@@ -34,7 +34,6 @@ export default function StackNavigator() {
 
     const getPreloadedData = () => {
         dispatch(getExpoNotificationToken())
-        dispatch(getNearByRestaurant('Lunch'))
         dispatch(getCuisines())
         dispatch(getMyOrders())
         dispatch(getMySubscription())
@@ -47,7 +46,7 @@ export default function StackNavigator() {
     }
     useEffect(() => {
         getPreloadedData()
-        checkLogin()
+        // checkLogin()
     }, [])
 
 
