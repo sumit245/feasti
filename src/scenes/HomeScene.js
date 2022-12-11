@@ -58,7 +58,7 @@ export default function HomeScene({ navigation }) {
         return () => {
             componentMounted = false
         }
-    }, [nearByRestaurant])
+    }, [data])
 
     return (
         <Provider>
