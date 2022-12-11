@@ -46,7 +46,7 @@ export const getNearByRestaurant = (category) => async (dispatch) => {
     restaurants.map(async (restaurant, key) => {
         const { city } = restaurant;
         const distance = await calculateDistanceGlobal(city)
-        if (distance < 10) {
+        if (distance < 50) {
             console.log('====================================');
             console.log(restaurant.restaurant_name);
             console.log('====================================');
@@ -56,7 +56,7 @@ export const getNearByRestaurant = (category) => async (dispatch) => {
     })
     setTimeout(() => {
         dispatch({ type: GET_ALL_RESTAURANT, payload: nearByRestaurant })
-    }, 1000)
+    }, 5000)
 }
 // NearBy Restaurant
 

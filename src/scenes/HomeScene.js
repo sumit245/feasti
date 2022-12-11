@@ -46,9 +46,9 @@ export default function HomeScene({ navigation }) {
     useEffect(() => {
         let componentMounted = true
         if (componentMounted) {
+            setLoading(true)
+            getCoupon()
             async function fetchData() {
-                setLoading(true)
-                getCoupon()
                 await dispatch(getNearByRestaurant('Lunch'))
                 setData(nearByRestaurant)
                 setLoading(false)
