@@ -75,7 +75,7 @@ export default function HomeScene({ navigation }) {
                 {
                     !loading ? (
                         <Meals
-                            restaurant={data}
+                            restaurant={nearByRestaurant}
                             navigation={navigation}
                             refreshing={loading}
                             onRefresh={onRefresh}
