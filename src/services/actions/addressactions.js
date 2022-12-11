@@ -52,12 +52,10 @@ export const getReadableAddress = () => async (dispatch) => {
     const response = await axios.post(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat}, ${lng}&key=AIzaSyAaZRSId-Iuuzl8SGKrUkGlAVmBRQf9I3w&result_type=street_address`)
     const { results } = await response.data
     const { address_components, geometry } = await results[0]
-    console.log('====================================');
-    console.log(address_components);
-    console.log('====================================');
+    const administrative_types = ['administrative_area_level_2', 'administrative_area_level_3']
     const addressLine1 = address_components[0].long_name + ", " + address_components[1].long_name + ", " + address_components[2].long_name
     const addressLine2 = address_components[3].long_name + ", " + address_components[4].long_name
-    const city = Array.isArray(address_components) && address_components.filter(item => Array.isArray(item.types) && item.types.includes('administrative_area_level_2'))[0].long_name
+    const city = Array.isArray(address_components) && address_components.filter(item => Array.isArray(item.types) && administrative_types.some(r => item.types.includes(r))[0].long_name)
     const states = Array.isArray(address_components) && address_components.filter(item => Array.isArray(item.types) && item.types.includes('administrative_area_level_1'))[0].long_name
     const country = Array.isArray(address_components) && address_components.filter(item => Array.isArray(item.types) && item.types.includes('country'))[0].long_name
     const postal_code = Array.isArray(address_components) && address_components.filter(item => Array.isArray(item.types) && item.types.includes('postal_code'))[0].long_name
