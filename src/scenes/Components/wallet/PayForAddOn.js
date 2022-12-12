@@ -220,7 +220,7 @@ export default function PayForAddOn({ route, navigation }) {
                         </LinearGradient>
                     )
                 }
-                {isAddOn && !recharging(
+                {isAddOn && !recharging ? (
                     <LinearGradient colors={["#ff9900", "#ff6600"]} style={{
                         borderColor: "#ff6600",
 
@@ -253,7 +253,7 @@ export default function PayForAddOn({ route, navigation }) {
                             )}
                         </TouchableOpacity>
                     </LinearGradient>
-                )}
+                ) : null}
             </View>
         </SafeAreaView>
     )
