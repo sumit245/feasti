@@ -7,17 +7,20 @@ import {
     ScrollView,
     TextInput,
     Dimensions,
+    Platform,
     Alert,
+    StatusBar,
 } from "react-native";
 import { IconButton, Provider } from "react-native-paper";
 import BackButton from "../utility/BackButton";
 import { useSelector, useDispatch } from "react-redux";
-
+import * as MailComposer from "expo-mail-composer"
+import axios from "axios";
+import { MAIL_URL } from "../../../services/EndPoints";
 const DARKGRAY = "#777";
-const { width, height } = Dimensions.get("window");
+
 
 export default function Contacts({ navigation }) {
-    const dispatch = useDispatch()
     const { user } = useSelector(state => state.reducer)
     const [info, setInfo] = useState({
         receipient: "support@feasti.com",
@@ -29,15 +32,57 @@ export default function Contacts({ navigation }) {
         body: "",
     });
 
-    const sendEmail = () => { }
-    const deleteMsg = () => { }
+    const sendEmail = async () => {
+        const mail = {
+            sender: info.email_id,
+            receipient: info.receipient,
+            subject: info.subject,
+            body: info.body,
+            id: info.user_id,
+            sender_name: info.owner_name,
+            phone: info.phone,
+            label: "user",
+        };
+        const response = await axios.post(`${MAIL_URL}`, mail);
+        await MailComposer.composeAsync({
+            subject: info.subject,
+            recipients: info.receipient,
+            body: info.body
+        })
+        const { status } = response.data
+
+
+        if (status === 200) {
+            Alert.alert(
+                `${status}`,
+                "Your message has been sent to the admin. They will contact you soon!!",
+                [
+                    { text: "OK", onPress: () => navigation.goBack() }
+                ])
+        }
+    }
+    const deleteMsg = () => {
+        Alert.alert(
+            "Are you Sure?",
+            "Your message will be discarded",
+            [{
+                text: "Cancel",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+            },
+            { text: "OK", onPress: () => navigation.goBack() }
+            ])
+    }
     useEffect(() => {
         let componentMount = true
         if (componentMount) {
-            const { email_id } = JSON.parse(user)
+            const { email_id, user_id, user_name, phone } = JSON.parse(user)
             setInfo(info => ({
                 ...info,
-                email_id: email_id
+                email_id,
+                user_id,
+                user_name,
+                phone
             }))
         }
         return () => {
@@ -114,7 +159,7 @@ export default function Contacts({ navigation }) {
                             <TextInput
                                 value={info.subject}
                                 selectionColor="#ff6600"
-                                underlineColorAndroid="#ff6600"
+                                // underlineColorAndroid="#ff6600"
                                 style={[styles.inputContainer, { marginTop: 12 }]}
                                 onChangeText={(text) => setInfo({ ...info, subject: text })}
                             />
@@ -135,7 +180,7 @@ export default function Contacts({ navigation }) {
                                 style={[
                                     styles.inputContainer,
                                     {
-                                        textAlignVertical: "bottom",
+                                        textAlignVertical: "top",
                                         borderColor: "#777",
                                         borderWidth: 0.5,
                                         borderRadius: 2,
@@ -172,6 +217,7 @@ const styles = StyleSheet.create({
         flex: 1,
         height: "100%",
         justifyContent: "space-between",
+        marginTop: Platform.OS === "android" ? StatusBar.currentHeight : 8
     },
     inputContainer: {
         borderBottomWidth: 0.2,
@@ -185,5 +231,9 @@ const styles = StyleSheet.create({
         marginHorizontal: "4%",
         marginTop: 8,
         marginVertical: 4,
-    }
+    },
+    label: {
+        fontSize: 16,
+        fontWeight: "bold",
+    },
 });

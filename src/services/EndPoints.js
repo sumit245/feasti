@@ -24,6 +24,7 @@ export const CUISINE_TYPE_URL = BASE_URL + '/api/newrest/cuisine_type/';
 export const SEARCH_BY_CITY = BASE_URL + '/api/newrest/searchbycity/'
 export const VEG_NON_VEG = BASE_URL + '/api/newrest/meal_type/';
 export const GET_CHEF_FROM_BANNER = BASE_URL + '/api/newrest/getchefbyId/'
+export const MAIL_URL = BASE_URL + '/api/contacts/'
 
 
 // Calculation Links
@@ -34,7 +35,7 @@ export const GET_PRICE_URL = BASE_URL + '/api/pricing/'
 export const GET_ORDER_DETAILS = BASE_URL + '/api/orders/getOrderByID/'
 export const ORDER_URL = BASE_URL + '/api/orders/getorderbyuser/';
 export const ORDER_UPDATE = BASE_URL + '/api/orders/'
-export const CURRENT_ORDER_URL = BASE_URL +'/api/getcurrentorder/getandupdateorderstatus/'
+export const CURRENT_ORDER_URL = BASE_URL + '/api/getcurrentorder/getandupdateorderstatus/'
 export const SUBSCRIPTION_URL = BASE_URL + '/api/orders/getsubscription/'
 export const BANNER_URL = BASE_URL + '/api/promo/active'
 export const BANNER_UPDATE_URL = BASE_URL + '/api/promo/getchefbyidandupdatebannercount/'
