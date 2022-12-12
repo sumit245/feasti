@@ -220,7 +220,7 @@ export default function PayForAddOn({ route, navigation }) {
                         </LinearGradient>
                     )
                 }
-                {isAddOn && !recharging ? (
+                {isAddOn  ? (
                     <LinearGradient colors={["#ff9900", "#ff6600"]} style={{
                         borderColor: "#ff6600",
 

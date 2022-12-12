@@ -102,7 +102,7 @@ export default function AddOns({ addon, navigation, order_id, id }) {
                 }
             );
             dispatch(setAddOns(add_on, order_id, id, total))
-            navigation.navigate('place_add_on', { title: "Add Extras", recharging: false, isAddOn: true })
+            navigation.navigate('place_add_on', { title: "Add Extras", recharging: true, isAddOn: true })
         } else {
             alert("You have already ordered add-ons for the day");
         }
