@@ -32,7 +32,7 @@ export default function DeliveryNotes() {
                     multiline
                     placeholder="Place the delivery at door"
                     onChangeText={setNotes}
-                    onEndEditing={() => noteHandler(notes)}
+                    onEndEditing={noteHandler}
                 />
             )}
         </View>
