@@ -25,7 +25,6 @@ export default function DeliveryNotes() {
             </View>
             {pulled && (
                 <TextInput
-                    autoFocus
                     value={notes}
                     multiline
                     placeholder="Place the delivery at door"

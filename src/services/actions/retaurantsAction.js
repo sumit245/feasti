@@ -47,9 +47,6 @@ export const getNearByRestaurant = (category) => async (dispatch) => {
         const { city } = restaurant;
         const distance = await calculateDistanceGlobal(city)
         if (distance < 20) {
-            console.log('====================================');
-            console.log(restaurant.restaurant_name);
-            console.log('====================================');
             restaurant.distance = distance
             nearByRestaurant.push(restaurant)
         }
