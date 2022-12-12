@@ -16,7 +16,11 @@ export default function WalletCard({ navigation, wallet_balance }) {
                 </Text>
                 <Text
                     style={styles.rechargeButton}
-                    onPress={() => navigation.navigate("place_add_on", { recharging: true, title: "Recharge" })} >Recharge</Text>
+                    onPress={() => navigation.navigate("place_add_on", {
+                        recharging: true,
+                        title: "Recharge",
+                        isAddOn: false
+                    })} >Recharge</Text>
             </View>
         </View>
 

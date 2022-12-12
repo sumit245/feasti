@@ -23,10 +23,9 @@ import { placeAddOns } from '../../../services/actions/orderActions'
 export default function PayForAddOn({ route, navigation }) {
     const { user } = useSelector(state => state.reducer)
     const { addOnTotal, orderID, updateID, add_on } = useSelector(state => state.orderReducer)
-    const { title,recharging } = route.params
+    const { title, recharging, isAddOn } = route.params
     const [value, setValue] = useState("0")
     const [checked, setChecked] = useState(false)
-    const [isAddOn, setIsAddOn] = useState(true)
     const [loading, setLoading] = useState(false)
     const [ordering, setOrdering] = useState(false)
     const [balance, setBalance] = useState(0)
@@ -182,42 +181,46 @@ export default function PayForAddOn({ route, navigation }) {
                 </StripeProvider>
             </ScrollView>
             <View style={{ flexDirection: "row", margin: 4 }}>
-                <LinearGradient style={{
-                    borderColor: "#000",
-                    borderWidth: 1,
-                    borderRadius: 24,
-                    height: 48,
-                    padding: 10,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    flex: 1,
-                    margin: 2,
-                }} colors={["#fff", "transparent"]}>
-                    <TouchableOpacity
-                        onPress={recharge}
-                        disabled={!checked}
-                    >
-                        {loading ? (
-                            <ActivityIndicator
-                                size="small"
-                                animating={true}
-                                color={Colors.red900}
-                            />
-                        ) : (
-                            <Text
-                                style={{
-                                    textTransform: "uppercase",
-                                    color: "#000",
-                                    fontWeight: "bold",
-                                    fontSize: 18,
-                                }}
+                {
+                    recharging && (
+                        <LinearGradient style={{
+                            borderColor: "#000",
+                            borderWidth: 1,
+                            borderRadius: 24,
+                            height: 48,
+                            padding: 10,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            flex: 1,
+                            margin: 2,
+                        }} colors={["#fff", "transparent"]}>
+                            <TouchableOpacity
+                                onPress={recharge}
+                                disabled={!checked}
                             >
-                                Recharge Now
-                            </Text>
-                        )}
-                    </TouchableOpacity>
-                </LinearGradient>
-                {isAddOn && (
+                                {loading ? (
+                                    <ActivityIndicator
+                                        size="small"
+                                        animating={true}
+                                        color={Colors.red900}
+                                    />
+                                ) : (
+                                    <Text
+                                        style={{
+                                            textTransform: "uppercase",
+                                            color: "#000",
+                                            fontWeight: "bold",
+                                            fontSize: 18,
+                                        }}
+                                    >
+                                        Recharge Now
+                                    </Text>
+                                )}
+                            </TouchableOpacity>
+                        </LinearGradient>
+                    )
+                }
+                {isAddOn && !recharging(
                     <LinearGradient colors={["#ff9900", "#ff6600"]} style={{
                         borderColor: "#ff6600",
 
