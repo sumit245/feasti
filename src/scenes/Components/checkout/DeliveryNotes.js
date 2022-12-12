@@ -30,6 +30,7 @@ export default function DeliveryNotes() {
                     ref={inputRef}
                     value={notes}
                     multiline
+          
                     placeholder="Place the delivery at door"
                     onChangeText={setNotes}
                     onEndEditing={noteHandler}

@@ -23,7 +23,7 @@ import { placeAddOns } from '../../../services/actions/orderActions'
 export default function PayForAddOn({ route, navigation }) {
     const { user } = useSelector(state => state.reducer)
     const { addOnTotal, orderID, updateID, add_on } = useSelector(state => state.orderReducer)
-    const { title } = route.params
+    const { title,recharging } = route.params
     const [value, setValue] = useState("0")
     const [checked, setChecked] = useState(false)
     const [isAddOn, setIsAddOn] = useState(true)
