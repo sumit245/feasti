@@ -39,27 +39,23 @@ export default function Contacts({ navigation }) {
             subject: info.subject,
             body: info.body,
             id: info.user_id,
-            sender_name: info.owner_name,
+            sender_name: info.user_name,
             phone: info.phone,
             label: "user",
         };
         const response = await axios.post(`${MAIL_URL}`, mail);
         await MailComposer.composeAsync({
             subject: info.subject,
-            recipients: info.receipient,
+            recipients: [info.receipient],
             body: info.body
         })
-        const { status } = response.data
-
-
-        if (status === 200) {
-            Alert.alert(
-                `${status}`,
-                "Your message has been sent to the admin. They will contact you soon!!",
-                [
-                    { text: "OK", onPress: () => navigation.goBack() }
-                ])
-        }
+        console.log(MailComposer.MailComposerStatus())
+        Alert.alert(
+            `Delivered`,
+            "Your message has been sent to the admin. They will contact you soon!!",
+            [
+                { text: "OK", onPress: () => navigation.goBack() }
+            ])
     }
     const deleteMsg = () => {
         Alert.alert(
