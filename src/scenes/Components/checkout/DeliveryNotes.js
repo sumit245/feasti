@@ -25,10 +25,8 @@ export default function DeliveryNotes() {
             </View>
             {pulled && (
                 <TextInput
-                    ref={inputRef}
                     value={notes}
                     multiline
-
                     placeholder="Place the delivery at door"
                     onChangeText={setNotes}
                     onEndEditing={noteHandler}
