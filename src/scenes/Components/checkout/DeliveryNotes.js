@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { Text, View, TextInput } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import { useDispatch } from "react-redux";
@@ -9,11 +9,9 @@ export default function DeliveryNotes() {
     const [notes, setNotes] = useState("");
     const [pulled, setPulled] = useState(false);
     const dispatch = useDispatch()
-    const inputRef = useRef(null)
-    const noteHandler = async () => {
+    const noteHandler = () => {
+        dispatch(notesHandler(notes))
         setPulled(false)
-        await dispatch(notesHandler({ notes: notes }))
-        inputRef.current.blur()
     }
     return (
         <View style={styles.optionCard}>
@@ -30,7 +28,7 @@ export default function DeliveryNotes() {
                     ref={inputRef}
                     value={notes}
                     multiline
-          
+
                     placeholder="Place the delivery at door"
                     onChangeText={setNotes}
                     onEndEditing={noteHandler}
