@@ -9,10 +9,9 @@ export default function DeliveryNotes() {
     const [notes, setNotes] = useState("");
     const [pulled, setPulled] = useState(false);
     const dispatch = useDispatch()
-    const noteHandler = () => {
-        console.log(notes);
-        // await dispatch(notesHandler({ notes: notes }))
-        // setPulled(false)
+    const noteHandler = async () => {
+        await dispatch(notesHandler(notes))
+        setPulled(false)
     }
     return (
         <View style={styles.optionCard}>
