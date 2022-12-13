@@ -44,12 +44,11 @@ export default function Contacts({ navigation }) {
             label: "user",
         };
         const response = await axios.post(`${MAIL_URL}`, mail);
-        await MailComposer.composeAsync({
+        MailComposer.composeAsync({
             subject: info.subject,
             recipients: [info.receipient],
             body: info.body
         })
-        console.log(MailComposer.MailComposerStatus())
         Alert.alert(
             `Delivered`,
             "Your message has been sent to the admin. They will contact you soon!!",

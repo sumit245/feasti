@@ -64,17 +64,18 @@ export default function Checkout({ route, navigation }) {
 
   const orderNow = async () => {
     setOrdering(true)
-    const { data, status } = await dispatch(placeOrder(order))
-    if (status === 200) {
-      const { plan_name, start_date, category, time } = data
-      navigation.navigate('order_complete', {
-        plan_name,
-        start_date,
-        category,
-        time
-      })
-      setOrdering(false)
-    }
+    console.log(order)
+    // const { data, status } = await dispatch(placeOrder(order))
+    // if (status === 200) {
+    //   const { plan_name, start_date, category, time } = data
+    //   navigation.navigate('order_complete', {
+    //     plan_name,
+    //     start_date,
+    //     category,
+    //     time
+    //   })
+    //   setOrdering(false)
+    // }
   }
 
   const keyboardShown = () => {
