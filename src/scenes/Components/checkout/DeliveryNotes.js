@@ -27,7 +27,7 @@ export default function DeliveryNotes() {
             {pulled && (
                 <TextInput
                     value={notes}
-                    multiline
+                    // multiline
                     placeholder="Place the delivery at door"
                     onChangeText={setNotes}
                     onEndEditing={noteHandler}
