@@ -10,7 +10,7 @@ export default function DeliveryNotes() {
     const [pulled, setPulled] = useState(false);
     const dispatch = useDispatch()
     const noteHandler = async () => {
-        await dispatch(notesHandler(notes))
+        await dispatch(notesHandler({ notes: notes }))
         setPulled(false)
     }
     return (
