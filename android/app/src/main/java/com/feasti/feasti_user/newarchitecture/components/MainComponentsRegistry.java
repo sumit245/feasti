@@ -1,4 +1,4 @@
-package com.feastiuser.newarchitecture.components;
+package com.feasti.feasti_user.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

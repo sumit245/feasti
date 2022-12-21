@@ -1,4 +1,4 @@
-package com.feastiuser;
+package com.feasti.feasti_user;
 
 import android.os.Build;
 import android.os.Bundle;

@@ -1,4 +1,4 @@
-package com.feastiuser.newarchitecture;
+package com.feasti.feasti_user.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -20,9 +20,9 @@ import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.feastiuser.BuildConfig;
-import com.feastiuser.newarchitecture.components.MainComponentsRegistry;
-import com.feastiuser.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.feasti.feasti_user.BuildConfig;
+import com.feasti.feasti_user.newarchitecture.components.MainComponentsRegistry;
+import com.feasti.feasti_user.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 
