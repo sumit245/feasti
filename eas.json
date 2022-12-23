@@ -21,7 +21,17 @@
         "buildType": "apk"
       }
     },
-    "production": {}
+    "production": {
+      "ios": {
+        "image": "latest"
+      }
+    },
+    "staging": {
+      "releaseChannel": "staging",
+      "cache": {
+        "key": "random"
+      }
+    }
   },
   "submit": {
     "production": {}
