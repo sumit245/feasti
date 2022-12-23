@@ -34,7 +34,7 @@ PODS:
   - ExpoModulesCore (0.11.10):
     - React-Core
     - ReactCommon/turbomodule/core
-  - EXSplashScreen (0.14.2):
+  - EXSplashScreen (0.16.2):
     - ExpoModulesCore
     - React-Core
   - FBLazyVector (0.69.6)
@@ -683,7 +683,7 @@ SPEC CHECKSUMS:
   ExpoKeepAwake: e44bcfa0e42b417b38d65ecbf145c754c7ae5109
   ExpoLinearGradient: 6d3047fddff1b61fafac00968dc1e1116499888f
   ExpoModulesCore: a3b2ac6dfc2c897267e7ab7fc2f4760181225799
-  EXSplashScreen: c4333e4d7a89cc3f7452166527d207c725d3c2a5
+  EXSplashScreen: 5b3373106c26fbdf32b8bb76b8004b7881dd8a53
   FBLazyVector: 739d2f9719faecb463c7aa191591af31c8c94182
   FBReactNativeSpec: 957de82f66e31f2f14bbec34e37242282fdd26de
   Firebase: cd2ab85eec8170dc260186159f21072ecb679ad5
