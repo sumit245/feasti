@@ -100,114 +100,114 @@ export default function Checkout({ route, navigation }) {
   const { plan_name, customer_price } = selectedPlan
   return (
     <SafeAreaView style={styles.container}>
-      <StripeProvider publishableKey={STRIPE_PUBLISHABLE_KEY}>
-        <View
-          style={{
-            position: 'absolute',
-            left: 5,
-            top: 48,
-            zIndex: 1000,
-            height: 30,
-            width: 30,
-            justifyContent: 'center',
-          }}
-        >
-          <BackButton navigation={navigation} />
-        </View>
+      {/* <StripeProvider publishableKey={STRIPE_PUBLISHABLE_KEY}> */}
+      <View
+        style={{
+          position: 'absolute',
+          left: 5,
+          top: 48,
+          zIndex: 1000,
+          height: 30,
+          width: 30,
+          justifyContent: 'center',
+        }}
+      >
+        <BackButton navigation={navigation} />
+      </View>
 
-        <ScrollView
-          stickyHeaderIndices={[1]}
-          showsVerticalScrollIndicator={false}
-        >
-          <Image
-            source={{ uri: loaded ? documents[1].banner_image : null }}
-            style={{ width: width, height: 170, resizeMode: 'cover' }}
-            height={150}
-          />
-          <View style={styles.restaurantHeader}>
-            <View style={styles.restaurantTitle}>
-              <Icon
-                style={{ margin: 2, marginTop: 6 }}
-                name="stop-circle"
-                color={
-                  meal_type === 'veg' || meal_type === 'Veg'
-                    ? '#2aaf21'
-                    : '#cc2224'
-                }
-                size={16}
-              />
-              <Text style={styles.welcomeText}>{restaurant.restaurant_name}</Text>
-            </View>
-            <View style={{ marginTop: 2 }}>
-              <View style={styles.subheader}>
-                <Text style={[styles.mealText, { color: '#777' }]}>
-                  Subscription
-                </Text>
-                <Text style={[styles.mealText, { color: '#777' }]}>Price</Text>
-              </View>
-              <View style={styles.subheader}>
-                <Text style={styles.mealText}>
-                  {plan_name}
-                </Text>
-                <Text style={styles.mealText}>
-                  {'$'}
-                  {customer_price}
-                </Text>
-              </View>
-            </View>
+      <ScrollView
+        stickyHeaderIndices={[1]}
+        showsVerticalScrollIndicator={false}
+      >
+        <Image
+          source={{ uri: loaded ? documents[1].banner_image : null }}
+          style={{ width: width, height: 170, resizeMode: 'cover' }}
+          height={150}
+        />
+        <View style={styles.restaurantHeader}>
+          <View style={styles.restaurantTitle}>
+            <Icon
+              style={{ margin: 2, marginTop: 6 }}
+              name="stop-circle"
+              color={
+                meal_type === 'veg' || meal_type === 'Veg'
+                  ? '#2aaf21'
+                  : '#cc2224'
+              }
+              size={16}
+            />
+            <Text style={styles.welcomeText}>{restaurant.restaurant_name}</Text>
           </View>
-
-          <PlanDuration />
-          <DeliverySlots category={category} />
-          <CheckoutAddress navigation={navigation} />
-          <CheckoutCards navigation={navigation} />
-          <DeliveryNotes />
-          <TipOption />
-          <PromoOptions />
-          <DeliverySelector isDelivery={isDelivery} />
-          <BillingTable />
-        </ScrollView>
-
-        {!isKeyboardOn && (
-          <View
-            style={{
-              flexDirection: 'row',
-            }}
-          >
-            <View style={styles.totalCount}>
-              <Text
-                style={{
-                  fontSize: 18,
-                  fontWeight: 'bold',
-                  textAlign: 'center',
-                }}
-              >
-                ${parseFloat(total).toFixed(2)}
+          <View style={{ marginTop: 2 }}>
+            <View style={styles.subheader}>
+              <Text style={[styles.mealText, { color: '#777' }]}>
+                Subscription
+              </Text>
+              <Text style={[styles.mealText, { color: '#777' }]}>Price</Text>
+            </View>
+            <View style={styles.subheader}>
+              <Text style={styles.mealText}>
+                {plan_name}
+              </Text>
+              <Text style={styles.mealText}>
+                {'$'}
+                {customer_price}
               </Text>
             </View>
-
-            <TouchableOpacity onPress={orderNow}>
-              <LinearGradient
-                colors={['#ff9900', '#ff6600']}
-                style={[styles.button, { flexDirection: 'row' }]}
-              >
-                {isOrdering && <ActivityIndicator size="small" color="#fff" animating />}
-                <Text
-                  style={[
-                    styles.btnText,
-                    {
-                      fontSize: isOrdering ? 16 : 18,
-                      marginLeft: isOrdering ? 10 : 26,
-                    },
-                  ]}
-                >
-                  PROCEED TO PAY
-                </Text>
-              </LinearGradient>
-            </TouchableOpacity>
           </View>
-        )}
-      </StripeProvider>
+        </View>
+
+        <PlanDuration />
+        <DeliverySlots category={category} />
+        <CheckoutAddress navigation={navigation} />
+        <CheckoutCards navigation={navigation} />
+        <DeliveryNotes />
+        <TipOption />
+        <PromoOptions />
+        <DeliverySelector isDelivery={isDelivery} />
+        <BillingTable />
+      </ScrollView>
+
+      {!isKeyboardOn && (
+        <View
+          style={{
+            flexDirection: 'row',
+          }}
+        >
+          <View style={styles.totalCount}>
+            <Text
+              style={{
+                fontSize: 18,
+                fontWeight: 'bold',
+                textAlign: 'center',
+              }}
+            >
+              ${parseFloat(total).toFixed(2)}
+            </Text>
+          </View>
+
+          <TouchableOpacity onPress={orderNow}>
+            <LinearGradient
+              colors={['#ff9900', '#ff6600']}
+              style={[styles.button, { flexDirection: 'row' }]}
+            >
+              {isOrdering && <ActivityIndicator size="small" color="#fff" animating />}
+              <Text
+                style={[
+                  styles.btnText,
+                  {
+                    fontSize: isOrdering ? 16 : 18,
+                    marginLeft: isOrdering ? 10 : 26,
+                  },
+                ]}
+              >
+                PROCEED TO PAY
+              </Text>
+            </LinearGradient>
+          </TouchableOpacity>
+        </View>
+      )}
+      {/* </StripeProvider> */}
     </SafeAreaView>
   )
 }
