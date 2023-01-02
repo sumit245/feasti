@@ -11,6 +11,12 @@
         {
           "icons": "./assets/adaptive-icon.png"
         }
+      ],
+      [
+        "@stripe/stripe-react-native",
+        {
+          "enableGooglePay": false
+        }
       ]
     ],
     "splash": {
