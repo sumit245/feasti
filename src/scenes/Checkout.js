@@ -10,7 +10,7 @@ import {
   ActivityIndicator,
 } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { StripeProvider } from '@stripe/stripe-react-native';
+// import { StripeProvider } from '@stripe/stripe-react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { width, styles } from "./styles/HomeStyle"
 import BackButton from "./Components/utility/BackButton"

@@ -9,7 +9,7 @@ import {
     Alert
 } from 'react-native'
 import React, { useState, useEffect } from 'react'
-import { StripeProvider } from '@stripe/stripe-react-native'
+// import { StripeProvider } from '@stripe/stripe-react-native'
 import { Checkbox, TextInput, Colors } from 'react-native-paper'
 import { LinearGradient } from 'expo-linear-gradient'
 import { styles } from '../../styles/HomeStyle'
@@ -68,7 +68,7 @@ export default function PayForAddOn({ route, navigation }) {
         <SafeAreaView style={styles.container} >
             <HeaderSimple navigation={navigation} title={title} />
             <ScrollView contentContainerStyle={{ flex: 1, justifyContent: 'space-between' }}>
-                <StripeProvider>
+                {/* <StripeProvider> */}
                     <View>
                         <View
                             style={{
@@ -178,7 +178,7 @@ export default function PayForAddOn({ route, navigation }) {
                         </View>
 
                     </View>
-                </StripeProvider>
+                {/* </StripeProvider> */}
             </ScrollView>
             <View style={{ flexDirection: "row", margin: 4 }}>
                 {
