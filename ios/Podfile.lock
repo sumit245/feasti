@@ -1,6 +1,9 @@
 PODS:
+  - ASN1Decoder (1.8.0)
   - boost (1.76.0)
   - DoubleConversion (1.1.6)
+  - EASClient (0.3.0):
+    - ExpoModulesCore
   - EXApplication (4.2.2):
     - ExpoModulesCore
   - EXConstants (13.2.4):
@@ -19,8 +22,11 @@ PODS:
   - EXImageLoader (3.2.0):
     - ExpoModulesCore
     - React-Core
+  - EXJSONUtils (0.3.0)
   - EXLocation (14.3.0):
     - ExpoModulesCore
+  - EXManifests (0.3.1):
+    - EXJSONUtils
   - EXNotifications (0.14.1):
     - ExpoModulesCore
   - Expo (46.0.19):
@@ -39,6 +45,16 @@ PODS:
   - EXSplashScreen (0.14.2):
     - ExpoModulesCore
     - React-Core
+  - EXStructuredHeaders (2.2.1)
+  - EXUpdates (0.14.7):
+    - ASN1Decoder (~> 1.8)
+    - EASClient
+    - EXManifests
+    - ExpoModulesCore
+    - EXStructuredHeaders
+    - EXUpdatesInterface
+    - React-Core
+  - EXUpdatesInterface (0.7.0)
   - FBLazyVector (0.69.6)
   - FBReactNativeSpec (0.69.6):
     - RCT-Folly (= 2021.06.28.00-v2)
@@ -467,27 +483,6 @@ PODS:
     - React-Core
   - RNVectorIcons (9.2.0):
     - React-Core
-  - Stripe (22.4.0):
-    - Stripe/Stripe3DS2 (= 22.4.0)
-    - StripeApplePay (= 22.4.0)
-    - StripeCore (= 22.4.0)
-    - StripeUICore (= 22.4.0)
-  - stripe-react-native (0.13.1):
-    - React-Core
-    - Stripe (~> 22.4.0)
-    - StripeFinancialConnections (~> 22.4.0)
-  - Stripe/Stripe3DS2 (22.4.0):
-    - StripeApplePay (= 22.4.0)
-    - StripeCore (= 22.4.0)
-    - StripeUICore (= 22.4.0)
-  - StripeApplePay (22.4.0):
-    - StripeCore (= 22.4.0)
-  - StripeCore (22.4.0)
-  - StripeFinancialConnections (22.4.0):
-    - StripeCore (= 22.4.0)
-    - StripeUICore (= 22.4.0)
-  - StripeUICore (22.4.0):
-    - StripeCore (= 22.4.0)
   - UMTaskManagerInterface (7.1.1):
     - ExpoModulesCore
   - Yoga (1.14.0)
@@ -495,6 +490,7 @@ PODS:
 DEPENDENCIES:
   - boost (from `../node_modules/react-native/third-party-podspecs/boost.podspec`)
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
+  - EASClient (from `../node_modules/expo-eas-client/ios`)
   - EXApplication (from `../node_modules/expo-application/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
   - EXDevice (from `../node_modules/expo-device/ios`)
@@ -503,7 +499,9 @@ DEPENDENCIES:
   - EXFirebaseCore (from `../node_modules/expo-firebase-core/ios`)
   - EXFont (from `../node_modules/expo-font/ios`)
   - EXImageLoader (from `../node_modules/expo-image-loader/ios`)
+  - EXJSONUtils (from `../node_modules/expo-json-utils/ios`)
   - EXLocation (from `../node_modules/expo-location/ios`)
+  - EXManifests (from `../node_modules/expo-manifests/ios`)
   - EXNotifications (from `../node_modules/expo-notifications/ios`)
   - Expo (from `../node_modules/expo`)
   - ExpoImagePicker (from `../node_modules/expo-image-picker/ios`)
@@ -512,6 +510,9 @@ DEPENDENCIES:
   - ExpoMailComposer (from `../node_modules/expo-mail-composer/ios`)
   - ExpoModulesCore (from `../node_modules/expo-modules-core/ios`)
   - EXSplashScreen (from `../node_modules/expo-splash-screen/ios`)
+  - EXStructuredHeaders (from `../node_modules/expo-structured-headers/ios`)
+  - EXUpdates (from `../node_modules/expo-updates/ios`)
+  - EXUpdatesInterface (from `../node_modules/expo-updates-interface/ios`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
@@ -554,12 +555,12 @@ DEPENDENCIES:
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
-  - "stripe-react-native (from `../node_modules/@stripe/stripe-react-native`)"
   - UMTaskManagerInterface (from `../node_modules/unimodules-task-manager-interface/ios`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   trunk:
+    - ASN1Decoder
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -572,17 +573,14 @@ SPEC REPOS:
     - GoogleUtilities
     - nanopb
     - PromisesObjC
-    - Stripe
-    - StripeApplePay
-    - StripeCore
-    - StripeFinancialConnections
-    - StripeUICore
 
 EXTERNAL SOURCES:
   boost:
     :podspec: "../node_modules/react-native/third-party-podspecs/boost.podspec"
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
+  EASClient:
+    :path: "../node_modules/expo-eas-client/ios"
   EXApplication:
     :path: "../node_modules/expo-application/ios"
   EXConstants:
@@ -599,8 +597,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-font/ios"
   EXImageLoader:
     :path: "../node_modules/expo-image-loader/ios"
+  EXJSONUtils:
+    :path: "../node_modules/expo-json-utils/ios"
   EXLocation:
     :path: "../node_modules/expo-location/ios"
+  EXManifests:
+    :path: "../node_modules/expo-manifests/ios"
   EXNotifications:
     :path: "../node_modules/expo-notifications/ios"
   Expo:
@@ -617,6 +619,12 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-modules-core/ios"
   EXSplashScreen:
     :path: "../node_modules/expo-splash-screen/ios"
+  EXStructuredHeaders:
+    :path: "../node_modules/expo-structured-headers/ios"
+  EXUpdates:
+    :path: "../node_modules/expo-updates/ios"
+  EXUpdatesInterface:
+    :path: "../node_modules/expo-updates-interface/ios"
   FBLazyVector:
     :path: "../node_modules/react-native/Libraries/FBLazyVector"
   FBReactNativeSpec:
@@ -699,16 +707,16 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-svg"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
-  stripe-react-native:
-    :path: "../node_modules/@stripe/stripe-react-native"
   UMTaskManagerInterface:
     :path: "../node_modules/unimodules-task-manager-interface/ios"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  ASN1Decoder: 6110fdeacfdb41559b1481457a1645be716610aa
   boost: a7c83b31436843459a1961bfd74b96033dc77234
   DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
+  EASClient: 9977ac8f5027f8462c7299343382f5bd27f33fac
   EXApplication: 64a38a15788ec0a9d01eb69683288f30c0726a64
   EXConstants: e15cbb0181ab1411ef2b5d4b5e8ecdc9b30aeed5
   EXDevice: c0bff5cae129d6ed94ddfa78d0c0ae78df7deb9e
@@ -717,7 +725,9 @@ SPEC CHECKSUMS:
   EXFirebaseCore: 5d7f8ed953ea59232850c4201ad838200bb3b934
   EXFont: 0be44924d5000938c74715b2056fd7972ba65a05
   EXImageLoader: fce288cd59b5366cfcf6b26f7fdb65d12af0c808
+  EXJSONUtils: d06f256b963e1e6f9b0010352e648e2c212f945c
   EXLocation: 5a963de9e4e6feb1bf9f806c22968b3ce16a0051
+  EXManifests: f13192a6cce80bb14a6959103efe48dd7f3bc8dc
   EXNotifications: a38023cbc1e7d2e2ffd5147c17ee6eac74ff4b94
   Expo: 7f618583927b5f73c7777ecd665c80755748e8b9
   ExpoImagePicker: d6e19385043133dd5ad2afb3a7676f73fcaa9167
@@ -726,6 +736,9 @@ SPEC CHECKSUMS:
   ExpoMailComposer: 6424404d1f683a3e62ba054db9531f9b065f4faa
   ExpoModulesCore: a3b2ac6dfc2c897267e7ab7fc2f4760181225799
   EXSplashScreen: c4333e4d7a89cc3f7452166527d207c725d3c2a5
+  EXStructuredHeaders: 71479c116081efdab342762b592c6d0954f5735a
+  EXUpdates: 1e87fd9fa95e254395d370e336f12babf815942a
+  EXUpdatesInterface: 73f5f4e31c7331ef679ff739bbb3bb8b37aeecff
   FBLazyVector: 739d2f9719faecb463c7aa191591af31c8c94182
   FBReactNativeSpec: 957de82f66e31f2f14bbec34e37242282fdd26de
   Firebase: 800f16f07af493d98d017446a315c27af0552f41
@@ -779,12 +792,6 @@ SPEC CHECKSUMS:
   RNScreens: 4a1af06327774490d97342c00aee0c2bafb497b7
   RNSVG: 302bfc9905bd8122f08966dc2ce2d07b7b52b9f8
   RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
-  Stripe: a925dfa9a7e51aa8f782f428abc10cb828b45a85
-  stripe-react-native: 7d782b49006b5ff2c61b805ac3b07facb5918f3d
-  StripeApplePay: 369857bafe8baf02e31b47478db1574febd2a2f3
-  StripeCore: a94d2823817c97c79fce60884ab9027a2da798c1
-  StripeFinancialConnections: 269658b79f639c2d6b7d513235d469418b04c2dd
-  StripeUICore: a8e24a6c91a5c99075c7a490d45695fb912876e8
   UMTaskManagerInterface: 2daeb597cbf3d2024098065605bb5d48294b1ff5
   Yoga: 75bf4b0131cfb46a659cd0c13309b79a6fcff66d
 
