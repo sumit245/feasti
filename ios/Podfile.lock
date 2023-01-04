@@ -27,7 +27,7 @@ PODS:
     - ExpoModulesCore
   - EXManifests (0.3.1):
     - EXJSONUtils
-  - EXNotifications (0.14.1):
+  - EXNotifications (0.16.1):
     - ExpoModulesCore
   - Expo (46.0.19):
     - ExpoModulesCore
@@ -42,7 +42,7 @@ PODS:
   - ExpoModulesCore (0.11.10):
     - React-Core
     - ReactCommon/turbomodule/core
-  - EXSplashScreen (0.14.2):
+  - EXSplashScreen (0.16.2):
     - ExpoModulesCore
     - React-Core
   - EXStructuredHeaders (2.2.1)
@@ -449,7 +449,7 @@ PODS:
     - React-Core
   - RNGestureHandler (2.5.0):
     - React-Core
-  - RNReanimated (2.9.1):
+  - RNReanimated (2.13.0):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -483,8 +483,6 @@ PODS:
     - React-Core
   - RNVectorIcons (9.2.0):
     - React-Core
-  - UMTaskManagerInterface (7.1.1):
-    - ExpoModulesCore
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -555,7 +553,6 @@ DEPENDENCIES:
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
-  - UMTaskManagerInterface (from `../node_modules/unimodules-task-manager-interface/ios`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -707,8 +704,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-svg"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
-  UMTaskManagerInterface:
-    :path: "../node_modules/unimodules-task-manager-interface/ios"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -728,14 +723,14 @@ SPEC CHECKSUMS:
   EXJSONUtils: d06f256b963e1e6f9b0010352e648e2c212f945c
   EXLocation: 5a963de9e4e6feb1bf9f806c22968b3ce16a0051
   EXManifests: f13192a6cce80bb14a6959103efe48dd7f3bc8dc
-  EXNotifications: a38023cbc1e7d2e2ffd5147c17ee6eac74ff4b94
+  EXNotifications: ab82bc074d82fd75c475298a2fbdff7756511a17
   Expo: 7f618583927b5f73c7777ecd665c80755748e8b9
   ExpoImagePicker: d6e19385043133dd5ad2afb3a7676f73fcaa9167
   ExpoKeepAwake: e44bcfa0e42b417b38d65ecbf145c754c7ae5109
   ExpoLinearGradient: 6d3047fddff1b61fafac00968dc1e1116499888f
   ExpoMailComposer: 6424404d1f683a3e62ba054db9531f9b065f4faa
   ExpoModulesCore: a3b2ac6dfc2c897267e7ab7fc2f4760181225799
-  EXSplashScreen: c4333e4d7a89cc3f7452166527d207c725d3c2a5
+  EXSplashScreen: 5b3373106c26fbdf32b8bb76b8004b7881dd8a53
   EXStructuredHeaders: 71479c116081efdab342762b592c6d0954f5735a
   EXUpdates: 1e87fd9fa95e254395d370e336f12babf815942a
   EXUpdatesInterface: 73f5f4e31c7331ef679ff739bbb3bb8b37aeecff
@@ -788,13 +783,12 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: 889cea2408e52fe71da475306dcef43951577da0
   RNCMaskedView: ad49d114ee1faa6e4116c310276073b61a0b3dd2
   RNGestureHandler: bad495418bcbd3ab47017a38d93d290ebd406f50
-  RNReanimated: 2cf7451318bb9cc430abeec8d67693f9cf4e039c
+  RNReanimated: f0d66bda3d074c43c72a18f4fd4f4c26687bc1fd
   RNScreens: 4a1af06327774490d97342c00aee0c2bafb497b7
   RNSVG: 302bfc9905bd8122f08966dc2ce2d07b7b52b9f8
   RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
-  UMTaskManagerInterface: 2daeb597cbf3d2024098065605bb5d48294b1ff5
   Yoga: 75bf4b0131cfb46a659cd0c13309b79a6fcff66d
 
-PODFILE CHECKSUM: c01da9e9a54e78bd190a375bb3cd601a53c2a14b
+PODFILE CHECKSUM: ed821065b7e43b0b525b0a7e3bc539523c4f6895
 
 COCOAPODS: 1.11.3
