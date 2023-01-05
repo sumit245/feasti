@@ -1,6 +1,5 @@
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
-// import React, { useState, useEffect, useRef } from 'react';
 import { Platform } from 'react-native';
 
 Notifications.setNotificationHandler({
