@@ -3,7 +3,10 @@ import ReduxThunk from "redux-thunk";
 import reducer from "./services/reducer/index";
 const initialState = {
     reducer: {},
-    notificationReducer: {}
+    addressReducer:{},
+    restaurantReducer:{},
+    checkoutReducer:{},
+    orderReducer:{}
 };
 const store = createStore(reducer, initialState, applyMiddleware(ReduxThunk));
 export default store;
