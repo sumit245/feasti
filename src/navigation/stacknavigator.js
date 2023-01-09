@@ -5,7 +5,6 @@ import OTPLogin from "../scenes/Components/mobilelogin/OTPLogin";
 import UserDetail from "../scenes/Components/UserDetail"
 import AddAddress from "../scenes/Components/manageaddress/AddAddress";
 import { useDispatch, } from "react-redux";
-// import { getExpoNotificationToken } from "../services/actions/notificationActions";
 import PinLogin from "../scenes/Components/pinlogin/PinLogin";
 import { getNearByRestaurant, getCuisines } from "../services/actions/retaurantsAction";
 import ChefDetails from "../scenes/ChefDetails";
@@ -33,7 +32,7 @@ export default function StackNavigator() {
     const dispatch = useDispatch()
 
     const getPreloadedData = () => {
-        // dispatch(getExpoNotificationToken())
+        dispatch(getExpoNotificationToken())
         dispatch(getCuisines())
         dispatch(getMyOrders())
         dispatch(getMySubscription())

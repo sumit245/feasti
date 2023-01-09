@@ -27,8 +27,6 @@ PODS:
     - ExpoModulesCore
   - EXManifests (0.3.1):
     - EXJSONUtils
-  - EXNotifications (0.16.1):
-    - ExpoModulesCore
   - Expo (46.0.19):
     - ExpoModulesCore
   - ExpoImagePicker (13.3.1):
@@ -449,7 +447,7 @@ PODS:
     - React-Core
   - RNGestureHandler (2.5.0):
     - React-Core
-  - RNReanimated (2.13.0):
+  - RNReanimated (2.9.1):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -500,7 +498,6 @@ DEPENDENCIES:
   - EXJSONUtils (from `../node_modules/expo-json-utils/ios`)
   - EXLocation (from `../node_modules/expo-location/ios`)
   - EXManifests (from `../node_modules/expo-manifests/ios`)
-  - EXNotifications (from `../node_modules/expo-notifications/ios`)
   - Expo (from `../node_modules/expo`)
   - ExpoImagePicker (from `../node_modules/expo-image-picker/ios`)
   - ExpoKeepAwake (from `../node_modules/expo-keep-awake/ios`)
@@ -600,8 +597,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-location/ios"
   EXManifests:
     :path: "../node_modules/expo-manifests/ios"
-  EXNotifications:
-    :path: "../node_modules/expo-notifications/ios"
   Expo:
     :path: "../node_modules/expo"
   ExpoImagePicker:
@@ -723,7 +718,6 @@ SPEC CHECKSUMS:
   EXJSONUtils: d06f256b963e1e6f9b0010352e648e2c212f945c
   EXLocation: 5a963de9e4e6feb1bf9f806c22968b3ce16a0051
   EXManifests: f13192a6cce80bb14a6959103efe48dd7f3bc8dc
-  EXNotifications: ab82bc074d82fd75c475298a2fbdff7756511a17
   Expo: 7f618583927b5f73c7777ecd665c80755748e8b9
   ExpoImagePicker: d6e19385043133dd5ad2afb3a7676f73fcaa9167
   ExpoKeepAwake: e44bcfa0e42b417b38d65ecbf145c754c7ae5109
@@ -783,7 +777,7 @@ SPEC CHECKSUMS:
   RNCAsyncStorage: 889cea2408e52fe71da475306dcef43951577da0
   RNCMaskedView: ad49d114ee1faa6e4116c310276073b61a0b3dd2
   RNGestureHandler: bad495418bcbd3ab47017a38d93d290ebd406f50
-  RNReanimated: f0d66bda3d074c43c72a18f4fd4f4c26687bc1fd
+  RNReanimated: 2cf7451318bb9cc430abeec8d67693f9cf4e039c
   RNScreens: 4a1af06327774490d97342c00aee0c2bafb497b7
   RNSVG: 302bfc9905bd8122f08966dc2ce2d07b7b52b9f8
   RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
