@@ -61,25 +61,25 @@ export default function Checkout({ route, navigation }) {
 
   const [isKeyboardOn, setKeyboardOn] = useState(false);
   const [isOrdering, setOrdering] = useState(false);
-  const STRIPE_PUBLISHABLE_KEY = "pk_test_51LzlBnJVYvGgsh0M6EGvFyf65Dkrv2tjTr0S2yU34RknmgVubtttaxSKrAyv2Gcy8ccZundhUpDwqIVeQRTLTmHA0008eoEOXi"
+  const STRIPE_PUBLISHABLE_KEY = "pk_live_51LzlBnJVYvGgsh0MFoJD891fQzpbmL7O7PlVkLAgXXtpAWihz8HvkpwbFB813uaY0RH0bRCN5hdX0uzyzmPvU8cU00x0nGyS2S"
 
   const orderNow = async () => {
     setOrdering(true)
     const responseToken = await getCreditCardToken(order.card, STRIPE_PUBLISHABLE_KEY)
     const paymentStatus = await stripeTokenHandler(responseToken.id, parseFloat(order.total).toFixed(2), order.user_id, order.restaurant_id, order.plan_name)
-    const {paid}=paymentStatus
-    if(paid){
-    const { data, status } = await dispatch(placeOrder(order))
-    if (status === 200) {
-      const { plan_name, start_date, category, time } = data
-      navigation.navigate('order_complete', {
-        plan_name,
-        start_date,
-        category,
-        time
-      })
-      setOrdering(false)
-    }
+    const { paid } = paymentStatus
+    if (paid) {
+      const { data, status } = await dispatch(placeOrder(order))
+      if (status === 200) {
+        const { plan_name, start_date, category, time } = data
+        navigation.navigate('order_complete', {
+          plan_name,
+          start_date,
+          category,
+          time
+        })
+        setOrdering(false)
+      }
     }
 
   }
