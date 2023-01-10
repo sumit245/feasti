@@ -39,13 +39,10 @@ export default function StackNavigator() {
     }
     const checkLogin = async () => {
         const isLoggedIn = await dispatch(getLocalUser())
-        console.log('====================================');
-        console.log(isLoggedIn);
-        console.log('====================================');
     }
     useEffect(() => {
         getPreloadedData()
-        // checkLogin()
+        //checkLogin()
     }, [])
 
 

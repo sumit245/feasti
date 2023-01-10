@@ -61,6 +61,7 @@ export const getSelectedPlan = (plan_name, base_price, customer_price, delivery_
     const plan = await axios.get(PROFIT_URL)
     const plans = plan.data
     const thisPlan = plans.find((plan) => plan.plan_name === plan_name)
+    console.log(thisPlan);
     const { duration } = thisPlan
     const selectedPlan = {
         plan_name: plan_name,
