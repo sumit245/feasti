@@ -54,7 +54,8 @@
     "react-native-webview": "^11.26.0",
     "react-redux": "^8.0.5",
     "redux": "^4.2.0",
-    "redux-thunk": "^2.4.2"
+    "redux-thunk": "^2.4.2",
+    "@stripe/stripe-react-native": "0.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3"
