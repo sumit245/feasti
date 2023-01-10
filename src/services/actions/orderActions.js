@@ -8,6 +8,7 @@ export const PLACE_ADD_ONS = "PLACE_ADD_ONS"
 export const SET_ORDER_ID = "SET_ORDER_ID"
 export const SET_ID = "SET_ID"
 export const ADD_ON_TOTAL = "ADD_ON_TOTAL"
+
 export const getMyOrders = () => async (dispatch) => {
     const user = await AsyncStorageLib.getItem('user')
     const { user_id } = JSON.parse(user)
@@ -29,11 +30,7 @@ export const setAddOns = (add_on, order_id, id, add_on_total) => async (dispatch
     dispatch({ type: SET_ORDER_ID, payload: order_id })
     dispatch({ type: SET_ID, payload: id })
     dispatch({ type: ADD_ON_TOTAL, payload: add_on_total })
-    // 
-    // const { data, status, message } = response.data
-    // console.log('====================================');
-    // console.log(status);
-    // console.log('====================================');
+    
 }
 export const placeAddOns = (orderID, id, add_on) => async (dispatch) => {
     const response = await axios.put(`${ORDER_UPDATE}${id}`, add_on)
