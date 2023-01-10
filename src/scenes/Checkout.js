@@ -61,7 +61,7 @@ export default function Checkout({ route, navigation }) {
 
   const [isKeyboardOn, setKeyboardOn] = useState(false);
   const [isOrdering, setOrdering] = useState(false);
-  const STRIPE_PUBLISHABLE_KEY = ""
+  const STRIPE_PUBLISHABLE_KEY = "pk_test_51LzlBnJVYvGgsh0M6EGvFyf65Dkrv2tjTr0S2yU34RknmgVubtttaxSKrAyv2Gcy8ccZundhUpDwqIVeQRTLTmHA0008eoEOXi"
 
   const orderNow = async () => {
     setOrdering(true)
@@ -101,7 +101,7 @@ export default function Checkout({ route, navigation }) {
   const { plan_name, customer_price } = selectedPlan
   return (
     <SafeAreaView style={styles.container}>
-      {/* <StripeProvider publishableKey={STRIPE_PUBLISHABLE_KEY}> */}
+      <StripeProvider publishableKey={STRIPE_PUBLISHABLE_KEY}>
       <View
         style={{
           position: 'absolute',
@@ -208,7 +208,7 @@ export default function Checkout({ route, navigation }) {
           </TouchableOpacity>
         </View>
       )}
-      {/* </StripeProvider> */}
+      </StripeProvider>
     </SafeAreaView>
   )
 }

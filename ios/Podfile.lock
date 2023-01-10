@@ -3,7 +3,7 @@ PODS:
   - DoubleConversion (1.1.6)
   - EXApplication (4.0.2):
     - ExpoModulesCore
-  - EXConstants (14.0.2):
+  - EXConstants (13.0.2):
     - ExpoModulesCore
   - EXDevice (4.1.1):
     - ExpoModulesCore
@@ -16,7 +16,7 @@ PODS:
     - Firebase/Core (= 9.5.0)
   - EXFont (10.0.5):
     - ExpoModulesCore
-  - EXImagePicker (12.0.1):
+  - EXImagePicker (12.0.2):
     - ExpoModulesCore
   - EXKeepAwake (10.0.2):
     - ExpoModulesCore
@@ -107,24 +107,24 @@ PODS:
     - GoogleUtilities/Environment (~> 7.7)
     - nanopb (< 2.30910.0, >= 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleUtilities/AppDelegateSwizzler (7.10.0):
+  - GoogleUtilities/AppDelegateSwizzler (7.11.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (7.10.0):
+  - GoogleUtilities/Environment (7.11.0):
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleUtilities/Logger (7.10.0):
+  - GoogleUtilities/Logger (7.11.0):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (7.10.0):
+  - GoogleUtilities/MethodSwizzler (7.11.0):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (7.10.0):
+  - GoogleUtilities/Network (7.11.0):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (7.10.0)"
-  - GoogleUtilities/Reachability (7.10.0):
+  - "GoogleUtilities/NSData+zlib (7.11.0)"
+  - GoogleUtilities/Reachability (7.11.0):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (7.10.0):
+  - GoogleUtilities/UserDefaults (7.11.0):
     - GoogleUtilities/Logger
   - nanopb (2.30909.0):
     - nanopb/decode (= 2.30909.0)
@@ -435,10 +435,23 @@ PODS:
   - RNScreens (3.10.2):
     - React-Core
     - React-RCTImage
-  - RNSVG (13.7.0):
-    - React-Core
+  - RNSVG (12.1.1):
+    - React
   - RNVectorIcons (9.2.0):
     - React-Core
+  - Stripe (21.9.1):
+    - Stripe/Stripe3DS2 (= 21.9.1)
+    - StripeCore (= 21.9.1)
+    - StripeUICore (= 21.9.1)
+  - stripe-react-native (0.2.3):
+    - React-Core
+    - Stripe (~> 21.9.0)
+  - Stripe/Stripe3DS2 (21.9.1):
+    - StripeCore (= 21.9.1)
+    - StripeUICore (= 21.9.1)
+  - StripeCore (21.9.1)
+  - StripeUICore (21.9.1):
+    - StripeCore (= 21.9.1)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -498,6 +511,7 @@ DEPENDENCIES:
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
+  - "stripe-react-native (from `../node_modules/@stripe/stripe-react-native`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -514,6 +528,9 @@ SPEC REPOS:
     - GoogleUtilities
     - nanopb
     - PromisesObjC
+    - Stripe
+    - StripeCore
+    - StripeUICore
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -624,6 +641,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-svg"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
+  stripe-react-native:
+    :path: "../node_modules/@stripe/stripe-react-native"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -631,13 +650,13 @@ SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   EXApplication: 72d2781a562fc336305387b221cbd439b4da9a35
-  EXConstants: dc7a16230c5815fa80ed70b3a09aa7f2e2a94be3
+  EXConstants: 222a1dbfad69479d3fd1bc77187343d3933e2002
   EXDevice: b9199fa42b07d507e2220f25d45c3993aefbe5ee
   EXErrorRecovery: 9d4f59e2f01ca204a069ad976218cc5f6573353a
   EXFileSystem: 40a7f599cd63f4070d8c6dbbf4d4ad1cac90b556
   EXFirebaseCore: 5d7f8ed953ea59232850c4201ad838200bb3b934
   EXFont: 621d92d8ac6702d02a5237602815c0e1b6d684e6
-  EXImagePicker: 17d499ccb3fd63f8599be5150fc920db8ae2cd1e
+  EXImagePicker: 1f46651412a153bc6e345f838e7082ab8724f5ad
   EXKeepAwake: f1ed9c7609cfe32a5519acd0f7d536cb59b8a656
   EXLocation: f055213f19bc3acce4c9a07de3a5eabaa03ac23c
   EXMailComposer: 444854b7e1a2580a7ec91f2bfa11e689972bc689
@@ -656,7 +675,7 @@ SPEC CHECKSUMS:
   glog: 73c2498ac6884b13ede40eda8228cb1eee9d9d62
   GoogleAppMeasurement: 6ee231473fbd75c11221dfce489894334024eead
   GoogleDataTransport: 1c8145da7117bd68bbbed00cf304edb6a24de00f
-  GoogleUtilities: bad72cb363809015b1f7f19beb1f1cd23c589f95
+  GoogleUtilities: c2bdc4cf2ce786c4d2e6b3bcfd599a25ca78f06f
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   RCT-Folly: ec7a233ccc97cc556cf7237f0db1ff65b986f27c
@@ -692,10 +711,14 @@ SPEC CHECKSUMS:
   RNGestureHandler: e1099204721a17a89c81fcd1cc2e92143dc040fb
   RNReanimated: 69f427ef749f923934a9c1485ad439dd001fb73c
   RNScreens: d6da2b9e29cf523832c2542f47bf1287318b1868
-  RNSVG: d787d64ca06b9158e763ad2638a8c4edce00782a
+  RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
   RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
+  Stripe: 22c1b8da5ee20a1aaf40fd198160efa72e71644a
+  stripe-react-native: fc0175ddb50104409197ff336db7d9eca9002bf8
+  StripeCore: 91ea038ac0abbb72f11014044dfd1e5d39089714
+  StripeUICore: 7edf64b24c9c178bfd97e988f2cffdbb7a7628b0
   Yoga: e6ecf3fa25af9d4c87e94ad7d5d292eedef49749
 
-PODFILE CHECKSUM: df9557093f6d231a87f5d60c84d62fbf71ba1aad
+PODFILE CHECKSUM: 38af5d68e42586012d788e8890dfb7ad32e30e83
 
 COCOAPODS: 1.11.3

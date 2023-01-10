@@ -12,6 +12,7 @@
     "@react-navigation/material-bottom-tabs": "^6.2.10",
     "@react-navigation/native": "^6.1.1",
     "@react-navigation/stack": "^6.3.10",
+    "@stripe/stripe-react-native": "0.2.3",
     "axios": "^1.2.2",
     "expo": "^44.0.6",
     "expo-device": "~4.1.0",
@@ -20,6 +21,7 @@
     "expo-linear-gradient": "^11.0.3",
     "expo-location": "^15.0.1",
     "expo-mail-composer": "~11.1.0",
+    "expo-modules-core": "^0.6.5",
     "expo-splash-screen": "~0.14.1",
     "expo-status-bar": "~1.4.2",
     "firebase": "^8.2.3",
@@ -54,8 +56,7 @@
     "react-native-webview": "^11.26.0",
     "react-redux": "^8.0.5",
     "redux": "^4.2.0",
-    "redux-thunk": "^2.4.2",
-    "@stripe/stripe-react-native": "0.2.3"
+    "redux-thunk": "^2.4.2"
   },
   "devDependencies": {
     "@babel/core": "^7.19.3"
