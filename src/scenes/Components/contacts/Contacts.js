@@ -62,7 +62,6 @@ export default function Contacts({ navigation }) {
             "Your message will be discarded",
             [{
                 text: "Cancel",
-                onPress: () => console.log("Cancel Pressed"),
                 style: "cancel"
             },
             { text: "OK", onPress: () => navigation.goBack() }

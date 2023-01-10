@@ -41,6 +41,7 @@ const order = {
         city: "",
         postal_code: ""
     },
+    discount:0,
     total: 0,
     serviceFee: 0,
     discount: 0

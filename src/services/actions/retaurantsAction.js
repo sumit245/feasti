@@ -137,9 +137,6 @@ export const getActiveRestaurants = () => async (dispatch) => {
 
     restaurants.map(async (restaurant, key) => {
         const { city } = restaurant;
-        console.log('====================================');
-        console.log(city);
-        console.log('====================================');
         const distance = await calculateDistanceGlobal(city)
         if (distance < 200) {
             restaurant.distance = distance

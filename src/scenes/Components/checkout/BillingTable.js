@@ -18,6 +18,7 @@ export default function BillingTable() {
         const { delivery_fee, customer_price } = selectedPlan
         setPrice(customer_price)
         setDelivery(delivery_fee)
+        console.log(discount ,'is discount');
         setPromo(discount)
         let serviceCharge = customer_price * 0.01 * serviceFee;
         let total = parseFloat(serviceCharge) + parseFloat(customer_price) + parseFloat(tip) - parseFloat(discount)

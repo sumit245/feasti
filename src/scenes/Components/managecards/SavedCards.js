@@ -12,7 +12,6 @@ export default function SavedCards({ credit_cards }) {
         let componentMount = true
         if (componentMount) {
             setData(credit_cards)
-            console.log(data,'i data');
             setLoading(false)
         }
         return () => {
