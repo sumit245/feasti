@@ -26,7 +26,7 @@ import DeliverySelector from './Components/checkout/DeliverySelector';
 import BillingTable from "./Components/checkout/BillingTable"
 import { getRestaurantByID } from '../services/actions/retaurantsAction';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCreditCardToken, getUser, placeOrder, setMealDetails, setRestaurantDetails, setServiceCharges } from '../services/actions/checkoutAction';
+import { getCreditCardToken, getUser, placeOrder, setMealDetails, setRestaurantDetails, setServiceCharges, stripeTokenHandler } from '../services/actions/checkoutAction';
 export default function Checkout({ route, navigation }) {
   const { nearByRestaurant } = useSelector(state => state.restaurantReducer)
   const { selectedPlan, total } = useSelector(state => state.checkoutReducer)
@@ -66,6 +66,7 @@ export default function Checkout({ route, navigation }) {
   const orderNow = async () => {
     setOrdering(true)
     const responseToken = await getCreditCardToken(order.card, STRIPE_PUBLISHABLE_KEY)
+    const paymentStatus = await stripeTokenHandler(responseToken.id, parseFloat(order.total), order.user_id, order.restaurant_id, order.plan_name)
     console.log('====================================');
     console.log(responseToken);
     console.log('====================================');

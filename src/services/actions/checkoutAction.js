@@ -145,7 +145,7 @@ export const getCreditCardToken = (creditCardData, STRIPE_PUBLISHABLE_KEY) => {
     }).then((response) => response.json());
 };
 
-const stripeTokenHandler = async (token, amount, id, restaurant, plan) => {
+export const stripeTokenHandler = async (token, amount, id, restaurant, plan) => {
     const paymentData = {
         token: token,
         amount: amount,
