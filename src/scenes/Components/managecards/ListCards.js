@@ -32,6 +32,7 @@ export default function ListCards({ navigation }) {
         const { cards, wallet_balance } = JSON.parse(user)
         setBalance(wallet_balance)
         setCreditCards(cards)
+        console.log(cards);
         setLoaded(true)
     }
     
@@ -48,11 +49,18 @@ export default function ListCards({ navigation }) {
     const { modalVisible, title } = state
 
     return (
-        <Provider>
-            <SafeAreaView style={styles.container}>
+        <SafeAreaView style={styles.container}>
+                <Provider>
                 <HeaderSimple title="Manage Payments" navigation={navigation} />
-                <WalletCard navigation={navigation} wallet_balance={wallet_balance} />
-                <SavedCards credit_cards={credit_cards} />
+                {
+                    loaded &&(
+                        <>
+                        <WalletCard navigation={navigation} wallet_balance={wallet_balance} />
+                        <SavedCards credit_cards={credit_cards} />
+                        </>
+
+                    )
+                }
                 <LinearGradient colors={["#ff9900", "#ff6600"]} style={styles.bottomBtnRound}>
                     <TouchableOpacity
                         onPress={() => {
@@ -71,7 +79,7 @@ export default function ListCards({ navigation }) {
                         />
                     )
                 }
-            </SafeAreaView>
         </Provider>
+            </SafeAreaView>
     )
 }

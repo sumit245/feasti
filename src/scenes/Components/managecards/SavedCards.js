@@ -12,12 +12,13 @@ export default function SavedCards({ credit_cards }) {
         let componentMount = true
         if (componentMount) {
             setData(credit_cards)
+            console.log(data,'i data');
             setLoading(false)
         }
         return () => {
             componentMount = false
         }
-    }, [credit_cards])
+    }, [data])
 
     const renderItem = ({ item, index }) => <PaymentCard item={item} index={index} />
     const rendeRightActionButton = ({ item, index }) => <SwipableActions item={item} index={index} />

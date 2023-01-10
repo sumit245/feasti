@@ -9,18 +9,8 @@
     <key>EXUpdatesLaunchWaitMs</key>
     <integer>0</integer>
     <key>EXUpdatesSDKVersion</key>
-    <string>46.0.0</string>
+    <string>44.0.0</string>
     <key>EXUpdatesURL</key>
-<<<<<<< HEAD
-    <string>https://exp.host/@sumitranjan245/Feasti-User</string>
-    <key>EXUpdatesEnabled</key>
-    <true/>
-    <key>EXUpdatesCheckOnLaunch</key>
-    <string>ALWAYS</string>
-    <key>EXUpdatesLaunchWaitMs</key>
-    <integer>0</integer>
-=======
     <string>https://exp.host/@feasti/Feasti-User</string>
->>>>>>> 5f1028dbc4104c8a956d40af37215bcb01bf07bb
   </dict>
 </plist>

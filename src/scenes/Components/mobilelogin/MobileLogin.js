@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React, { useState, useRef } from 'react'
 import { FirebaseRecaptchaVerifierModal } from 'expo-firebase-recaptcha'
-import firebase from '../../../firebase';
+import firebase from '../../../_firebase';
 import PhoneInput from 'react-native-phone-number-input';
 import styles from '../../styles/AuthStyle';
 import { LinearGradient } from 'expo-linear-gradient';

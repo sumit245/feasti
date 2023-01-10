@@ -32,7 +32,7 @@ export default function StackNavigator() {
     const dispatch = useDispatch()
 
     const getPreloadedData = () => {
-        dispatch(getExpoNotificationToken())
+      //  dispatch(getExpoNotificationToken())
         dispatch(getCuisines())
         dispatch(getMyOrders())
         dispatch(getMySubscription())

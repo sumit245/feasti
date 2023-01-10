@@ -7,34 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
+		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		95B6E7EEE080DF662680F0C8 /* Pods_FeastiUser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4263998A4B38A0C691EA89E4 /* Pods_FeastiUser.framework */; };
-		AD7CAAD6F34041A196EF9A04 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A87829B9FB7C4E8BA7AC61AE /* GoogleService-Info.plist */; };
+		96905EF65AED1B983A6B3ABC /* libPods-FeastiUser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EEBF8E8E6FB1BC6CAF49B5 /* libPods-FeastiUser.a */; };
 		B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		F8FB622933A141C0B847C7AC /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2B80AAB733463BBDCCC1F3 /* noop-file.swift */; };
+		33C1D02E767549D59E022971 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FE2F8E2378B46AD968FC1D7 /* GoogleService-Info.plist */; };
+		36D6AB6AAAF54382AC6EC151 /* noop-file.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB35E682F234834ABB076DF /* noop-file.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		09C42D2985E1AA67D915C331 /* Pods-FeastiUser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeastiUser.release.xcconfig"; path = "Target Support Files/Pods-FeastiUser/Pods-FeastiUser.release.xcconfig"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* feasti-user.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "feasti-user.app"; path = FeastiUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* FeastiUser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeastiUser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = FeastiUser/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = FeastiUser/AppDelegate.mm; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = FeastiUser/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FeastiUser/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FeastiUser/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = FeastiUser/main.m; sourceTree = "<group>"; };
-		1A6A35BDC29E532116079155 /* Pods-FeastiUser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeastiUser.debug.xcconfig"; path = "Target Support Files/Pods-FeastiUser/Pods-FeastiUser.debug.xcconfig"; sourceTree = "<group>"; };
-		4263998A4B38A0C691EA89E4 /* Pods_FeastiUser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeastiUser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A87829B9FB7C4E8BA7AC61AE /* GoogleService-Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "FeastiUser/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		58EEBF8E8E6FB1BC6CAF49B5 /* libPods-FeastiUser.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FeastiUser.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C2E3173556A471DD304B334 /* Pods-FeastiUser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeastiUser.debug.xcconfig"; path = "Target Support Files/Pods-FeastiUser/Pods-FeastiUser.debug.xcconfig"; sourceTree = "<group>"; };
+		7A4D352CD337FB3A3BF06240 /* Pods-FeastiUser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeastiUser.release.xcconfig"; path = "Target Support Files/Pods-FeastiUser/Pods-FeastiUser.release.xcconfig"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = FeastiUser/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		EA2B80AAB733463BBDCCC1F3 /* noop-file.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "noop-file.swift"; path = "FeastiUser/noop-file.swift"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-FeastiUser/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		8FE2F8E2378B46AD968FC1D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; name = "GoogleService-Info.plist"; path = "FeastiUser/GoogleService-Info.plist"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = text.plist.xml; explicitFileType = undefined; includeInIndex = 0; };
+		ADB35E682F234834ABB076DF /* noop-file.swift */ = {isa = PBXFileReference; name = "noop-file.swift"; path = "FeastiUser/noop-file.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		E340C9391C70402CA490B8EB /* FeastiUser-Bridging-Header.h */ = {isa = PBXFileReference; name = "FeastiUser-Bridging-Header.h"; path = "FeastiUser/FeastiUser-Bridging-Header.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,7 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95B6E7EEE080DF662680F0C8 /* Pods_FeastiUser.framework in Frameworks */,
+				96905EF65AED1B983A6B3ABC /* libPods-FeastiUser.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,13 +56,14 @@
 				BB2F792B24A3F905000567C9 /* Supporting */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
-				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
+				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				A87829B9FB7C4E8BA7AC61AE /* GoogleService-Info.plist */,
-				EA2B80AAB733463BBDCCC1F3 /* noop-file.swift */,
+				8FE2F8E2378B46AD968FC1D7 /* GoogleService-Info.plist */,
+				ADB35E682F234834ABB076DF /* noop-file.swift */,
+				E340C9391C70402CA490B8EB /* FeastiUser-Bridging-Header.h */,
 			);
 			name = FeastiUser;
 			sourceTree = "<group>";
@@ -70,7 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				4263998A4B38A0C691EA89E4 /* Pods_FeastiUser.framework */,
+				58EEBF8E8E6FB1BC6CAF49B5 /* libPods-FeastiUser.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -78,7 +80,6 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				D65327D7A22EEC0BE12398D9 /* Pods */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -90,8 +91,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
+				D65327D7A22EEC0BE12398D9 /* Pods */,
 				D7E4C46ADA2E9064B798F356 /* ExpoModulesProviders */,
-				B4BBC1883BE2356C85C946C9 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -101,7 +102,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* feasti-user.app */,
+				13B07F961A680F5B00A75B9A /* FeastiUser.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,15 +113,6 @@
 				FAC715A2D49A985799AEE119 /* ExpoModulesProvider.swift */,
 			);
 			name = FeastiUser;
-			sourceTree = "<group>";
-		};
-		B4BBC1883BE2356C85C946C9 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				1A6A35BDC29E532116079155 /* Pods-FeastiUser.debug.xcconfig */,
-				09C42D2985E1AA67D915C331 /* Pods-FeastiUser.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
@@ -135,6 +127,8 @@
 		D65327D7A22EEC0BE12398D9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				6C2E3173556A471DD304B334 /* Pods-FeastiUser.debug.xcconfig */,
+				7A4D352CD337FB3A3BF06240 /* Pods-FeastiUser.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -154,14 +148,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "FeastiUser" */;
 			buildPhases = (
-				41AEAEAE2C62C0FE7A3EDA8A /* [CP] Check Pods Manifest.lock */,
+				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				0685D7CA3A4770FEA3856F43 /* [CP] Embed Pods Frameworks */,
-				6ED03252351956AA2048BF64 /* [CP] Copy Pods Resources */,
+				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -169,7 +162,7 @@
 			);
 			name = FeastiUser;
 			productName = FeastiUser;
-			productReference = 13B07F961A680F5B00A75B9A /* feasti-user.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* FeastiUser.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -178,10 +171,9 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = WUA7BB4BD4;
 						LastSwiftMigration = 1250;
 					};
 				};
@@ -212,7 +204,8 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				AD7CAAD6F34041A196EF9A04 /* GoogleService-Info.plist in Resources */,
+				33C1D02E767549D59E022971 /* GoogleService-Info.plist in Resources */,
+				EF4B270FACF342ED9AA9EF17 /* FeastiUser-Bridging-Header.h in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,117 +224,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ -f \"$PODS_ROOT/../.xcode.env\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env\"\nfi\nif [[ -f \"$PODS_ROOT/../.xcode.env.local\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.local\"\nfi\n\n# The project root by default is one level up from the ios directory\nexport PROJECT_ROOT=\"$PROJECT_DIR\"/..\n\nif [[ \"$CONFIGURATION\" = *Debug* ]]; then\n  export SKIP_BUNDLING=1\nfi\n`\"$NODE_BINARY\" --print \"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/react-native-xcode.sh'\"`\n\n";
+			shellScript = "export NODE_BINARY=node\n\n# The project root by default is one level up from the ios directory\nexport PROJECT_ROOT=\"$PROJECT_DIR\"/..\n\n`node --print \"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/react-native-xcode.sh'\"`\n";
 		};
-		0685D7CA3A4770FEA3856F43 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FeastiUser/Pods-FeastiUser-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ASN1Decoder/ASN1Decoder.framework",
-				"${BUILT_PRODUCTS_DIR}/DoubleConversion/DoubleConversion.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework",
-				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
-				"${BUILT_PRODUCTS_DIR}/RCT-Folly/folly.framework",
-				"${BUILT_PRODUCTS_DIR}/RCTTypeSafety/RCTTypeSafety.framework",
-				"${BUILT_PRODUCTS_DIR}/RNCAsyncStorage/RNCAsyncStorage.framework",
-				"${BUILT_PRODUCTS_DIR}/RNCMaskedView/RNCMaskedView.framework",
-				"${BUILT_PRODUCTS_DIR}/RNGestureHandler/RNGestureHandler.framework",
-				"${BUILT_PRODUCTS_DIR}/RNReanimated/RNReanimated.framework",
-				"${BUILT_PRODUCTS_DIR}/RNSVG/RNSVG.framework",
-				"${BUILT_PRODUCTS_DIR}/RNScreens/RNScreens.framework",
-				"${BUILT_PRODUCTS_DIR}/RNVectorIcons/RNVectorIcons.framework",
-				"${BUILT_PRODUCTS_DIR}/React-Codegen/React_Codegen.framework",
-				"${BUILT_PRODUCTS_DIR}/React-Core/React.framework",
-				"${BUILT_PRODUCTS_DIR}/React-CoreModules/CoreModules.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RCTAnimation/RCTAnimation.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RCTBlob/RCTBlob.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RCTImage/RCTImage.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RCTLinking/RCTLinking.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RCTNetwork/RCTNetwork.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RCTSettings/RCTSettings.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RCTText/RCTText.framework",
-				"${BUILT_PRODUCTS_DIR}/React-RCTVibration/RCTVibration.framework",
-				"${BUILT_PRODUCTS_DIR}/React-bridging/react_bridging.framework",
-				"${BUILT_PRODUCTS_DIR}/React-cxxreact/cxxreact.framework",
-				"${BUILT_PRODUCTS_DIR}/React-jsi/jsi.framework",
-				"${BUILT_PRODUCTS_DIR}/React-jsiexecutor/jsireact.framework",
-				"${BUILT_PRODUCTS_DIR}/React-jsinspector/jsinspector.framework",
-				"${BUILT_PRODUCTS_DIR}/React-logger/logger.framework",
-				"${BUILT_PRODUCTS_DIR}/React-perflogger/reactperflogger.framework",
-				"${BUILT_PRODUCTS_DIR}/ReactCommon/ReactCommon.framework",
-				"${BUILT_PRODUCTS_DIR}/Yoga/yoga.framework",
-				"${BUILT_PRODUCTS_DIR}/fmt/fmt.framework",
-				"${BUILT_PRODUCTS_DIR}/glog/glog.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${BUILT_PRODUCTS_DIR}/react-native-geocoder/react_native_geocoder.framework",
-				"${BUILT_PRODUCTS_DIR}/react-native-maps/react_native_maps.framework",
-				"${BUILT_PRODUCTS_DIR}/react-native-pager-view/react_native_pager_view.framework",
-				"${BUILT_PRODUCTS_DIR}/react-native-safe-area-context/react_native_safe_area_context.framework",
-				"${BUILT_PRODUCTS_DIR}/react-native-webview/react_native_webview.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ASN1Decoder.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DoubleConversion.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreDiagnostics.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreInternal.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstallations.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/folly.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCTTypeSafety.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNCAsyncStorage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNCMaskedView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNGestureHandler.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNReanimated.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNSVG.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNScreens.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNVectorIcons.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React_Codegen.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CoreModules.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCTAnimation.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCTBlob.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCTImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCTLinking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCTNetwork.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCTSettings.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCTText.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RCTVibration.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/react_bridging.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/cxxreact.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/jsi.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/jsireact.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/jsinspector.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/logger.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/reactperflogger.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactCommon.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/yoga.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/fmt.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/glog.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/react_native_geocoder.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/react_native_maps.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/react_native_pager_view.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/react_native_safe_area_context.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/react_native_webview.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FeastiUser/Pods-FeastiUser-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		41AEAEAE2C62C0FE7A3EDA8A /* [CP] Check Pods Manifest.lock */ = {
+		08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -363,7 +248,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6ED03252351956AA2048BF64 /* [CP] Copy Pods Resources */ = {
+		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -371,12 +256,12 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-FeastiUser/Pods-FeastiUser-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/EXUpdates/EXUpdates.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXUpdates.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -399,7 +284,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [[ -f \"$PODS_ROOT/../.xcode.env\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env\"\nfi\nif [[ -f \"$PODS_ROOT/../.xcode.env.local\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.local\"\nfi\n\nexport RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > `$NODE_BINARY --print \"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/.packager.env'\"`\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open `$NODE_BINARY --print \"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/launchPackager.command'\"` || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > `node --print \"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/.packager.env'\"`\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open `node --print \"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/launchPackager.command'\"` || echo \"Can't start packager automatically\"\n  fi\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -409,10 +294,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				B18059E884C0ABDD17F3DC3D /* ExpoModulesProvider.swift in Sources */,
-				F8FB622933A141C0B847C7AC /* noop-file.swift in Sources */,
+				36D6AB6AAAF54382AC6EC151 /* noop-file.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,65 +306,57 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1A6A35BDC29E532116079155 /* Pods-FeastiUser.debug.xcconfig */;
+			baseConfigurationReference = 6C2E3173556A471DD304B334 /* Pods-FeastiUser.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "FeastiUser/feasti-user.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WUA7BB4BD4;
-				ENABLE_BITCODE = YES;
+				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"FB_SONARKIT_ENABLED=1",
 				);
 				INFOPLIST_FILE = FeastiUser/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.5;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.feasti.feasti-user";
-				PRODUCT_NAME = FeastiUser;
+				PRODUCT_NAME = "FeastiUser";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_OBJC_BRIDGING_HEADER = FeastiUser/FeastiUser-Bridging-Header.h;
+				CODE_SIGN_ENTITLEMENTS = FeastiUser/FeastiUser.entitlements;
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 09C42D2985E1AA67D915C331 /* Pods-FeastiUser.release.xcconfig */;
+			baseConfigurationReference = 7A4D352CD337FB3A3BF06240 /* Pods-FeastiUser.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "FeastiUser/feasti-user.entitlements";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WUA7BB4BD4;
-				ENABLE_TESTABILITY = YES;
 				INFOPLIST_FILE = FeastiUser/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.5;
-				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.feasti.feasti-user";
-				PRODUCT_NAME = FeastiUser;
+				PRODUCT_NAME = "FeastiUser";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				SWIFT_OBJC_BRIDGING_HEADER = FeastiUser/FeastiUser-Bridging-Header.h;
+				CODE_SIGN_ENTITLEMENTS = FeastiUser/FeastiUser.entitlements;
 			};
 			name = Release;
 		};
@@ -488,7 +365,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -506,18 +383,15 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = "FeastiUser/feasti-user.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -533,12 +407,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
-				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
+				LIBRARY_SEARCH_PATHS = "\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -548,7 +421,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -566,18 +439,15 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = "FeastiUser/feasti-user.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -586,13 +456,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
-				LIBRARY_SEARCH_PATHS = "$(SDKROOT)/usr/lib/swift\"$(inherited)\"";
+				LIBRARY_SEARCH_PATHS = "\"$(inherited)\"";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

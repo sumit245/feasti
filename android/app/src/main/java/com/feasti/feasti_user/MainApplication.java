@@ -10,17 +10,15 @@ import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
-import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.soloader.SoLoader;
-import com.feasti.feasti_user.newarchitecture.MainApplicationReactNativeHost;
 
 import expo.modules.ApplicationLifecycleDispatcher;
 import expo.modules.ReactNativeHostWrapper;
 
+import com.facebook.react.bridge.JSIModulePackage;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
-import com.devfd.RNGeocoder.RNGeocoderPackage;
-
 
 public class MainApplication extends Application implements ReactApplication {
   private final ReactNativeHost mReactNativeHost = new ReactNativeHostWrapper(
@@ -36,7 +34,7 @@ public class MainApplication extends Application implements ReactApplication {
       @SuppressWarnings("UnnecessaryLocalVariable")
       List<ReactPackage> packages = new PackageList(this).getPackages();
       // Packages that cannot be autolinked yet can be added manually here, for example:
-      packages.add(new RNGeocoderPackage());
+      // packages.add(new MyReactNativePackage());
       return packages;
     }
 
@@ -46,23 +44,14 @@ public class MainApplication extends Application implements ReactApplication {
     }
   });
 
-  private final ReactNativeHost mNewArchitectureNativeHost =
-      new ReactNativeHostWrapper(this, new MainApplicationReactNativeHost(this));
-
   @Override
   public ReactNativeHost getReactNativeHost() {
-    if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
-      return mNewArchitectureNativeHost;
-    } else {
-      return mReactNativeHost;
-    }
+    return mReactNativeHost;
   }
 
   @Override
   public void onCreate() {
     super.onCreate();
-    // If you opted-in for the New Architecture, we enable the TurboModule system
-    ReactFeatureFlags.useTurboModules = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
     SoLoader.init(this, /* native exopackage */ false);
 
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
