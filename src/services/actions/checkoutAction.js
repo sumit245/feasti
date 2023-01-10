@@ -61,7 +61,6 @@ export const getSelectedPlan = (plan_name, base_price, customer_price, delivery_
     const plan = await axios.get(PROFIT_URL)
     const plans = plan.data
     const thisPlan = plans.find((plan) => plan.plan_name === plan_name)
-    console.log(thisPlan);
     const { duration } = thisPlan
     const selectedPlan = {
         plan_name: plan_name,
@@ -125,6 +124,38 @@ export const calculateTotal = (price, serviceFee, tax, isDelivery, delivery_fee,
     dispatch({ type: SET_TOTAL, payload: total })
     dispatch({ type: SET_DISCOUNT, payload: discount })
 }
+
+export const getCreditCardToken = (creditCardData, STRIPE_PUBLISHABLE_KEY) => {
+    const card = {
+        'card[number]': creditCardData.number.replace(/ /g, ''),
+        'card[exp_month]': creditCardData.expiry.split('/')[0],
+        'card[exp_year]': creditCardData.expiry.split('/')[1],
+        'card[cvc]': creditCardData.cvc,
+    };
+    return fetch('https://api.stripe.com/v1/tokens', {
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/x-www-form-urlencoded',
+            Authorization: `Bearer ${STRIPE_PUBLISHABLE_KEY}`,
+        },
+        method: 'post',
+        body: Object.keys(card)
+            .map((key) => key + '=' + card[key])
+            .join('&'),
+    }).then((response) => response.json());
+};
+
+const stripeTokenHandler = async (token, amount, id, restaurant, plan) => {
+    const paymentData = {
+        token: token,
+        amount: amount,
+        user_id: id,
+        restaurant_id: restaurant,
+        plan_name: plan,
+    };
+    const response = await axios.post('https://feasti.com/api/stripe/pay', paymentData);
+    return response.data;
+};
 
 export const placeOrder = (order) => async (dispatch) => {
     const response = await axios.post(PLACE_ORDER_URL,
