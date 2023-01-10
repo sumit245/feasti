@@ -153,7 +153,7 @@ export const stripeTokenHandler = async (token, amount, id, restaurant, plan) =>
         restaurant_id: restaurant,
         plan_name: plan,
     };
-    const response = await axios.post('https://feasti.com/api/stripe/pay', paymentData);
+    const response = await axios.post('http://18.117.246.192/api/stripe/pay/USD', paymentData);
     return response.data;
 };
 

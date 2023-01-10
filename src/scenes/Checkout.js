@@ -66,9 +66,9 @@ export default function Checkout({ route, navigation }) {
   const orderNow = async () => {
     setOrdering(true)
     const responseToken = await getCreditCardToken(order.card, STRIPE_PUBLISHABLE_KEY)
-   // const paymentStatus = await stripeTokenHandler(responseToken.id, parseFloat(order.total), order.user_id, order.restaurant_id, order.plan_name)
+    const paymentStatus = await stripeTokenHandler(responseToken.id, parseFloat(order.total), order.user_id, order.restaurant_id, order.plan_name)
     console.log('====================================');
-    console.log(responseToken);
+    console.log(responseToken, paymentStatus);
     console.log('====================================');
     // const { data, status } = await dispatch(placeOrder(order))
     // if (status === 200) {
